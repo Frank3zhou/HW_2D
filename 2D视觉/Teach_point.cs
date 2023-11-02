@@ -323,7 +323,7 @@ namespace _6524
                         // 取消后台线程
                         _cancellationTokenSource.Cancel();
                         _cancellationTokenSource = null;
-                        button8.Text = "连续采集";
+                        button8.Text = "采集图像";
                     }
                 }
                 else //采集一张

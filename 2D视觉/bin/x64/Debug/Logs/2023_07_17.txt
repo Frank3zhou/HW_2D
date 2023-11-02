@@ -1,0 +1,66 @@
+﻿[错误] 2023-07-17 16:32:19.007 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:32:19.009 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:32:21.138 thread:[01] 相机连接失败
+[错误] 2023-07-17 16:32:21.138 thread:[01] 相机连接失败
+[致命] 2023-07-17 16:32:21.175 thread:[01] 定期删图找不到指定路径
+[错误] 2023-07-17 16:33:03.136 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:33:03.137 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:33:05.243 thread:[01] 相机连接失败
+[错误] 2023-07-17 16:33:05.244 thread:[01] 相机连接失败
+[错误] 2023-07-17 16:34:03.828 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:34:03.829 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:34:05.953 thread:[01] 相机连接失败
+[错误] 2023-07-17 16:34:05.954 thread:[01] 相机连接失败
+[错误] 2023-07-17 16:46:27.528 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:46:27.528 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:46:29.661 thread:[01] 相机连接失败
+[错误] 2023-07-17 16:46:29.661 thread:[01] 相机连接失败
+[错误] 2023-07-17 16:47:42.909 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:47:42.909 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:47:45.051 thread:[01] 相机连接失败
+[错误] 2023-07-17 16:47:45.052 thread:[01] 相机连接失败
+[信息] 2023-07-17 16:48:20.768 thread:[07] 初始化
+[错误] 2023-07-17 16:53:09.670 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:53:09.670 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:53:11.797 thread:[01] 相机连接失败
+[错误] 2023-07-17 16:53:11.798 thread:[01] 相机连接失败
+[Error] 2023-07-17 16:53:32.087 thread:[01] PLC连接失败
+[Error] 2023-07-17 16:53:32.087 thread:[01] Fallo de conexión del PLC
+[Error] 2023-07-17 16:53:32.087 thread:[01] Fallo de conexión del PLC
+[Error] 2023-07-17 16:53:34.217 thread:[01] 相机连接失败
+[Error] 2023-07-17 16:53:34.217 thread:[01] Fallo en la conexión de la cámara
+[Error] 2023-07-17 16:53:34.217 thread:[01] Fallo en la conexión de la cámara
+[错误] 2023-07-17 16:54:04.177 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:54:04.178 thread:[01] PLC连接失败
+[错误] 2023-07-17 16:54:06.307 thread:[01] 相机连接失败
+[错误] 2023-07-17 16:54:06.307 thread:[01] 相机连接失败
+[Error] 2023-07-17 16:54:33.503 thread:[01] PLC连接失败
+[Error] 2023-07-17 16:54:33.503 thread:[01] PLC connection failed
+[Error] 2023-07-17 16:54:33.503 thread:[01] PLC connection failed
+[Error] 2023-07-17 16:54:35.630 thread:[01] 相机连接失败
+[Error] 2023-07-17 16:54:35.631 thread:[01] Camera connection failed
+[Error] 2023-07-17 16:54:35.631 thread:[01] Camera connection failed
+[Error] 2023-07-17 16:59:27.147 thread:[01] PLC连接失败
+[Error] 2023-07-17 16:59:27.147 thread:[01] PLC connection failed
+[Error] 2023-07-17 16:59:27.147 thread:[01] PLC connection failed
+[Error] 2023-07-17 16:59:29.260 thread:[01] 相机连接失败
+[Error] 2023-07-17 16:59:29.261 thread:[01] Camera connection failed
+[Error] 2023-07-17 16:59:29.261 thread:[01] Camera connection failed
+[Error] 2023-07-17 17:33:15.836 thread:[01] PLC连接失败
+[Error] 2023-07-17 17:33:15.837 thread:[01] PLC connection failed
+[Error] 2023-07-17 17:33:15.837 thread:[01] PLC connection failed
+[Error] 2023-07-17 17:33:17.962 thread:[01] 相机连接失败
+[Error] 2023-07-17 17:33:17.962 thread:[01] Camera connection failed
+[Error] 2023-07-17 17:33:17.962 thread:[01] Camera connection failed
+[Error] 2023-07-17 17:34:36.881 thread:[01] PLC连接失败
+[Error] 2023-07-17 17:34:36.882 thread:[01] PLC connection failed
+[Error] 2023-07-17 17:34:36.882 thread:[01] PLC connection failed
+[Error] 2023-07-17 17:34:39.009 thread:[01] 相机连接失败
+[Error] 2023-07-17 17:34:39.009 thread:[01] Camera connection failed
+[Error] 2023-07-17 17:34:39.009 thread:[01] Camera connection failed
+[Error] 2023-07-17 17:36:49.394 thread:[01] PLC连接失败
+[Error] 2023-07-17 17:36:49.395 thread:[01] PLC connection failed
+[Error] 2023-07-17 17:36:49.395 thread:[01] PLC connection failed
+[Error] 2023-07-17 17:36:51.516 thread:[01] 相机连接失败
+[Error] 2023-07-17 17:36:51.516 thread:[01] Camera connection failed
+[Error] 2023-07-17 17:36:51.516 thread:[01] Camera connection failed

@@ -24,7 +24,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Runtime.ConstrainedExecution;
 using NPOI.SS.Formula.Functions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-
 namespace _6524
 {
 
@@ -776,6 +775,11 @@ namespace _6524
         private void button12_Click(object sender, EventArgs e)
         {
             RS232 rS232 = new RS232();
+            rS232.BaudRate = 19200;
+            rS232.DataBits = 8;
+            rS232.StopBits =1;
+            rS232.COMPort = Form1.Comname1;
+            rS232.Parity = 0;
             if (button12.Text == "打开光源")
             {
                 rS232.Init();

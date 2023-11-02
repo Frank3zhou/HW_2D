@@ -22,8 +22,8 @@ namespace _6524
            // HOperatorSet.ReadImage(out img, @"C:\Users\Administrator\Desktop\2.bmp");
 
             Application.Run(new Form1());
-            // Application.Run(new Teach_point());
-            //Application.Run(new  ImageModelSet());
+             //Application.Run(new Light_Control());
+          //  Application.Run(new  Camera_Form(new CameraParam()));
         }
     }
 }

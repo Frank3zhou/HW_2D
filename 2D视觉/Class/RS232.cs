@@ -11,19 +11,15 @@ namespace _6524
         private StringBuilder builder = new StringBuilder();//避免在事件处理方法中反复的创建，定义到外面。
         public static String result;
         public static bool result_ok;
-        string m_port = null;
-        int m_baud = 0, m_stopBits = 0, m_parity = 0, m_dataBits = 0;
+        string m_port = "COM4";
+        int m_baud = 19200, m_stopBits = 1, m_parity = 0, m_dataBits = 8;
 
            
 
         #region Init
         public void Init()
         {
-            m_port = "COM4";
-            m_baud = 19200;
-            m_stopBits = 1;
-            m_parity = 0;
-            m_dataBits = 8;
+            
 
             if (m_SP.IsOpen)
                 Close();
@@ -32,11 +28,11 @@ namespace _6524
 
             string[] myPorts = SerialPort.GetPortNames();
 
-            m_SP.PortName = m_port;
-            m_SP.BaudRate = m_baud;
-            m_SP.StopBits = (StopBits)m_stopBits;
-            m_SP.Parity = (Parity)m_parity;
-            m_SP.DataBits = m_dataBits;
+            m_SP.PortName = COMPort;
+            m_SP.BaudRate = BaudRate;
+            m_SP.StopBits = (StopBits)StopBits;
+            m_SP.Parity = (Parity)Parity;
+            m_SP.DataBits = DataBits;
             m_SP.RtsEnable = true;
 
         }

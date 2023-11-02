@@ -42,29 +42,42 @@ namespace _6524
           //  groupBox1.Text=cameraParam.Name;    
             m_ZKHwindows.Dock = DockStyle.Fill; 
             panel1.Controls.Add(m_ZKHwindows);
+            Light_Control light_Control = new Light_Control();
+            panel2.Controls.Add(light_Control);
+            light_Control.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             try
             {
-                if (mvs_SDK.Connect_Cam(textBox2.Text))
+                if (button1.Text == "连接")
                 {
-                    //mvs_SDK.Set_callback(1);
+                    if (mvs_SDK.Connect_Cam(textBox2.Text))
+                    {
+                        //mvs_SDK.Set_callback(1);
 
-                    button1.BackColor = Color.LightGreen;
-                    button1.Text = "连接中";
+                        button1.BackColor = Color.LightGreen;
+                        button1.Text = "断开";
 
-                    tbExposure.Enabled = true;
-                    tbGain.Enabled = true;
-                    tbFrameRate.Enabled = true;
-                    bnGetParam.Enabled = true;
-                    bnSetParam.Enabled = true;
+                        tbExposure.Enabled = true;
+                        tbGain.Enabled = true;
+                        tbFrameRate.Enabled = true;
+                        bnGetParam.Enabled = true;
+                        bnSetParam.Enabled = true;
+                    }
+                    else
+                    {
+                        button1.BackColor = Color.Red;
+                        MessageBox.Show("连接失败");
+                    }
                 }
                 else
                 {
-                    button1.BackColor = Color.Red;
-                    MessageBox.Show("连接失败");
+                    button1.BackColor= Color.White;
+                    mvs_SDK.close();
+                    button1.Text = "连接";
                 }
                     
 

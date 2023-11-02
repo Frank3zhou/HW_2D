@@ -52,7 +52,7 @@ namespace _6524
         string Path_calibration_Param = Application.StartupPath + @"\\calibration\Param.ini";
         bool heartbeat_enabled;
         string heartbeat_path;
-
+        private static string comname = "COM4";
         CameraParam cameraParam;
         Camera_Form camera_Form;
         State state = new State();
@@ -90,6 +90,10 @@ namespace _6524
 
         fanuctcpip m_Robot;
         MVS_SDK m_Camera;
+
+     //   public string Comname { get => Comname1; set => Comname1 = value; }
+        public static string Comname1 { get => comname; set => comname = value; }
+
         public Form1()
         {
 
@@ -240,7 +244,11 @@ namespace _6524
             }
 
 
-
+            rS232.BaudRate = 19200;
+            rS232.DataBits = 8;
+            rS232.StopBits = 1;
+            rS232.COMPort = Comname1;
+            rS232.Parity = 0;
             rS232.Init();
 
             if (!(rS232.Open() == 1))
@@ -269,6 +277,7 @@ namespace _6524
                     Thread.Sleep(500);
                     Camera1_connected = true;
                     UpdateInit(100, changelanguage("相机1连接完成"));
+                    m_Camera1.close();
                 }
                 else
                 {
@@ -297,6 +306,7 @@ namespace _6524
                     Camera2_connected = false;
                     UpdateInit(90, changelanguage("相机2连接失败"));
                     m_Logprint(HslMessageDegree.ERROR, "相机2连接失败", true);
+                    m_Camera2.close();
                 }
 
 
@@ -316,6 +326,7 @@ namespace _6524
                     Camera2_connected = false;
                     UpdateInit(90, changelanguage("相机3连接失败"));
                     m_Logprint(HslMessageDegree.ERROR, "相机3连接失败", true);
+                    m_Camera3.close();
                 }
             }
             if (cameranum >= 4)
@@ -326,6 +337,7 @@ namespace _6524
                     Thread.Sleep(500);
                     Camera4_connected = true;
                     UpdateInit(100, changelanguage("相机4连接完成"));
+                    m_Camera4.close();
                 }
                 else
                 {
@@ -413,7 +425,11 @@ namespace _6524
                     m_Logprint(HslMessageDegree.INFO, "初始化", true);
                     brightness = 0;
 
-
+                    rS232.BaudRate = 19200;
+                    rS232.DataBits = 8;
+                    rS232.StopBits = 1;
+                    rS232.COMPort = Comname1;
+                    rS232.Parity = 0;
                     rS232.Init();
 
                     if (!(rS232.Open() == 1))
@@ -441,6 +457,87 @@ namespace _6524
                         break;
                     }
                     int cameranum = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "System", "CameraNum", "1"));
+
+
+                    if (cameranum >= 1) //相机开始重连
+                    {
+                        if (m_Camera1.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机1", "IP", "")))
+                        {
+                            Thread.Sleep(500);
+                            Camera1_connected = true;
+                            UpdateInit(100, changelanguage("相机1连接完成"));
+                            m_Camera1.close();
+                        }
+                        else
+                        {
+                            Thread.Sleep(500);
+                            Camera1_connected = false;
+                            UpdateInit(90, changelanguage("相机1连接失败"));
+                            m_Logprint(HslMessageDegree.ERROR, "相机1连接失败", true);
+
+
+
+                        }
+                    }
+                    if (cameranum >= 2)
+                    {
+
+
+                        if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机2", "IP", "")))
+                        {
+                            Thread.Sleep(500);
+                            Camera2_connected = true;
+                            UpdateInit(100, changelanguage("相机2连接完成"));
+                        }
+                        else
+                        {
+                            Thread.Sleep(500);
+                            Camera2_connected = false;
+                            UpdateInit(90, changelanguage("相机2连接失败"));
+                            m_Logprint(HslMessageDegree.ERROR, "相机2连接失败", true);
+                            m_Camera2.close();
+                        }
+
+
+                    }
+                    if (cameranum >= 3)
+
+                    {
+                        if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机3", "IP", "")))
+                        {
+                            Thread.Sleep(500);
+                            Camera2_connected = true;
+                            UpdateInit(100, changelanguage("相机3连接完成"));
+                        }
+                        else
+                        {
+                            Thread.Sleep(500);
+                            Camera2_connected = false;
+                            UpdateInit(90, changelanguage("相机3连接失败"));
+                            m_Logprint(HslMessageDegree.ERROR, "相机3连接失败", true);
+                            m_Camera3.close();
+                        }
+                    }
+                    if (cameranum >= 4)
+
+                    {
+                        if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机4", "IP", "")))
+                        {
+                            Thread.Sleep(500);
+                            Camera4_connected = true;
+                            UpdateInit(100, changelanguage("相机4连接完成"));
+                            m_Camera4.close();
+                        }
+                        else
+                        {
+                            Thread.Sleep(500);
+                            Camera4_connected = false;
+                            UpdateInit(90, changelanguage("相机4连接失败"));
+                            m_Logprint(HslMessageDegree.ERROR, "相机4连接失败", true);
+                        }
+                    }
+
+
                     if (cameranum >= 1)
                     {
                         if (!Camera1_connected)
@@ -2210,7 +2307,11 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
         }
 
-     
+        private void 光源控制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Light_Control light_Control = new Light_Control();
+            light_Control.Show();
+        }
     }
 
 

@@ -91,7 +91,7 @@ namespace _6524
         fanuctcpip m_Robot;
         MVS_SDK m_Camera;
 
-     //   public string Comname { get => Comname1; set => Comname1 = value; }
+        //   public string Comname { get => Comname1; set => Comname1 = value; }
         public static string Comname1 { get => comname; set => comname = value; }
 
         public Form1()
@@ -445,7 +445,7 @@ namespace _6524
                         rS232.SerialPort.WriteLine("SD0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
 
                     }
-                 
+
                     if (!PLC_connected)
                     {
 
@@ -731,7 +731,7 @@ namespace _6524
                 {
                     m_Logprint(HslMessageDegree.FATAL, ex.ToString(), false);
                     MessageBox.Show(ex.ToString());
-                   
+
                 }
                 finally
                 {
@@ -1202,8 +1202,7 @@ namespace _6524
 
         private void 模型设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ImageModelSet imageModelSet = new ImageModelSet();
-            imageModelSet.Show();
+
         }
         private CameraParam Load_Camera_Param(String name)
         {
@@ -1507,13 +1506,10 @@ namespace _6524
 
         public bool runhandleimage(HTuple HWindowshandle, HObject img, int A)
         {
-
-
             try
             {
                 if (A < 99)
                 {
-
                     try
                     {
 
@@ -1636,18 +1632,123 @@ namespace _6524
                         return false;
                     }
 
-
-
-
                 }
                 else if (A < 199)
                 {
-                    return true;
+                    try
+                    {
+                        bool resultall = false;
+                        double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Mult", "75"));
+                        double Add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Add", "75"));
+                        double MinThreshold = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "MinThreshold", "75"));
+                        double MaxThreshold = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "MaxThreshold", "75"));
+                        double RectangleStartX = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "RectangleStartX", "0"));
+
+
+                        double RectangleStartY = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "RectangleStartY", "0"));
+                        double Length1 = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Length1", "0"));
+                        double Length2 = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Length2", "0"));
+                        double PI = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "PI", "0"));
+                        string Recognition = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Recognition", "0");
+                        string type = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Type", "0");
+
+                        if (Recognition == "二维码")
+                        {
+                            HObject rectange = new HObject();
+                            HObject XLDS = new HObject();
+                            QR_Code__recognition qR_Code__Recognition = new QR_Code__recognition();
+                            HTuple result;
+                            qR_Code__Recognition.Find2Code(img, out rectange, out XLDS, RectangleStartX, RectangleStartY, PI, Length1, Length2, type, out result);
+                            if (result != null)
+                            {
+                                disp_message(HWindowshandle, "二维码内容:" + result.ToString(), "window", 12, 12, "black", "true");
+
+
+                                HOperatorSet.SetDraw(HWindowshandle, "margin");
+                                HOperatorSet.SetColor(HWindowshandle, "blue");
+                                HOperatorSet.DispObj(rectange, HWindowshandle);
+                                HOperatorSet.SetColor(HWindowshandle, "green");
+                                HOperatorSet.DispObj(XLDS, HWindowshandle);
+                                resultall = true;
+                            }
+                            else
+                            {
+                                resultall = false;
+                            }
+                        }
+                        else if (Recognition == "条形码")
+                        {
+                            find_bar find_Bar = new find_bar();
+                            HTuple result;
+                            HObject rectange = new HObject();
+                            HObject rectangexld = new HObject();
+                            find_Bar.find_barcode(img, out rectange, out rectangexld, RectangleStartX, RectangleStartY, PI, Length1, Length2, Mult, Add, type, out result);
+                            if (result != null)
+                            {
+                                disp_message(HWindowshandle, "条行码内容:" + result.ToString(), "window", 12, 12, "black", "true");
+
+
+                                HOperatorSet.SetDraw(HWindowshandle, "margin");
+                                HOperatorSet.SetColor(HWindowshandle, "blue");
+
+                                HOperatorSet.DispObj(rectange, HWindowshandle);
+                                HOperatorSet.SetColor(HWindowshandle, "green");
+                                HOperatorSet.DispObj(rectangexld, HWindowshandle);
+                                resultall = true;
+                            }
+                            else
+                            {
+                                resultall = false;
+                            }
+                        }
+                        else if (Recognition == "OCR")
+                        {
+                            HTuple result;
+                            HObject rectange = new HObject();
+                            HObject rectangexld = new HObject();
+                            Find_OCR_Class find_OCR_Class = new Find_OCR_Class();
+                            find_OCR_Class.Find_OCR(img, out rectange, out rectangexld, Mult, Add, RectangleStartX, RectangleStartY, PI, Length1, Length2, type, out result);
+                            if (result != null)
+                            {
+                                disp_message(HWindowshandle, "OCR内容:" + result.ToString(), "window", 12, 12, "black", "true");
+
+
+                                HOperatorSet.SetDraw(HWindowshandle, "margin");
+                                HOperatorSet.SetColor(HWindowshandle, "blue");
+
+                                HOperatorSet.DispObj(rectange, HWindowshandle);
+                                HOperatorSet.SetColor(HWindowshandle, "green");
+                                HOperatorSet.DispObj(rectangexld, HWindowshandle);
+                                resultall = true;
+                            }
+                            else
+                            {
+                                resultall = false;
+                            }
+
+                        }
+                        else
+                        {
+                            // MessageBox.Show("请选择正确的识别内容类型");
+                            resultall = false;
+                        }
+
+                        return resultall;
+                    }
+
+                    catch (Exception)
+                    {
+
+                        return false;
+                    }
+
                 }
                 else
                 {
                     return false;
                 }
+
+
             }
             catch (Exception)
             {
@@ -2064,14 +2165,14 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                             double offy = 0;
                             double offr = 0;
                             HObject hObject = new HObject();
-                            if (run_robot_camera(Img, ref offx, ref offy, ref offr,ref  hObject))
+                            if (run_robot_camera(Img, ref offx, ref offy, ref offr, ref hObject))
                             {
                                 CameraNg = false;
-                                PR1 = offx.ToString("F2")+ ","+ offy.ToString("F2")+",0,0,0,"+ offr.ToString("F2");//虚拟补偿值
-                                disp_message(_mWindow5.hWindowControl.HalconWindow, "结果:" +"  OK", "window", 12,  12, "black", "true");
+                                PR1 = offx.ToString("F2") + "," + offy.ToString("F2") + ",0,0,0," + offr.ToString("F2");//虚拟补偿值
+                                disp_message(_mWindow5.hWindowControl.HalconWindow, "结果:" + "  OK", "window", 12, 12, "black", "true");
                                 disp_message(_mWindow5.hWindowControl.HalconWindow, "X补偿:" + offx.ToString("F2"), "window", 72, 12, "black", "true");
                                 disp_message(_mWindow5.hWindowControl.HalconWindow, "Y补偿:" + offy.ToString("F2"), "window", 132, 12, "black", "true");
-                                HOperatorSet.SetColor(_mWindow5.hWindowControl.HalconWindow,"green");       
+                                HOperatorSet.SetColor(_mWindow5.hWindowControl.HalconWindow, "green");
                                 HOperatorSet.DispObj(hObject, _mWindow5.hWindowControl.HalconWindow);
                                 // disp_message(_mWindow5.hWindowControl.HalconWindow, "X补偿:" + offx.ToString("F2"), "window", 192, 12, "black", "true");
                                 //    disp_message(_mWindow5.hWindowControl.HalconWindow, "Y补偿:" + offy.ToString("F2"), "window", 12, 222, "black", "true");
@@ -2085,7 +2186,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
                                 PR1 = "0,0,0,0,0,0,";
                             }
-                           
+
                             m_state = robotstate.send_vaule;
                             break;
                         case robotstate.send_vaule:
@@ -2142,7 +2243,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
         }
 
-        private bool run_robot_camera(HObject IMG,ref double offx, ref double offy, ref double offr,ref HObject ResObj)
+        private bool run_robot_camera(HObject IMG, ref double offx, ref double offy, ref double offr, ref HObject ResObj)
         {
             Robotcalibration M_Calibration = new Robotcalibration();
             string Path_calibration1 = Application.StartupPath + @"\\calibration\calibration1.mat";
@@ -2152,7 +2253,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             bool off_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "compensate", "off_enabled", "false"));
             bool off_Angle_enabled = Convert.ToBoolean(IniAPI.INIWriteValue(Path_calibration_Param, "compensate", "off_Angle_enabled", "false"));
             string strHost = "1";
-         
+
             try
             {
                 Shape_matching M_Shape_matching = new Shape_matching();
@@ -2192,8 +2293,8 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
                 M_Calibration.Affine_XY(Path_calibration1, PX0, PY0, out RX0, out RY0);
 
-          
-         
+
+
                 M_Shape_matching.img = IMG;
                 if (M_Shape_matching.action(0, 0))
                 {
@@ -2311,6 +2412,18 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
         {
             Light_Control light_Control = new Light_Control();
             light_Control.Show();
+        }
+
+        private void 圆孔检测ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImageModelSet imageModelSet = new ImageModelSet();
+            imageModelSet.Show();
+        }
+
+        private void 字符条码二维码识别ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Barcode_recognition _Barcode_recognition = new Barcode_recognition();
+            _Barcode_recognition.Show();
         }
     }
 

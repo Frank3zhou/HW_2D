@@ -65,6 +65,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.bg_robot = new System.ComponentModel.BackgroundWorker();
             this.Bg_PLC_heartbeat = new System.ComponentModel.BackgroundWorker();
+            this.圆孔检测ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.字符条码二维码识别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -170,6 +172,9 @@
             // 
             // 模型设置ToolStripMenuItem
             // 
+            this.模型设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.圆孔检测ToolStripMenuItem,
+            this.字符条码二维码识别ToolStripMenuItem});
             this.模型设置ToolStripMenuItem.Name = "模型设置ToolStripMenuItem";
             resources.ApplyResources(this.模型设置ToolStripMenuItem, "模型设置ToolStripMenuItem");
             this.模型设置ToolStripMenuItem.Click += new System.EventHandler(this.模型设置ToolStripMenuItem_Click);
@@ -325,6 +330,18 @@
             this.Bg_PLC_heartbeat.WorkerSupportsCancellation = true;
             this.Bg_PLC_heartbeat.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Bg_PLC_heartbeat_DoWork);
             // 
+            // 圆孔检测ToolStripMenuItem
+            // 
+            this.圆孔检测ToolStripMenuItem.Name = "圆孔检测ToolStripMenuItem";
+            resources.ApplyResources(this.圆孔检测ToolStripMenuItem, "圆孔检测ToolStripMenuItem");
+            this.圆孔检测ToolStripMenuItem.Click += new System.EventHandler(this.圆孔检测ToolStripMenuItem_Click);
+            // 
+            // 字符条码二维码识别ToolStripMenuItem
+            // 
+            this.字符条码二维码识别ToolStripMenuItem.Name = "字符条码二维码识别ToolStripMenuItem";
+            resources.ApplyResources(this.字符条码二维码识别ToolStripMenuItem, "字符条码二维码识别ToolStripMenuItem");
+            this.字符条码二维码识别ToolStripMenuItem.Click += new System.EventHandler(this.字符条码二维码识别ToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -389,6 +406,8 @@
         private System.Windows.Forms.ToolStripMenuItem 机械手示教ToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker bg_robot;
         private System.ComponentModel.BackgroundWorker Bg_PLC_heartbeat;
+        private System.Windows.Forms.ToolStripMenuItem 圆孔检测ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 字符条码二维码识别ToolStripMenuItem;
     }
 }
 

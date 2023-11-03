@@ -184,7 +184,10 @@ namespace _6524
             m_DataTable.Columns.Add("相机编号", Type.GetType("System.Int32"));//
             m_DataTable.Columns.Add("拍照完成信号", Type.GetType("System.String"));//
             m_DataTable.Columns.Add("视觉算子编号", Type.GetType("System.Int32"));//
-            m_DataTable.Columns.Add("是否存图", Type.GetType("System.Boolean"));//
+            m_DataTable.Columns.Add("光源亮度", Type.GetType("System.Boolean"));
+            m_DataTable.Columns.Add("是否存图", Type.GetType("System.Boolean"));//是否后台运行
+            m_DataTable.Columns.Add("工位", Type.GetType("System.Boolean"));
+            m_DataTable.Columns.Add("是否后台运行", Type.GetType("System.Boolean"));
 
             for (int i = 0; i < Number; i++)
             {
@@ -195,7 +198,9 @@ namespace _6524
                 newRow[3] = 0;
                 newRow[4] = 0;
                 newRow[5] = 0;
-                //  newRow[6] = 0;
+                newRow[6] = 0;
+                newRow[7] = 0;
+                newRow[8] = 0;
 
                 m_DataTable.Rows.Add(newRow);
             }
@@ -207,7 +212,7 @@ namespace _6524
             DataTable m_DataTable = new DataTable();
 
      
-            m_DataTable.Columns.Add("相机编号", Type.GetType("System.Int32"));//
+            m_DataTable.Columns.Add("工位编号", Type.GetType("System.Int32"));//
             m_DataTable.Columns.Add("OK结果信号", Type.GetType("System.String"));//
             m_DataTable.Columns.Add("NG结果信号", Type.GetType("System.String"));//
 
@@ -704,6 +709,11 @@ namespace _6524
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             IniAPI.INIWriteValue(Param_Path, "System", "RobotEnabled", radioButton4.Checked.ToString());
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

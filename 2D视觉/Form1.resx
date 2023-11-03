@@ -316,7 +316,7 @@
     <value>True</value>
   </data>
   <data name="数据.Size" type="System.Drawing.Size, System.Drawing">
-    <value>972, 574</value>
+    <value>972, 579</value>
   </data>
   <data name="数据.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -346,7 +346,7 @@
     <value>True</value>
   </data>
   <data name="logNetAnalysisControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>966, 568</value>
+    <value>966, 573</value>
   </data>
   <data name="logNetAnalysisControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -383,6 +383,18 @@
   </data>
   <data name="机械手控制ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
+  </data>
+  <data name="圆孔检测ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="圆孔检测ToolStripMenuItem.Text" xml:space="preserve">
+    <value>圆孔检测</value>
+  </data>
+  <data name="字符条码二维码识别ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 22</value>
+  </data>
+  <data name="字符条码二维码识别ToolStripMenuItem.Text" xml:space="preserve">
+    <value>字符条码二维码识别</value>
   </data>
   <data name="模型设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
@@ -454,19 +466,19 @@
     <value>2</value>
   </data>
   <data name="简体中文ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="简体中文ToolStripMenuItem.Text" xml:space="preserve">
     <value>简体中文</value>
   </data>
   <data name="英语ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="英语ToolStripMenuItem.Text" xml:space="preserve">
     <value>英语</value>
   </data>
   <data name="西班牙语ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="西班牙语ToolStripMenuItem.Text" xml:space="preserve">
     <value>西班牙语</value>
@@ -3292,6 +3304,18 @@
   </data>
   <data name="&gt;&gt;Bg_PLC_heartbeat.Type" xml:space="preserve">
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;圆孔检测ToolStripMenuItem.Name" xml:space="preserve">
+    <value>圆孔检测ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;圆孔检测ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;字符条码二维码识别ToolStripMenuItem.Name" xml:space="preserve">
+    <value>字符条码二维码识别ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;字符条码二维码识别ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

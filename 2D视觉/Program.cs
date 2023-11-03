@@ -23,7 +23,7 @@ namespace _6524
 
             Application.Run(new Form1());
              //Application.Run(new Light_Control());
-          //  Application.Run(new  Camera_Form(new CameraParam()));
+        //    Application.Run(new Barcode_recognition());
         }
     }
 }

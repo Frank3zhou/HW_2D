@@ -1317,3 +1317,5 @@ D:\2D\HW_2D\2D视觉\obj\x64\Debug\zh\6524.resources.dll
 D:\2D\HW_2D\2D视觉\obj\x64\Debug\6524.csproj.CopyComplete
 D:\2D\HW_2D\2D视觉\obj\x64\Debug\6524.exe
 D:\2D\HW_2D\2D视觉\obj\x64\Debug\6524.pdb
+C:\迅雷云盘\HW_2D-main\2D视觉\obj\x64\Debug\Interop.FRRJIf.dll
+C:\迅雷云盘\HW_2D-main\2D视觉\obj\x64\Debug\Interop.FRRobotIFLib.dll

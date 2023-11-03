@@ -1,6 +1,9 @@
 ﻿using _6524.Class;
 using _6524.算子窗口;
 using HalconDotNet;
+using NPOI.OpenXmlFormats.Spreadsheet;
+using NPOI.OpenXmlFormats.Vml;
+using NPOI.OpenXmlFormats.Wordprocessing;
 using NPOI.SS.Formula.Functions;
 using NPOI.SS.UserModel;
 using System;
@@ -132,7 +135,7 @@ namespace _6524
                 textBox2.Text = col.D.ToString("F0");
                 textBox4.Text = Length1.D.ToString("F0");
                 textBox5.Text = Length2.D.ToString("F0");
-                textBox3.Text = PI.D.ToString("F0");
+                textBox3.Text = PI.D.ToString();
               
             }
             else
@@ -446,10 +449,10 @@ namespace _6524
                     HObject XLDS = new HObject();
                     QR_Code__recognition qR_Code__Recognition = new QR_Code__recognition();
                     HTuple result;
-                    qR_Code__Recognition.Find2Code(img,out rectange,out XLDS, RectangleStartX, RectangleStartY, PI, Length1, Length2, type,out result);
+                    qR_Code__Recognition.Find2Code(img, out rectange, out XLDS, RectangleStartX, RectangleStartY, PI, Length1, Length2, type, out result);
                     if (result != null)
                     {
-                        disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "二维码内容:" + result.ToString(), "window", 12,   12, "black", "true");
+                        disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "二维码内容:" + result.ToString(), "window", 12, 12, "black", "true");
 
 
                         HOperatorSet.SetDraw(m_ZKHwindows.hWindowControl.HalconWindow, "margin");
@@ -458,29 +461,42 @@ namespace _6524
                         HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "green");
                         HOperatorSet.DispObj(XLDS, m_ZKHwindows.hWindowControl.HalconWindow);
                     }
-                   
-                        
-                      
-
                 }
                 else if (Recognition == "条形码")
                 {
+                    find_bar find_Bar = new find_bar();
+                    HTuple result;
+                    HObject rectange = new HObject();
+                    HObject rectangexld = new HObject();
+                    find_Bar.find_barcode(img, out rectange, out rectangexld, RectangleStartX, RectangleStartY, PI, Length1, Length2, Mult, Add, type, out result);
+                    if (result != null)
+                    {
+                        disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "条行码内容:" + result.ToString(), "window", 12, 12, "black", "true");
 
+
+                        HOperatorSet.SetDraw(m_ZKHwindows.hWindowControl.HalconWindow, "margin");
+                        HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "blue");
+
+                        HOperatorSet.DispObj(rectange, m_ZKHwindows.hWindowControl.HalconWindow);
+                        HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "green");
+                        HOperatorSet.DispObj(rectangexld, m_ZKHwindows.hWindowControl.HalconWindow);
+                    }
                 }
                 else if (Recognition == "OCR")
                 {
-                    HTuple result;  
+                    HTuple result;
                     HObject rectange = new HObject();
                     HObject rectangexld = new HObject();
                     Find_OCR_Class find_OCR_Class = new Find_OCR_Class();
                     find_OCR_Class.Find_OCR(img, out rectange, out rectangexld, Mult, Add, RectangleStartX, RectangleStartY, PI, Length1, Length2, type, out result);
                     if (result != null)
                     {
-                        disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "二维码内容:" + result.ToString(), "window", 12, 12, "black", "true");
+                        disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "OCR内容:" + result.ToString(), "window", 12, 12, "black", "true");
 
 
                         HOperatorSet.SetDraw(m_ZKHwindows.hWindowControl.HalconWindow, "margin");
                         HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "blue");
+
                         HOperatorSet.DispObj(rectange, m_ZKHwindows.hWindowControl.HalconWindow);
                         HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "green");
                         HOperatorSet.DispObj(rectangexld, m_ZKHwindows.hWindowControl.HalconWindow);

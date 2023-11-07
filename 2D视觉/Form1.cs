@@ -52,7 +52,7 @@ namespace _6524
         string Path_calibration_Param = Application.StartupPath + @"\\calibration\Param.ini";
         bool heartbeat_enabled;
         string heartbeat_path;
-        private static string comname = "COM4";
+        private static string comname = "COM2";
         CameraParam cameraParam;
         Camera_Form camera_Form;
         State state = new State();
@@ -414,6 +414,14 @@ namespace _6524
                 {
                     #region 初始化
 
+
+                    imageresult1.Clear();
+
+                    imageresult2.Clear();
+
+                    imageresult3.Clear();
+
+                    imageresult4.Clear();
 
                     // 读取表格
 
@@ -1037,10 +1045,12 @@ namespace _6524
                             if (!imageresult1.Contains(false))
                             {
                                 Writeresult1 = MC_PLC.Write(d2.Rows[X][1].ToString(), new bool[] { true });  // 1工位写入OK 结果
+                                m_Logprint(HslMessageDegree.INFO, "工位1发送结果OK", true);
                             }
                             else
                             {
                                 Writeresult1 = MC_PLC.Write(d2.Rows[X][2].ToString(), new bool[] { true });  // 1工位写入NG结果
+                                m_Logprint(HslMessageDegree.INFO, "工位1发送结果NG", true);
                             }
 
                             if (Writeresult1.IsSuccess)
@@ -1055,10 +1065,12 @@ namespace _6524
                             if (!imageresult2.Contains(false))
                             {
                                 Writeresult2 = MC_PLC.Write(d2.Rows[X][1].ToString(), new bool[] { true });  // 2工位写入OK 结果
+                                m_Logprint(HslMessageDegree.INFO, "工位2发送结果OK", true);
                             }
                             else
                             {
                                 Writeresult2 = MC_PLC.Write(d2.Rows[X][2].ToString(), new bool[] { true });  // 2工位写入NG结果
+                                m_Logprint(HslMessageDegree.INFO, "工位2发送结果NG", true);
                             }
 
                             if (Writeresult2.IsSuccess)
@@ -1076,7 +1088,7 @@ namespace _6524
                             }
                             else
                             {
-                                Writeresult3 = MC_PLC.Write(d2.Rows[X][2].ToString(), new bool[] { true });  // 3工位写入NG结果
+                                Writeresult3 = MC_PLC.Write(d2.Rows[X][2].ToString(), new bool[] { false });  // 3工位写入NG结果
                             }
 
                             if (Writeresult3.IsSuccess)
@@ -1094,7 +1106,7 @@ namespace _6524
                             }
                             else
                             {
-                                Writeresult4 = MC_PLC.Write(d2.Rows[X][2].ToString(), new bool[] { true });  // 4工位写入NG结果
+                                Writeresult4 = MC_PLC.Write(d2.Rows[X][2].ToString(), new bool[] { false });  // 4工位写入NG结果
                             }
 
                             if (Writeresult4.IsSuccess)
@@ -1528,6 +1540,7 @@ namespace _6524
                         for (int i = 0; i < holeCount; i++)
                         {
                             lastResult = new LastResult();
+                         
                             int Dis_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "eccentricity" + (i).ToString(), "75"));
                             int lim_Row = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "row" + (i).ToString(), "75"));
                             int lim_Column = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "col" + (i).ToString(), "75"));
@@ -1613,10 +1626,22 @@ namespace _6524
                                 else
                                 {
                                     HOperatorSet.SetColor(HWindowshandle, "red");
+                                    disp_message(HWindowshandle, "NG", "window", 92, (i * 150) + 12, "black", "true");
                                     allresult = false;
+
                                 }
                                 HOperatorSet.DispObj(LastResult[i].Circle, HWindowshandle);
+
                             }
+                            else
+                            {
+                                allresult = false;
+                                HOperatorSet.SetDraw(HWindowshandle, "margin");
+                                HOperatorSet.SetColor(HWindowshandle, "red");
+                                HOperatorSet.DispObj(LastResult[i].Retange, HWindowshandle);
+                                disp_message(HWindowshandle, "NG", "window", 12, (i * 150) + 12, "black", "true");
+                            }
+
                         }
 
 

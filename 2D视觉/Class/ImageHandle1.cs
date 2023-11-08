@@ -49,6 +49,7 @@ namespace _6524.Class
             HTuple hv_Result = new HTuple(), hv_Dis_R = new HTuple();
             HTuple hv_Max_R = new HTuple(), hv_Min_R = new HTuple();
             HTuple hv_Channels = new HTuple(), hv_Number = new HTuple();
+            HObject ho_DilationCircle, ho_ErosionCircle;
             // Initialize local and output iconic variables 
             HOperatorSet.GenEmptyObj(out ho_Circle);
             HOperatorSet.GenEmptyObj(out ho_ImageOut);
@@ -67,6 +68,8 @@ namespace _6524.Class
             HOperatorSet.GenEmptyObj(out ho_RegionOpening);
             HOperatorSet.GenEmptyObj(out ho_SelectedRegions2);
             HOperatorSet.GenEmptyObj(out ho_SelectedRegions3);
+            HOperatorSet.GenEmptyObj(out ho_DilationCircle);
+            HOperatorSet.GenEmptyObj(out ho_ErosionCircle);
             hv_Row = new HTuple();
             hv_Column = new HTuple();
             hv_Radius = new HTuple();
@@ -104,8 +107,11 @@ namespace _6524.Class
             HOperatorSet.ScaleImage(imagereduce, out ho_ImageScaled2, Mult, Add);
             ho_Regions1.Dispose();
             HOperatorSet.Threshold(ho_ImageScaled2, out ho_Regions1, MinThreshold, MaxThreshod);
+            ho_ErosionCircle.Dispose();
+            HOperatorSet.ErosionCircle(ho_Regions1, out ho_ErosionCircle, 10);
+
             ho_ConnectedRegions.Dispose();
-            HOperatorSet.Connection(ho_Regions1, out ho_ConnectedRegions);
+            HOperatorSet.Connection(ho_ErosionCircle, out ho_ConnectedRegions);
         
             ho_SelectedRegions.Dispose();
             HOperatorSet.SelectShape(ho_ConnectedRegions, out ho_SelectedRegions, "area",
@@ -113,7 +119,7 @@ namespace _6524.Class
             ho_SelectedRegions1.Dispose();
 
             HOperatorSet.SelectShape(ho_SelectedRegions, out ho_SelectedRegions1, "area_holes",
-                "and", 0, 50000);
+                "and", 0, 80000);
             fillregion.Dispose();
 
             HOperatorSet.FillUp(ho_SelectedRegions1, out fillregion);
@@ -126,8 +132,10 @@ namespace _6524.Class
             HOperatorSet.SelectShape(ho_SelectedRegions2, out ho_SelectedRegions3, "area",
                 "and", 10000, 999999);
             hv_Number.Dispose();
-            HOperatorSet.CountObj(ho_SelectedRegions3, out hv_Number);
 
+            HOperatorSet.CountObj(ho_SelectedRegions3, out hv_Number);
+            ho_DilationCircle.Dispose();
+            HOperatorSet.DilationCircle(ho_SelectedRegions3, out ho_DilationCircle, 20); 
 
 
 
@@ -137,7 +145,7 @@ namespace _6524.Class
             {
 
                 hv_Row.Dispose(); hv_Column.Dispose(); hv_Radius.Dispose();
-                HOperatorSet.InnerCircle(ho_SelectedRegions3, out hv_Row, out hv_Column, out hv_Radius);
+                HOperatorSet.InnerCircle(ho_DilationCircle, out hv_Row, out hv_Column, out hv_Radius);
                 ho_Circle.Dispose();
                 HOperatorSet.GenCircle(out ho_Circle, hv_Row, hv_Column, hv_Radius);
                 hv_Distance.Dispose();

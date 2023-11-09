@@ -679,8 +679,8 @@ namespace _6524
         {
             if (listBox1.SelectedItem != null)
             {
-                string filenanme = DCpath + "\\" + listBox1.SelectedItem.ToString();
-                IniAPI.INIWriteValue(Param_Path, "ModelExcel", "UsingExcelPath", filenanme);
+                //string filenanme = DCpath + "\\" + listBox1.SelectedItem.ToString();
+                IniAPI.INIWriteValue(Param_Path, "ModelExcel", "UsingExcelPath", listBox1.SelectedItem.ToString());
                
                 MessageBox.Show("保存成功！");
             }

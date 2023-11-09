@@ -599,7 +599,7 @@ namespace _6524
                     }
 
                     //读取机种信息
-
+                    string DCpath = IniAPI.INIGetStringValue(Param_Path, "ModelExcel", "Path", "C:\\Users\\Administrator\\Desktop\\6524");
                     string filenanme = "";
                     if (autochangemodel)
                     {
@@ -611,17 +611,20 @@ namespace _6524
                         int model = MC_PLC.ReadInt32("D100").Content;
                         m_Logprint(HslMessageDegree.INFO, "读取机种结果：" + model.ToString(), false);
                         // m_modelSet.Modelname = "PLCmodel" + model.ToString();
-                        filenanme = Application.StartupPath + "\\MODEL\\" + model.ToString() + ".xlsx";
+                        filenanme = DCpath + "\\" + model.ToString() + ".xlsx";
 
                     }
                     else
                     {
-                        //手动指定机种,机种名可以不以1.2.3.命名
-                        filenanme = IniAPI.INIGetStringValue(Param_Path, "ModelExcel", "UsingExcelPath", "");
+                        //手动指定机种,机种名必须为1.2.3
+                        string  str= IniAPI.INIGetStringValue(Param_Path, "ModelExcel", "UsingExcelPath", "");
+                        filenanme = DCpath + "\\" + str;
+                      string t = System.Text.RegularExpressions.Regex.Replace(str, @"[^0-9]+", "");
 
 
 
                     }
+
                     try
                     {
                         d1 = SetModel.ReadExcelToDataTable(filenanme, "Sheet1", true);
@@ -2278,6 +2281,25 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             bool off_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "compensate", "off_enabled", "false"));
             bool off_Angle_enabled = Convert.ToBoolean(IniAPI.INIWriteValue(Path_calibration_Param, "compensate", "off_Angle_enabled", "false"));
             string strHost = "1";
+            if (autochangemodel)
+            {
+
+
+
+
+                //自动切换机种，机种名必须为1.2.3
+                int model = MC_PLC.ReadInt32("D100").Content;
+                strHost = model.ToString();
+
+            }
+            else
+            {
+                //手动指定机种,机种名可以不以1.2.3.命名
+                string str = IniAPI.INIGetStringValue(Param_Path, "ModelExcel", "UsingExcelPath", "");
+
+                strHost = System.Text.RegularExpressions.Regex.Replace(str, @"[^0-9]+", "");
+
+            }
 
             try
             {

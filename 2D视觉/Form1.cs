@@ -89,7 +89,7 @@ namespace _6524
         HObject Img = new HObject();//相机拍照的图片
 
         fanuctcpip m_Robot;
-        MVS_SDK m_Camera;
+        MVS_SDK m_Camera; //机器人相机
 
         //   public string Comname { get => Comname1; set => Comname1 = value; }
         public static string Comname1 { get => comname; set => comname = value; }
@@ -2267,6 +2267,8 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
 
                 }
+               // finally { m_Robot = null; } 
+
             }
 
         }
@@ -2405,9 +2407,9 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                         final_disR = final_disR - 360;
                     }
 
-                    offx = final_disX;
-                    offy = final_disY;
-                    offr = final_disR;
+                    offx = -final_disX;
+                    offy = -final_disY;
+                    offr = -final_disR;
                     return true;
                 }
                 else

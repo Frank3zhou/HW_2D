@@ -1,39 +1,19 @@
-﻿using _6524.Properties;
+﻿using _6524.Class;
+using HalconDotNet;
+using HslCommunication;
 using HslCommunication.LogNet;
+using HslCommunication.Profinet.Melsec;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using HslCommunication.Language;
-using System.Resources;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using HslCommunication.Profinet.Melsec;
-using HslCommunication;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
-using MvCamCtrl.NET;
-using System.IO;
-using HslCommunication.Profinet.FATEK;
-using System.Drawing.Imaging;
-using HalconDotNet;
-using System.Diagnostics.Eventing.Reader;
-using _6524.Class;
-using NPOI.OpenXmlFormats.Dml;
-using NPOI.SS.Formula.Functions;
-using System.Diagnostics;
-using System.Windows.Interop;
-using MathNet.Numerics;
-using NPOI.SS.UserModel;
-using Microsoft.VisualBasic;
-using NPOI.POIFS.FileSystem;
-using SixLabors.ImageSharp.PixelFormats;
 
 namespace _6524
 {
@@ -80,6 +60,11 @@ namespace _6524
         string saveImageFormat = "";
         bool robotenabled = false;
         bool autochangemodel = false;
+        bool robot_connected =false  ;
+        bool robotcamera_connected = false;
+
+
+        //  private bool isPaused = false;  //主线程暂停
 
         // 工位图像处理结果
         List<bool> imageresult1 = new List<bool>();
@@ -410,6 +395,15 @@ namespace _6524
             string nowstep = "";
             while (!Bg_Main.CancellationPending)
             {
+
+                //if (isPaused)
+                //{
+                //    // 线程暂停
+                //    while (isPaused)
+                //    {
+                //        System.Threading.Thread.Sleep(100);
+                //    }
+                //}
                 try
                 {
                     #region 初始化
@@ -687,18 +681,38 @@ namespace _6524
                                     {
                                         try
                                         {
-
-                                            btn_system_state.BeginInvoke(new Action(() =>
+                                            if (robotenabled)
                                             {
-                                                if (nowstep != null)
+                                                if (robot_connected && robotcamera_connected)
                                                 {
-                                                    btn_system_state.Text = "等待拍照位" + nowstep + "信号";
-                                                    btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Chartreuse;
-                                                }
+                                                    btn_system_state.BeginInvoke(new Action(() =>
+                                                    {
+                                                        if (nowstep != null)
+                                                        {
+                                                            btn_system_state.Text = "等待拍照位" + nowstep + "信号";
+                                                            btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Chartreuse;
+                                                        }
 
+                                                    }
+                                           )
+                                               );
+                                                }
                                             }
-                                            )
-                                                );
+                                            else
+                                            {
+                                                btn_system_state.BeginInvoke(new Action(() =>
+                                                {
+                                                    if (nowstep != null)
+                                                    {
+                                                        btn_system_state.Text = "等待拍照位" + nowstep + "信号";
+                                                        btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Chartreuse;
+                                                    }
+
+                                                }
+                                           )
+                                               );
+                                            }
+                                           
 
                                         }
                                         catch (Exception)
@@ -1246,14 +1260,18 @@ namespace _6524
         {
             if (!Bg_Main.IsBusy)
             {
-                Bg_Main.RunWorkerAsync();
-                if (robotenabled)
+               
+                if (robotenabled && !bg_robot.IsBusy)
+                {
                     bg_robot.RunWorkerAsync();
+                }
+                   
                 button12.Image = global::_6524.Properties.Resources.停止;
-                if (heartbeat_enabled)
+                if (heartbeat_enabled&&!Bg_PLC_heartbeat.IsBusy)
                 {
                     Bg_PLC_heartbeat.RunWorkerAsync();
                 }
+                Bg_Main.RunWorkerAsync();
 
             }
             else
@@ -2082,24 +2100,85 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                     {
                         case robotstate.init:
 
+
+                          //  isPaused = true;
+                            btn_system_state.BeginInvoke(new Action(() =>
+                            {
+
+                                btn_system_state.Text = "机械手连接中";
+                                btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
+
+
+                            }
+                                     )
+                                         );
+
                             if (!m_Robot.connectFanuc(robotip))
                             {
-                                MessageBox.Show("robot Connected Fail");
+                                //  isPaused = false;
+
+                                button12.Image = global::_6524.Properties.Resources.开始__1_;
+                                m_Logprint(HslMessageDegree.ERROR, "机械手连接失败", true);
+                                m_Robot.close();
+                                // MessageBox.Show("robot Connected Fail");
                                 bg_robot.CancelAsync();
+                                Bg_Main.CancelAsync();
+                                Thread.Sleep(50);
+                                btn_system_state.BeginInvoke(new Action(() =>
+                                    {
+
+                                        btn_system_state.Text = "机械手连接失败";
+                                        btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+
+
+                                    }
+                                    )
+                                        );
+
+
+
+                                break;
+                            }
+                            else
+                            {
+                                robot_connected = true;
                             }
 
-
+                          //  isPaused = true;
 
                             if (m_Camera.Connect_Cam(cameraip))
                             {
-
+                                robotcamera_connected=true;
                                 m_state = robotstate.arrive;
                             }
                             else
                             {
-                                MessageBox.Show("robot_Camera Connected Fail");
+                                button12.Image = global::_6524.Properties.Resources.开始__1_;
+                                m_Logprint(HslMessageDegree.ERROR, "机械手相机连接失败", true);
+                                m_Robot.close();
+                                //MessageBox.Show("robot_Camera Connected Fail");
                                 bg_robot.CancelAsync();
+                                Bg_Main.CancelAsync();
+                                Thread.Sleep(50);   
+                                btn_system_state.BeginInvoke(new Action(() =>
+                                {
+
+                                    btn_system_state.Text = "机械手相机连接失败";
+                                    btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+
+
+                                }
+                        )
+                            );
+
+                                break;
                             }
+                            //}
+                            //else
+                            //{
+                            //    break;
+                            //}
+
 
 
                             #region  载入定位参数
@@ -2225,6 +2304,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                             }
                             else
                             {
+                                PR1 = "0,0,0,0,0,0,";
                                 if (m_Robot.writePR("1", PR1))
                                 {
                                     m_Robot.WrieR("6", "1");
@@ -2265,9 +2345,9 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                 catch (Exception)
                 {
 
-
+                    m_Robot.close();
                 }
-               // finally { m_Robot = null; } 
+               //finally {  } 
 
             }
 
@@ -2376,8 +2456,8 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                     }
 
                     //固定差距值
-                    double disX1 = (RX1 - RX0);
-                    double disY1 = (RY1 - RY0);
+                    double disX1 = (RX0 - RX1);
+                    double disY1 = (RY0 - RY1);
                     //旋转后角度偏差补偿
                     double dis_RX = (R * Math.Sin(dis_Angle * (Math.PI / 180)));
                     double dis_RY = 2 * (R * (Math.Sin((dis_Angle * (Math.PI / 180)) / 2)) * (Math.Sin((dis_Angle * (Math.PI / 180)) / 2)));
@@ -2407,9 +2487,9 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                         final_disR = final_disR - 360;
                     }
 
-                    offx = -final_disX;
-                    offy = -final_disY;
-                    offr = -final_disR;
+                    offx = final_disX;
+                    offy = final_disY;
+                    offr = final_disR;
                     return true;
                 }
                 else

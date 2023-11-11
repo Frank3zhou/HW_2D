@@ -1585,7 +1585,6 @@ E:\git-HW-2D\HW_2D\2D视觉\bin\x64\Debug\ICSharpCode.SharpZipLib.pdb
 E:\git-HW-2D\HW_2D\2D视觉\bin\x64\Debug\ICSharpCode.SharpZipLib.xml
 E:\git-HW-2D\HW_2D\2D视觉\bin\x64\Debug\MathNet.Numerics.xml
 E:\git-HW-2D\HW_2D\2D视觉\bin\x64\Debug\Microsoft.IO.RecyclableMemoryStream.xml
-E:\git-HW-2D\HW_2D\2D视觉\bin\x64\Debug\MvCameraControl.Net.xml
 E:\git-HW-2D\HW_2D\2D视觉\bin\x64\Debug\Newtonsoft.Json.xml
 E:\git-HW-2D\HW_2D\2D视觉\bin\x64\Debug\NPOI.Core.pdb
 E:\git-HW-2D\HW_2D\2D视觉\bin\x64\Debug\NPOI.Core.xml

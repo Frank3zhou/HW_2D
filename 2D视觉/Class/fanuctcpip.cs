@@ -22,7 +22,7 @@ namespace _6524.Class
             process.StartInfo.FileName = path;
             // process.StartInfo.Arguments = "/c" + "start "+ path;
             process.StartInfo.UseShellExecute = false;   //是否使用操作系统shell启动 
-            process.StartInfo.CreateNoWindow = false;   //是否在新窗口中启动该进程的值 (不显示程序窗口)
+            process.StartInfo.CreateNoWindow = true;   //是否在新窗口中启动该进程的值 (不显示程序窗口)
             process.Start();
             Thread.Sleep(100);
             conneecservert();//连接后台程序

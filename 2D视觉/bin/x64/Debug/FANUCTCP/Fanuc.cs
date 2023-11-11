@@ -55,6 +55,8 @@ namespace FANUCTCP
         private FRRJIf.DataString mobjStrReg;
         private FRRJIf.DataString mobjStrRegComment;
 
+
+
         public bool InterfaceConnect(string ip)
         {
             //bool conRes= new FRRJIf.Core();

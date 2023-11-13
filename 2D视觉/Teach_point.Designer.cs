@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.button12 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -104,7 +105,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.button13 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -128,13 +129,14 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1061, 650);
             this.panel1.TabIndex = 0;
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.button13);
             this.groupBox5.Controls.Add(this.checkBox7);
             this.groupBox5.Controls.Add(this.button12);
             this.groupBox5.Controls.Add(this.button9);
@@ -153,9 +155,20 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "示教操作";
             // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(15, 161);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(72, 16);
+            this.checkBox7.TabIndex = 11;
+            this.checkBox7.Text = "连续采集";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(15, 279);
+            this.button12.Location = new System.Drawing.Point(14, 303);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(92, 46);
             this.button12.TabIndex = 10;
@@ -165,7 +178,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(15, 343);
+            this.button9.Location = new System.Drawing.Point(14, 361);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(92, 46);
             this.button9.TabIndex = 9;
@@ -195,7 +208,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(14, 407);
+            this.button3.Location = new System.Drawing.Point(14, 419);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(92, 46);
             this.button3.TabIndex = 6;
@@ -215,7 +228,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(15, 599);
+            this.button6.Location = new System.Drawing.Point(15, 593);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(91, 46);
             this.button6.TabIndex = 4;
@@ -229,17 +242,17 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(91, 46);
             this.button5.TabIndex = 3;
-            this.button5.Text = "保存示教文件";
+            this.button5.Text = "示教铆压点";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(15, 471);
+            this.button4.Location = new System.Drawing.Point(15, 477);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(92, 46);
             this.button4.TabIndex = 2;
-            this.button4.Text = "手动示教";
+            this.button4.Text = "示教拍照点";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -259,9 +272,9 @@
             // 
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox7.Location = new System.Drawing.Point(3, 254);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox7.Size = new System.Drawing.Size(629, 393);
             this.groupBox7.TabIndex = 15;
             this.groupBox7.TabStop = false;
@@ -334,7 +347,7 @@
             // 
             this.textBox11.ForeColor = System.Drawing.Color.Red;
             this.textBox11.Location = new System.Drawing.Point(214, 226);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(2);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(155, 17);
@@ -345,7 +358,7 @@
             // 
             this.textBox16.ForeColor = System.Drawing.Color.Red;
             this.textBox16.Location = new System.Drawing.Point(9, 549);
-            this.textBox16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox16.Margin = new System.Windows.Forms.Padding(2);
             this.textBox16.Multiline = true;
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(201, 25);
@@ -367,9 +380,9 @@
             this.groupBox22.Controls.Add(this.panel2);
             this.groupBox22.Controls.Add(this.checkBox5);
             this.groupBox22.Location = new System.Drawing.Point(218, 382);
-            this.groupBox22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox22.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox22.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox22.Size = new System.Drawing.Size(185, 164);
             this.groupBox22.TabIndex = 14;
             this.groupBox22.TabStop = false;
@@ -390,7 +403,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Enabled = false;
             this.panel2.Location = new System.Drawing.Point(2, 32);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(181, 130);
             this.panel2.TabIndex = 0;
@@ -401,7 +414,7 @@
             this.checkBox6.AutoSize = true;
             this.checkBox6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.checkBox6.Location = new System.Drawing.Point(0, 114);
-            this.checkBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox6.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(181, 16);
             this.checkBox6.TabIndex = 36;
@@ -675,7 +688,7 @@
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(200, 27);
             this.button11.TabIndex = 26;
-            this.button11.Text = "示教Mark";
+            this.button11.Text = "示教MarK模型";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
@@ -932,16 +945,15 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "（°）";
             // 
-            // checkBox7
+            // button13
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(15, 161);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(72, 16);
-            this.checkBox7.TabIndex = 11;
-            this.checkBox7.Text = "连续采集";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            this.button13.Location = new System.Drawing.Point(14, 241);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(92, 50);
+            this.button13.TabIndex = 12;
+            this.button13.Text = "打开图片";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // Teach_point
             // 
@@ -949,10 +961,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 650);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Teach_point";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Teach_point";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Teach_point_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Teach_point_FormClosed);
             this.Load += new System.EventHandler(this.Teach_point_Load);
             this.panel1.ResumeLayout(false);
@@ -1061,5 +1074,6 @@
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.Button button13;
     }
 }

@@ -2090,6 +2090,9 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             double markY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "datum_mark1", "markY", "0"));
             double center_rotationX = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "center_rotation", "X", "0"));
             double center_rotationY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "center_rotation", "Y", "0"));
+  
+
+
             bool CameraNg = false;
             while (!bg_robot.CancellationPending)
             {
@@ -2405,6 +2408,20 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                 HTuple dis_X = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "center_rotation", "X", "0"));
 
                 HTuple dis_Y = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "center_rotation", "Y", "0"));
+
+
+                ////读取拍照初始位和铆压初始位
+                double Pressure_RobotX = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Pressure_RobotX", "0"));
+                double Pressure_RobotY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Pressure_RobotY", "0"));
+                double Pressure_RobotR = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Pressure_RobotR", "0"));
+                double Picture_RobotX = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotX", "0"));
+                double Picture_RobotY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotY", "0"));
+                double Picture_RobotR = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotR", "0"));
+
+                //计算角度偏移
+                double Robot_R_off = Picture_RobotR - Pressure_RobotR;
+
+
                 ////mark初始像素坐标
                 HTuple PX0 = new HTuple();
                 HTuple PY0 = new HTuple();
@@ -2458,6 +2475,18 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                     //固定差距值
                     double disX1 = (RX0 - RX1);
                     double disY1 = (RY0 - RY1);
+                    double lengrh_C = Math.Sqrt((disX1* disX1)+(disY1 * disY1));
+                    double theta = Math.Atan(disX1 / disY1); // 计算 arctan(a / b) 的角度
+
+                    // 将弧度转换为度
+                    double degrees = theta * (180.0 / Math.PI);
+
+                    // 最终角度差
+                    double final_offR = degrees + Robot_R_off;
+
+
+
+
                     //旋转后角度偏差补偿
                     double dis_RX = (R * Math.Sin(dis_Angle * (Math.PI / 180)));
                     double dis_RY = 2 * (R * (Math.Sin((dis_Angle * (Math.PI / 180)) / 2)) * (Math.Sin((dis_Angle * (Math.PI / 180)) / 2)));
@@ -2487,8 +2516,8 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                         final_disR = final_disR - 360;
                     }
 
-                    offx = final_disX;
-                    offy = final_disY;
+                    offx = lengrh_C * Math.Sin(final_offR);
+                    offy = lengrh_C * Math.Cos(final_offR); 
                     offr = final_disR;
                     return true;
                 }

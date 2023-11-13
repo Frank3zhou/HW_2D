@@ -84,7 +84,7 @@ namespace _6524
         public HObject ho_model_image;//模型的图片
         // Local control variables 
 
-
+        
         public HTuple hv_ModelID = new HTuple(), hv_Row1 = new HTuple();
         public HTuple hv_Column1 = new HTuple(), hv_Row2 = new HTuple();
         public HTuple hv_Column2 = new HTuple(), hv_RefRow = new HTuple();

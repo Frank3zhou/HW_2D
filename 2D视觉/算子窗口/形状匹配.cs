@@ -438,9 +438,9 @@ namespace _6524
                 M_Shape_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_Pyramid_level", ""));
                 M_Shape_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_Greedy_algorithm", ""));
                 M_Shape_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_min_Contrastratio", ""));
-                Mult = Convert.ToDouble(IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Mult", Mult.ToString()));
-                add = Convert.ToDouble(IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Add", add.ToString()));
-                Scale_enabled = Convert.ToBoolean(IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Scalenable", checkBox5.Checked.ToString()));
+                Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Mult", Mult.ToString()));
+                add = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Add", add.ToString()));
+                Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Scalenable", "false"));
                 //模板
                 M_Shape_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\calibration\Matching0" + comboBox1.Text + ".shm");
                 show_model_contour(M_Shape_matching.hv_ModelID);

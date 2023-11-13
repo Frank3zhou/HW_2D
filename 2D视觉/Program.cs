@@ -21,8 +21,8 @@ namespace _6524
             HObject img;
            // HOperatorSet.ReadImage(out img, @"C:\Users\Administrator\Desktop\2.bmp");
 
-            Application.Run(new Form1());
-             //Application.Run(new Light_Control());
+            //Application.Run(new Form1());
+            Application.Run(new Teach_point());
         //    Application.Run(new Barcode_recognition());
         }
     }

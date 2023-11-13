@@ -474,7 +474,22 @@ namespace _6524
                         HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_window.hWindowControl.HalconWindow);
 
                         HObject C = new HObject();
+                        HTuple center_row, center_column, pointorder,arear;
+                      
+                        center_row = new HTuple();
+                        center_column = new HTuple();
+                        center_column.Dispose();
+                        center_row.Dispose();
+
+                        pointorder = new HTuple();
+                        pointorder.Dispose();
+
+                        arear = new HTuple();
+                        arear.Dispose();
+
+                        //HOperatorSet.AreaCenterXld(M_Shape_matching.ho_Transregion_final,out arear,out center_row,out center_column,out pointorder);
                         HOperatorSet.GenCircle(out C, M_Shape_matching.Row, M_Shape_matching.Column, 10);
+                        HOperatorSet.GenCircle(out C, center_row, center_column, 10);
                         HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "X：" + M_Shape_matching.Row.D.ToString("F2"), "window", 12, 12, "black", new HTuple(), new HTuple());
                         HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "Y：" + M_Shape_matching.Column.D.ToString("F2"), "window", 32, 12, "black", new HTuple(), new HTuple());
                         HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "R：" + M_Shape_matching.Angle.D.ToString(), "window", 62, 12, "black", new HTuple(), new HTuple());
@@ -603,7 +618,26 @@ namespace _6524
                 PR0 = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Model_Angle", "0"));
 
 
+
+
                 M_Calibration.Affine_XY(Path_calibration1, PX0, PY0, out RX0, out RY0);
+
+
+
+
+                ////读取拍照初始位和铆压初始位
+                double Pressure_RobotX = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Pressure_RobotX", "0"));
+                double Pressure_RobotY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Pressure_RobotY", "0"));
+                double Pressure_RobotR = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Pressure_RobotR", "0"));
+                double Picture_RobotX = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotX", "0"));
+                double Picture_RobotY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotY", "0"));
+                double Picture_RobotR = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotR", "0"));
+
+                //计算角度偏移
+                double Robot_R_off = Picture_RobotR - Pressure_RobotR;
+
+
+
 
                 MessageBox.Show("将机器人手动偏移Mark点一定距离，但不要超出相机视野范围");
                 //新采集一张图
@@ -660,11 +694,23 @@ namespace _6524
                     //固定差距值
                     double disX1 = (RX1 - RX0);
                     double disY1 = (RY1 - RY0);
+
+                    double lengrh_C = Math.Sqrt((disX1 * disX1) + (disY1 * disY1));
+                    double theta = Math.Atan(disY1 / disX1); // 计算 arctan(a / b) 的角度
+
+                    // 将弧度转换为度
+                    double degrees = theta * (180.0 / Math.PI);
+
+                    // 最终角度差
+                    double final_offR = degrees + Robot_R_off;
+
+
+
                     //旋转后角度偏差补偿
                     double dis_RX = (R * Math.Sin(dis_Angle * (Math.PI / 180)));
                     double dis_RY = 2 * (R * (Math.Sin((dis_Angle * (Math.PI / 180)) / 2)) * (Math.Sin((dis_Angle * (Math.PI / 180)) / 2)));
 
-                    //输出最后的补偿
+                    //输出最后的补偿2
                     double final_disX;
                     double final_disY;
                     if (off_enabled)
@@ -679,16 +725,28 @@ namespace _6524
                     }
 
 
+                    double offx = lengrh_C *Math.Sin(final_offR);
+                    double offy = lengrh_C * Math.Cos(final_offR);
 
 
 
+                    //double final_disR = dis_Angle;
+                    //if (final_disR > 180)
+                    //{
+                    //    final_disR = final_disR - 360;
+                    //}
+                    MessageBox.Show("X 补偿：" + offx.ToString() + "\r\n" + "Y 补偿：" + offy.ToString() + "\r\n" +"拍照位偏差X:"+ disX1.ToString() +"\r\n" +"拍照位偏差Y:"+disY1.ToString());
 
-                    double final_disR = dis_Angle;
-                    if (final_disR > 180)
+
+                 DialogResult a =  MessageBox.Show("是否发送补偿给机械手", "注意", MessageBoxButtons.OKCancel);
+                    if (a == DialogResult.OK)
                     {
-                        final_disR = final_disR - 360;
+                     string    PR1 = offx.ToString("F3")+"," + offy .ToString("F3")+ ",0,0,0,0,";
+                        if (m_Robot.writePR("1", PR1))
+                        {
+                            m_Robot.WrieR("6", "1");
+                        }
                     }
-                    MessageBox.Show("X 补偿：" + final_disX.ToString() + "\r\n" + "Y 补偿：" + final_disY.ToString() + "\r\n" + "R 补偿：" + final_disR.ToString());
 
                 }
                 else
@@ -706,7 +764,41 @@ namespace _6524
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (robotconnected)
+            {
+                string strHost = "";
+                strHost = Interaction.InputBox("输入模板型号", "frrjiftest", strHost, 0, 0);
+                if (string.IsNullOrEmpty(strHost))
+                {
+                    System.Environment.Exit(0);
+                }
+                else
+                {
+                    try
+                    {
+                        string a = "";
+                        if (m_Robot.readNowPR(ref a))
+                        {
+                            string[] xyzwprstr = a.Split(',');
 
+                            //当前模板的X，Y,rote
+                            IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Pressure_RobotX", xyzwprstr[0]);
+                            IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Pressure_RobotY", xyzwprstr[1]);
+                            IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Pressure_RobotR", xyzwprstr[5]);
+                            MessageBox.Show("保存模型" + strHost + "铆压初始位置成功");
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("请连接机械手");
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -721,7 +813,42 @@ namespace _6524
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (robotconnected)
+            {
+                string strHost = "";
+                strHost = Interaction.InputBox("输入模板型号", "frrjiftest", strHost, 0, 0);
+                if (string.IsNullOrEmpty(strHost))
+                {
+                    System.Environment.Exit(0);
+                }
+                else
+                {
+                    try
+                    {
+                        string a = "";
+                        if (m_Robot.readNowPR(ref a))
+                        {
+                            string[] xyzwprstr = a.Split(',');
+                
+                            //当前模板的X，Y,rote
+                            IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotX", xyzwprstr[0]);
+                            IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotY", xyzwprstr[1]);
+                            IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotR", xyzwprstr[5]);
+                            MessageBox.Show("保存模型"+ strHost+"拍照位成功");
+                        }
+                    }
+                    catch (Exception)
+                    {
 
+                        throw;
+                    }
+                }
+            }
+            else 
+            {
+                MessageBox.Show("请连接机械手");
+            }
+    
         }
 
         private void label20_Click(object sender, EventArgs e)
@@ -826,6 +953,76 @@ namespace _6524
                 MessageBox.Show("请先停止采集");
             }
         }
+
+        private void Teach_point_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                m_Robot.close();
+            }
+            catch (Exception)
+            {
+
+               // throw;
+            }
+          
+        }       
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            HObject img = new HObject(); 
+            try
+            {
+                img.Dispose();
+                string imagepath = choose_file();
+                HOperatorSet.ReadImage(out img, imagepath);
+                m_window.NowImage = img;
+              //  sacleimg = img;
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        public string choose_file()
+        {
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+                // 设置对话框的标题和筛选条件
+                openFileDialog1.Title = "选择图像文件";
+                openFileDialog1.Filter = "图像文件 (*.bmp, *.jpg, *.jpeg, *.png) | *.bmp; *.jpg; *.jpeg; *.png";
+
+                // 打开文件对话框并检查用户是否选择了文件
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    // 获取所选文件的完整路径
+                    string selectedImagePath = openFileDialog1.FileName;
+
+                    // 获取所选文件的名称
+                    return selectedImagePath;
+
+                    // 在控制台输出所选文件的名称
+                    // Console.WriteLine("所选文件的名称是: " + selectedImageName);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+
+        }
+
+
 
         private bool takepicture()
         {

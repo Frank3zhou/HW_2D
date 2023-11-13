@@ -489,7 +489,7 @@ namespace _6524
 
                         //HOperatorSet.AreaCenterXld(M_Shape_matching.ho_Transregion_final,out arear,out center_row,out center_column,out pointorder);
                         HOperatorSet.GenCircle(out C, M_Shape_matching.Row, M_Shape_matching.Column, 10);
-                        HOperatorSet.GenCircle(out C, center_row, center_column, 10);
+                     //   HOperatorSet.GenCircle(out C, center_row, center_column, 10);
                         HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "X：" + M_Shape_matching.Row.D.ToString("F2"), "window", 12, 12, "black", new HTuple(), new HTuple());
                         HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "Y：" + M_Shape_matching.Column.D.ToString("F2"), "window", 32, 12, "black", new HTuple(), new HTuple());
                         HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "R：" + M_Shape_matching.Angle.D.ToString(), "window", 62, 12, "black", new HTuple(), new HTuple());
@@ -878,6 +878,7 @@ namespace _6524
             else
             {
                 panel2.Enabled = false;
+                IniAPI.INIWriteValue(Path_calibration_Param, "compensate", "off_enabled", checkBox5.Checked.ToString());
             }
         }
 

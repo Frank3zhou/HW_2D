@@ -385,10 +385,9 @@ namespace _6524
                 {
                     System.Environment.Exit(0);
                 }
+#if(false)
 
-                if (strHost == "Teach")
-                {
-                    if (m_Cameraconnected)
+                if (m_Cameraconnected)
                     {
 
                         if (takepicture())
@@ -422,9 +421,7 @@ namespace _6524
 
                     HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);
 
-                }
-                else
-                {
+#endif             
 
                     Shape_matching M_Shape_matching = new Shape_matching();
                     //模板匹配的参数
@@ -547,7 +544,7 @@ namespace _6524
 
 
 
-            }
+            
             catch (Exception)
             {
                 MessageBox.Show("测试失败");
@@ -1216,7 +1213,7 @@ namespace _6524
                             if (takepicture())
                             {
 
-#if true
+#if false
                                 HTuple row = new HTuple();
                                 HTuple col = new HTuple();
                                 HTuple r = new HTuple();
@@ -1680,7 +1677,7 @@ namespace _6524
             if ((int)(new HTuple(hv_Number.TupleEqual(1))) != 0)
             {
                 hv_Row.Dispose(); hv_Column.Dispose(); hv_Radius.Dispose();
-                HOperatorSet.SmallestCircle(ho_SelectedRegions1, out hv_Row, out hv_Column,
+                HOperatorSet.InnerCircle(ho_SelectedRegions1, out hv_Row, out hv_Column,
                     out hv_Radius);
 
             }

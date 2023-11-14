@@ -385,8 +385,47 @@ namespace _6524
                 {
                     System.Environment.Exit(0);
                 }
-                try
+
+                if (strHost == "Teach")
                 {
+                    if (m_Cameraconnected)
+                    {
+
+                        if (takepicture())
+                        {
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Take Image error");
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("please connected Camera");
+                    }
+
+
+                    HTuple row = new HTuple();
+                    HTuple col = new HTuple();
+                    HTuple r = new HTuple();
+                    HObject cir = new HObject();
+
+                    row.Dispose();
+                    col.Dispose();
+                    r.Dispose();
+                    find_circle(m_window.NowImage, out row, out col, out r);
+                    HOperatorSet.GenCircle(out cir, row, col, r);
+
+
+
+                    HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);
+
+                }
+                else
+                {
+
                     Shape_matching M_Shape_matching = new Shape_matching();
                     //模板匹配的参数
                     M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_rote_min", ""));
@@ -449,10 +488,10 @@ namespace _6524
                     bool Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Scalenable", "false"));
 
                     HObject outimg = new HObject();
-                    outimg = Img;
+                    outimg = m_window.NowImage;
                     if (Scale_enabled)
                     {
-                        HOperatorSet.ScaleImage(Img, out outimg, Mult, add);
+                        HOperatorSet.ScaleImage(m_window.NowImage, out outimg, Mult, add);
                         M_Shape_matching.img = outimg;
 
                     }
@@ -474,8 +513,8 @@ namespace _6524
                         HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_window.hWindowControl.HalconWindow);
 
                         HObject C = new HObject();
-                        HTuple center_row, center_column, pointorder,arear;
-                      
+                        HTuple center_row, center_column, pointorder, arear;
+
                         center_row = new HTuple();
                         center_column = new HTuple();
                         center_column.Dispose();
@@ -489,12 +528,11 @@ namespace _6524
 
                         //HOperatorSet.AreaCenterXld(M_Shape_matching.ho_Transregion_final,out arear,out center_row,out center_column,out pointorder);
                         HOperatorSet.GenCircle(out C, M_Shape_matching.Row, M_Shape_matching.Column, 10);
-                     //   HOperatorSet.GenCircle(out C, center_row, center_column, 10);
+                        //   HOperatorSet.GenCircle(out C, center_row, center_column, 10);
                         HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "X：" + M_Shape_matching.Row.D.ToString("F2"), "window", 12, 12, "black", new HTuple(), new HTuple());
                         HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "Y：" + M_Shape_matching.Column.D.ToString("F2"), "window", 32, 12, "black", new HTuple(), new HTuple());
                         HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "R：" + M_Shape_matching.Angle.D.ToString(), "window", 62, 12, "black", new HTuple(), new HTuple());
                         HOperatorSet.DispObj(C, m_window.hWindowControl.HalconWindow);
-
 
                     }
                     else
@@ -503,18 +541,16 @@ namespace _6524
                     }
 
                 }
-                catch (Exception)
-                {
 
-                    MessageBox.Show("测试失败");
-                }
+
+
 
 
 
             }
             catch (Exception)
             {
-
+                MessageBox.Show("测试失败");
                 // throw;
             }
 
@@ -569,6 +605,7 @@ namespace _6524
 
         private void button10_Click_2(object sender, EventArgs e)
         {
+            //补偿参数
             double offY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "compensate", "offY", "0"));
             double offX = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "compensate", "offX", "0"));
             double offR = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "compensate", "offR", "0"));
@@ -600,6 +637,7 @@ namespace _6524
                 //模板
                 M_Shape_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\calibration\Matching0" + strHost + ".shm");
 
+                //旋转中心
                 dis_X = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "center_rotation", "X", "0"));
 
                 dis_Y = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "center_rotation", "Y", "0"));
@@ -619,7 +657,7 @@ namespace _6524
 
 
 
-
+                //反推初始位置
                 M_Calibration.Affine_XY(Path_calibration1, PX0, PY0, out RX0, out RY0);
 
 
@@ -635,8 +673,8 @@ namespace _6524
 
                 //计算角度偏移
                 double Robot_R_off = Picture_RobotR - Pressure_RobotR;
-                
-               
+
+
 
 
 
@@ -665,14 +703,14 @@ namespace _6524
                     ////mark初始机械坐标
                     HTuple RX1 = new HTuple();
                     HTuple RY1 = new HTuple();
-
+                    //匹配成功后反推机械手坐标
                     M_Calibration.Affine_XY(Path_calibration1, M_Shape_matching.Row, M_Shape_matching.Column, out RX1, out RY1);
 
                     //旋转中心半径
                     double R = (Math.Sqrt(((RX0.D - dis_X.D) * (RX0.D - dis_X.D)) + ((RY0.D - dis_Y.D) * (RY0.D - dis_Y.D))));
                     //前后偏差角度
                     double dis_Angle;
-                    
+
                     if (!off_Angle_enabled)
                     {
                         if (off_enabled)
@@ -694,17 +732,21 @@ namespace _6524
 
 
                     //固定差距值
-                    double disX1 = (RX1 - RX0);
-                    double disY1 = (RY1 - RY0);
+                    double disX1 = (RX0 - RX1);
+                    double disY1 = (RY0 - RY1);
 
                     double lengrh_C = Math.Sqrt((disX1 * disX1) + (disY1 * disY1));
-                    
-                    
+
+
                     double theta = Math.Atan(disX1 / disY1); // 计算 arctan(a / b) 的角度
 
                     // 将弧度转换为度
-                 //   double degrees = (theta / Math.PI) *180;
-                    Robot_R_off = (Robot_R_off /180 )* Math.PI;
+                    //   double degrees = (theta / Math.PI) *180;
+                    Robot_R_off = (Robot_R_off / 180) * Math.PI;
+                    //不计算机械手角度偏差
+                    Robot_R_off = 0;
+
+
                     // 最终角度差
                     double final_offR = theta + Robot_R_off;
 
@@ -729,7 +771,7 @@ namespace _6524
                     }
 
 
-                    double offx = lengrh_C *(Math.Sin(final_offR));
+                    double offx = lengrh_C * (Math.Sin(final_offR));
                     double offy = lengrh_C * Math.Cos(final_offR);
 
 
@@ -739,13 +781,13 @@ namespace _6524
                     //{
                     //    final_disR = final_disR - 360;
                     //}
-                     MessageBox.Show("X 补偿：" + (-offx).ToString() + "\r\n" + "Y 补偿：" + (-offy).ToString() + "\r\n" +"拍照位偏差X:"+ disX1.ToString() +"\r\n" +"拍照位偏差Y:"+disY1.ToString());
+                    MessageBox.Show("X 补偿：" + (offx).ToString() + "\r\n" + "Y 补偿：" + (offy).ToString() + "\r\n" + "拍照位偏差X:" + disX1.ToString() + "\r\n" + "拍照位偏差Y:" + disY1.ToString());
 
 
-                 DialogResult a =  MessageBox.Show("是否发送补偿给机械手", "注意", MessageBoxButtons.OKCancel);
+                    DialogResult a = MessageBox.Show("是否发送补偿给机械手", "注意", MessageBoxButtons.OKCancel);
                     if (a == DialogResult.OK)
                     {
-                     string    PR1 = (-offx).ToString("F3")+"," + (-offy).ToString("F3")+ ",0,0,0,0,";
+                        string PR1 = (offx).ToString("F3") + "," + (offy).ToString("F3") + ",30,0,0,0,";
                         if (m_Robot.writePR("1", PR1))
                         {
                             m_Robot.WrieR("6", "1");
@@ -833,12 +875,12 @@ namespace _6524
                         if (m_Robot.readNowPR(ref a))
                         {
                             string[] xyzwprstr = a.Split(',');
-                
+
                             //当前模板的X，Y,rote
                             IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotX", xyzwprstr[0]);
                             IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotY", xyzwprstr[1]);
                             IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Picture_RobotR", xyzwprstr[5]);
-                            MessageBox.Show("保存模型"+ strHost+"拍照位成功");
+                            MessageBox.Show("保存模型" + strHost + "拍照位成功");
                         }
                     }
                     catch (Exception)
@@ -848,11 +890,11 @@ namespace _6524
                     }
                 }
             }
-            else 
+            else
             {
                 MessageBox.Show("请连接机械手");
             }
-    
+
         }
 
         private void label20_Click(object sender, EventArgs e)
@@ -898,10 +940,10 @@ namespace _6524
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
-            
-              
-                IniAPI.INIWriteValue(Path_calibration_Param, "compensate", "off_Angle_enabled", checkBox6.Checked.ToString());
-           
+
+
+            IniAPI.INIWriteValue(Path_calibration_Param, "compensate", "off_Angle_enabled", checkBox6.Checked.ToString());
+
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -909,7 +951,7 @@ namespace _6524
             RS232 rS232 = new RS232();
             rS232.BaudRate = 19200;
             rS232.DataBits = 8;
-            rS232.StopBits =1;
+            rS232.StopBits = 1;
             rS232.COMPort = Form1.Comname1;
             rS232.Parity = 0;
             if (button12.Text == "打开光源")
@@ -945,14 +987,14 @@ namespace _6524
                     button12.Text = "打开光源";
                 }
             }
-            
+
 
             rS232.Close();
         }
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
-            if(button8.Text=="停止采集")
+            if (button8.Text == "停止采集")
             {
                 checkBox7.Checked = true;
                 MessageBox.Show("请先停止采集");
@@ -968,21 +1010,21 @@ namespace _6524
             catch (Exception)
             {
 
-               // throw;
+                // throw;
             }
-          
-        }       
+
+        }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            HObject img = new HObject(); 
+            HObject img = new HObject();
             try
             {
                 img.Dispose();
                 string imagepath = choose_file();
                 HOperatorSet.ReadImage(out img, imagepath);
                 m_window.NowImage = img;
-              //  sacleimg = img;
+                //  sacleimg = img;
             }
             catch (Exception)
             {
@@ -1173,13 +1215,13 @@ namespace _6524
                         {
                             if (takepicture())
                             {
-                                //HTuple R_pixelX = new HTuple();
-                                //HTuple R_pixelY = new HTuple();
-                                // halcon 处理图像获取XY像素坐标
+
+#if true
                                 HTuple row = new HTuple();
                                 HTuple col = new HTuple();
                                 HTuple r = new HTuple();
                                 HObject cir = new HObject();
+
                                 row.Dispose();
                                 col.Dispose();
                                 r.Dispose();
@@ -1191,26 +1233,47 @@ namespace _6524
                                 HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);
 
                                 M_Shape_matching.img = m_window.NowImage;
-                                //if (M_Shape_matching.action(0, 0))
-                                //{
-                                //    R_pixelX = M_Shape_matching.Row;
-                                //    R_pixelY = M_Shape_matching.Column;
-
-                                //    HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_window.hWindowControl.HalconWindow);
-                                //}
-                                //else
-                                //{
-                                //    MessageBox.Show("模板匹配失败!");
-                                //    failtoteach = true;
-                                //    break;
-                                //}
-
-
-                                //D_Teach_point.Rows[i][4] = R_pixelX.D;
-                                //D_Teach_point.Rows[i][5] = R_pixelY.D;
                                 D_Teach_point.Rows[i][4] = row.D;
                                 D_Teach_point.Rows[i][5] = col.D;
+#else
+                                double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Mult", ""));
+                                double add = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Add", ""));
+                                bool Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Scalenable", "false"));
 
+                                HObject outimg = new HObject();
+                                outimg = m_window.NowImage;
+                                if (Scale_enabled)
+                                {
+                                    HOperatorSet.ScaleImage(Img, out outimg, Mult, add);
+                                    M_Shape_matching.img = outimg;
+
+                                }
+                                else
+                                {
+                                    M_Shape_matching.img = outimg;
+                                }
+                                HTuple R_pixelX = new HTuple();
+                                HTuple R_pixelY = new HTuple();
+                                //halcon 处理图像获取XY像素坐标
+                                if (M_Shape_matching.action(0, 0))
+                                {
+                                    R_pixelX = M_Shape_matching.Row;
+                                    R_pixelY = M_Shape_matching.Column;
+
+                                    HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_window.hWindowControl.HalconWindow);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("模板匹配失败!");
+                                    failtoteach = true;
+                                    break;
+                                }
+
+
+                                D_Teach_point.Rows[i][4] = R_pixelX.D;
+                                D_Teach_point.Rows[i][5] = R_pixelY.D;
+
+#endif
 
                                 // 手动赋值
                                 if (i < D_Teach_point.Rows.Count - Rotate_Number)
@@ -1296,24 +1359,219 @@ namespace _6524
                         }
                     }
 
-                    //测试标定文件
-                    HTuple N_PixelX = new HTuple();
-                    HTuple N_PixelY = new HTuple();
-                    HTuple A_RobotX = new HTuple();
-                    HTuple A_RobotY = new HTuple();
-                    M_Calibration.Affine_XY(Path_calibration1, N_PixelX, N_PixelY, out A_RobotX, out A_RobotY);
+   
 
 
                     //开始计算校正精度
+                    DialogResult a = MessageBox.Show("是否验证精度", "注意", MessageBoxButtons.OKCancel);
+                    if (a == DialogResult.OK)
+                    {
+                        double N_PixelX = new HTuple();
+                        double N_PixelY = new HTuple();
+                        HTuple A_RobotX = new HTuple();
+                        HTuple A_RobotY = new HTuple();
+                        double disoffx, disoffy;
+                        double max_offX = 0;
+                        double max_offY = 0;
+                        for (int i = 0; i < D_Teach_point.Rows.Count; i++)
+                        {
+                            robotarrive = false;
+                            //将示教坐标写人PR6
+                            string PRvalue = D_Teach_point.Rows[i][1].ToString() + "," + D_Teach_point.Rows[i][2].ToString() + "," + textBox5.Text + "," + textBox10.Text + "," + textBox9.Text + "," + D_Teach_point.Rows[i][3].ToString();
+                            if (m_Robot.writePR("6", PRvalue))
+                            {
+                                //告诉机器人可以走PR6点位了
+                                if (m_Robot.WrieR("3", "1"))
+                                {
+                                    for (int T = 0; T < 1500; T++)
+                                    {
+                                        Thread.Sleep(200);
+                                        string A = null;
+                                        //等待机器人到位信号
+                                        if (m_Robot.readR("4", ref A))
+                                        {
+                                            if (A == "1")
+                                            {
+                                                Thread.Sleep(20);
+                                                m_Robot.WrieR("4", "0");
+                                                robotarrive = true;
+                                                break;
+                                            }
+                                        }
 
-                   
+
+
+                                    }
+                                }
+                                else
+                                {
+                                    failtoteach = true;
+                                    break;
+                                }
+
+
+                                //  MessageBox.Show("Write Success!");
+                            }
+                            else
+                            {
+                                failtoteach = true;
+                                break;
+                            }
+
+
+                            //机器人到位后开始拍照取点
+                            if (robotarrive)
+                            {
+                                if (takepicture())
+                                {
+
+#if false
+                                    HTuple row = new HTuple();
+                                    HTuple col = new HTuple();
+                                    HTuple r = new HTuple();
+                                    HObject cir = new HObject();
+
+                                    row.Dispose();
+                                    col.Dispose();
+                                    r.Dispose();
+                                    find_circle(m_window.NowImage, out row, out col, out r);
+                                    HOperatorSet.GenCircle(out cir, row, col, r);
+
+
+
+                                    HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);
+
+                                    M_Shape_matching.img = m_window.NowImage;
+                                    //测试标定文件
+                           
+                                    // M_Calibration.Affine_XY(Path_calibration1, N_PixelX, N_PixelY, out A_RobotX, out A_RobotY);
+
+                                    N_PixelX = Convert.ToDouble(D_Teach_point.Rows[i][1].ToString());
+                                    N_PixelY= Convert.ToDouble(D_Teach_point.Rows[i][2].ToString());
+                                    M_Calibration.Affine_XY(Path_calibration1, row, col, out A_RobotX, out A_RobotY);
+
+                                     disoffx = Math.Abs(N_PixelX - A_RobotX.D);
+                                     disoffy = Math.Abs(N_PixelY - A_RobotY.D);
+                                    if (disoffx > max_offX)
+                                    { 
+                                        max_offX = disoffx;
+                                    }
+                                    if(disoffy>max_offY)
+                                    {
+                                        max_offY = disoffy;
+                                    }
+#else
+                                double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Mult", ""));
+                                double add = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Add", ""));
+                                bool Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Scalenable", "false"));
+
+                                HObject outimg = new HObject();
+                                outimg = m_window.NowImage;
+                                if (Scale_enabled)
+                                {
+                                    HOperatorSet.ScaleImage(Img, out outimg, Mult, add);
+                                    M_Shape_matching.img = outimg;
+
+                                }
+                                else
+                                {
+                                    M_Shape_matching.img = outimg;
+                                }
+                                HTuple R_pixelX = new HTuple();
+                                HTuple R_pixelY = new HTuple();
+                                //halcon 处理图像获取XY像素坐标
+                                if (M_Shape_matching.action(0, 0))
+                                {
+                                    R_pixelX = M_Shape_matching.Row;
+                                    R_pixelY = M_Shape_matching.Column;
+
+                                    HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_window.hWindowControl.HalconWindow);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("模板匹配失败!");
+                                    failtoteach = true;
+                                    break;
+                                }
+
+
+                       
+                                   N_PixelX = Convert.ToDouble(D_Teach_point.Rows[i][1].ToString());
+                                    N_PixelY= Convert.ToDouble(D_Teach_point.Rows[i][2].ToString());
+                                    M_Calibration.Affine_XY(Path_calibration1, R_pixelX, R_pixelY, out A_RobotX, out A_RobotY);
+
+                                     disoffx = Math.Abs(N_PixelX - A_RobotX.D);
+                                     disoffy = Math.Abs(N_PixelY - A_RobotY.D);
+                                    if (disoffx > max_offX)
+                                    { 
+                                        max_offX = disoffx;
+                                    }
+                                    if(disoffy>max_offY)
+                                    {
+                                        max_offY = disoffy;
+                                    }
+
+#endif
+
+
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("take image fail!");
+                                    failtoteach = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (failtoteach)
+                        {
+                            string PRvalue = textBox4.Text + "," + textBox3.Text + "," + textBox5.Text + "," + textBox10.Text + "," + textBox9.Text + "," + textBox6.Text;
+                            m_Robot.writePR("6", PRvalue);
+
+                            //告诉机器人可以走PR6点位了
+                            if (m_Robot.WrieR("3", "1"))
+                            {
+                                for (int T = 0; T < 1500; T++)
+                                {
+                                    Thread.Sleep(200);
+                                    string A = null;
+                                    //等待机器人到位信号
+                                    if (m_Robot.readR("4", ref A))
+                                    {
+                                        if (A == "1")
+                                        {
+                                            Thread.Sleep(20);
+                                            m_Robot.WrieR("4", "0");
+                                            robotarrive = true;
+                                            break;
+                                        }
+                                    }
+
+
+
+                                }
+                            }
+
+                            MessageBox.Show("验证失败");
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("X方向精度为：" + max_offX.ToString() + "\r\n" + "Y方向精度为：" + max_offY.ToString() + "\r\n");
+                        }
+
+
+                    }
+
                 }
                 else
                 {
                     MessageBox.Show("Please connect robot or camera！");
                 }
 
-                
+
 
 
 

@@ -635,7 +635,8 @@ namespace _6524
 
                 //计算角度偏移
                 double Robot_R_off = Picture_RobotR - Pressure_RobotR;
-
+                
+               
 
 
 
@@ -671,6 +672,7 @@ namespace _6524
                     double R = (Math.Sqrt(((RX0.D - dis_X.D) * (RX0.D - dis_X.D)) + ((RY0.D - dis_Y.D) * (RY0.D - dis_Y.D))));
                     //前后偏差角度
                     double dis_Angle;
+                    
                     if (!off_Angle_enabled)
                     {
                         if (off_enabled)
@@ -696,13 +698,15 @@ namespace _6524
                     double disY1 = (RY1 - RY0);
 
                     double lengrh_C = Math.Sqrt((disX1 * disX1) + (disY1 * disY1));
-                    double theta = Math.Atan(disY1 / disX1); // 计算 arctan(a / b) 的角度
+                    
+                    
+                    double theta = Math.Atan(disX1 / disY1); // 计算 arctan(a / b) 的角度
 
                     // 将弧度转换为度
-                    double degrees = theta * (180.0 / Math.PI);
-
+                 //   double degrees = (theta / Math.PI) *180;
+                    Robot_R_off = (Robot_R_off /180 )* Math.PI;
                     // 最终角度差
-                    double final_offR = degrees + Robot_R_off;
+                    double final_offR = theta + Robot_R_off;
 
 
 
@@ -725,7 +729,7 @@ namespace _6524
                     }
 
 
-                    double offx = lengrh_C *Math.Sin(final_offR);
+                    double offx = lengrh_C *(Math.Sin(final_offR));
                     double offy = lengrh_C * Math.Cos(final_offR);
 
 
@@ -735,13 +739,13 @@ namespace _6524
                     //{
                     //    final_disR = final_disR - 360;
                     //}
-                    MessageBox.Show("X 补偿：" + offx.ToString() + "\r\n" + "Y 补偿：" + offy.ToString() + "\r\n" +"拍照位偏差X:"+ disX1.ToString() +"\r\n" +"拍照位偏差Y:"+disY1.ToString());
+                     MessageBox.Show("X 补偿：" + (-offx).ToString() + "\r\n" + "Y 补偿：" + (-offy).ToString() + "\r\n" +"拍照位偏差X:"+ disX1.ToString() +"\r\n" +"拍照位偏差Y:"+disY1.ToString());
 
 
                  DialogResult a =  MessageBox.Show("是否发送补偿给机械手", "注意", MessageBoxButtons.OKCancel);
                     if (a == DialogResult.OK)
                     {
-                     string    PR1 = offx.ToString("F3")+"," + offy .ToString("F3")+ ",0,0,0,0,";
+                     string    PR1 = (-offx).ToString("F3")+"," + (-offy).ToString("F3")+ ",0,0,0,0,";
                         if (m_Robot.writePR("1", PR1))
                         {
                             m_Robot.WrieR("6", "1");

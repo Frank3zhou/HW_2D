@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace _6524
 {
@@ -87,6 +88,13 @@ namespace _6524
             panel2.Controls.Add(m_ZKHwindows);
             textBox5.Text =IniAPI.INIGetStringValue(Path_calibration_Param, "robotCamera", "IP", "");
             textBox1.Text=IniAPI.INIGetStringValue(Path_calibration_Param, "Robot", "IP", "");
+            checkBox1.Checked= Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "robotCamera", "Use_Detection_Camera", "false"));
+            if (!checkBox1.Checked)
+            { 
+                groupBox1.Enabled = false;  
+            }
+            comboBox1.Text = IniAPI.INIGetStringValue(Path_calibration_Param, "robotCamera", "Use_Detection_Camera_name", "相机1");
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -224,6 +232,24 @@ namespace _6524
         private void button10_Click(object sender, EventArgs e)
         {
             IniAPI.INIWriteValue(Path_calibration_Param, "Robot","IP", textBox1.Text);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            IniAPI.INIWriteValue(Path_calibration_Param, "robotCamera", "Use_Detection_Camera", checkBox1.Checked.ToString());
+            if (checkBox1.Checked)
+            {
+                groupBox1.Enabled = true;
+            }
+            else
+            {
+                groupBox1.Enabled = false;
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IniAPI.INIWriteValue(Path_calibration_Param, "robotCamera", "Use_Detection_Camera_Name", comboBox1.Text);
         }
     }
 }

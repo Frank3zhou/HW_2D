@@ -14,6 +14,8 @@ using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace _6524
 {
@@ -2082,7 +2084,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             robotstate m_state = new robotstate();
             m_state = robotstate.init;
             m_Robot = new fanuctcpip();
-            m_Camera = new MVS_SDK();
+           
             string robotip = IniAPI.INIGetStringValue(Path_calibration_Param, "Robot", "IP", "0");
             string cameraip = IniAPI.INIGetStringValue(Path_calibration_Param, "robotCamera", "IP", "0");
             string PR1 = null;//补偿值
@@ -2090,8 +2092,58 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             double markY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "datum_mark1", "markY", "0"));
             double center_rotationX = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "center_rotation", "X", "0"));
             double center_rotationY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "center_rotation", "Y", "0"));
-  
+            bool Use_Detection_Camera = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "robotCamera", "Use_Detection_Camera", "false"));
+            string Use_Detection_Camera_name = IniAPI.INIGetStringValue(Path_calibration_Param, "robotCamera", "Use_Detection_Camera_name", "相机1");
+            if (!Use_Detection_Camera)
+            {
+                m_Camera = new MVS_SDK();
+                if (m_Camera.Connect_Cam(cameraip))
+                {
+                    robotcamera_connected = true;
+                    m_state = robotstate.arrive;
+                }
+                else
+                {
+                    button12.Image = global::_6524.Properties.Resources.开始__1_;
+                    m_Logprint(HslMessageDegree.ERROR, "机械手相机连接失败", true);
+                    m_Robot.close();
+                    //MessageBox.Show("robot_Camera Connected Fail");
+                    bg_robot.CancelAsync();
+                    Bg_Main.CancelAsync();
+                    Thread.Sleep(50);
+                    btn_system_state.BeginInvoke(new Action(() =>
+                    {
 
+                        btn_system_state.Text = "机械手相机连接失败";
+                        btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+
+
+                    }
+            )
+                );
+
+                   // break;
+                }
+            }
+            else
+            { 
+                if(Use_Detection_Camera_name== "相机1")
+                {
+                    m_Camera = m_Camera1;
+                }
+                else if(Use_Detection_Camera_name == "相机2")
+                {
+                    m_Camera = m_Camera2;
+                }
+                else if (Use_Detection_Camera_name == "相机3")
+                {
+                    m_Camera = m_Camera3;
+                }
+                else if (Use_Detection_Camera_name == "相机4")
+                {
+                    m_Camera = m_Camera4;
+                }
+            }
 
             bool CameraNg = false;
             while (!bg_robot.CancellationPending)
@@ -2149,39 +2201,8 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
                           //  isPaused = true;
 
-                            if (m_Camera.Connect_Cam(cameraip))
-                            {
-                                robotcamera_connected=true;
-                                m_state = robotstate.arrive;
-                            }
-                            else
-                            {
-                                button12.Image = global::_6524.Properties.Resources.开始__1_;
-                                m_Logprint(HslMessageDegree.ERROR, "机械手相机连接失败", true);
-                                m_Robot.close();
-                                //MessageBox.Show("robot_Camera Connected Fail");
-                                bg_robot.CancelAsync();
-                                Bg_Main.CancelAsync();
-                                Thread.Sleep(50);   
-                                btn_system_state.BeginInvoke(new Action(() =>
-                                {
-
-                                    btn_system_state.Text = "机械手相机连接失败";
-                                    btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-
-
-                                }
-                        )
-                            );
-
-                                break;
-                            }
-                            //}
-                            //else
-                            //{
-                            //    break;
-                            //}
-
+                      
+                     
 
 
                             #region  载入定位参数
@@ -2221,43 +2242,75 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
 
                             #region 拍照
-                            if (m_Camera.State == 0)
+                            if (!Use_Detection_Camera)
                             {
-                                m_Camera.Connect_Cam(cameraip);
-                            }
-                            if (m_Camera.State == 1)
-                            {
-                                m_Camera.OpenCamera();
-                            }
-                            if (m_Camera.Start())  //开始采集流
-                            {
-                                //RS232 rS232 = new RS232();
-                                //int brightness = 150;
-                                //rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");
-                                //Thread.Sleep(100);
-                                //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
-                                if (m_Camera.Get_Oneframe())
+                                if (m_Camera.State == 0)
+                                {
+                                    m_Camera.Connect_Cam(cameraip);
+                                }
+                                if (m_Camera.State == 1)
+                                {
+                                    m_Camera.OpenCamera();
+                                }
+                                if (m_Camera.Start())  //开始采集流
                                 {
 
-                                    Thread.Sleep(100);
-                                    //  m_window.NowImage = m_Camera.Himage;
-                                    HOperatorSet.CopyImage(m_Camera.Himage, out Img);
-                                    _mWindow5.NowImage = Img;
+                                    if (m_Camera.Get_Oneframe())
+                                    {
 
-                                    Console.WriteLine("Get_onefrmae is OK ");
+                                        Thread.Sleep(100);
 
-                                    m_Camera.Stop();
-                                    m_Camera.close();
+                                        HOperatorSet.CopyImage(m_Camera.Himage, out Img);
+                                        _mWindow5.NowImage = Img;
 
+                                        Console.WriteLine("Get_onefrmae is OK ");
+
+                                        m_Camera.Stop();
+                                        m_Camera.close();
+
+
+                                    }
+                                    else
+                                    {
+                                        CameraNg = true;
+                                        m_state = robotstate.send_vaule;
+                                    }
 
                                 }
-                                else
-                                {
-                                    CameraNg = true;
-                                    m_state = robotstate.send_vaule;
-                                }
-
                             }
+                            else
+                            {
+                                if (m_Camera.State == 1)
+                                {
+                                    m_Camera.OpenCamera();
+                                }
+                                if (m_Camera.Start())  //开始采集流
+                                {
+
+                                    if (m_Camera.Get_Oneframe())
+                                    {
+
+                                        Thread.Sleep(100);
+
+                                        HOperatorSet.CopyImage(m_Camera.Himage, out Img);
+                                        _mWindow5.NowImage = Img;
+
+                                        Console.WriteLine("Get_onefrmae is OK ");
+
+                                        m_Camera.Stop();
+                                        m_Camera.close();
+
+
+                                    }
+                                    else
+                                    {
+                                        CameraNg = true;
+                                        m_state = robotstate.send_vaule;
+                                    }
+
+                                }
+                            }
+                               
 
                             #endregion
 
@@ -2388,6 +2441,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
             try
             {
+
                 Shape_matching M_Shape_matching = new Shape_matching();
                 //模板匹配的参数
                 M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_rote_min", ""));
@@ -2420,7 +2474,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
                 //计算角度偏移
                 double Robot_R_off = Picture_RobotR - Pressure_RobotR;
-
+                Robot_R_off = 0;
 
                 ////mark初始像素坐标
                 HTuple PX0 = new HTuple();
@@ -2516,8 +2570,10 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                         final_disR = final_disR - 360;
                     }
 
-                    offx = lengrh_C * Math.Sin(final_offR);
-                    offy = lengrh_C * Math.Cos(final_offR); 
+                    //offx = lengrh_C * Math.Sin(final_offR);
+                    //offy = lengrh_C * Math.Cos(final_offR); 
+                    offx= final_disX;
+                    offy= final_disY;
                     offr = final_disR;
                     return true;
                 }

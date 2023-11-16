@@ -24,6 +24,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Runtime.ConstrainedExecution;
 using NPOI.SS.Formula.Functions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using MathNet.Numerics;
+
 namespace _6524
 {
 
@@ -385,43 +387,44 @@ namespace _6524
                 {
                     System.Environment.Exit(0);
                 }
-#if(false)
+#if(true)
 
                 if (m_Cameraconnected)
+                {
+
+                    if (takepicture())
                     {
-
-                        if (takepicture())
-                        {
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Take Image error");
-                        }
 
                     }
                     else
                     {
-                        MessageBox.Show("please connected Camera");
+                        MessageBox.Show("Take Image error");
                     }
 
-
-                    HTuple row = new HTuple();
-                    HTuple col = new HTuple();
-                    HTuple r = new HTuple();
-                    HObject cir = new HObject();
-
-                    row.Dispose();
-                    col.Dispose();
-                    r.Dispose();
-                    find_circle(m_window.NowImage, out row, out col, out r);
-                    HOperatorSet.GenCircle(out cir, row, col, r);
+                }
+                else
+                {
+                    MessageBox.Show("please connected Camera");
+                }
 
 
+                HTuple row = new HTuple();
+                HTuple col = new HTuple();
+                HTuple r = new HTuple();
+                HObject cir = new HObject();
 
-                    HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);
+                row.Dispose();
+                col.Dispose();
+                r.Dispose();
+                find_circle(m_window.NowImage, out row, out col, out r);
+                HOperatorSet.GenCircle(out cir, row, col, r);
+                HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "X：" + row.D.ToString("F2"), "window", 12, 12, "black", new HTuple(), new HTuple());
+                HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "Y：" + col.D.ToString("F2"), "window", 32, 12, "black", new HTuple(), new HTuple());
 
-#endif             
+
+                HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);
+
+#else
 
                     Shape_matching M_Shape_matching = new Shape_matching();
                     //模板匹配的参数
@@ -525,10 +528,10 @@ namespace _6524
 
                         //HOperatorSet.AreaCenterXld(M_Shape_matching.ho_Transregion_final,out arear,out center_row,out center_column,out pointorder);
                         HOperatorSet.GenCircle(out C, M_Shape_matching.Row, M_Shape_matching.Column, 10);
-                        //   HOperatorSet.GenCircle(out C, center_row, center_column, 10);
-                        HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "X：" + M_Shape_matching.Row.D.ToString("F2"), "window", 12, 12, "black", new HTuple(), new HTuple());
-                        HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "Y：" + M_Shape_matching.Column.D.ToString("F2"), "window", 32, 12, "black", new HTuple(), new HTuple());
-                        HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "R：" + M_Shape_matching.Angle.D.ToString(), "window", 62, 12, "black", new HTuple(), new HTuple());
+                    //   HOperatorSet.GenCircle(out C, center_row, center_column, 10);
+                    HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "X：" + M_Shape_matching.Row.D.ToString("F2"), "window", 12, 12, "black", new HTuple(), new HTuple());
+                    HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "Y：" + M_Shape_matching.Column.D.ToString("F2"), "window", 32, 12, "black", new HTuple(), new HTuple());
+                    HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "R：" + M_Shape_matching.Angle.D.ToString(), "window", 62, 12, "black", new HTuple(), new HTuple());
                         HOperatorSet.DispObj(C, m_window.hWindowControl.HalconWindow);
 
                     }
@@ -536,15 +539,15 @@ namespace _6524
                     {
                         MessageBox.Show("测试失败");
                     }
-
-                }
-
-
+#endif
+            }
 
 
 
 
-            
+
+
+
             catch (Exception)
             {
                 MessageBox.Show("测试失败");
@@ -694,17 +697,43 @@ namespace _6524
                 {
                     MessageBox.Show("please connected Camera");
                 }
+                HTuple RX1 = new HTuple();
+                HTuple RY1 = new HTuple();
+#if(false)
+
                 M_Shape_matching.img = m_window.NowImage;
+
                 if (M_Shape_matching.action(0, 0))
                 {
                     ////mark初始机械坐标
-                    HTuple RX1 = new HTuple();
-                    HTuple RY1 = new HTuple();
+                   
                     //匹配成功后反推机械手坐标
                     M_Calibration.Affine_XY(Path_calibration1, M_Shape_matching.Row, M_Shape_matching.Column, out RX1, out RY1);
+                }
+                else
+                {
+                    MessageBox.Show("测试失败");
+                }
+#else
+                HTuple row = new HTuple();
+                HTuple col = new HTuple();
+                HTuple r = new HTuple();
+                HObject cir = new HObject();
 
-                    //旋转中心半径
-                    double R = (Math.Sqrt(((RX0.D - dis_X.D) * (RX0.D - dis_X.D)) + ((RY0.D - dis_Y.D) * (RY0.D - dis_Y.D))));
+                row.Dispose();
+                col.Dispose();
+                r.Dispose();
+                find_circle(m_window.NowImage, out row, out col, out r);
+                HOperatorSet.GenCircle(out cir, row, col, r);
+                M_Calibration.Affine_XY(Path_calibration1, row, col, out RX1, out RY1);
+                //HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "X：" + row.D.ToString("F2"), "window", 12, 12, "black", new HTuple(), new HTuple());
+                //HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "Y：" + col.D.ToString("F2"), "window", 32, 12, "black", new HTuple(), new HTuple());
+
+
+                HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);
+#endif
+                //旋转中心半径
+                double R = (Math.Sqrt(((RX0.D - dis_X.D) * (RX0.D - dis_X.D)) + ((RY0.D - dis_Y.D) * (RY0.D - dis_Y.D))));
                     //前后偏差角度
                     double dis_Angle;
 
@@ -729,8 +758,8 @@ namespace _6524
 
 
                     //固定差距值
-                    double disX1 = (RX0 - RX1);
-                    double disY1 = (RY0 - RY1);
+                    double disX1 = (Picture_RobotX - RX1.D);
+                    double disY1 = (Picture_RobotY - RY1.D);
 
                     double lengrh_C = Math.Sqrt((disX1 * disX1) + (disY1 * disY1));
 
@@ -791,11 +820,8 @@ namespace _6524
                         }
                     }
 
-                }
-                else
-                {
-                    MessageBox.Show("测试失败");
-                }
+                
+               
 
             }
             catch (Exception)
@@ -1213,7 +1239,7 @@ namespace _6524
                             if (takepicture())
                             {
 
-#if false
+#if true
                                 HTuple row = new HTuple();
                                 HTuple col = new HTuple();
                                 HTuple r = new HTuple();
@@ -1223,13 +1249,22 @@ namespace _6524
                                 col.Dispose();
                                 r.Dispose();
                                 find_circle(m_window.NowImage, out row, out col, out r);
-                                HOperatorSet.GenCircle(out cir, row, col, r);
+                              //  M_Shape_matching.img = m_window.NowImage;
 
+                                Task.Run(() =>
+                                {
+                                    m_window.NowImage = m_window.NowImage;
+                                    HOperatorSet.GenCircle(out cir, row, col, r);
+                                    HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);
+                                   
+                                });
 
+                               
+                               
 
-                                HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);
+                              
 
-                                M_Shape_matching.img = m_window.NowImage;
+                             
                                 D_Teach_point.Rows[i][4] = row.D;
                                 D_Teach_point.Rows[i][5] = col.D;
 #else
@@ -1356,15 +1391,15 @@ namespace _6524
                         }
                     }
 
-   
+
 
 
                     //开始计算校正精度
                     DialogResult a = MessageBox.Show("是否验证精度", "注意", MessageBoxButtons.OKCancel);
                     if (a == DialogResult.OK)
                     {
-                        double N_PixelX = new HTuple();
-                        double N_PixelY = new HTuple();
+                        double N_PixelX ;
+                        double N_PixelY ;
                         HTuple A_RobotX = new HTuple();
                         HTuple A_RobotY = new HTuple();
                         double disoffx, disoffy;
@@ -1422,7 +1457,7 @@ namespace _6524
                                 if (takepicture())
                                 {
 
-#if false
+#if true
                                     HTuple row = new HTuple();
                                     HTuple col = new HTuple();
                                     HTuple r = new HTuple();
@@ -1458,52 +1493,52 @@ namespace _6524
                                         max_offY = disoffy;
                                     }
 #else
-                                double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Mult", ""));
-                                double add = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Add", ""));
-                                bool Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Scalenable", "false"));
+                                    double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Mult", ""));
+                                    double add = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Add", ""));
+                                    bool Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Scalenable", "false"));
 
-                                HObject outimg = new HObject();
-                                outimg = m_window.NowImage;
-                                if (Scale_enabled)
-                                {
-                                    HOperatorSet.ScaleImage(Img, out outimg, Mult, add);
-                                    M_Shape_matching.img = outimg;
+                                    HObject outimg = new HObject();
+                                    outimg = m_window.NowImage;
+                                    if (Scale_enabled)
+                                    {
+                                        HOperatorSet.ScaleImage(Img, out outimg, Mult, add);
+                                        M_Shape_matching.img = outimg;
 
-                                }
-                                else
-                                {
-                                    M_Shape_matching.img = outimg;
-                                }
-                                HTuple R_pixelX = new HTuple();
-                                HTuple R_pixelY = new HTuple();
-                                //halcon 处理图像获取XY像素坐标
-                                if (M_Shape_matching.action(0, 0))
-                                {
-                                    R_pixelX = M_Shape_matching.Row;
-                                    R_pixelY = M_Shape_matching.Column;
+                                    }
+                                    else
+                                    {
+                                        M_Shape_matching.img = outimg;
+                                    }
+                                    HTuple R_pixelX = new HTuple();
+                                    HTuple R_pixelY = new HTuple();
+                                    //halcon 处理图像获取XY像素坐标
+                                    if (M_Shape_matching.action(0, 0))
+                                    {
+                                        R_pixelX = M_Shape_matching.Row;
+                                        R_pixelY = M_Shape_matching.Column;
 
-                                    HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_window.hWindowControl.HalconWindow);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("模板匹配失败!");
-                                    failtoteach = true;
-                                    break;
-                                }
+                                        HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_window.hWindowControl.HalconWindow);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("模板匹配失败!");
+                                        failtoteach = true;
+                                        break;
+                                    }
 
 
-                       
-                                   N_PixelX = Convert.ToDouble(D_Teach_point.Rows[i][1].ToString());
-                                    N_PixelY= Convert.ToDouble(D_Teach_point.Rows[i][2].ToString());
+
+                                    N_PixelX = Convert.ToDouble(D_Teach_point.Rows[i][1].ToString());
+                                    N_PixelY = Convert.ToDouble(D_Teach_point.Rows[i][2].ToString());
                                     M_Calibration.Affine_XY(Path_calibration1, R_pixelX, R_pixelY, out A_RobotX, out A_RobotY);
 
-                                     disoffx = Math.Abs(N_PixelX - A_RobotX.D);
-                                     disoffy = Math.Abs(N_PixelY - A_RobotY.D);
+                                    disoffx = Math.Abs(N_PixelX - A_RobotX.D);
+                                    disoffy = Math.Abs(N_PixelY - A_RobotY.D);
                                     if (disoffx > max_offX)
-                                    { 
+                                    {
                                         max_offX = disoffx;
                                     }
-                                    if(disoffy>max_offY)
+                                    if (disoffy > max_offY)
                                     {
                                         max_offY = disoffy;
                                     }
@@ -1660,15 +1695,15 @@ namespace _6524
             hv_Column = new HTuple();
             hv_Radius = new HTuple();
             ho_ImageScaled.Dispose();
-            HOperatorSet.ScaleImage(ho_Image20230826183057975, out ho_ImageScaled, 5.4,
-                -141);
+            HOperatorSet.ScaleImage(ho_Image20230826183057975, out ho_ImageScaled, 4.9,
+                -500);
             ho_Regions.Dispose();
             HOperatorSet.Threshold(ho_ImageScaled, out ho_Regions, 0, 158);
             ho_ConnectedRegions.Dispose();
             HOperatorSet.Connection(ho_Regions, out ho_ConnectedRegions);
             ho_SelectedRegions.Dispose();
             HOperatorSet.SelectShape(ho_ConnectedRegions, out ho_SelectedRegions, "area",
-                "and", 1500, 99999);
+                "and", 1500, 129999);
             ho_SelectedRegions1.Dispose();
             HOperatorSet.SelectShape(ho_SelectedRegions, out ho_SelectedRegions1, "circularity",
                 "and", 0.8, 1);

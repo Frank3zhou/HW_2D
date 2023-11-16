@@ -2094,13 +2094,14 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             double center_rotationY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "center_rotation", "Y", "0"));
             bool Use_Detection_Camera = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "robotCamera", "Use_Detection_Camera", "false"));
             string Use_Detection_Camera_name = IniAPI.INIGetStringValue(Path_calibration_Param, "robotCamera", "Use_Detection_Camera_name", "相机1");
+         
             if (!Use_Detection_Camera)
             {
                 m_Camera = new MVS_SDK();
                 if (m_Camera.Connect_Cam(cameraip))
                 {
                     robotcamera_connected = true;
-                    m_state = robotstate.arrive;
+                    //m_state = robotstate.arrive;
                 }
                 else
                 {
@@ -2130,18 +2131,23 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                 if(Use_Detection_Camera_name== "相机1")
                 {
                     m_Camera = m_Camera1;
+                    robotcamera_connected = true;
+
                 }
                 else if(Use_Detection_Camera_name == "相机2")
                 {
                     m_Camera = m_Camera2;
+                    robotcamera_connected = true;
                 }
                 else if (Use_Detection_Camera_name == "相机3")
                 {
                     m_Camera = m_Camera3;
+                    robotcamera_connected = true;
                 }
                 else if (Use_Detection_Camera_name == "相机4")
                 {
                     m_Camera = m_Camera4;
+                    robotcamera_connected = true;
                 }
             }
 
@@ -2197,6 +2203,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                             else
                             {
                                 robot_connected = true;
+                                m_state = robotstate.arrive;
                             }
 
                           //  isPaused = true;
@@ -2235,10 +2242,10 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
 
                         case robotstate.take_image:
-                            //拍照
+                           // 拍照
                             brightness = 150;
-                            rS232.SerialPort.WriteLine("SB0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                            Thread.Sleep(50);
+                            rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                            Thread.Sleep(500);
 
 
                             #region 拍照
@@ -2316,7 +2323,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
 
                             brightness = 0;
-                            rS232.SerialPort.WriteLine("SB0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                            rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
 
                             m_state = robotstate.calculate_Compensation;
                             break;
@@ -2331,7 +2338,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                             if (run_robot_camera(Img, ref offx, ref offy, ref offr, ref hObject))
                             {
                                 CameraNg = false;
-                                PR1 = offx.ToString("F2") + "," + offy.ToString("F2") + ",0,0,0," + offr.ToString("F2");//虚拟补偿值
+                                PR1 = offx.ToString("F2") + "," + offy.ToString("F2") + ",30,0,0," + offr.ToString("F2");//虚拟补偿值
                                 disp_message(_mWindow5.hWindowControl.HalconWindow, "结果:" + "  OK", "window", 12, 12, "black", "true");
                                 disp_message(_mWindow5.hWindowControl.HalconWindow, "X补偿:" + offx.ToString("F2"), "window", 72, 12, "black", "true");
                                 disp_message(_mWindow5.hWindowControl.HalconWindow, "Y补偿:" + offy.ToString("F2"), "window", 132, 12, "black", "true");
@@ -2347,7 +2354,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                                 CameraNg = true;
                                 disp_message(_mWindow5.hWindowControl.HalconWindow, "结果:" + "  NG", "window", 12, 12, "red", "true");
 
-                                PR1 = "0,0,0,0,0,0,";
+                                PR1 = "0,0,30,0,0,0,";
                             }
 
                             m_state = robotstate.send_vaule;
@@ -2360,7 +2367,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                             }
                             else
                             {
-                                PR1 = "0,0,0,0,0,0,";
+                                //PR1 = "0,0,0,0,0,0,";
                                 if (m_Robot.writePR("1", PR1))
                                 {
                                     m_Robot.WrieR("6", "1");
@@ -2418,6 +2425,8 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             double offR = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "compensate", "offR", "0"));
             bool off_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "compensate", "off_enabled", "false"));
             bool off_Angle_enabled = Convert.ToBoolean(IniAPI.INIWriteValue(Path_calibration_Param, "compensate", "off_Angle_enabled", "false"));
+
+
             string strHost = "1";
             if (autochangemodel)
             {
@@ -2484,7 +2493,9 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                 ////mark初始机械坐标
                 HTuple RX0 = new HTuple();
                 HTuple RY0 = new HTuple();
-
+                ////mark初始机械坐标
+                HTuple RX1 = new HTuple();
+                HTuple RY1 = new HTuple();
                 //当前模板的X，Y,rote
                 PX0 = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "ModelX", "0"));
                 PY0 = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "ModelY", "0"));
@@ -2492,20 +2503,45 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
 
                 M_Calibration.Affine_XY(Path_calibration1, PX0, PY0, out RX0, out RY0);
-
-
-
+#if(false)
+              
                 M_Shape_matching.img = IMG;
                 if (M_Shape_matching.action(0, 0))
                 {
-                    ////mark初始机械坐标
-                    HTuple RX1 = new HTuple();
-                    HTuple RY1 = new HTuple();
+                   
                     ResObj = M_Shape_matching.ho_Transregion_final;
                     M_Calibration.Affine_XY(Path_calibration1, M_Shape_matching.Row, M_Shape_matching.Column, out RX1, out RY1);
+                }
+                else
+                {
+                    return false;
+                }
 
-                    //旋转中心半径
-                    double R = (Math.Sqrt(((RX0.D - dis_X.D) * (RX0.D - dis_X.D)) + ((RY0.D - dis_Y.D) * (RY0.D - dis_Y.D))));
+#else
+                HTuple row = new HTuple();
+                HTuple col = new HTuple();
+                HTuple r = new HTuple();
+                HObject cir = new HObject();
+
+                row.Dispose();
+                col.Dispose();
+                r.Dispose();
+                find_circle(IMG, out row, out col, out r);
+                HOperatorSet.GenCircle(out cir, row, col, r);
+              
+                HOperatorSet.GenCircle(out cir, row, col, r);
+                ResObj = cir;
+                M_Calibration.Affine_XY(Path_calibration1, row, col, out RX1, out RY1);
+                //HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "X：" + row.D.ToString("F2"), "window", 12, 12, "black", new HTuple(), new HTuple());
+                //HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "Y：" + col.D.ToString("F2"), "window", 32, 12, "black", new HTuple(), new HTuple());
+
+
+              //  HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);     
+#endif
+
+
+                //旋转中心半径
+                double R = (Math.Sqrt(((RX0.D - dis_X.D) * (RX0.D - dis_X.D)) + ((RY0.D - dis_Y.D) * (RY0.D - dis_Y.D))));
                     //前后偏差角度
                     double dis_Angle;
                     if (!off_Angle_enabled)
@@ -2527,8 +2563,8 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                     }
 
                     //固定差距值
-                    double disX1 = (RX0 - RX1);
-                    double disY1 = (RY0 - RY1);
+                    double disX1 = (Picture_RobotX - RX1.D);
+                    double disY1 = (Picture_RobotY - RY1.D);
                     double lengrh_C = Math.Sqrt((disX1* disX1)+(disY1 * disY1));
                     double theta = Math.Atan(disX1 / disY1); // 计算 arctan(a / b) 的角度
 
@@ -2572,15 +2608,12 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
                     //offx = lengrh_C * Math.Sin(final_offR);
                     //offy = lengrh_C * Math.Cos(final_offR); 
-                    offx= final_disX;
-                    offy= final_disY;
+                    offx= disX1;
+                    offy= disY1;
                     offr = final_disR;
                     return true;
-                }
-                else
-                {
-                    return false;
-                }
+                
+             
 
             }
             catch (Exception)
@@ -2588,6 +2621,62 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
                 return false;
             }
+        }
+
+        public void find_circle(HObject ho_Image20230826183057975, out HTuple hv_Row,
+   out HTuple hv_Column, out HTuple hv_Radius)
+        {
+
+
+
+            // Local iconic variables 
+
+            HObject ho_ImageScaled, ho_Regions, ho_ConnectedRegions;
+            HObject ho_SelectedRegions, ho_SelectedRegions1;
+
+            // Local control variables 
+
+            HTuple hv_Number = new HTuple();
+            // Initialize local and output iconic variables 
+            HOperatorSet.GenEmptyObj(out ho_ImageScaled);
+            HOperatorSet.GenEmptyObj(out ho_Regions);
+            HOperatorSet.GenEmptyObj(out ho_ConnectedRegions);
+            HOperatorSet.GenEmptyObj(out ho_SelectedRegions);
+            HOperatorSet.GenEmptyObj(out ho_SelectedRegions1);
+            hv_Row = new HTuple();
+            hv_Column = new HTuple();
+            hv_Radius = new HTuple();
+            ho_ImageScaled.Dispose();
+            HOperatorSet.ScaleImage(ho_Image20230826183057975, out ho_ImageScaled, 4.9,
+                -500);
+            ho_Regions.Dispose();
+            HOperatorSet.Threshold(ho_ImageScaled, out ho_Regions, 0, 158);
+            ho_ConnectedRegions.Dispose();
+            HOperatorSet.Connection(ho_Regions, out ho_ConnectedRegions);
+            ho_SelectedRegions.Dispose();
+            HOperatorSet.SelectShape(ho_ConnectedRegions, out ho_SelectedRegions, "area",
+                "and", 1500, 129999);
+            ho_SelectedRegions1.Dispose();
+            HOperatorSet.SelectShape(ho_SelectedRegions, out ho_SelectedRegions1, "circularity",
+                "and", 0.8, 1);
+            hv_Number.Dispose();
+            HOperatorSet.CountObj(ho_SelectedRegions1, out hv_Number);
+            if ((int)(new HTuple(hv_Number.TupleEqual(1))) != 0)
+            {
+                hv_Row.Dispose(); hv_Column.Dispose(); hv_Radius.Dispose();
+                HOperatorSet.InnerCircle(ho_SelectedRegions1, out hv_Row, out hv_Column,
+                    out hv_Radius);
+
+            }
+            ho_ImageScaled.Dispose();
+            ho_Regions.Dispose();
+            ho_ConnectedRegions.Dispose();
+            ho_SelectedRegions.Dispose();
+            ho_SelectedRegions1.Dispose();
+
+            hv_Number.Dispose();
+
+            return;
         }
 
         private void Bg_PLC_heartbeat_DoWork(object sender, DoWorkEventArgs e)

@@ -43,6 +43,7 @@ namespace _6524
 
         //九点标定参数
         string Path_calibration1 = Application.StartupPath + @"\\calibration\calibration1.mat";
+        string Path_calibration0 = Application.StartupPath + @"\\calibration\calibration0.mat";
         string Path_calibration_Param = Application.StartupPath + @"\\calibration\Param.ini";
         Robotcalibration M_Calibration = new Robotcalibration();
         int Rotate_Number;
@@ -658,7 +659,14 @@ namespace _6524
 
 
                 //反推初始位置
-                M_Calibration.Affine_XY(Path_calibration1, PX0, PY0, out RX0, out RY0);
+                if (strHost == "1")
+                {
+                    M_Calibration.Affine_XY(Path_calibration0, PX0, PY0, out RX0, out RY0);
+                }
+                else
+                {
+                    M_Calibration.Affine_XY(Path_calibration1, PX0, PY0, out RX0, out RY0);
+                }
 
 
 
@@ -725,7 +733,15 @@ namespace _6524
                 r.Dispose();
                 find_circle(m_window.NowImage, out row, out col, out r);
                 HOperatorSet.GenCircle(out cir, row, col, r);
-                M_Calibration.Affine_XY(Path_calibration1, row, col, out RX1, out RY1);
+                if (strHost == "1")
+                {
+                    M_Calibration.Affine_XY(Path_calibration0, row, col, out RX1, out RY1);
+                }
+                else
+                {
+                    M_Calibration.Affine_XY(Path_calibration1, row, col, out RX1, out RY1);
+                }
+                   
                 //HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "X：" + row.D.ToString("F2"), "window", 12, 12, "black", new HTuple(), new HTuple());
                 //HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "Y：" + col.D.ToString("F2"), "window", 32, 12, "black", new HTuple(), new HTuple());
 
@@ -1164,11 +1180,11 @@ namespace _6524
                 {
                     #region 载入模板
                     string strHost = "Teach";
-                    //strHost = Interaction.InputBox("输入模板型号", "frrjiftest", strHost, 0, 0);
-                    //if (string.IsNullOrEmpty(strHost))
-                    //{
-                    //    System.Environment.Exit(0);
-                    //}
+                    strHost = Interaction.InputBox("输入模板型号", "frrjiftest", strHost, 0, 0);
+                    if (string.IsNullOrEmpty(strHost))
+                    {
+                        System.Environment.Exit(0);
+                    }
 
                     Shape_matching M_Shape_matching = new Shape_matching();
                     //模板匹配的参数
@@ -1370,7 +1386,14 @@ namespace _6524
                     PixelY = PY;
 
                     //创建标定文件
-                    M_Calibration.Create_calibration(PixelX, PixelY, RobotX, RobotY, Path_calibration1);
+                    if (strHost == "1")
+                    {
+                        M_Calibration.Create_calibration(PixelX, PixelY, RobotX, RobotY, Path_calibration0);
+                    }
+                    else
+                    {
+                        M_Calibration.Create_calibration(PixelX, PixelY, RobotX, RobotY, Path_calibration1);
+                    }
 
                     //创建旋转中心
                     if (Rotate_Number > 3)
@@ -1480,7 +1503,16 @@ namespace _6524
 
                                     N_PixelX = Convert.ToDouble(D_Teach_point.Rows[i][1].ToString());
                                     N_PixelY= Convert.ToDouble(D_Teach_point.Rows[i][2].ToString());
-                                    M_Calibration.Affine_XY(Path_calibration1, row, col, out A_RobotX, out A_RobotY);
+
+
+                                    if (strHost == "1")
+                                    {
+                                        M_Calibration.Affine_XY(Path_calibration0, row, col, out A_RobotX, out A_RobotY);
+                                    }
+                                    else
+                                    {
+                                        M_Calibration.Affine_XY(Path_calibration1, row, col, out A_RobotX, out A_RobotY);
+                                    }
 
                                      disoffx = Math.Abs(N_PixelX - A_RobotX.D);
                                      disoffy = Math.Abs(N_PixelY - A_RobotY.D);

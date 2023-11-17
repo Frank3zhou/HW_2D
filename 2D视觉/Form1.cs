@@ -2419,7 +2419,9 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
         private bool run_robot_camera(HObject IMG, ref double offx, ref double offy, ref double offr, ref HObject ResObj)
         {
             Robotcalibration M_Calibration = new Robotcalibration();
+
             string Path_calibration1 = Application.StartupPath + @"\\calibration\calibration1.mat";
+            string Path_calibration0 = Application.StartupPath + @"\\calibration\calibration0.mat";
             double offY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "compensate", "offY", "0"));
             double offX = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "compensate", "offX", "0"));
             double offR = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "compensate", "offR", "0"));
@@ -2501,8 +2503,15 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                 PY0 = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "ModelY", "0"));
                 PR0 = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Model_Angle", "0"));
 
-
-                M_Calibration.Affine_XY(Path_calibration1, PX0, PY0, out RX0, out RY0);
+                if (strHost == "1")
+                {
+                    M_Calibration.Affine_XY(Path_calibration0, PX0, PY0, out RX0, out RY0);
+                }
+                else
+                {
+                    M_Calibration.Affine_XY(Path_calibration1, PX0, PY0, out RX0, out RY0);
+                }
+              
 #if(false)
               
                 M_Shape_matching.img = IMG;
@@ -2531,7 +2540,16 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
               
                 HOperatorSet.GenCircle(out cir, row, col, r);
                 ResObj = cir;
-                M_Calibration.Affine_XY(Path_calibration1, row, col, out RX1, out RY1);
+                if (strHost == "1")
+                {
+                    M_Calibration.Affine_XY(Path_calibration0, row, col, out RX1, out RY1);
+                }
+                else
+                {
+                    M_Calibration.Affine_XY(Path_calibration1, row, col, out RX1, out RY1);
+                }
+
+                
                 //HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "X：" + row.D.ToString("F2"), "window", 12, 12, "black", new HTuple(), new HTuple());
                 //HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "Y：" + col.D.ToString("F2"), "window", 32, 12, "black", new HTuple(), new HTuple());
 

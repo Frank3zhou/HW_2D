@@ -184,9 +184,9 @@ namespace _6524
             m_DataTable.Columns.Add("相机编号", Type.GetType("System.Int32"));//
             m_DataTable.Columns.Add("拍照完成信号", Type.GetType("System.String"));//
             m_DataTable.Columns.Add("视觉算子编号", Type.GetType("System.Int32"));//
-            m_DataTable.Columns.Add("光源亮度", Type.GetType("System.Boolean"));
+            m_DataTable.Columns.Add("光源亮度", Type.GetType("System.Int32"));
             m_DataTable.Columns.Add("是否存图", Type.GetType("System.Boolean"));//是否后台运行
-            m_DataTable.Columns.Add("工位", Type.GetType("System.Boolean"));
+            m_DataTable.Columns.Add("工位", Type.GetType("System.Int32"));
             m_DataTable.Columns.Add("是否后台运行", Type.GetType("System.Boolean"));
 
             for (int i = 0; i < Number; i++)

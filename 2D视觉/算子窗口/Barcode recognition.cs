@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -45,6 +46,7 @@ namespace _6524
             m_ZKHwindows.Dock = DockStyle.Fill;
             panel2.Controls.Add(m_ZKHwindows);
             HOperatorSet.SetDraw(m_ZKHwindows.hWindowControl.HalconWindow, "fill");
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -492,7 +494,14 @@ namespace _6524
                     if (result != null)
                     {
                         disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "OCR内容:" + result.ToString(), "window", 12, 12, "black", "true");
-
+                        if (result == textBox6.Text)
+                        {
+                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "结果对比:" + "OK", "window", 32, 12, "black", "true");
+                        }
+                        else 
+                        {
+                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "结果对比:" + "NG", "window", 32, 12, "black", "true");
+                        }
 
                         HOperatorSet.SetDraw(m_ZKHwindows.hWindowControl.HalconWindow, "margin");
                         HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "blue");
@@ -656,6 +665,31 @@ namespace _6524
             IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Type", comboBox3.Text);
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            { 
+                   panel3.Enabled= true;
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Use_Result", checkBox1.Checked.ToString());
+            }
+            else
+            {
+                panel3.Enabled = false;
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Use_Result", checkBox1.Checked.ToString());
+            }
+        }
 
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Result", textBox6.Text);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool Use_Result =Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Use_Result", "false")) ;
+            checkBox1.Checked = Use_Result;
+            string Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Result", "0");
+            textBox6.Text = Result;
+        }
     }
 }

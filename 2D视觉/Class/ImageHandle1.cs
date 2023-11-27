@@ -130,12 +130,12 @@ namespace _6524.Class
                 "and", 0.8, 1);
             ho_SelectedRegions3.Dispose();
             HOperatorSet.SelectShape(ho_SelectedRegions2, out ho_SelectedRegions3, "area",
-                "and", 10000, 999999);
+                "and", 3000, 999999);
             hv_Number.Dispose();
 
             HOperatorSet.CountObj(ho_SelectedRegions3, out hv_Number);
             ho_DilationCircle.Dispose();
-            HOperatorSet.DilationCircle(ho_SelectedRegions3, out ho_DilationCircle, 20); 
+            HOperatorSet.DilationCircle(ho_SelectedRegions3, out ho_DilationCircle, 5); 
 
 
 

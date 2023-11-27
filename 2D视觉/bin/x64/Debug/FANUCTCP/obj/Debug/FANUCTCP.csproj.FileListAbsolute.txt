@@ -83,3 +83,13 @@ F:\2d\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.ResolveCom
 F:\2d\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.CoreCompileInputs.cache
 F:\2d\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.exe
 F:\2d\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.pdb
+E:\git_2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\bin\Debug\FANUCTCP.exe.config
+E:\git_2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\bin\Debug\FANUCTCP.exe
+E:\git_2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\bin\Debug\FANUCTCP.pdb
+E:\git_2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.AssemblyReference.cache
+E:\git_2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\Interop.FRRJIf.dll
+E:\git_2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\Interop.FRRobotIFLib.dll
+E:\git_2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.ResolveComReference.cache
+E:\git_2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.CoreCompileInputs.cache
+E:\git_2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.exe
+E:\git_2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.pdb

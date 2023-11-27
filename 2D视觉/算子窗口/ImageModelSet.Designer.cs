@@ -98,7 +98,7 @@
             this.panel1.Controls.Add(this.选择模型);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(181, 679);
             this.panel1.TabIndex = 0;
@@ -129,9 +129,9 @@
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 342);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(181, 337);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
@@ -140,7 +140,7 @@
             // textBox10
             // 
             this.textBox10.Location = new System.Drawing.Point(92, 275);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(76, 21);
             this.textBox10.TabIndex = 20;
@@ -169,7 +169,7 @@
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(92, 56);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(76, 21);
             this.textBox7.TabIndex = 15;
@@ -180,7 +180,7 @@
             this.panel3.Controls.Add(this.comboBox2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(2, 16);
-            this.panel3.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.panel3.Margin = new System.Windows.Forms.Padding(8);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(177, 30);
             this.panel3.TabIndex = 0;
@@ -189,7 +189,7 @@
             // 
             this.button5.Dock = System.Windows.Forms.DockStyle.Right;
             this.button5.Location = new System.Drawing.Point(91, 0);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(86, 30);
             this.button5.TabIndex = 13;
@@ -209,7 +209,7 @@
             "4",
             "5"});
             this.comboBox2.Location = new System.Drawing.Point(0, 0);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(82, 28);
             this.comboBox2.TabIndex = 12;
@@ -218,7 +218,7 @@
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(92, 126);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(76, 21);
             this.textBox6.TabIndex = 18;
@@ -226,7 +226,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(14, 298);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(153, 30);
             this.button1.TabIndex = 10;
@@ -237,7 +237,7 @@
             // textBox9
             // 
             this.textBox9.Location = new System.Drawing.Point(92, 79);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(2);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(76, 21);
             this.textBox9.TabIndex = 16;
@@ -245,7 +245,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(92, 240);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(76, 21);
             this.textBox5.TabIndex = 9;
@@ -303,7 +303,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(92, 218);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(76, 21);
             this.textBox4.TabIndex = 8;
@@ -311,7 +311,7 @@
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(92, 102);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(76, 21);
             this.textBox8.TabIndex = 17;
@@ -329,7 +329,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(92, 148);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(76, 21);
             this.textBox1.TabIndex = 5;
@@ -337,7 +337,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(92, 194);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(76, 21);
             this.textBox3.TabIndex = 7;
@@ -365,7 +365,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(92, 171);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(76, 21);
             this.textBox2.TabIndex = 6;
@@ -378,9 +378,9 @@
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 53);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(181, 289);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
@@ -393,9 +393,9 @@
             this.groupBox5.Controls.Add(this.trackBar8);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox5.Location = new System.Drawing.Point(2, 149);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox5.Size = new System.Drawing.Size(177, 103);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
@@ -407,9 +407,9 @@
             this.groupBox6.Controls.Add(this.trackBar6);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox6.Location = new System.Drawing.Point(2, 106);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox6.Size = new System.Drawing.Size(173, 103);
             this.groupBox6.TabIndex = 14;
             this.groupBox6.TabStop = false;
@@ -419,7 +419,7 @@
             // 
             this.trackBar5.Dock = System.Windows.Forms.DockStyle.Top;
             this.trackBar5.Location = new System.Drawing.Point(2, 61);
-            this.trackBar5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar5.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar5.Name = "trackBar5";
             this.trackBar5.Size = new System.Drawing.Size(169, 45);
             this.trackBar5.TabIndex = 1;
@@ -428,7 +428,7 @@
             // 
             this.trackBar6.Dock = System.Windows.Forms.DockStyle.Top;
             this.trackBar6.Location = new System.Drawing.Point(2, 16);
-            this.trackBar6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar6.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar6.Name = "trackBar6";
             this.trackBar6.Size = new System.Drawing.Size(169, 45);
             this.trackBar6.TabIndex = 0;
@@ -437,7 +437,7 @@
             // 
             this.trackBar7.Dock = System.Windows.Forms.DockStyle.Top;
             this.trackBar7.Location = new System.Drawing.Point(2, 61);
-            this.trackBar7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar7.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar7.Maximum = 255;
             this.trackBar7.Name = "trackBar7";
             this.trackBar7.Size = new System.Drawing.Size(173, 45);
@@ -449,7 +449,7 @@
             // 
             this.trackBar8.Dock = System.Windows.Forms.DockStyle.Top;
             this.trackBar8.Location = new System.Drawing.Point(2, 16);
-            this.trackBar8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar8.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar8.Maximum = 255;
             this.trackBar8.Name = "trackBar8";
             this.trackBar8.Size = new System.Drawing.Size(173, 45);
@@ -460,7 +460,7 @@
             // 
             this.button4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button4.Location = new System.Drawing.Point(2, 257);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(177, 30);
             this.button4.TabIndex = 13;
@@ -475,9 +475,9 @@
             this.groupBox3.Controls.Add(this.trackBar1);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.Location = new System.Drawing.Point(2, 46);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(177, 103);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
@@ -490,9 +490,9 @@
             this.groupBox4.Controls.Add(this.trackBar4);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.Location = new System.Drawing.Point(2, 106);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(173, 103);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
@@ -502,7 +502,7 @@
             // 
             this.trackBar3.Dock = System.Windows.Forms.DockStyle.Top;
             this.trackBar3.Location = new System.Drawing.Point(2, 61);
-            this.trackBar3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar3.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar3.Name = "trackBar3";
             this.trackBar3.Size = new System.Drawing.Size(169, 45);
             this.trackBar3.TabIndex = 1;
@@ -511,7 +511,7 @@
             // 
             this.trackBar4.Dock = System.Windows.Forms.DockStyle.Top;
             this.trackBar4.Location = new System.Drawing.Point(2, 16);
-            this.trackBar4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar4.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar4.Name = "trackBar4";
             this.trackBar4.Size = new System.Drawing.Size(169, 45);
             this.trackBar4.TabIndex = 0;
@@ -520,7 +520,7 @@
             // 
             this.trackBar2.Dock = System.Windows.Forms.DockStyle.Top;
             this.trackBar2.Location = new System.Drawing.Point(2, 61);
-            this.trackBar2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar2.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar2.Maximum = 255;
             this.trackBar2.Minimum = 10;
             this.trackBar2.Name = "trackBar2";
@@ -533,7 +533,7 @@
             // 
             this.trackBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.trackBar1.Location = new System.Drawing.Point(2, 16);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar1.Maximum = 245;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(173, 45);
@@ -544,7 +544,7 @@
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Top;
             this.button3.Location = new System.Drawing.Point(2, 16);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(177, 30);
             this.button3.TabIndex = 12;
@@ -557,9 +557,9 @@
             this.选择模型.Controls.Add(this.comboBox1);
             this.选择模型.Dock = System.Windows.Forms.DockStyle.Top;
             this.选择模型.Location = new System.Drawing.Point(0, 0);
-            this.选择模型.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.选择模型.Margin = new System.Windows.Forms.Padding(2);
             this.选择模型.Name = "选择模型";
-            this.选择模型.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.选择模型.Padding = new System.Windows.Forms.Padding(2);
             this.选择模型.Size = new System.Drawing.Size(181, 53);
             this.选择模型.TabIndex = 1;
             this.选择模型.TabStop = false;
@@ -581,7 +581,7 @@
             "8",
             "9"});
             this.comboBox1.Location = new System.Drawing.Point(19, 18);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(144, 28);
             this.comboBox1.TabIndex = 0;
@@ -591,9 +591,9 @@
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(181, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Padding = new System.Windows.Forms.Padding(4);
             this.panel2.Size = new System.Drawing.Size(737, 679);
             this.panel2.TabIndex = 1;
             // 
@@ -604,7 +604,7 @@
             this.ClientSize = new System.Drawing.Size(918, 679);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ImageModelSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ImageModelSet";

@@ -3,6 +3,7 @@ using HalconDotNet;
 using HslCommunication;
 using HslCommunication.LogNet;
 using HslCommunication.Profinet.Melsec;
+using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1699,6 +1700,9 @@ namespace _6524
                         double PI = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "PI", "0"));
                         string Recognition = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Recognition", "0");
                         string type = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Type", "0");
+                        bool Use_Result = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Use_Result", "false"));
+                       // checkBox1.Checked = Use_Result;
+                        string Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Result", "0");
 
                         if (Recognition == "二维码")
                         {
@@ -1759,7 +1763,8 @@ namespace _6524
                             if (result != null)
                             {
                                 disp_message(HWindowshandle, "OCR内容:" + result.ToString(), "window", 12, 12, "black", "true");
-
+                                disp_message(HWindowshandle, "OCR内容:" + result.ToString(), "window", 12, 12, "black", "true");
+                               
 
                                 HOperatorSet.SetDraw(HWindowshandle, "margin");
                                 HOperatorSet.SetColor(HWindowshandle, "blue");
@@ -1767,7 +1772,25 @@ namespace _6524
                                 HOperatorSet.DispObj(rectange, HWindowshandle);
                                 HOperatorSet.SetColor(HWindowshandle, "green");
                                 HOperatorSet.DispObj(rectangexld, HWindowshandle);
-                                resultall = true;
+
+                                if (Use_Result)
+                                {
+                                    if (result == Result)
+                                    {
+                                        disp_message(HWindowshandle, "对比结果:" + "OK", "window", 32, 12, "black", "true");
+                                        resultall = true;
+                                    }
+                                    else
+                                    {
+                                        disp_message(HWindowshandle, "对比结果:" + "NG", "window", 32, 12, "black", "true");
+                                        resultall = false;
+                                    }
+                                }
+                                else
+                                {
+                                    resultall = true;
+                                }
+
                             }
                             else
                             {

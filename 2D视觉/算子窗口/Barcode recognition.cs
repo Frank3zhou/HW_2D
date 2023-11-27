@@ -444,6 +444,10 @@ namespace _6524
                 double PI = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "PI", "0"));
                 string Recognition = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Recognition", "0");
                  string   type= IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Type", "0");
+                bool Use_Result = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Use_Result", "false"));
+              //  checkBox1.Checked = Use_Result;
+                string Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Result", "0");
+              //  textBox6.Text = Result;
 
                 if (Recognition == "二维码")
                 {
@@ -494,14 +498,18 @@ namespace _6524
                     if (result != null)
                     {
                         disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "OCR内容:" + result.ToString(), "window", 12, 12, "black", "true");
-                        if (result == textBox6.Text)
+                        if (Use_Result)
                         {
-                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "结果对比:" + "OK", "window", 32, 12, "black", "true");
+                            if (result == Result)
+                            {
+                                disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "结果对比:" + "OK", "window", 32, 12, "black", "true");
+                            }
+                            else
+                            {
+                                disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "结果对比:" + "NG", "window", 32, 12, "black", "true");
+                            }
                         }
-                        else 
-                        {
-                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "结果对比:" + "NG", "window", 32, 12, "black", "true");
-                        }
+                       
 
                         HOperatorSet.SetDraw(m_ZKHwindows.hWindowControl.HalconWindow, "margin");
                         HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "blue");

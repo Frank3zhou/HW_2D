@@ -699,5 +699,28 @@ namespace _6524
             string Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Result", "0");
             textBox6.Text = Result;
         }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+ 
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "rotate", numericUpDown1.Value.ToString());
+            string rotate = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "rotate", "0");
+            if (m_ZKHwindows.NowImage != null)
+            {
+                HObject rotateimage;
+                HOperatorSet.RotateImage(img, out rotateimage, Convert.ToDouble(rotate), "constant");
+                img = rotateimage;
+                m_ZKHwindows.NowImage=rotateimage;
+                sacleimg = rotateimage; 
+            }
+        }
     }
 }

@@ -1703,6 +1703,14 @@ namespace _6524
                         bool Use_Result = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Use_Result", "false"));
                        // checkBox1.Checked = Use_Result;
                         string Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Result", "0");
+                        string rotate = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "rotate", "0");
+                        if (img != null)
+                        {
+                            HObject rotateimage;
+                            HOperatorSet.RotateImage(img, out rotateimage, Convert.ToDouble(rotate), "constant");
+                            img = rotateimage;
+                            HOperatorSet.DispObj(img, HWindowshandle);
+                        }
 
                         if (Recognition == "二维码")
                         {

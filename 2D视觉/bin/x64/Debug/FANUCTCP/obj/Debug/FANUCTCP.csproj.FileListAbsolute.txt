@@ -44,7 +44,6 @@ D:\2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\bin\Debug\FANUCTCP.exe.config
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\bin\Debug\FANUCTCP.exe
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\bin\Debug\FANUCTCP.pdb
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.AssemblyReference.cache
-D:\2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.SuggestedBindingRedirects.cache
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\Interop.FRRJIf.dll
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\Interop.FRRobotIFLib.dll
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.ResolveComReference.cache

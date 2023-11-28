@@ -1256,7 +1256,6 @@ D:\2D\HW_2D\2D视觉\bin\x64\Debug\ICSharpCode.SharpZipLib.pdb
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\ICSharpCode.SharpZipLib.xml
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\MathNet.Numerics.xml
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\Microsoft.IO.RecyclableMemoryStream.xml
-D:\2D\HW_2D\2D视觉\bin\x64\Debug\MvCameraControl.Net.xml
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\Newtonsoft.Json.xml
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\NPOI.Core.pdb
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\NPOI.Core.xml
@@ -1280,7 +1279,6 @@ D:\2D\HW_2D\2D视觉\bin\x64\Debug\System.Security.Permissions.xml
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\System.Security.Principal.Windows.xml
 D:\2D\HW_2D\2D视觉\bin\x64\Debug\System.Text.Encoding.CodePages.xml
 D:\2D\HW_2D\2D视觉\obj\x64\Debug\6524.csproj.AssemblyReference.cache
-D:\2D\HW_2D\2D视觉\obj\x64\Debug\6524.csproj.SuggestedBindingRedirects.cache
 D:\2D\HW_2D\2D视觉\obj\x64\Debug\Interop.FRRJIf.dll
 D:\2D\HW_2D\2D视觉\obj\x64\Debug\Interop.FRRobotIFLib.dll
 D:\2D\HW_2D\2D视觉\obj\x64\Debug\6524.csproj.ResolveComReference.cache
@@ -1804,3 +1802,4 @@ E:\git_2D\HW_2D\2D视觉\obj\x64\Debug\zh\6524.resources.dll
 E:\git_2D\HW_2D\2D视觉\obj\x64\Debug\6524.csproj.CopyComplete
 E:\git_2D\HW_2D\2D视觉\obj\x64\Debug\6524.exe
 E:\git_2D\HW_2D\2D视觉\obj\x64\Debug\6524.pdb
+D:\2D\HW_2D\2D视觉\bin\x64\Debug\MvCameraControl.Net.dll

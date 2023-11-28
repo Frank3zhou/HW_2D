@@ -346,17 +346,17 @@ namespace _6524
         {
 
 
-            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleStartX" + comboBox2.SelectedIndex.ToString(), textBox7.Text);
-            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleStartY" + comboBox2.SelectedIndex.ToString(), textBox9.Text);
-            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleEndX" + comboBox2.SelectedIndex.ToString(), textBox8.Text);
-            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleEndY" + comboBox2.SelectedIndex.ToString(), textBox6.Text);
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartX" + comboBox2.SelectedIndex.ToString(), textBox7.Text);
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartY" + comboBox2.SelectedIndex.ToString(), textBox9.Text);
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndX" + comboBox2.SelectedIndex.ToString(), textBox8.Text);
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndY" + comboBox2.SelectedIndex.ToString(), textBox6.Text);
        
 
-            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "eccentricity" + comboBox2.SelectedIndex.ToString(), textBox1.Text);
-            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "row" + comboBox2.SelectedIndex.ToString(), textBox2.Text);
-            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "col" + comboBox2.SelectedIndex.ToString(), textBox3.Text);
-            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Ridusmin" + comboBox2.SelectedIndex.ToString(), textBox4.Text);
-            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Ridusmax" + comboBox2.SelectedIndex.ToString(), textBox5.Text);
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "eccentricity" + comboBox2.SelectedIndex.ToString(), textBox1.Text);
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "row" + comboBox2.SelectedIndex.ToString(), textBox2.Text);
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "col" + comboBox2.SelectedIndex.ToString(), textBox3.Text);
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmin" + comboBox2.SelectedIndex.ToString(), textBox4.Text);
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmax" + comboBox2.SelectedIndex.ToString(), textBox5.Text);
 
        
         
@@ -365,17 +365,17 @@ namespace _6524
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)//切换运行编号参数按钮
         {
-            textBox1.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "eccentricity" + comboBox2.SelectedIndex.ToString(), "75");
-            textBox2.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "row" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox3.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "col" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox4.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Ridusmin" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox5.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Ridusmax" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox1.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "eccentricity" + comboBox2.SelectedIndex.ToString(), "75");
+            textBox2.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "row" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox3.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "col" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox4.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmin" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox5.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmax" + comboBox2.SelectedIndex.ToString(), "0");
 
-            textBox7.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleStartX" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox9.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleStartY" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox8.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleEndX" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox6.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleEndY" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox10.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Usecount" , "0");
+            textBox7.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartX" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox9.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartY" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox8.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndX" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox6.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndY" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox10.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Usecount" , "0");
         }
 
         private void button4_Click(object sender, EventArgs e)//测试按钮
@@ -384,11 +384,11 @@ namespace _6524
             {
 
 
-                double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Mult", "75"));
-                double Add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Add", "75"));
-                double MinThreshold = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "MinThreshold", "75"));
-                double MaxThreshold = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "MaxThreshold", "75"));
-                int holeCount = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Usecount", "1"));
+                double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Mult", "75"));
+                double Add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Add", "75"));
+                double MinThreshold = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "MinThreshold", "75"));
+                double MaxThreshold = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "MaxThreshold", "75"));
+                int holeCount = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Usecount", "1"));
 
 
                 HObject Rectangle;
@@ -398,15 +398,15 @@ namespace _6524
                 for (int i = 0; i < holeCount; i++)
                 {
                     lastResult = new LastResult();
-                    int Dis_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "eccentricity" + (i).ToString(), "75"));
-                    int lim_Row = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "row" + (i).ToString(), "75"));
-                    int lim_Column = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "col" + (i).ToString(), "75"));
-                    int Min_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Ridusmin" + (i).ToString(), "75"));
-                    int Max_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Ridusmax" + (i).ToString(), "75"));
-                    double RectangleStartX = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleStartX" + (i).ToString(), "75"));
-                    double RectangleStartY = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleStartY" + (i).ToString(), "75"));
-                    double RectangleEndX = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleEndX" + (i).ToString(), "75"));
-                    double RectangleEndY = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleEndY" + (i).ToString(), "75"));
+                    int Dis_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "eccentricity" + (i).ToString(), "75"));
+                    int lim_Row = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "row" + (i).ToString(), "75"));
+                    int lim_Column = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "col" + (i).ToString(), "75"));
+                    int Min_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmin" + (i).ToString(), "75"));
+                    int Max_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmax" + (i).ToString(), "75"));
+                    double RectangleStartX = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartX" + (i).ToString(), "75"));
+                    double RectangleStartY = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartY" + (i).ToString(), "75"));
+                    double RectangleEndX = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndX" + (i).ToString(), "75"));
+                    double RectangleEndY = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndY" + (i).ToString(), "75"));
 
 
 
@@ -521,8 +521,8 @@ namespace _6524
                 add = (Mult * trackBar1.Value) * -1;
                 HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
                 m_ZKHwindows.NowImage = outimg;
-                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Mult", Mult.ToString());
-                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Add", add.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Mult", Mult.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Add", add.ToString());
     
             }
         }
@@ -542,8 +542,8 @@ namespace _6524
                 add = (Mult * trackBar1.Value) * -1;
                 HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
                 m_ZKHwindows.NowImage = outimg;
-                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Mult", Mult.ToString());
-                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Add", add.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Mult", Mult.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Add", add.ToString());
           
             }
 
@@ -565,8 +565,8 @@ namespace _6524
                 HOperatorSet.Threshold(m_ZKHwindows.NowImage, out outreg, trackBar8.Value, trackBar7.Value);
                 HOperatorSet.DispObj(outreg, m_ZKHwindows.hWindowControl.HalconWindow);
 
-                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "MinThreshold", trackBar8.Value.ToString());
-                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "MaxThreshold", trackBar7.Value.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "MinThreshold", trackBar8.Value.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "MaxThreshold", trackBar7.Value.ToString());
             }
         }
 
@@ -585,8 +585,8 @@ namespace _6524
                 HOperatorSet.Threshold(m_ZKHwindows.NowImage, out outreg, trackBar8.Value, trackBar7.Value);
                 HOperatorSet.DispObj(outreg, m_ZKHwindows.hWindowControl.HalconWindow);
 
-                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "MinThreshold", trackBar8.Value.ToString());
-                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "MaxThreshold", trackBar7.Value.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "MinThreshold", trackBar8.Value.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "MaxThreshold", trackBar7.Value.ToString());
             }
         }
 
@@ -662,21 +662,21 @@ namespace _6524
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)//切换孔位参数编号按钮
         {
-            textBox1.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "eccentricity" + comboBox2.SelectedIndex.ToString(), "75");
-            textBox2.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "row" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox3.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "col" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox4.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Ridusmin" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox5.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Ridusmax" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox1.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "eccentricity" + comboBox2.SelectedIndex.ToString(), "75");
+            textBox2.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "row" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox3.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "col" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox4.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmin" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox5.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmax" + comboBox2.SelectedIndex.ToString(), "0");
 
-            textBox7.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleStartX" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox9.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleStartY" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox8.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleEndX" + comboBox2.SelectedIndex.ToString(), "0");
-            textBox6.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "RectangleEndY" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox7.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartX" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox9.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartY" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox8.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndX" + comboBox2.SelectedIndex.ToString(), "0");
+            textBox6.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndY" + comboBox2.SelectedIndex.ToString(), "0");
         }
 
         private void textBox10_TextChanged(object sender, EventArgs e)
         {
-            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.SelectedIndex.ToString(), "Usecount", textBox10.Text);
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Usecount", textBox10.Text);
         }
     }
 

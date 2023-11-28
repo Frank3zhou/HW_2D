@@ -35,7 +35,7 @@ namespace _6524
         string Path_calibration_Param = Application.StartupPath + @"\\calibration\Param.ini";
         bool heartbeat_enabled;
         string heartbeat_path;
-        private static string comname = "COM2";
+        private static string comname = "COM1";
         CameraParam cameraParam;
         Camera_Form camera_Form;
         State state = new State();

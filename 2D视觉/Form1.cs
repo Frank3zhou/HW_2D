@@ -1049,8 +1049,8 @@ namespace _6524
 
 
             #region 发送结果
-
-            if (Convert.ToInt32(d1.Rows[i][0]) == d1.Rows.Count)
+            int result_count = imageresult1.Count + imageresult2.Count + imageresult3.Count + imageresult4.Count;
+            if (result_count == d1.Rows.Count)
             {
                 int statenum = 1;
                 for (int X = 0; X < d2.Rows.Count; X++)

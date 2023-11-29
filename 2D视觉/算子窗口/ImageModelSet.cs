@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.PeerToPeer;
 using System.Text;
@@ -24,6 +25,8 @@ namespace _6524
         HObject sacleimg = new HObject();
         double Mult;
         double add;
+        List<string> listimage;
+        int listimageindex=0;
         public ImageModelSet()
         {
             InitializeComponent();
@@ -677,6 +680,329 @@ namespace _6524
         private void textBox10_TextChanged(object sender, EventArgs e)
         {
             IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Usecount", textBox10.Text);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+            
+                string path = choose_DC();
+                DirectoryInfo folder = new DirectoryInfo(path);
+                FileSystemInfo fileinfo1 = folder as FileSystemInfo;
+                 listimage = new List<string>();
+                ListFiles(fileinfo1, listimage);
+
+                HOperatorSet.ReadImage(out img, listimage[0]);
+                m_ZKHwindows.NowImage = img;
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        public string choose_DC()
+        {
+            try
+            {
+                FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+
+                // 设置对话框的标题
+                folderBrowserDialog1.Description = "选择文件夹";
+
+                // 打开文件夹对话框并检查用户是否选择了文件夹
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    // 获取所选文件夹的路径
+                    return folderBrowserDialog1.SelectedPath;
+
+                    // 在控制台输出所选文件夹的路径
+                    //Console.WriteLine("所选文件夹的路径是: " + selectedFolderPath);
+                }
+                else { return null; }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+        }
+
+        public void ListFiles(FileSystemInfo info,List<string> listPics)
+        {
+
+            DirectoryInfo dir = info as DirectoryInfo;
+
+            FileSystemInfo[] files = dir.GetFileSystemInfos();
+            for (int i = 0; i < files.Length; i++)
+            {
+                FileInfo file = files[i] as FileInfo;
+                //是文件
+                if (file != null)
+                {
+                    string extension = Path.GetExtension(file.Name);
+                    if (extension.ToUpper() == ".BMP")
+                        listPics.Add(file.FullName);
+                }
+              
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+
+            if (listimage.Count > 0)
+            {
+                try
+                {
+                    listimageindex++;
+                    double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Mult", "75"));
+                    double Add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Add", "75"));
+                    double MinThreshold = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "MinThreshold", "75"));
+                    double MaxThreshold = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "MaxThreshold", "75"));
+                    int holeCount = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Usecount", "1"));
+
+                    HOperatorSet.ReadImage(out img, listimage[listimageindex]);
+                    m_ZKHwindows.NowImage = img;
+
+
+                    HObject Rectangle;
+                    HObject Circle;
+                    List<LastResult> LastResult = new List<LastResult>();
+                    LastResult lastResult;
+
+
+
+                    for (int i = 0; i < holeCount; i++)
+                    {
+                        lastResult = new LastResult();
+                        int Dis_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "eccentricity" + (i).ToString(), "75"));
+                        int lim_Row = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "row" + (i).ToString(), "75"));
+                        int lim_Column = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "col" + (i).ToString(), "75"));
+                        int Min_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmin" + (i).ToString(), "75"));
+                        int Max_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmax" + (i).ToString(), "75"));
+                        double RectangleStartX = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartX" + (i).ToString(), "75"));
+                        double RectangleStartY = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartY" + (i).ToString(), "75"));
+                        double RectangleEndX = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndX" + (i).ToString(), "75"));
+                        double RectangleEndY = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndY" + (i).ToString(), "75"));
+
+
+
+
+                        Circle = new HObject();
+                        HTuple row = new HTuple();
+                        HTuple cloumn = new HTuple();
+                        HTuple Radius = new HTuple();
+                        HTuple Distance = new HTuple();
+                        Rectangle = new HObject();
+
+                        ImageHandle1 m_imageHandle0 = new ImageHandle1();
+
+
+                        //偏心距限制
+                        m_imageHandle0.Dis_R = Dis_R;
+                        //初始圆心X
+                        m_imageHandle0.lim_Row = lim_Row;
+                        //初始圆心Y
+                        m_imageHandle0.lim_Column = lim_Column;
+                        //结果最大半径
+                        m_imageHandle0.Min_R = Min_R;
+                        //结果最小半径
+                        m_imageHandle0.Max_R = Max_R;
+
+                        m_imageHandle0.Mult = Mult;
+                        m_imageHandle0.Add = Add;
+                        m_imageHandle0.MinThreshold = MinThreshold;
+                        m_imageHandle0.MaxThreshod = MaxThreshold;
+
+                        m_imageHandle0.RectangestartX = RectangleStartX;
+                        m_imageHandle0.RectangestartY = RectangleStartY;
+                        m_imageHandle0.RectangeendX = RectangleEndX;
+                        m_imageHandle0.RectangeendY = RectangleEndY;
+
+
+
+
+
+
+                        bool result = m_imageHandle0.Judgment6524(img, out Rectangle, out Circle, out row, out cloumn, out Radius, out Distance);
+                        lastResult.Result = result;
+                        lastResult.Row = row;
+                        lastResult.Col = cloumn;
+                        lastResult.Radius = Radius;
+                        lastResult.Circle = Circle;
+                        lastResult.Retange = Rectangle;
+                        lastResult.Distance = Distance;
+                        LastResult.Add(lastResult);
+
+
+
+                    }
+                    for (int i = 0; i < LastResult.Count; i++)
+                    {
+                        if (LastResult[i].Row.Length != 0)
+                        {
+                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "X:" + LastResult[i].Row.D.ToString(), "window", 12, (i * 150) + 12, "black", "true");
+                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "Y:" + LastResult[i].Col.D.ToString(), "window", 32, (i * 150) + 12, "black",
+                                "true");
+                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "半径：" + LastResult[i].Radius.D.ToString(), "window",
+                                52, (i * 150) + 12, "black", "true");
+                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "偏心距：" + LastResult[i].Distance.D.ToString("F0"), "window",
+                         72, (i * 150) + 12, "black", "true");
+
+                            HOperatorSet.SetDraw(m_ZKHwindows.hWindowControl.HalconWindow, "margin");
+                            HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "blue");
+                            HOperatorSet.DispObj(LastResult[i].Retange, m_ZKHwindows.hWindowControl.HalconWindow);
+                            if (LastResult[i].Result)
+                            {
+                                HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "green");
+                            }
+                            else
+                            {
+                                HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "red");
+                            }
+                            HOperatorSet.DispObj(LastResult[i].Circle, m_ZKHwindows.hWindowControl.HalconWindow);
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("图片不存在或已经是最后一张");
+                }
+            }
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if(listimage.Count>0)
+            {
+                try
+                {
+                    listimageindex--;
+                    double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Mult", "75"));
+                    double Add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Add", "75"));
+                    double MinThreshold = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "MinThreshold", "75"));
+                    double MaxThreshold = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "MaxThreshold", "75"));
+                    int holeCount = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Usecount", "1"));
+
+                    HOperatorSet.ReadImage(out img, listimage[listimageindex]);
+                    m_ZKHwindows.NowImage = img;
+
+
+                    HObject Rectangle;
+                    HObject Circle;
+                    List<LastResult> LastResult = new List<LastResult>();
+                    LastResult lastResult;
+
+
+
+                    for (int i = 0; i < holeCount; i++)
+                    {
+                        lastResult = new LastResult();
+                        int Dis_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "eccentricity" + (i).ToString(), "75"));
+                        int lim_Row = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "row" + (i).ToString(), "75"));
+                        int lim_Column = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "col" + (i).ToString(), "75"));
+                        int Min_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmin" + (i).ToString(), "75"));
+                        int Max_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Ridusmax" + (i).ToString(), "75"));
+                        double RectangleStartX = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartX" + (i).ToString(), "75"));
+                        double RectangleStartY = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleStartY" + (i).ToString(), "75"));
+                        double RectangleEndX = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndX" + (i).ToString(), "75"));
+                        double RectangleEndY = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RectangleEndY" + (i).ToString(), "75"));
+
+
+
+
+                        Circle = new HObject();
+                        HTuple row = new HTuple();
+                        HTuple cloumn = new HTuple();
+                        HTuple Radius = new HTuple();
+                        HTuple Distance = new HTuple();
+                        Rectangle = new HObject();
+
+                        ImageHandle1 m_imageHandle0 = new ImageHandle1();
+
+
+                        //偏心距限制
+                        m_imageHandle0.Dis_R = Dis_R;
+                        //初始圆心X
+                        m_imageHandle0.lim_Row = lim_Row;
+                        //初始圆心Y
+                        m_imageHandle0.lim_Column = lim_Column;
+                        //结果最大半径
+                        m_imageHandle0.Min_R = Min_R;
+                        //结果最小半径
+                        m_imageHandle0.Max_R = Max_R;
+
+                        m_imageHandle0.Mult = Mult;
+                        m_imageHandle0.Add = Add;
+                        m_imageHandle0.MinThreshold = MinThreshold;
+                        m_imageHandle0.MaxThreshod = MaxThreshold;
+
+                        m_imageHandle0.RectangestartX = RectangleStartX;
+                        m_imageHandle0.RectangestartY = RectangleStartY;
+                        m_imageHandle0.RectangeendX = RectangleEndX;
+                        m_imageHandle0.RectangeendY = RectangleEndY;
+
+
+
+
+
+
+                        bool result = m_imageHandle0.Judgment6524(img, out Rectangle, out Circle, out row, out cloumn, out Radius, out Distance);
+                        lastResult.Result = result;
+                        lastResult.Row = row;
+                        lastResult.Col = cloumn;
+                        lastResult.Radius = Radius;
+                        lastResult.Circle = Circle;
+                        lastResult.Retange = Rectangle;
+                        lastResult.Distance = Distance;
+                        LastResult.Add(lastResult);
+
+
+
+                    }
+                    for (int i = 0; i < LastResult.Count; i++)
+                    {
+                        if (LastResult[i].Row.Length != 0)
+                        {
+                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "X:" + LastResult[i].Row.D.ToString(), "window", 12, (i * 150) + 12, "black", "true");
+                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "Y:" + LastResult[i].Col.D.ToString(), "window", 32, (i * 150) + 12, "black",
+                                "true");
+                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "半径：" + LastResult[i].Radius.D.ToString(), "window",
+                                52, (i * 150) + 12, "black", "true");
+                            disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "偏心距：" + LastResult[i].Distance.D.ToString("F0"), "window",
+                         72, (i * 150) + 12, "black", "true");
+
+                            HOperatorSet.SetDraw(m_ZKHwindows.hWindowControl.HalconWindow, "margin");
+                            HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "blue");
+                            HOperatorSet.DispObj(LastResult[i].Retange, m_ZKHwindows.hWindowControl.HalconWindow);
+                            if (LastResult[i].Result)
+                            {
+                                HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "green");
+                            }
+                            else
+                            {
+                                HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "red");
+                            }
+                            HOperatorSet.DispObj(LastResult[i].Circle, m_ZKHwindows.hWindowControl.HalconWindow);
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("图片不存在或已经是第一张");
+                }
+            }
         }
     }
 

@@ -65,7 +65,7 @@ namespace _6524
         bool autochangemodel = false;
         bool robot_connected =false  ;
         bool robotcamera_connected = false;
-
+        bool handleresult=false;
 
         //  private bool isPaused = false;  //主线程暂停
 
@@ -958,7 +958,7 @@ namespace _6524
             #region 处理图像
             if (Convert.ToInt32(d1.Rows[i][2]) == 1)  //相机1
             {
-                bool handleresult = runhandleimage(_mWindow1.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                 handleresult = runhandleimage(_mWindow1.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
 
                 if (Convert.ToInt32(d1.Rows[i][7]) == 1)
                 {
@@ -980,7 +980,7 @@ namespace _6524
             }
             else if (Convert.ToInt32(d1.Rows[i][2]) == 2)
             {
-                bool handleresult = runhandleimage(_mWindow2.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                 handleresult = runhandleimage(_mWindow2.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
 
                 if (Convert.ToInt32(d1.Rows[i][7]) == 1)
                 {
@@ -1002,7 +1002,7 @@ namespace _6524
             }
             else if (Convert.ToInt32(d1.Rows[i][2]) == 3)
             {
-                bool handleresult = runhandleimage(_mWindow3.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                 handleresult = runhandleimage(_mWindow3.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
 
                 if (Convert.ToInt32(d1.Rows[i][7]) == 1)
                 {
@@ -1024,7 +1024,7 @@ namespace _6524
             }
             else if (Convert.ToInt32(d1.Rows[i][2]) == 4)
             {
-                bool handleresult = runhandleimage(_mWindow4.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                 handleresult = runhandleimage(_mWindow4.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
 
                 if (Convert.ToInt32(d1.Rows[i][7]) == 1)
                 {
@@ -1150,8 +1150,15 @@ namespace _6524
                 string m_Day = DateTime.Now.ToString("dd");
                 string imageDC = saveimagepath + "\\" + m_Year + "\\" + m_Month + "\\" + m_Day;
 
-
-                imageDC = imageDC + "\\" + "PictureStation" + d1.Rows[i][0].ToString();
+                if (handleresult)
+                {
+                    imageDC = imageDC + "\\" + "PictureStation" + d1.Rows[i][0].ToString() + "\\OK";
+                }
+                else
+                {
+                    imageDC = imageDC + "\\" + "PictureStation" + d1.Rows[i][0].ToString() + "\\NG";
+                }
+                
 
                 CreateFiles(imageDC);
 

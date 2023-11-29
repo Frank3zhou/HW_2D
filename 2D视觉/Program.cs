@@ -19,11 +19,11 @@ namespace _6524
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             HObject img;
-           // HOperatorSet.ReadImage(out img, @"C:\Users\Administrator\Desktop\2.bmp");
+            // HOperatorSet.ReadImage(out img, @"C:\Users\Administrator\Desktop\2.bmp");
 
-           Application.Run(new Form1());
-            //Application.Run(new FANUC12());
-           //  Application.Run(new Teach_point());
+            Application.Run(new Form1());
+           // Application.Run(new ImageModelSet());
+            //  Application.Run(new Teach_point());
         }
     }
 }

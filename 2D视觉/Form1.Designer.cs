@@ -44,6 +44,8 @@
             this.模型设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.圆孔检测ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.字符条码二维码识别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.形状匹配ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.像素匹配ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.通讯设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.语言设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.简体中文ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -122,7 +124,6 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.设置ToolStripMenuItem,
@@ -175,7 +176,9 @@
             // 
             this.模型设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.圆孔检测ToolStripMenuItem,
-            this.字符条码二维码识别ToolStripMenuItem});
+            this.字符条码二维码识别ToolStripMenuItem,
+            this.形状匹配ToolStripMenuItem,
+            this.像素匹配ToolStripMenuItem});
             this.模型设置ToolStripMenuItem.Name = "模型设置ToolStripMenuItem";
             resources.ApplyResources(this.模型设置ToolStripMenuItem, "模型设置ToolStripMenuItem");
             this.模型设置ToolStripMenuItem.Click += new System.EventHandler(this.模型设置ToolStripMenuItem_Click);
@@ -191,6 +194,17 @@
             this.字符条码二维码识别ToolStripMenuItem.Name = "字符条码二维码识别ToolStripMenuItem";
             resources.ApplyResources(this.字符条码二维码识别ToolStripMenuItem, "字符条码二维码识别ToolStripMenuItem");
             this.字符条码二维码识别ToolStripMenuItem.Click += new System.EventHandler(this.字符条码二维码识别ToolStripMenuItem_Click);
+            // 
+            // 形状匹配ToolStripMenuItem
+            // 
+            this.形状匹配ToolStripMenuItem.Name = "形状匹配ToolStripMenuItem";
+            resources.ApplyResources(this.形状匹配ToolStripMenuItem, "形状匹配ToolStripMenuItem");
+            this.形状匹配ToolStripMenuItem.Click += new System.EventHandler(this.形状匹配ToolStripMenuItem_Click);
+            // 
+            // 像素匹配ToolStripMenuItem
+            // 
+            this.像素匹配ToolStripMenuItem.Name = "像素匹配ToolStripMenuItem";
+            resources.ApplyResources(this.像素匹配ToolStripMenuItem, "像素匹配ToolStripMenuItem");
             // 
             // 通讯设置ToolStripMenuItem
             // 
@@ -409,6 +423,8 @@
         private System.ComponentModel.BackgroundWorker Bg_PLC_heartbeat;
         private System.Windows.Forms.ToolStripMenuItem 圆孔检测ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 字符条码二维码识别ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 形状匹配ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 像素匹配ToolStripMenuItem;
     }
 }
 

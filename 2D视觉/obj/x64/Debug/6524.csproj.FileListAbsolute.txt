@@ -1901,3 +1901,5 @@ C:\Users\HW\Desktop\git2d\HW_2D\2D视觉\obj\x64\Debug\zh\6524.resources.dll
 C:\Users\HW\Desktop\git2d\HW_2D\2D视觉\obj\x64\Debug\6524.csproj.CopyComplete
 C:\Users\HW\Desktop\git2d\HW_2D\2D视觉\obj\x64\Debug\6524.exe
 C:\Users\HW\Desktop\git2d\HW_2D\2D视觉\obj\x64\Debug\6524.pdb
+C:\Users\HW\Desktop\git2d\HW_2D\2D视觉\obj\x64\Debug\_6524.形状匹配2.resources
+C:\Users\HW\Desktop\git2d\HW_2D\2D视觉\obj\x64\Debug\_6524.像素匹配.resources

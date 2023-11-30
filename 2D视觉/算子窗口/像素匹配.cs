@@ -12,17 +12,18 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Runtime.CompilerServices;
+using _6524.Class;
 
 namespace _6524
 {
 
     // 定义一个对象，实现 ICloneable 接口
-    public partial class 形状匹配 : Form
+    public partial class 像素匹配 : Form
     {
-        string Path_calibration_Param = System.Windows.Forms.Application.StartupPath + @"\\calibration\Param.ini";
-        HObject img;
+        string Param_Path = System.Windows.Forms.Application.StartupPath + "\\Param.ini";
+        HObject img=new HObject();
         DataTable data_result = new DataTable();
-        Shape_matching M_Shape_matching = new Shape_matching();
+        pixel_matching M_pixel_matching = new pixel_matching();
 
         HSmartWindowControl M_window1 = new HSmartWindowControl();
         ZKHwindows m_ZKHwindows = new ZKHwindows();
@@ -36,11 +37,10 @@ namespace _6524
         public   double Mult;
         public  double add;
         public bool Scale_enabled = false;
-        public 形状匹配(HObject image)
+        public 像素匹配()
         {
             InitializeComponent();
-            HOperatorSet.GenEmptyObj(out img);
-            img = image;
+      
 
         }
 
@@ -78,22 +78,22 @@ namespace _6524
 
 
                 //控件数据与算子绑定
-                numericUpDown5.DataBindings.Add(new Binding("Value", M_Shape_matching, "Hv_Matching_num", true, DataSourceUpdateMode.OnPropertyChanged));
+                numericUpDown5.DataBindings.Add(new Binding("Value", M_pixel_matching, "Hv_Matching_num", true, DataSourceUpdateMode.OnPropertyChanged));
                 //numericUpDown5.DataBindings.Add(nameof(numericUpDown5.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_num));
-                numericUpDown4.DataBindings.Add(nameof(numericUpDown4.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_rote_min));
-                numericUpDown3.DataBindings.Add(nameof(numericUpDown3.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_rote_max));
-                checkBox9.DataBindings.Add(nameof(checkBox9.Checked), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_runtime_Max_enabled));
-                textBox1.DataBindings.Add(nameof(textBox1.Text), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_rote_step), true, DataSourceUpdateMode.OnValidation, 0, "N5");
-                textBox2.DataBindings.Add(nameof(textBox2.Text), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_scale_step), true, DataSourceUpdateMode.OnValidation, 0, "N5");
-                numericUpDown1.DataBindings.Add(nameof(numericUpDown1.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_scale_min));
-                numericUpDown2.DataBindings.Add(nameof(numericUpDown2.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_scale_max));
-                textBox3.DataBindings.Add(nameof(textBox3.Text), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_runtime_Max));
-                numericUpDown6.DataBindings.Add(nameof(numericUpDown6.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_min_Score));
-                numericUpDown7.DataBindings.Add(nameof(numericUpDown7.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_min_Contrastratio));
+                numericUpDown4.DataBindings.Add(nameof(numericUpDown4.Value), M_pixel_matching, nameof(M_pixel_matching.Hv_Matching_rote_min));
+                numericUpDown3.DataBindings.Add(nameof(numericUpDown3.Value), M_pixel_matching, nameof(M_pixel_matching.Hv_Matching_rote_max));
+            //    checkBox9.DataBindings.Add(nameof(checkBox9.Checked), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_runtime_Max_enabled));
+            //    textBox1.DataBindings.Add(nameof(textBox1.Text), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_rote_step), true, DataSourceUpdateMode.OnValidation, 0, "N5");
+             //   textBox2.DataBindings.Add(nameof(textBox2.Text), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_scale_step), true, DataSourceUpdateMode.OnValidation, 0, "N5");
+             //   numericUpDown1.DataBindings.Add(nameof(numericUpDown1.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_scale_min));
+             //   numericUpDown2.DataBindings.Add(nameof(numericUpDown2.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_scale_max));
+           //     textBox3.DataBindings.Add(nameof(textBox3.Text), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_runtime_Max));
+                numericUpDown6.DataBindings.Add(nameof(numericUpDown6.Value), M_pixel_matching, nameof(M_pixel_matching.Hv_Matching_min_Score));
+            //    numericUpDown7.DataBindings.Add(nameof(numericUpDown7.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_min_Contrastratio));
 
-                numericUpDown16.DataBindings.Add(nameof(numericUpDown16.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_Pyramid_level));
-                numericUpDown17.DataBindings.Add(nameof(numericUpDown17.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_Greedy_algorithm));
-                textBox4.DataBindings.Add(nameof(textBox4.Text), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_overlap_Max));
+                numericUpDown16.DataBindings.Add(nameof(numericUpDown16.Value), M_pixel_matching, nameof(M_pixel_matching.Hv_Matching_Pyramid_level));
+               // numericUpDown17.DataBindings.Add(nameof(numericUpDown17.Value), M_Shape_matching, nameof(M_Shape_matching.Hv_Matching_Greedy_algorithm));
+                textBox4.DataBindings.Add(nameof(textBox4.Text), M_pixel_matching, nameof(M_pixel_matching.Hv_Matching_overlap_Max));
                 //M_Shape_matching.hv_Matching_Greedy_algorithm = (int)(Math.Round((decimal)(numericUpDown17.Value / 100), 3));
                 //M_Shape_matching.hv_Matching_overlap_Max = Convert.ToDouble(textBox4.Text);
                 comboBox1.SelectedItem = 0;
@@ -119,21 +119,21 @@ namespace _6524
                 //Mult = Math.Round(255.0 / (trackBar2.Value - trackBar1.Value), 3);
                 //add = (Mult * trackBar1.Value) * -1;
                 HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
-                M_Shape_matching.img = outimg;
+                M_pixel_matching.img = outimg;
             }
             else
             {
-                M_Shape_matching.img = img;
+                M_pixel_matching.img = img;
             }
 
            
 
 
 
-            if (M_Shape_matching.action(nowTaskID, nowoperationID))
+            if (M_pixel_matching.action(nowTaskID, nowoperationID))
             {
                 HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "green");
-                HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_ZKHwindows.hWindowControl.HalconWindow);
+                HOperatorSet.DispObj(M_pixel_matching.ho_Transregion_final, m_ZKHwindows.hWindowControl.HalconWindow);
                 Getmodelinfo();
                // Up_Data();
             }
@@ -143,14 +143,14 @@ namespace _6524
         private void Getmodelinfo()
         {
             data_result.Clear();
-            for (int i = 0; i < M_Shape_matching.hv_I.D; i++)
+            for (int i = 0; i < M_pixel_matching.Hv_Score.TupleLength(); i++)
             {
                 DataRow dr = data_result.NewRow();
                 dr["编号"] = i + 1;
-                dr["分数"] = (double)(Math.Round((decimal)(M_Shape_matching.Scale[i].D), 2));
-                dr["位置X"] = (double)(Math.Round((decimal)(M_Shape_matching.Row[i].D), 2));
-                dr["位置Y"] = (double)(Math.Round((decimal)(M_Shape_matching.Column[i].D), 2));
-                dr["角度"] = (double)(Math.Round((decimal)(M_Shape_matching.Angle[i].D), 2));
+                dr["分数"] = (double)(Math.Round((decimal)(M_pixel_matching.Hv_Score[i].D), 2));
+                dr["位置X"] = (double)(Math.Round((decimal)(M_pixel_matching.Hv_Row[i].D), 2));
+                dr["位置Y"] = (double)(Math.Round((decimal)(M_pixel_matching.Hv_Column[i].D), 2));
+                dr["角度"] = (double)(Math.Round((decimal)(M_pixel_matching.Hv_Angle[i].D), 2));
 
                 data_result.Rows.Add(dr);
             }
@@ -184,22 +184,36 @@ namespace _6524
             HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "red");
             HOperatorSet.SetLineWidth(m_ZKHwindows.hWindowControl.HalconWindow, 3);
             MessageBox.Show("开始绘制模型区域");
+            //HTuple Row1 = new HTuple();
+            //HTuple Row2 = new HTuple();
+            //HTuple Col1 = new HTuple();
+            //HTuple Col2 = new HTuple();
+            //HObject Reg = new HObject();
+            //HObject REC_img = new HObject();
+            //m_ZKHwindows.Drawing = true;
+            //HOperatorSet.DrawRectangle1(m_ZKHwindows.hWindowControl.HalconWindow, out Row1, out Col1, out Row2, out Col2);
+
+            //HOperatorSet.GenRectangle1(out Reg, Row1, Col1, Row2, Col2);
+            //m_ZKHwindows.Drawing = false;
+
             HTuple Row1 = new HTuple();
-            HTuple Row2 = new HTuple();
+          //Tuple Row2 = new HTuple();
             HTuple Col1 = new HTuple();
-            HTuple Col2 = new HTuple();
+            /// HTuple Col2 = new HTuple();
+            HTuple Radius = new HTuple();
             HObject Reg = new HObject();
             HObject REC_img = new HObject();
             m_ZKHwindows.Drawing = true;
-            HOperatorSet.DrawRectangle1(m_ZKHwindows.hWindowControl.HalconWindow, out Row1, out Col1, out Row2, out Col2);
+            HOperatorSet.DrawCircle(m_ZKHwindows.hWindowControl.HalconWindow, out Row1, out Col1, out Radius);
 
-            HOperatorSet.GenRectangle1(out Reg, Row1, Col1, Row2, Col2);
+            HOperatorSet.GenCircle(out Reg, Row1, Col1, Radius);
             m_ZKHwindows.Drawing = false;
+            M_pixel_matching.Hv_Matching_Radius = Radius;
+            M_pixel_matching.Hv_modelrow = Row1;
+            M_pixel_matching.Hv_modelcol = Col1;
 
 
-
-
-            if (M_Shape_matching.createmodel(m_ZKHwindows.NowImage, Reg, out REC_img))
+            if (M_pixel_matching.createmodel(m_ZKHwindows.NowImage, Reg,out REC_img))
             {
                 //HTuple hv_X1 = new HTuple();
                 //HTuple hv_Y1 = new HTuple(), hv_X2 = new HTuple(), hv_Y2 = new HTuple();
@@ -207,10 +221,15 @@ namespace _6524
                 //HTuple hv_HomMat2D = new HTuple();
                 //HObject ho_TransContours = new HObject();   
                 MessageBox.Show("模型绘制成功");
-               
-                show_model_contour( M_Shape_matching.hv_ModelID);
-             
-              
+
+                //
+                //show_model_contour( M_Shape_matching.hv_ModelID);
+                HOperatorSet.SetDraw(m_ZKHwindows.hWindowControl.HalconWindow, "margin");
+           
+                    HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "green");
+                    HOperatorSet.DispObj(REC_img, M_window1.HalconWindow);
+                HOperatorSet.DispObj(Reg, m_ZKHwindows.hWindowControl.HalconWindow);
+                
 
 
             }
@@ -249,24 +268,34 @@ namespace _6524
             try
             {
                 //当前模板的X，Y,rote
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "ModelX", M_Shape_matching.Row.D.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "ModelY", M_Shape_matching.Column.D.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Model_Angle", M_Shape_matching.Angle.D.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "ModelX", M_pixel_matching.Hv_Row.D.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "ModelY", M_pixel_matching.Hv_Column.D.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Model_Angle", M_pixel_matching.Hv_Angle.D.ToString());
                 //模板匹配的参数
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_min", M_Shape_matching.Hv_Matching_rote_min.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_max", M_Shape_matching.Hv_Matching_rote_max.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_min", M_Shape_matching.Hv_Matching_scale_min.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_max", M_Shape_matching.Hv_Matching_scale_max.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_step", M_Shape_matching.Hv_Matching_scale_step.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_step", M_Shape_matching.Hv_Matching_rote_step.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_num", M_Shape_matching.Hv_Matching_num.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_min_Score", M_Shape_matching.Hv_Matching_min_Score.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_overlap_Max", M_Shape_matching.Hv_Matching_overlap_Max.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_Pyramid_level", M_Shape_matching.Hv_Matching_Pyramid_level.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_Greedy_algorithm", M_Shape_matching.Hv_Matching_Greedy_algorithm.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_min_Contrastratio", M_Shape_matching.Hv_Matching_min_Contrastratio.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_min", M_pixel_matching.Hv_Matching_rote_min.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_max", M_pixel_matching.Hv_Matching_rote_max.ToString());
+                //IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_min", M_pixel_matching.Hv_Matching_scale_min.ToString());
+                //IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_max", M_pixel_matching.Hv_Matching_scale_max.ToString());
+                //IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_step", M_pixel_matching.Hv_Matching_scale_step.ToString());
+             //   IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_step", M_pixel_matching.Hv_Matching_rote_step.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_num", M_pixel_matching.Hv_Matching_num.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Score", M_pixel_matching.Hv_Matching_min_Score.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_overlap_Max", M_pixel_matching.Hv_Matching_overlap_Max.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Pyramid_level", M_pixel_matching.Hv_Matching_Pyramid_level.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_Radius", M_pixel_matching.Hv_Matching_Radius.ToString());
+
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_modelrow", M_pixel_matching.Hv_modelrow.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_modelcol", M_pixel_matching.Hv_modelcol.ToString());
+
+                //IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Greedy_algorithm", M_pixel_matching.Hv_Matching_Greedy_algorithm.ToString());
+                //IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Contrastratio", .Hv_Matching_min_Contrastratio.ToString());
+
+
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Scalenable", checkBox5.Checked.ToString());
+
+
                 //模板
-                M_Shape_matching.SaveModel(System.Windows.Forms.Application.StartupPath + @"\\calibration\Matching0" + comboBox1.Text + ".shm");
+                M_pixel_matching.SaveModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + comboBox1.Text + ".ncm");
 
                 MessageBox.Show("保存成功");
             }
@@ -282,9 +311,22 @@ namespace _6524
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //if (Scale_enabled)
+            //{
+            //    HObject outimg = new HObject();
 
 
-           
+          
+            //    HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
+            //    M_pixel_matching.img = outimg;
+            //}
+            //else
+            //{
+            //    M_pixel_matching.img = img;
+            //}
+
+            //m_ZKHwindows.NowImage = M_pixel_matching.img;
+
 
 
         }
@@ -304,7 +346,7 @@ namespace _6524
             try
             {
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "Halcon Model|*.shm";
+                saveFileDialog1.Filter = "Halcon Model|*.ncm";
                 saveFileDialog1.Title = "Save an Model File";
                 //saveFileDialog1.ShowDialog();
 
@@ -316,7 +358,7 @@ namespace _6524
 
                     // 获取所选文件的名称
 
-                    M_Shape_matching.SaveModel(selectedImagePath);
+                    M_pixel_matching.SaveModel(selectedImagePath);
                     // 在控制台输出所选文件的名称
                     // Console.WriteLine("所选文件的名称是: " + selectedImageName);
                 }
@@ -335,7 +377,7 @@ namespace _6524
                 try
                 {
                     OpenFileDialog OpenFileDialog1 = new OpenFileDialog();
-                    OpenFileDialog1.Filter = "Halcon Model|*.shm";
+                    OpenFileDialog1.Filter = "Halcon Model|*.ncm";
                     OpenFileDialog1.Title = "Save an Model File";
                     //saveFileDialog1.ShowDialog();
 
@@ -347,8 +389,8 @@ namespace _6524
 
                         // 获取所选文件的名称
 
-                        M_Shape_matching.LoadingModel(selectedImagePath);
-                    show_model_contour( M_Shape_matching.hv_ModelID);
+                        M_pixel_matching.LoadingModel(selectedImagePath);
+                    //show_model_contour(M_pixel_matching.hv_ModelID);
                 }
 
             }
@@ -426,25 +468,28 @@ namespace _6524
             try
             {
                 //模板匹配的参数
-                M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_min", ""));
-                M_Shape_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_max", ""));
-                M_Shape_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_min", ""));
-                M_Shape_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_max", ""));
-                M_Shape_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_step", ""));
-                M_Shape_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_step", ""));
-                M_Shape_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_num", ""));
-                M_Shape_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_min_Score", ""));
-                M_Shape_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_overlap_Max", ""));
-                M_Shape_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_Pyramid_level", ""));
-                M_Shape_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_Greedy_algorithm", ""));
-                M_Shape_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_min_Contrastratio", ""));
-                Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Mult", Mult.ToString()));
-                add = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Add", add.ToString()));
-                Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Scalenable", "false"));
-             
+                M_pixel_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_min", ""));
+                M_pixel_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_max", ""));
+                //M_pixel_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_min", ""));
+                //M_pixel_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_max", ""));
+                //M_pixel_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_step", ""));
+               // M_pixel_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_step", ""));
+                M_pixel_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_num", ""));
+                M_pixel_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Score", ""));
+                M_pixel_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_overlap_Max", ""));
+                M_pixel_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Pyramid_level", ""));
+                //M_pixel_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Greedy_algorithm", ""));
+                //M_pixel_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Contrastratio", ""));
+                Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Mult", Mult.ToString()));
+                add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Add", add.ToString()));
+                Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Scalenable", "false"));
                 //模板
-                M_Shape_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\calibration\Matching0" + comboBox1.Text + ".shm");
-                show_model_contour(M_Shape_matching.hv_ModelID);
+                M_pixel_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + comboBox1.Text + ".ncm");
+                M_pixel_matching.Hv_Matching_Radius = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_Radius", ""));
+                M_pixel_matching.Hv_modelcol = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_modelcol", ""));
+                M_pixel_matching.Hv_modelrow = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_modelrow", ""));
+
+                // show_model_contour(M_pixel_matching.hv_ModelID);
             }
             catch (Exception)
             {
@@ -472,8 +517,8 @@ namespace _6524
                 add = (Mult * trackBar1.Value) * -1;
                 HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
                 m_ZKHwindows.NowImage = outimg;
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model",  "Mult", Mult.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model",  "Add", add.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text,  "Mult", Mult.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text,  "Add", add.ToString());
 
             }
         }
@@ -494,8 +539,8 @@ namespace _6524
                 add = (Mult * trackBar1.Value) * -1;
                 HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
                 m_ZKHwindows.NowImage = outimg;
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Mult", Mult.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Add", add.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Mult", Mult.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Add", add.ToString());
 
             }
         }
@@ -504,16 +549,63 @@ namespace _6524
         {
             if (checkBox5.Checked)
             {
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Scalenable", checkBox5.Checked.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Scalenable", checkBox5.Checked.ToString());
+              
                 trackBar1.Enabled = true;
                 trackBar2.Enabled = true;
+               // Scale_enabled = true;
             }
             else
             {
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Scalenable", checkBox5.Checked.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Scalenable", checkBox5.Checked.ToString());
                 trackBar1.Enabled = false;
                 trackBar2.Enabled = false;
+              //  Scale_enabled = false;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            img.Dispose();
+            string imagepath = choose_file();
+            HOperatorSet.ReadImage(out img, imagepath);
+            m_ZKHwindows.NowImage = img;
+            sacleimg = img;
+        }
+        public string choose_file()
+        {
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+                // 设置对话框的标题和筛选条件
+                openFileDialog1.Title = "选择图像文件";
+                openFileDialog1.Filter = "图像文件 (*.bmp, *.jpg, *.jpeg, *.png) | *.bmp; *.jpg; *.jpeg; *.png";
+
+                // 打开文件对话框并检查用户是否选择了文件
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    // 获取所选文件的完整路径
+                    string selectedImagePath = openFileDialog1.FileName;
+
+                    // 获取所选文件的名称
+                    return selectedImagePath;
+
+                    // 在控制台输出所选文件的名称
+                    // Console.WriteLine("所选文件的名称是: " + selectedImageName);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+
         }
 
         /// <summary>

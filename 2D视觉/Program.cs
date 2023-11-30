@@ -18,11 +18,12 @@ namespace _6524
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            HObject img;
-            // HOperatorSet.ReadImage(out img, @"C:\Users\Administrator\Desktop\2.bmp");
+          //  HObject img;
+           //  HOperatorSet.ReadImage(out img, @"C:/Users/HW/Desktop/12.bmp");
 
             Application.Run(new Form1());
-           // Application.Run(new ImageModelSet());
+           // Application.Run(new 像素匹配());
+          //  Application.Run(new 形状匹配(img));
             //  Application.Run(new Teach_point());
         }
     }

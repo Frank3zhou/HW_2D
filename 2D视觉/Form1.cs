@@ -66,6 +66,7 @@ namespace _6524
         bool robot_connected =false  ;
         bool robotcamera_connected = false;
         bool handleresult=false;
+      
 
         //  private bool isPaused = false;  //主线程暂停
 
@@ -396,6 +397,158 @@ namespace _6524
             int state1takepicturenumber = 1;
             int state2takepicturenumber = 1;
             string nowstep = "";
+
+            #region 初始化
+            m_Logprint(HslMessageDegree.INFO, "初始化", true);
+            int cameranum = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "System", "CameraNum", "1"));
+            if (cameranum >= 1) //相机开始重连
+            {
+                if (m_Camera1.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机1", "IP", "")))
+                {
+                    // Thread.Sleep(500);
+                    Camera1_connected = true;
+                    UpdateInit(100, changelanguage("相机1连接完成"));
+                    m_Camera1.close();
+                }
+                else
+                {
+                    //Thread.Sleep(500);
+                    Camera1_connected = false;
+                    UpdateInit(90, changelanguage("相机1连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机1连接失败", true);
+
+
+
+                }
+            }
+            if (cameranum >= 2)
+            {
+
+
+                if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机2", "IP", "")))
+                {
+                    // Thread.Sleep(500);
+                    Camera2_connected = true;
+                    UpdateInit(100, changelanguage("相机2连接完成"));
+                }
+                else
+                {
+                    // Thread.Sleep(500);
+                    Camera2_connected = false;
+                    UpdateInit(90, changelanguage("相机2连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机2连接失败", true);
+                    m_Camera2.close();
+                }
+
+
+            }
+            if (cameranum >= 3)
+
+            {
+                if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机3", "IP", "")))
+                {
+                    // Thread.Sleep(500);
+                    Camera2_connected = true;
+                    UpdateInit(100, changelanguage("相机3连接完成"));
+                }
+                else
+                {
+                    //  Thread.Sleep(500);
+                    Camera2_connected = false;
+                    UpdateInit(90, changelanguage("相机3连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机3连接失败", true);
+                    m_Camera3.close();
+                }
+            }
+            if (cameranum >= 4)
+
+            {
+                if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机4", "IP", "")))
+                {
+                    //Thread.Sleep(500);
+                    Camera4_connected = true;
+                    UpdateInit(100, changelanguage("相机4连接完成"));
+                    m_Camera4.close();
+                }
+                else
+                {
+                    //Thread.Sleep(500);
+                    Camera4_connected = false;
+                    UpdateInit(90, changelanguage("相机4连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机4连接失败", true);
+                }
+            }
+
+
+            if (cameranum >= 1)
+            {
+                if (!Camera1_connected)
+                {
+                    MessageBox.Show(changelanguage("相机1连接失败"));
+                    button12.Image = global::_6524.Properties.Resources.开始__1_;
+
+                    m_Logprint(HslMessageDegree.ERROR, "相机1连接失败", true);
+                    Bg_Main.CancelAsync();
+                   
+                }
+            }
+            if (cameranum >= 2)
+            {
+                if (!Camera2_connected)
+                {
+                    MessageBox.Show(changelanguage("相机2连接失败"));
+                    button12.Image = global::_6524.Properties.Resources.开始__1_;
+
+                    m_Logprint(HslMessageDegree.ERROR, "相机2连接失败", true);
+                    Bg_Main.CancelAsync();
+                  
+                }
+
+            }
+            if (cameranum >= 3)
+            {
+                if (!Camera3_connected)
+                {
+                    MessageBox.Show(changelanguage("相机3连接失败"));
+                    button12.Image = global::_6524.Properties.Resources.开始__1_;
+
+                    m_Logprint(HslMessageDegree.ERROR, "相机3连接失败", true);
+                    Bg_Main.CancelAsync();
+               
+                }
+
+            }
+            if (cameranum >= 4)
+            {
+                if (!Camera4_connected)
+                {
+                    MessageBox.Show(changelanguage("相机4连接失败"));
+                    button12.Image = global::_6524.Properties.Resources.开始__1_;
+
+                    m_Logprint(HslMessageDegree.ERROR, "相机4连接失败", true);
+                    Bg_Main.CancelAsync();
+                 
+                }
+
+            }
+
+
+
+
+            if (!PLC_connected)
+            {
+
+                MessageBox.Show(changelanguage("PLC连接失败"));
+                Bg_Main.CancelAsync();
+                button12.Image = global::_6524.Properties.Resources.开始__1_;
+
+                m_Logprint(HslMessageDegree.ERROR, "PLC连接失败", true);
+                Bg_Main.CancelAsync();
+            }
+           
+
+       
+            #endregion
             while (!Bg_Main.CancellationPending)
             {
 
@@ -409,8 +562,30 @@ namespace _6524
                 //}
                 try
                 {
-                    #region 初始化
 
+                    brightness = 0;
+
+                    rS232.BaudRate = 19200;
+                    rS232.DataBits = 8;
+                    rS232.StopBits = 1;
+                    rS232.COMPort = Comname1;
+                    rS232.Parity = 0;
+                    rS232.Init();
+
+                    if (!(rS232.Open() == 1))
+                    {
+                        m_Logprint(HslMessageDegree.ERROR, "光源控制器连接失败", true);
+                        Bg_Main.CancelAsync();
+                        break;
+                    }
+                    else
+                    {
+                        rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                        rS232.SerialPort.WriteLine("SB0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                        rS232.SerialPort.WriteLine("SC0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                        rS232.SerialPort.WriteLine("SD0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+
+                    }
 
                     imageresult1.Clear();
 
@@ -427,173 +602,8 @@ namespace _6524
                     int A = 1;
 
 
-                    m_Logprint(HslMessageDegree.INFO, "初始化", true);
-                    brightness = 0;
 
-                    rS232.BaudRate = 19200;
-                    rS232.DataBits = 8;
-                    rS232.StopBits = 1;
-                    rS232.COMPort = Comname1;
-                    rS232.Parity = 0;
-                    rS232.Init();
-
-                    if (!(rS232.Open() == 1))
-                    {
-                        m_Logprint(HslMessageDegree.ERROR, "光源控制器连接失败", true);
-                        break;
-                    }
-                    else
-                    {
-                        rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                        rS232.SerialPort.WriteLine("SB0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                        rS232.SerialPort.WriteLine("SC0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                        rS232.SerialPort.WriteLine("SD0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-
-                    }
-
-                    if (!PLC_connected)
-                    {
-
-                        MessageBox.Show(changelanguage("PLC连接失败"));
-                        Bg_Main.CancelAsync();
-                        button12.Image = global::_6524.Properties.Resources.开始__1_;
-
-                        m_Logprint(HslMessageDegree.ERROR, "PLC连接失败", true);
-                        break;
-                    }
-                    int cameranum = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "System", "CameraNum", "1"));
-
-
-                    if (cameranum >= 1) //相机开始重连
-                    {
-                        if (m_Camera1.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机1", "IP", "")))
-                        {
-                            Thread.Sleep(500);
-                            Camera1_connected = true;
-                            UpdateInit(100, changelanguage("相机1连接完成"));
-                            m_Camera1.close();
-                        }
-                        else
-                        {
-                            Thread.Sleep(500);
-                            Camera1_connected = false;
-                            UpdateInit(90, changelanguage("相机1连接失败"));
-                            m_Logprint(HslMessageDegree.ERROR, "相机1连接失败", true);
-
-
-
-                        }
-                    }
-                    if (cameranum >= 2)
-                    {
-
-
-                        if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机2", "IP", "")))
-                        {
-                            Thread.Sleep(500);
-                            Camera2_connected = true;
-                            UpdateInit(100, changelanguage("相机2连接完成"));
-                        }
-                        else
-                        {
-                            Thread.Sleep(500);
-                            Camera2_connected = false;
-                            UpdateInit(90, changelanguage("相机2连接失败"));
-                            m_Logprint(HslMessageDegree.ERROR, "相机2连接失败", true);
-                            m_Camera2.close();
-                        }
-
-
-                    }
-                    if (cameranum >= 3)
-
-                    {
-                        if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机3", "IP", "")))
-                        {
-                            Thread.Sleep(500);
-                            Camera2_connected = true;
-                            UpdateInit(100, changelanguage("相机3连接完成"));
-                        }
-                        else
-                        {
-                            Thread.Sleep(500);
-                            Camera2_connected = false;
-                            UpdateInit(90, changelanguage("相机3连接失败"));
-                            m_Logprint(HslMessageDegree.ERROR, "相机3连接失败", true);
-                            m_Camera3.close();
-                        }
-                    }
-                    if (cameranum >= 4)
-
-                    {
-                        if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机4", "IP", "")))
-                        {
-                            Thread.Sleep(500);
-                            Camera4_connected = true;
-                            UpdateInit(100, changelanguage("相机4连接完成"));
-                            m_Camera4.close();
-                        }
-                        else
-                        {
-                            Thread.Sleep(500);
-                            Camera4_connected = false;
-                            UpdateInit(90, changelanguage("相机4连接失败"));
-                            m_Logprint(HslMessageDegree.ERROR, "相机4连接失败", true);
-                        }
-                    }
-
-
-                    if (cameranum >= 1)
-                    {
-                        if (!Camera1_connected)
-                        {
-                            MessageBox.Show(changelanguage("相机1连接失败"));
-                            button12.Image = global::_6524.Properties.Resources.开始__1_;
-
-                            m_Logprint(HslMessageDegree.ERROR, "相机1连接失败", true);
-                            Bg_Main.CancelAsync();
-                            break;
-                        }
-                    }
-                    if (cameranum >= 2)
-                    {
-                        if (!Camera2_connected)
-                        {
-                            MessageBox.Show(changelanguage("相机2连接失败"));
-                            button12.Image = global::_6524.Properties.Resources.开始__1_;
-
-                            m_Logprint(HslMessageDegree.ERROR, "相机2连接失败", true);
-                            Bg_Main.CancelAsync();
-                            break;
-                        }
-
-                    }
-                    if (cameranum >= 3)
-                    {
-                        if (!Camera3_connected)
-                        {
-                            MessageBox.Show(changelanguage("相机3连接失败"));
-                            button12.Image = global::_6524.Properties.Resources.开始__1_;
-
-                            m_Logprint(HslMessageDegree.ERROR, "相机3连接失败", true);
-                            Bg_Main.CancelAsync();
-                            break;
-                        }
-
-                    }
-                    if (cameranum >= 4)
-                    {
-                        if (!Camera4_connected)
-                        {
-                            MessageBox.Show(changelanguage("相机4连接失败"));
-                            button12.Image = global::_6524.Properties.Resources.开始__1_;
-
-                            m_Logprint(HslMessageDegree.ERROR, "相机4连接失败", true);
-                            Bg_Main.CancelAsync();
-                            break;
-                        }
-
-                    }
+                
 
                     //读取机种信息
                     string DCpath = IniAPI.INIGetStringValue(Param_Path, "ModelExcel", "Path", "C:\\Users\\Administrator\\Desktop\\6524");
@@ -641,7 +651,6 @@ namespace _6524
 
                     Thread.Sleep(10);
 
-                    #endregion
                     //完整的相机拍照处理流程
                     for (int i = 0; i < d1.Rows.Count; i++)
                     {
@@ -800,7 +809,7 @@ namespace _6524
                     if (m_Camera1.Get_Oneframe())
                     {
 
-                        Thread.Sleep(100);
+                        Thread.Sleep(1);
                         _mWindow1.NowImage = m_Camera1.Himage;
                         HOperatorSet.CopyImage(m_Camera1.Himage, out Img);
 
@@ -849,7 +858,7 @@ namespace _6524
                         OperateResult result3 = MC_PLC.Write(d1.Rows[i][3].ToString(), new bool[] { true });  // 1工位结果写入
                         if (result3.IsSuccess)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][1].ToString() + "拍照完成", true);
+                            m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "拍照完成", true);
 
                         }
                         m_Camera2.Stop();
@@ -1571,7 +1580,7 @@ namespace _6524
                         for (int i = 0; i < holeCount; i++)
                         {
                             lastResult = new LastResult();
-                         
+
                             int Dis_R = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "eccentricity" + (i).ToString(), "75"));
                             int lim_Row = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "row" + (i).ToString(), "75"));
                             int lim_Column = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "col" + (i).ToString(), "75"));
@@ -1708,7 +1717,7 @@ namespace _6524
                         string Recognition = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Recognition", "0");
                         string type = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Type", "0");
                         bool Use_Result = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Use_Result", "false"));
-                       // checkBox1.Checked = Use_Result;
+                        // checkBox1.Checked = Use_Result;
                         string Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Result", "0");
                         string rotate = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "rotate", "0");
                         if (img != null)
@@ -1778,8 +1787,8 @@ namespace _6524
                             if (result != null)
                             {
                                 disp_message(HWindowshandle, "OCR内容:" + result.ToString(), "window", 12, 12, "black", "true");
-                                disp_message(HWindowshandle, "OCR内容:" + result.ToString(), "window", 12, 12, "black", "true");
-                               
+                                //disp_message(HWindowshandle, "OCR内容:" + result.ToString(), "window", 12, 12, "black", "true");
+
 
                                 HOperatorSet.SetDraw(HWindowshandle, "margin");
                                 HOperatorSet.SetColor(HWindowshandle, "blue");
@@ -1829,10 +1838,152 @@ namespace _6524
                     }
 
                 }
-                else
+                else if (A < 299)
                 {
-                    return false;
+                    try
+                    {
+                        Shape_matching M_Shape_matching = new Shape_matching();
+                        //模板匹配的参数
+                        M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_min", ""));
+                        M_Shape_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_max", ""));
+                        M_Shape_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_scale_min", ""));
+                        M_Shape_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_scale_max", ""));
+                        M_Shape_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_scale_step", ""));
+                        M_Shape_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_step", ""));
+                        M_Shape_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_num", ""));
+                        M_Shape_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_min_Score", ""));
+                        M_Shape_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_overlap_Max", ""));
+                        M_Shape_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Pyramid_level", ""));
+                        M_Shape_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Greedy_algorithm", ""));
+                        M_Shape_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_min_Contrastratio", ""));
+                        double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Mult", "0"));
+                        double add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Add", "0"));
+                        bool Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Scalenable", "false"));
+                        //模板
+                        M_Shape_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + A.ToString() + ".shm");
+                        if (Scale_enabled)
+                        {
+                            HObject outimg = new HObject();
+
+
+
+                            HOperatorSet.ScaleImage(img, out outimg, Mult, add);
+                            M_Shape_matching.img = outimg;
+                        }
+                        else
+                        {
+                            M_Shape_matching.img = img;
+                        }
+
+
+
+
+
+                        if (M_Shape_matching.action(0, 0))
+                        {
+                            HOperatorSet.SetColor(HWindowshandle, "green");
+                            HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, HWindowshandle);
+                            disp_message(HWindowshandle, "匹配成功", "window", 12, 12, "black", "true");
+                            //Getmodelinfo();
+                            // Up_Data();
+                        }
+                        else
+                        {
+                            disp_message(HWindowshandle, "匹配失败", "window", 12, 12, "black", "true");
+                            return false;
+                        }
+
+                        if (M_Shape_matching.Row.TupleLength() == M_Shape_matching.Hv_Matching_num)
+                        {
+                            disp_message(HWindowshandle, "匹配数量正确", "window", 32, 12, "black", "true");
+                            return true;
+                        }
+                        else
+                        {
+                            disp_message(HWindowshandle, "匹配数量错误", "window", 32, 12, "black", "true");
+                            return false;
+                        }
+                        // show_model_contour(M_Shape_matching.hv_ModelID);
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+
+                    }
                 }
+                else if (A < 399)
+                {
+                    pixel_matching  M_pixel_matching = new pixel_matching();
+                    M_pixel_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_min", ""));
+                    M_pixel_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_max", ""));
+                    //M_pixel_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_scale_min", ""));
+                    //M_pixel_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_scale_max", ""));
+                    //M_pixel_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_scale_step", ""));
+                    // M_pixel_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_rote_step", ""));
+                    M_pixel_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_num", ""));
+                    M_pixel_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_min_Score", ""));
+                    M_pixel_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_overlap_Max", ""));
+                    M_pixel_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Pyramid_level", ""));
+                    //M_pixel_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_Greedy_algorithm", ""));
+                    //M_pixel_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_min_Contrastratio", ""));
+                  double  Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Mult", ""));
+                    double  add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Add", ""));
+                    bool Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Scalenable", "false"));
+                    //模板
+                    M_pixel_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + A.ToString() + ".ncm");
+                    M_pixel_matching.Hv_Matching_Radius = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Radius", ""));
+                    M_pixel_matching.Hv_modelcol = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_modelcol", ""));
+                    M_pixel_matching.Hv_modelrow = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_modelrow", ""));
+                    M_pixel_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + A.ToString() + ".ncm");
+
+
+
+                    if (Scale_enabled)
+                    {
+                        HObject outimg = new HObject();
+
+
+
+                        HOperatorSet.ScaleImage(img, out outimg, Mult, add);
+                        M_pixel_matching.img = outimg;
+                    }
+                    else
+                    {
+                        M_pixel_matching.img = img;
+                    }
+
+
+
+
+
+                    if (M_pixel_matching.action(0, 0))
+                    {
+                        HOperatorSet.SetColor(HWindowshandle, "green");
+                        HOperatorSet.DispObj(M_pixel_matching.ho_Transregion_final, HWindowshandle);
+                        disp_message(HWindowshandle, "匹配成功", "window", 12, 12, "black", "true");
+                        //Getmodelinfo();
+                        // Up_Data();
+                    }
+                    else
+                    {
+                        disp_message(HWindowshandle, "匹配失败", "window", 12, 12, "black", "true");
+                        return false;
+                    }
+
+                    if (M_pixel_matching.Hv_Angle.TupleLength() == M_pixel_matching.Hv_Matching_num)
+                    {
+                        disp_message(HWindowshandle, "匹配数量正确", "window", 32, 12, "black", "true");
+                        return true;
+                    }
+                    else
+                    {
+                        disp_message(HWindowshandle, "匹配数量错误", "window", 32, 12, "black", "true");
+                        return false;
+                    }
+                }
+                else
+                { return false; }
+
 
 
             }
@@ -2783,6 +2934,12 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
         {
             Barcode_recognition _Barcode_recognition = new Barcode_recognition();
             _Barcode_recognition.Show();
+        }
+
+        private void 形状匹配ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            形状匹配2 imageModelSet = new 形状匹配2();
+            imageModelSet.Show();
         }
     }
 

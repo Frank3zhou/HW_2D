@@ -17,10 +17,10 @@ namespace _6524
 {
 
     // 定义一个对象，实现 ICloneable 接口
-    public partial class 形状匹配 : Form
+    public partial class 形状匹配2 : Form
     {
-        string Path_calibration_Param = System.Windows.Forms.Application.StartupPath + @"\\calibration\Param.ini";
-        HObject img;
+        string Param_Path = System.Windows.Forms.Application.StartupPath + "\\Param.ini";
+        HObject img=new HObject();
         DataTable data_result = new DataTable();
         Shape_matching M_Shape_matching = new Shape_matching();
 
@@ -36,11 +36,10 @@ namespace _6524
         public   double Mult;
         public  double add;
         public bool Scale_enabled = false;
-        public 形状匹配(HObject image)
+        public 形状匹配2()
         {
             InitializeComponent();
-            HOperatorSet.GenEmptyObj(out img);
-            img = image;
+      
 
         }
 
@@ -249,24 +248,29 @@ namespace _6524
             try
             {
                 //当前模板的X，Y,rote
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "ModelX", M_Shape_matching.Row.D.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "ModelY", M_Shape_matching.Column.D.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Model_Angle", M_Shape_matching.Angle.D.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "ModelX", M_Shape_matching.Row.D.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "ModelY", M_Shape_matching.Column.D.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Model_Angle", M_Shape_matching.Angle.D.ToString());
                 //模板匹配的参数
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_min", M_Shape_matching.Hv_Matching_rote_min.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_max", M_Shape_matching.Hv_Matching_rote_max.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_min", M_Shape_matching.Hv_Matching_scale_min.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_max", M_Shape_matching.Hv_Matching_scale_max.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_step", M_Shape_matching.Hv_Matching_scale_step.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_step", M_Shape_matching.Hv_Matching_rote_step.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_num", M_Shape_matching.Hv_Matching_num.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_min_Score", M_Shape_matching.Hv_Matching_min_Score.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_overlap_Max", M_Shape_matching.Hv_Matching_overlap_Max.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_Pyramid_level", M_Shape_matching.Hv_Matching_Pyramid_level.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_Greedy_algorithm", M_Shape_matching.Hv_Matching_Greedy_algorithm.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_min_Contrastratio", M_Shape_matching.Hv_Matching_min_Contrastratio.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_min", M_Shape_matching.Hv_Matching_rote_min.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_max", M_Shape_matching.Hv_Matching_rote_max.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_min", M_Shape_matching.Hv_Matching_scale_min.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_max", M_Shape_matching.Hv_Matching_scale_max.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_step", M_Shape_matching.Hv_Matching_scale_step.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_step", M_Shape_matching.Hv_Matching_rote_step.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_num", M_Shape_matching.Hv_Matching_num.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Score", M_Shape_matching.Hv_Matching_min_Score.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_overlap_Max", M_Shape_matching.Hv_Matching_overlap_Max.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Pyramid_level", M_Shape_matching.Hv_Matching_Pyramid_level.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Greedy_algorithm", M_Shape_matching.Hv_Matching_Greedy_algorithm.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Contrastratio", M_Shape_matching.Hv_Matching_min_Contrastratio.ToString());
+
+
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Scalenable", checkBox5.Checked.ToString());
+               
+
                 //模板
-                M_Shape_matching.SaveModel(System.Windows.Forms.Application.StartupPath + @"\\calibration\Matching0" + comboBox1.Text + ".shm");
+                M_Shape_matching.SaveModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + comboBox1.Text + ".shm");
 
                 MessageBox.Show("保存成功");
             }
@@ -426,24 +430,23 @@ namespace _6524
             try
             {
                 //模板匹配的参数
-                M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_min", ""));
-                M_Shape_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_max", ""));
-                M_Shape_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_min", ""));
-                M_Shape_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_max", ""));
-                M_Shape_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_scale_step", ""));
-                M_Shape_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_rote_step", ""));
-                M_Shape_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_num", ""));
-                M_Shape_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_min_Score", ""));
-                M_Shape_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_overlap_Max", ""));
-                M_Shape_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_Pyramid_level", ""));
-                M_Shape_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_Greedy_algorithm", ""));
-                M_Shape_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Hv_Matching_min_Contrastratio", ""));
-                Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Mult", Mult.ToString()));
-                add = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Add", add.ToString()));
-                Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Scalenable", "false"));
-             
+                M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_min", ""));
+                M_Shape_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_max", ""));
+                M_Shape_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_min", ""));
+                M_Shape_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_max", ""));
+                M_Shape_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_step", ""));
+                M_Shape_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_step", ""));
+                M_Shape_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_num", ""));
+                M_Shape_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Score", ""));
+                M_Shape_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_overlap_Max", ""));
+                M_Shape_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Pyramid_level", ""));
+                M_Shape_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Greedy_algorithm", ""));
+                M_Shape_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Contrastratio", ""));
+                Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Mult", Mult.ToString()));
+                add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Add", add.ToString()));
+                Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Scalenable", "false"));
                 //模板
-                M_Shape_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\calibration\Matching0" + comboBox1.Text + ".shm");
+                M_Shape_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + comboBox1.Text + ".shm");
                 show_model_contour(M_Shape_matching.hv_ModelID);
             }
             catch (Exception)
@@ -472,8 +475,8 @@ namespace _6524
                 add = (Mult * trackBar1.Value) * -1;
                 HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
                 m_ZKHwindows.NowImage = outimg;
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model",  "Mult", Mult.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model",  "Add", add.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text,  "Mult", Mult.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text,  "Add", add.ToString());
 
             }
         }
@@ -494,8 +497,8 @@ namespace _6524
                 add = (Mult * trackBar1.Value) * -1;
                 HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
                 m_ZKHwindows.NowImage = outimg;
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Mult", Mult.ToString());
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Add", add.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Mult", Mult.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Add", add.ToString());
 
             }
         }
@@ -504,16 +507,60 @@ namespace _6524
         {
             if (checkBox5.Checked)
             {
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Scalenable", checkBox5.Checked.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Scalenable", checkBox5.Checked.ToString());
                 trackBar1.Enabled = true;
                 trackBar2.Enabled = true;
             }
             else
             {
-                IniAPI.INIWriteValue(Path_calibration_Param, "Matching0" + comboBox1.Text + "Model", "Scalenable", checkBox5.Checked.ToString());
+                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Scalenable", checkBox5.Checked.ToString());
                 trackBar1.Enabled = false;
                 trackBar2.Enabled = false;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            img.Dispose();
+            string imagepath = choose_file();
+            HOperatorSet.ReadImage(out img, imagepath);
+            m_ZKHwindows.NowImage = img;
+            sacleimg = img;
+        }
+        public string choose_file()
+        {
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+                // 设置对话框的标题和筛选条件
+                openFileDialog1.Title = "选择图像文件";
+                openFileDialog1.Filter = "图像文件 (*.bmp, *.jpg, *.jpeg, *.png) | *.bmp; *.jpg; *.jpeg; *.png";
+
+                // 打开文件对话框并检查用户是否选择了文件
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    // 获取所选文件的完整路径
+                    string selectedImagePath = openFileDialog1.FileName;
+
+                    // 获取所选文件的名称
+                    return selectedImagePath;
+
+                    // 在控制台输出所选文件的名称
+                    // Console.WriteLine("所选文件的名称是: " + selectedImageName);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+
         }
 
         /// <summary>

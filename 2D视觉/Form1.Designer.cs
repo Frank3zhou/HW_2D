@@ -205,6 +205,7 @@
             // 
             this.像素匹配ToolStripMenuItem.Name = "像素匹配ToolStripMenuItem";
             resources.ApplyResources(this.像素匹配ToolStripMenuItem, "像素匹配ToolStripMenuItem");
+            this.像素匹配ToolStripMenuItem.Click += new System.EventHandler(this.像素匹配ToolStripMenuItem_Click);
             // 
             // 通讯设置ToolStripMenuItem
             // 

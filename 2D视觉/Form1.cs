@@ -2941,6 +2941,13 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             形状匹配2 imageModelSet = new 形状匹配2();
             imageModelSet.Show();
         }
+
+        private void 像素匹配ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+                像素匹配 像素匹配2 = new 像素匹配();
+            像素匹配2.Show();
+        }
     }
 
 

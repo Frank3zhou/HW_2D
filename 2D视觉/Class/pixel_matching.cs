@@ -12,7 +12,7 @@ namespace _6524.Class
 {
     public class pixel_matching
     {
-        HTuple Hv_ModelID = new HTuple();
+        public HTuple Hv_ModelID = new HTuple();
         public HObject img = new HObject();
         private HObject hv_contour = new HObject();
         private double hv_Matching_Radius = 0;

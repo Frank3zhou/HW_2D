@@ -1935,7 +1935,7 @@ namespace _6524
                     M_pixel_matching.Hv_modelcol = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_modelcol", ""));
                     M_pixel_matching.Hv_modelrow = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_modelrow", ""));
                     bool isfirst = true;
-                // if(M_pixel_matching.Hv_ModelID.Length==0)
+          
                     M_pixel_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + A.ToString() + ".ncm");
 
 

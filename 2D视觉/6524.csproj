@@ -331,6 +331,9 @@
     <Compile Include="算子窗口\形状匹配.Designer.cs">
       <DependentUpon>形状匹配.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form1.zh-CN.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Light_Control.resx">
       <DependentUpon>Light_Control.cs</DependentUpon>
     </EmbeddedResource>
@@ -464,7 +467,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\HW\AppData\Local\Programs\MVTec\HALCON-21.11-Progress\bin\dotnet35\halcondotnet.dll" />
+    <Analyzer Include="C:\Users\FRANK\AppData\Local\Programs\MVTec\HALCON-21.11-Progress\bin\dotnet35\halcondotnet.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -445,7 +445,8 @@ namespace _6524
                 string Recognition = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Recognition", "0");
                  string   type= IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Type", "0");
                 bool Use_Result = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Use_Result", "false"));
-              //  checkBox1.Checked = Use_Result;
+                bool Use_TCPResult = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Use_TCPResult", "false"));
+                //  checkBox1.Checked = Use_Result;
                 string Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Result", "0");
               //  textBox6.Text = Result;
 
@@ -720,6 +721,20 @@ namespace _6524
                 img = rotateimage;
                 m_ZKHwindows.NowImage=rotateimage;
                 sacleimg = rotateimage; 
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                //panel3.Enabled = true;
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Use_TCPResult", checkBox2.Checked.ToString());
+            }
+            else
+            {
+               // panel3.Enabled = false;
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Use_TCPResult", checkBox2.Checked.ToString());
             }
         }
     }

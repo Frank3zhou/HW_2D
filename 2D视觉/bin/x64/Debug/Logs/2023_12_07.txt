@@ -1,0 +1,306 @@
+﻿[错误] 2023-12-07 13:59:00.719 thread:[01] PLC连接失败
+[错误] 2023-12-07 13:59:00.719 thread:[01] PLC连接失败
+[错误] 2023-12-07 13:59:00.755 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 13:59:00.755 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 13:59:02.471 thread:[01] 相机1连接失败
+[错误] 2023-12-07 13:59:02.471 thread:[01] 相机1连接失败
+[致命] 2023-12-07 13:59:02.495 thread:[01] 定期删图找不到指定路径
+[Error] 2023-12-07 14:00:54.958 thread:[01] PLC连接失败
+[Error] 2023-12-07 14:00:54.958 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:00:54.958 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:00:54.986 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:00:54.986 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:00:54.986 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:00:56.700 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:00:56.700 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:00:56.700 thread:[01] 相机1连接失败
+[Fatal] 2023-12-07 14:00:56.722 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 14:00:56.722 thread:[01] 定期删图找不到指定路径
+[Error] 2023-12-07 14:13:39.794 thread:[01] PLC连接失败
+[Error] 2023-12-07 14:13:39.795 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:13:39.795 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:13:39.797 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:13:39.797 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:13:39.797 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:13:41.503 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:13:41.503 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:13:41.503 thread:[01] 相机1连接失败
+[Fatal] 2023-12-07 14:13:41.507 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 14:13:41.507 thread:[01] 定期删图找不到指定路径
+[Error] 2023-12-07 14:14:12.962 thread:[01] PLC连接失败
+[Error] 2023-12-07 14:14:12.962 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:14:12.962 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:14:12.965 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:14:12.965 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:14:12.965 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:14:14.660 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:14:14.660 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:14:14.660 thread:[01] 相机1连接失败
+[Fatal] 2023-12-07 14:14:14.663 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 14:14:14.663 thread:[01] 定期删图找不到指定路径
+[错误] 2023-12-07 14:14:52.754 thread:[01] PLC连接失败
+[错误] 2023-12-07 14:14:52.755 thread:[01] PLC连接失败
+[错误] 2023-12-07 14:14:52.758 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 14:14:52.758 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 14:14:54.477 thread:[01] 相机1连接失败
+[错误] 2023-12-07 14:14:54.477 thread:[01] 相机1连接失败
+[致命] 2023-12-07 14:14:54.482 thread:[01] 定期删图找不到指定路径
+[错误] 2023-12-07 14:24:27.777 thread:[01] PLC连接失败
+[错误] 2023-12-07 14:24:27.778 thread:[01] PLC连接失败
+[错误] 2023-12-07 14:24:27.801 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 14:24:27.801 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 14:24:29.516 thread:[01] 相机1连接失败
+[错误] 2023-12-07 14:24:29.516 thread:[01] 相机1连接失败
+[致命] 2023-12-07 14:24:29.538 thread:[01] 定期删图找不到指定路径
+[信息] 2023-12-07 14:24:35.384 thread:[05] 初始化
+[错误] 2023-12-07 14:24:36.366 thread:[05] 相机1连接失败
+[错误] 2023-12-07 14:24:36.366 thread:[05] 相机1连接失败
+[错误] 2023-12-07 14:24:53.567 thread:[01] PLC连接失败
+[错误] 2023-12-07 14:24:53.567 thread:[01] PLC连接失败
+[错误] 2023-12-07 14:24:53.594 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 14:24:53.594 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 14:24:55.334 thread:[01] 相机1连接失败
+[错误] 2023-12-07 14:24:55.334 thread:[01] 相机1连接失败
+[致命] 2023-12-07 14:24:55.356 thread:[01] 定期删图找不到指定路径
+[Error] 2023-12-07 14:25:07.272 thread:[01] PLC连接失败
+[Error] 2023-12-07 14:25:07.272 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:25:07.272 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:25:07.293 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:25:07.293 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:25:07.293 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:25:08.971 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:25:08.971 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:25:08.971 thread:[01] 相机1连接失败
+[Fatal] 2023-12-07 14:25:08.987 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 14:25:08.987 thread:[01] 定期删图找不到指定路径
+[Info] 2023-12-07 14:25:42.592 thread:[08] 初始化
+[Info] 2023-12-07 14:25:42.592 thread:[08] Initializing
+[Error] 2023-12-07 14:25:43.749 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:43.749 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:43.749 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:47.186 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:47.186 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:47.186 thread:[08] 相机1连接失败
+[Info] 2023-12-07 14:25:48.339 thread:[08] 初始化
+[Info] 2023-12-07 14:25:48.339 thread:[08] Initializing
+[Error] 2023-12-07 14:25:48.949 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:48.949 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:48.949 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:50.888 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:50.888 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:50.888 thread:[08] 相机1连接失败
+[Info] 2023-12-07 14:25:52.243 thread:[08] 初始化
+[Info] 2023-12-07 14:25:52.243 thread:[08] Initializing
+[Error] 2023-12-07 14:25:52.862 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:52.862 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:52.862 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:54.570 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:54.570 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:25:54.570 thread:[08] 相机1连接失败
+[Error] 2023-12-07 14:30:51.532 thread:[01] PLC连接失败
+[Error] 2023-12-07 14:30:51.532 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:30:51.532 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:30:51.534 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:30:51.534 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:30:51.534 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:30:52.074 thread:[01] PLC连接失败
+[Error] 2023-12-07 14:30:52.075 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:30:52.075 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:30:52.077 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:30:52.077 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:30:52.077 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:30:53.219 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:30:53.219 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:30:53.219 thread:[01] 相机1连接失败
+[Fatal] 2023-12-07 14:30:53.221 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 14:30:53.221 thread:[01] 定期删图找不到指定路径
+[Error] 2023-12-07 14:30:53.687 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:30:53.688 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:30:53.688 thread:[01] 相机1连接失败
+[Fatal] 2023-12-07 14:30:53.691 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 14:30:53.691 thread:[01] 定期删图找不到指定路径
+[Error] 2023-12-07 14:42:14.853 thread:[01] PLC连接失败
+[Error] 2023-12-07 14:42:14.854 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:42:14.854 thread:[01] PLC connection failed
+[Error] 2023-12-07 14:42:14.876 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:42:14.876 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 14:42:14.876 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 14:42:16.592 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:42:16.593 thread:[01] Camera 1 connection failed
+[Error] 2023-12-07 14:42:16.593 thread:[01] Camera 1 connection failed
+[Fatal] 2023-12-07 14:42:16.611 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 14:42:16.611 thread:[01] specified path can't be found 
+[Error] 2023-12-07 14:42:34.520 thread:[01] PLC连接失败
+[Error] 2023-12-07 14:42:34.521 thread:[01] Fallo de conexión del PLC
+[Error] 2023-12-07 14:42:34.521 thread:[01] Fallo de conexión del PLC
+[Error] 2023-12-07 14:42:34.543 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 14:42:34.543 thread:[01] Controlador de fuente de luz no conectado
+[Error] 2023-12-07 14:42:34.543 thread:[01] Controlador de fuente de luz no conectado
+[Error] 2023-12-07 14:42:36.265 thread:[01] 相机1连接失败
+[Error] 2023-12-07 14:42:36.265 thread:[01] Cámara 1 no se conecta
+[Error] 2023-12-07 14:42:36.265 thread:[01] Cámara 1 no se conecta
+[Fatal] 2023-12-07 14:42:36.284 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 14:42:36.284 thread:[01] No se puede encontrar la ruta especificada
+[错误] 2023-12-07 14:43:05.660 thread:[01] PLC连接失败
+[错误] 2023-12-07 14:43:05.660 thread:[01] PLC连接失败
+[错误] 2023-12-07 14:43:05.686 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 14:43:05.686 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 14:43:07.381 thread:[01] 相机1连接失败
+[错误] 2023-12-07 14:43:07.381 thread:[01] 相机1连接失败
+[致命] 2023-12-07 14:43:07.403 thread:[01] 定期删图找不到指定路径
+[错误] 2023-12-07 15:20:46.647 thread:[01] PLC连接失败
+[错误] 2023-12-07 15:20:46.648 thread:[01] PLC连接失败
+[错误] 2023-12-07 15:20:46.684 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 15:20:46.684 thread:[01] 光源控制器连接失败
+[错误] 2023-12-07 15:20:48.375 thread:[01] 相机1连接失败
+[错误] 2023-12-07 15:20:48.375 thread:[01] 相机1连接失败
+[致命] 2023-12-07 15:20:48.404 thread:[01] 定期删图找不到指定路径
+[Error] 2023-12-07 15:21:02.368 thread:[01] PLC连接失败
+[Error] 2023-12-07 15:21:02.369 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:21:02.369 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:21:02.396 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 15:21:02.396 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:21:02.396 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:21:04.075 thread:[01] 相机1连接失败
+[Error] 2023-12-07 15:21:04.075 thread:[01] 相机1连接失败
+[Error] 2023-12-07 15:21:04.075 thread:[01] 相机1连接失败
+[Fatal] 2023-12-07 15:21:04.096 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 15:21:04.096 thread:[01] specified path can't be found 
+[Error] 2023-12-07 15:21:36.143 thread:[01] PLC连接失败
+[Error] 2023-12-07 15:21:36.144 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:21:36.144 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:21:36.164 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 15:21:36.164 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:21:36.164 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:21:37.875 thread:[01] 相机1连接失败
+[Error] 2023-12-07 15:21:37.875 thread:[01] 相机1连接失败
+[Error] 2023-12-07 15:21:37.875 thread:[01] 相机1连接失败
+[Fatal] 2023-12-07 15:21:37.888 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 15:21:37.888 thread:[01] specified path can't be found 
+[Error] 2023-12-07 15:24:17.346 thread:[01] PLC连接失败
+[Error] 2023-12-07 15:24:17.346 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:24:17.346 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:24:17.369 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 15:24:17.369 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:24:17.369 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:24:19.056 thread:[01] 相机1连接失败
+[Error] 2023-12-07 15:24:19.056 thread:[01] 相机1连接失败
+[Error] 2023-12-07 15:24:19.056 thread:[01] 相机1连接失败
+[Fatal] 2023-12-07 15:24:19.075 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 15:24:19.075 thread:[01] specified path can't be found 
+[Error] 2023-12-07 15:25:04.847 thread:[01] PLC连接失败
+[Error] 2023-12-07 15:25:04.847 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:25:04.847 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:25:04.869 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 15:25:04.869 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:25:04.869 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:25:06.557 thread:[01] 相机1连接失败
+[Error] 2023-12-07 15:25:06.557 thread:[01] 相机1连接失败
+[Error] 2023-12-07 15:25:06.557 thread:[01] 相机1连接失败
+[Fatal] 2023-12-07 15:25:06.574 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 15:25:06.574 thread:[01] specified path can't be found 
+[Error] 2023-12-07 15:26:15.846 thread:[01] PLC连接失败
+[Error] 2023-12-07 15:26:15.846 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:26:15.846 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:26:15.868 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 15:26:15.868 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:26:15.868 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:26:17.555 thread:[01] 相机1连接失败
+[Error] 2023-12-07 15:26:17.555 thread:[01] 相机1连接失败
+[Error] 2023-12-07 15:26:17.555 thread:[01] 相机1连接失败
+[Fatal] 2023-12-07 15:26:17.577 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 15:26:17.577 thread:[01] specified path can't be found 
+[Error] 2023-12-07 15:28:55.925 thread:[01] PLC连接失败
+[Error] 2023-12-07 15:28:55.925 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:28:55.925 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:29:23.375 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 15:29:43.916 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:30:03.354 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:49:35.626 thread:[01] PLC连接失败
+[Error] 2023-12-07 15:49:35.626 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:49:35.626 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:49:35.653 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 15:49:35.653 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:49:35.653 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:49:37.359 thread:[01] 相机
+[Error] 2023-12-07 15:49:37.360 thread:[01] Camera
+[Error] 2023-12-07 15:49:37.360 thread:[01] Camera
+[Fatal] 2023-12-07 15:49:37.379 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 15:49:37.379 thread:[01] specified path can't be found 
+[Error] 2023-12-07 15:50:30.406 thread:[01] PLC连接失败
+[Error] 2023-12-07 15:50:30.406 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:50:30.406 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:50:30.427 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 15:50:30.427 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:50:30.427 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:50:42.720 thread:[01] 相机
+[Error] 2023-12-07 15:50:42.720 thread:[01] Camera
+[Error] 2023-12-07 15:50:42.720 thread:[01] Camera
+[Fatal] 2023-12-07 15:50:47.158 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 15:50:47.158 thread:[01] specified path can't be found 
+[Error] 2023-12-07 15:52:33.531 thread:[01] PLC连接失败
+[Error] 2023-12-07 15:52:33.531 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:52:33.531 thread:[01] PLC connection failed
+[Error] 2023-12-07 15:52:33.554 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 15:52:33.554 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 15:52:33.554 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 16:02:15.605 thread:[01] PLC连接失败
+[Error] 2023-12-07 16:02:15.605 thread:[01] PLC connection failed
+[Error] 2023-12-07 16:02:15.605 thread:[01] PLC connection failed
+[Error] 2023-12-07 16:02:15.628 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 16:02:15.628 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 16:02:15.628 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 16:02:20.432 thread:[01] 相机1连接失败
+[Error] 2023-12-07 16:02:20.432 thread:[01] Camera1connection fail
+[Fatal] 2023-12-07 16:02:20.445 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 16:02:20.445 thread:[01] specified path can't be found 
+[Error] 2023-12-07 16:04:35.918 thread:[01] PLC连接失败
+[Error] 2023-12-07 16:04:35.919 thread:[01] PLC connection failed
+[Error] 2023-12-07 16:04:35.919 thread:[01] PLC connection failed
+[Error] 2023-12-07 16:04:35.938 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 16:04:35.938 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 16:04:35.938 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 16:04:37.646 thread:[01] 相机1连接失败
+[Error] 2023-12-07 16:04:37.646 thread:[01] Camera1connection fail
+[Fatal] 2023-12-07 16:04:37.664 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 16:04:37.664 thread:[01] specified path can't be found 
+[Error] 2023-12-07 16:06:05.599 thread:[01] PLC连接失败
+[Error] 2023-12-07 16:06:05.600 thread:[01] PLC connection failed
+[Error] 2023-12-07 16:06:05.600 thread:[01] PLC connection failed
+[Error] 2023-12-07 16:06:05.619 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 16:06:05.619 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 16:06:05.619 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 16:06:07.309 thread:[01] 相机1连接失败
+[Error] 2023-12-07 16:06:07.309 thread:[01] Camera1connection fail
+[Fatal] 2023-12-07 16:06:07.324 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 16:06:07.324 thread:[01] specified path can't be found 
+[Error] 2023-12-07 16:50:42.933 thread:[01] PLC连接失败
+[Error] 2023-12-07 16:50:42.934 thread:[01] PLC connection failed
+[Error] 2023-12-07 16:50:42.934 thread:[01] PLC connection failed
+[Error] 2023-12-07 16:50:42.969 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 16:50:42.969 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 16:50:42.969 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 16:50:44.652 thread:[01] 相机1连接失败
+[Error] 2023-12-07 16:50:44.652 thread:[01] Camera1connection fail
+[Fatal] 2023-12-07 16:50:44.671 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 16:50:44.671 thread:[01] specified path can't be found 
+[Error] 2023-12-07 17:01:24.854 thread:[01] PLC连接失败
+[Error] 2023-12-07 17:01:24.854 thread:[01] PLC connection failed
+[Error] 2023-12-07 17:01:24.854 thread:[01] PLC connection failed
+[Error] 2023-12-07 17:01:24.856 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 17:01:24.856 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 17:01:24.856 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 17:01:25.244 thread:[01] PLC连接失败
+[Error] 2023-12-07 17:01:25.245 thread:[01] PLC connection failed
+[Error] 2023-12-07 17:01:25.245 thread:[01] PLC connection failed
+[Error] 2023-12-07 17:01:25.247 thread:[01] 光源控制器连接失败
+[Error] 2023-12-07 17:01:25.247 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 17:01:25.247 thread:[01] The light  controller fails to be connected
+[Error] 2023-12-07 17:01:26.543 thread:[01] 相机1连接失败
+[Error] 2023-12-07 17:01:26.543 thread:[01] Camera1connection fail
+[Fatal] 2023-12-07 17:01:26.546 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 17:01:26.546 thread:[01] specified path can't be found 
+[Error] 2023-12-07 17:01:26.745 thread:[01] 相机1连接失败
+[Error] 2023-12-07 17:01:26.746 thread:[01] Camera1connection fail
+[Fatal] 2023-12-07 17:01:26.748 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-07 17:01:26.748 thread:[01] specified path can't be found 

@@ -265,15 +265,15 @@ namespace _6524
                 {
                     Thread.Sleep(500);
                     Camera1_connected = true;
-                    UpdateInit(100, changelanguage("相机1连接完成"));
+                    UpdateInit(100, changelanguage("相机",1,"连接完成"));
                     m_Camera1.close();
                 }
                 else
                 {
                     Thread.Sleep(500);
                     Camera1_connected = false;
-                    UpdateInit(90, changelanguage("相机1连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机1连接失败", true);
+                    UpdateInit(90, changelanguage("相机",1,"连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 1, "连接失败", true);
 
 
 
@@ -287,14 +287,14 @@ namespace _6524
                 {
                     Thread.Sleep(500);
                     Camera2_connected = true;
-                    UpdateInit(100, changelanguage("相机2连接完成"));
+                    UpdateInit(100, changelanguage("相机"+2+"连接完成"));
                 }
                 else
                 {
                     Thread.Sleep(500);
                     Camera2_connected = false;
-                    UpdateInit(90, changelanguage("相机2连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机2连接失败", true);
+                    UpdateInit(90, changelanguage("相机" , 2 , "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机" , 2 , "连接失败", true);
                     m_Camera2.close();
                 }
 
@@ -307,14 +307,14 @@ namespace _6524
                 {
                     Thread.Sleep(500);
                     Camera2_connected = true;
-                    UpdateInit(100, changelanguage("相机3连接完成"));
+                    UpdateInit(100, changelanguage("相机",3,"连接完成"));
                 }
                 else
                 {
                     Thread.Sleep(500);
                     Camera2_connected = false;
-                    UpdateInit(90, changelanguage("相机3连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机3连接失败", true);
+                    UpdateInit(90, changelanguage("相机" , 3 , "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机" , 3 , "连接失败", true);
                     m_Camera3.close();
                 }
             }
@@ -325,15 +325,15 @@ namespace _6524
                 {
                     Thread.Sleep(500);
                     Camera4_connected = true;
-                    UpdateInit(100, changelanguage("相机4连接完成"));
+                    UpdateInit(100, changelanguage("相机",4,"连接完成"));
                     m_Camera4.close();
                 }
                 else
                 {
                     Thread.Sleep(500);
                     Camera4_connected = false;
-                    UpdateInit(90, changelanguage("相机4连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机4连接失败", true);
+                    UpdateInit(90, changelanguage("相机" , 4 , "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机"+4+"连接失败", true);
                 }
             }
 
@@ -407,15 +407,15 @@ namespace _6524
                 {
                     // Thread.Sleep(500);
                     Camera1_connected = true;
-                    UpdateInit(100, changelanguage("相机1连接完成"));
+                    UpdateInit(100, changelanguage("相机",1 ,"连接完成"));
                     m_Camera1.close();
                 }
                 else
                 {
                     //Thread.Sleep(500);
                     Camera1_connected = false;
-                    UpdateInit(90, changelanguage("相机1连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机1连接失败", true);
+                    UpdateInit(90, changelanguage("相机",1 ,"连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机",1 ,"连接失败", true);
 
 
 
@@ -429,14 +429,14 @@ namespace _6524
                 {
                     // Thread.Sleep(500);
                     Camera2_connected = true;
-                    UpdateInit(100, changelanguage("相机2连接完成"));
+                    UpdateInit(100, changelanguage("相机"  ,  2,"连接完成"));
                 }
                 else
                 {
                     // Thread.Sleep(500);
                     Camera2_connected = false;
-                    UpdateInit(90, changelanguage("相机2连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机2连接失败", true);
+                    UpdateInit(90, changelanguage("相机",2,"连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机",2,"连接失败", true);
                     m_Camera2.close();
                 }
 
@@ -449,14 +449,14 @@ namespace _6524
                 {
                     // Thread.Sleep(500);
                     Camera2_connected = true;
-                    UpdateInit(100, changelanguage("相机3连接完成"));
+                    UpdateInit(100, changelanguage("相机",3,"连接完成"));
                 }
                 else
                 {
                     //  Thread.Sleep(500);
                     Camera2_connected = false;
-                    UpdateInit(90, changelanguage("相机3连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机3连接失败", true);
+                    UpdateInit(90, changelanguage("相机",3,"连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机",3,"连接失败", true);
                     m_Camera3.close();
                 }
             }
@@ -467,15 +467,15 @@ namespace _6524
                 {
                     //Thread.Sleep(500);
                     Camera4_connected = true;
-                    UpdateInit(100, changelanguage("相机4连接完成"));
+                    UpdateInit(100, changelanguage("相机",4,"连接完成"));
                     m_Camera4.close();
                 }
                 else
                 {
                     //Thread.Sleep(500);
                     Camera4_connected = false;
-                    UpdateInit(90, changelanguage("相机4连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机4连接失败", true);
+                    UpdateInit(90, changelanguage("相机",4,"连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机",4,"连接失败", true);
                 }
             }
 
@@ -484,10 +484,10 @@ namespace _6524
             {
                 if (!Camera1_connected)
                 {
-                    MessageBox.Show(changelanguage("相机1连接失败"));
+                    MessageBox.Show(changelanguage("相机" , 1 , "连接失败"));
                     button12.Image = global::_6524.Properties.Resources.开始__1_;
 
-                    m_Logprint(HslMessageDegree.ERROR, "相机1连接失败", true);
+                    m_Logprint(HslMessageDegree.ERROR, "相机" , 1 , "连接失败", true);
                     Bg_Main.CancelAsync();
                    
                 }
@@ -496,10 +496,10 @@ namespace _6524
             {
                 if (!Camera2_connected)
                 {
-                    MessageBox.Show(changelanguage("相机2连接失败"));
+                    MessageBox.Show(changelanguage("相机" , 2 , "连接失败"));
                     button12.Image = global::_6524.Properties.Resources.开始__1_;
 
-                    m_Logprint(HslMessageDegree.ERROR, "相机2连接失败", true);
+                    m_Logprint(HslMessageDegree.ERROR, "相机" , 2 , "连接失败", true);
                     Bg_Main.CancelAsync();
                   
                 }
@@ -509,10 +509,10 @@ namespace _6524
             {
                 if (!Camera3_connected)
                 {
-                    MessageBox.Show(changelanguage("相机3连接失败"));
+                    MessageBox.Show(changelanguage("相机",3,"连接失败"));
                     button12.Image = global::_6524.Properties.Resources.开始__1_;
 
-                    m_Logprint(HslMessageDegree.ERROR, "相机3连接失败", true);
+                    m_Logprint(HslMessageDegree.ERROR, "相机",3,"连接失败", true);
                     Bg_Main.CancelAsync();
                
                 }
@@ -522,10 +522,10 @@ namespace _6524
             {
                 if (!Camera4_connected)
                 {
-                    MessageBox.Show(changelanguage("相机4连接失败"));
+                    MessageBox.Show(changelanguage("相机" , 4 , "连接失败"));
                     button12.Image = global::_6524.Properties.Resources.开始__1_;
 
-                    m_Logprint(HslMessageDegree.ERROR, "相机4连接失败", true);
+                    m_Logprint(HslMessageDegree.ERROR, "相机" , 4 , "连接失败", true);
                     Bg_Main.CancelAsync();
                  
                 }
@@ -701,7 +701,7 @@ namespace _6524
                                                     {
                                                         if (nowstep != null)
                                                         {
-                                                            btn_system_state.Text = "等待拍照位" + nowstep + "信号";
+                                                            btn_system_state.Text =changelanguage("等待拍照位" , Convert.ToInt32(nowstep) , "信号");
                                                             btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Chartreuse;
                                                         }
 
@@ -716,7 +716,7 @@ namespace _6524
                                                 {
                                                     if (nowstep != null)
                                                     {
-                                                        btn_system_state.Text = "等待拍照位" + nowstep + "信号";
+                                                        btn_system_state.Text = changelanguage("等待拍照位" , Convert.ToInt32(nowstep) , "信号");
                                                         btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Chartreuse;
                                                     }
 
@@ -801,7 +801,7 @@ namespace _6524
                 }
                 if (m_Camera1.Start())  //开始采集流
                 {
-                    m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "拍照中", true);
+                    m_Logprint(HslMessageDegree.INFO, "拍照位" , d1.Rows[i][0].ToString() , "拍照中", true);
                     brightness = Convert.ToInt32(d1.Rows[i][4]);
                     rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");
                     Thread.Sleep(100);
@@ -817,7 +817,7 @@ namespace _6524
                         OperateResult result3 = MC_PLC.Write(d1.Rows[i][3].ToString(), new bool[] { true });  // 1工位结果写入
                         if (result3.IsSuccess)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "拍照完成", true);
+                            m_Logprint(HslMessageDegree.INFO, "拍照位" , d1.Rows[i][0].ToString() , "拍照完成", true);
 
                         }
                         m_Camera1.Stop();
@@ -843,7 +843,7 @@ namespace _6524
                 }
                 if (m_Camera2.Start())  //开始采集流
                 {
-                    m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "拍照中", true);
+                    m_Logprint(HslMessageDegree.INFO, "拍照位" , d1.Rows[i][0].ToString() , "拍照中", true);
                     brightness = Convert.ToInt32(d1.Rows[i][4]);
                     rS232.SerialPort.WriteLine("SB0" + brightness.ToString("D3") + "#" + "\r");
                     Thread.Sleep(100);
@@ -858,7 +858,7 @@ namespace _6524
                         OperateResult result3 = MC_PLC.Write(d1.Rows[i][3].ToString(), new bool[] { true });  // 1工位结果写入
                         if (result3.IsSuccess)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "拍照完成", true);
+                            m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照完成", true);
 
                         }
                         m_Camera2.Stop();
@@ -883,7 +883,7 @@ namespace _6524
                 }
                 if (m_Camera3.Start())  //开始采集流
                 {
-                    m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "拍照中", true);
+                    m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
                     brightness = Convert.ToInt32(d1.Rows[i][4]);
                     rS232.SerialPort.WriteLine("SC0" + brightness.ToString("D3") + "#" + "\r");
                     Thread.Sleep(100);
@@ -899,7 +899,7 @@ namespace _6524
                         OperateResult result3 = MC_PLC.Write(d1.Rows[i][3].ToString(), new bool[] { true });  // 1工位结果写入
                         if (result3.IsSuccess)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "拍照完成", true);
+                            m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照完成", true);
 
                         }
                         m_Camera3.Stop();
@@ -924,7 +924,7 @@ namespace _6524
                 }
                 if (m_Camera4.Start())  //开始采集流
                 {
-                    m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "拍照中", true);
+                    m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
                     brightness = Convert.ToInt32(d1.Rows[i][4]);
                     rS232.SerialPort.WriteLine("SD0" + brightness.ToString("D3") + "#" + "\r");
                     Thread.Sleep(100);
@@ -940,7 +940,7 @@ namespace _6524
                         OperateResult result3 = MC_PLC.Write(d1.Rows[i][3].ToString(), new bool[] { true });  // 1工位结果写入
                         if (result3.IsSuccess)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "拍照完成", true);
+                            m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照完成", true);
 
                         }
                         m_Camera4.Stop();
@@ -985,7 +985,7 @@ namespace _6524
                 {
                     imageresult4.Add(handleresult);
                 }
-                m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "图像处理完成", true);
+                m_Logprint(HslMessageDegree.INFO, "拍照位" , d1.Rows[i][0].ToString() , "图像处理完成", true);
             }
             else if (Convert.ToInt32(d1.Rows[i][2]) == 2)
             {
@@ -1007,7 +1007,7 @@ namespace _6524
                 {
                     imageresult4.Add(handleresult);
                 }
-                m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "图像处理完成", true);
+                m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "图像处理完成", true);
             }
             else if (Convert.ToInt32(d1.Rows[i][2]) == 3)
             {
@@ -1029,7 +1029,7 @@ namespace _6524
                 {
                     imageresult4.Add(handleresult);
                 }
-                m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "图像处理完成", true);
+                m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "图像处理完成", true);
             }
             else if (Convert.ToInt32(d1.Rows[i][2]) == 4)
             {
@@ -1051,7 +1051,7 @@ namespace _6524
                 {
                     imageresult4.Add(handleresult);
                 }
-                m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "图像处理完成", true);
+                m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "图像处理完成", true);
             }
 
             #endregion
@@ -1069,47 +1069,47 @@ namespace _6524
                         Thread.Sleep(100);
                         if (statenum == 1)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "工位1发送结果中", true);
+                            m_Logprint(HslMessageDegree.INFO, "工位",1,"发送结果中", true);
                             OperateResult Writeresult1;
                             if (!imageresult1.Contains(false))
                             {
                                 Writeresult1 = MC_PLC.Write(d2.Rows[X][1].ToString(), new bool[] { true });  // 1工位写入OK 结果
-                                m_Logprint(HslMessageDegree.INFO, "工位1发送结果OK", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位",1,"发送结果OK", true);
                             }
                             else
                             {
                                 Writeresult1 = MC_PLC.Write(d2.Rows[X][2].ToString(), new bool[] { true });  // 1工位写入NG结果
-                                m_Logprint(HslMessageDegree.INFO, "工位1发送结果NG", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位",1,"发送结果NG", true);
                             }
 
                             if (Writeresult1.IsSuccess)
                             {
-                                m_Logprint(HslMessageDegree.INFO, "工位1发送结果完成", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位",1,"发送结果完成", true);
                             }
                         }
                         if (statenum == 2)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "工位2发送结果中", true);
+                            m_Logprint(HslMessageDegree.INFO, "工位",2,"发送结果中", true);
                             OperateResult Writeresult2;
                             if (!imageresult2.Contains(false))
                             {
                                 Writeresult2 = MC_PLC.Write(d2.Rows[X][1].ToString(), new bool[] { true });  // 2工位写入OK 结果
-                                m_Logprint(HslMessageDegree.INFO, "工位2发送结果OK", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位",2,"发送结果OK", true);
                             }
                             else
                             {
                                 Writeresult2 = MC_PLC.Write(d2.Rows[X][2].ToString(), new bool[] { true });  // 2工位写入NG结果
-                                m_Logprint(HslMessageDegree.INFO, "工位2发送结果NG", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位",2,"发送结果NG", true);
                             }
 
                             if (Writeresult2.IsSuccess)
                             {
-                                m_Logprint(HslMessageDegree.INFO, "工位2发送结果完成", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位",2,"发送结果完成", true);
                             }
                         }
                         if (statenum == 3)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "工位3发送结果中", true);
+                            m_Logprint(HslMessageDegree.INFO, "工位",3,"发送结果中", true);
                             OperateResult Writeresult3;
                             if (!imageresult3.Contains(false))
                             {
@@ -1122,12 +1122,12 @@ namespace _6524
 
                             if (Writeresult3.IsSuccess)
                             {
-                                m_Logprint(HslMessageDegree.INFO, "工位3发送结果完成", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位",3,"发送结果完成", true);
                             }
                         }
                         if (statenum == 4)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "工位4发送结果中", true);
+                            m_Logprint(HslMessageDegree.INFO, "工位",4,"发送结果中", true);
                             OperateResult Writeresult4;
                             if (!imageresult4.Contains(false))
                             {
@@ -1140,7 +1140,7 @@ namespace _6524
 
                             if (Writeresult4.IsSuccess)
                             {
-                                m_Logprint(HslMessageDegree.INFO, "工位4发送结果完成", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位",4,"发送结果完成", true);
                             }
                         }
                         statenum++;
@@ -1178,17 +1178,17 @@ namespace _6524
 
 
 
-                m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "存图中", true);
+                m_Logprint(HslMessageDegree.INFO, "拍照位" ,Convert.ToInt32(d1.Rows[i][0].ToString())  , "存图中", true);
 
 
 
                 if (Saveimage(Img, imagepath))
                 {
-                    m_Logprint(HslMessageDegree.INFO, "拍照位" + d1.Rows[i][0].ToString() + "存图完成", true);
+                    m_Logprint(HslMessageDegree.INFO, "拍照位" , Convert.ToInt32(d1.Rows[i][0].ToString()), "存图完成", true);
                 }
                 else
                 {
-                    m_Logprint(HslMessageDegree.ERROR, "拍照位" + d1.Rows[i][0].ToString() + "存图失败", true);
+                    m_Logprint(HslMessageDegree.ERROR, "拍照位" , Convert.ToInt32(d1.Rows[i][0].ToString()), "存图失败", true);
                 }
             }
             else
@@ -1382,13 +1382,192 @@ namespace _6524
             {
             }
         }
+     
 
+        private void m_Logprint(HslMessageDegree leave, string Msg,int A , string Msg2, bool sys_state)//复合数字的翻译
+        {
+            if (leave == HslMessageDegree.INFO)
+            {
+                logNet.SetMessageDegree(HslMessageDegree.INFO);//除DEBUG外，都存储
+                if (SystemLanguage == 0)
+                {
+                    logNet.WriteInfo(Msg+A.ToString()+ Msg2);
+                }
+                else
+                {
+                    logNet.WriteInfo(Msg + A.ToString() + Msg2);
+                    logNet.WriteInfo(changelanguage(Msg)+A.ToString()+ changelanguage(Msg2));
+                }
+
+                if (sys_state)
+                {
+                    btn_system_state.BeginInvoke(new Action(() => { btn_system_state.Text = (changelanguage(Msg) + A.ToString() + changelanguage(Msg2)); btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Chartreuse; }));
+                    //btn_system_state.Text = changelanguage(Msg);
+                }
+            }
+            else if (leave == HslMessageDegree.WARN)
+            {
+                if (SystemLanguage == 0)
+                {
+                    logNet.WriteWarn(Msg + A.ToString() + Msg2);
+                }
+                else
+                {
+                    logNet.WriteWarn(Msg + A.ToString() + Msg2);
+                    logNet.WriteWarn(changelanguage(Msg) + A.ToString() + changelanguage(Msg2));
+                }
+
+                if (sys_state)
+                {
+                    btn_system_state.BeginInvoke(new Action(() => { btn_system_state.Text = (changelanguage(Msg) + A.ToString() + changelanguage(Msg2)); btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red; }));
+                    //btn_system_state.Text = changelanguage(Msg);
+                }
+
+            }
+            else if (leave == HslMessageDegree.ERROR)
+            {
+                logNet.SetMessageDegree(HslMessageDegree.ERROR);//除DEBUG外，都存储
+                if (SystemLanguage == 0)
+                {
+                    logNet.WriteError(Msg + A.ToString() + Msg2);
+                }
+                else
+                {
+                    logNet.WriteError(Msg + A.ToString() + Msg2);
+                    logNet.WriteError(changelanguage(Msg) + A.ToString() + changelanguage(Msg2));
+                }
+
+                if (sys_state)
+                {
+                    btn_system_state.BeginInvoke(new Action(() => { btn_system_state.Text = (changelanguage(Msg) + A.ToString() + changelanguage(Msg2)); btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red; }));
+                    //btn_system_state.Text = changelanguage(Msg);
+                }
+            }
+            else if (leave == HslMessageDegree.FATAL)
+            {
+                logNet.SetMessageDegree(HslMessageDegree.FATAL);//除DEBUG外，都存储
+                if (SystemLanguage == 0)
+                {
+                    logNet.WriteFatal(Msg + A.ToString() + Msg2);
+                }
+                else
+                {
+                    logNet.WriteFatal(Msg + A.ToString() + Msg2);
+                    logNet.WriteFatal(changelanguage(Msg) + A.ToString() + changelanguage(Msg2));
+                }
+
+                if (sys_state)
+                {
+                    btn_system_state.BeginInvoke(new Action(() => { btn_system_state.Text = (changelanguage(Msg) + A.ToString() + changelanguage(Msg2)); btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red; }));
+                    //btn_system_state.Text = changelanguage(Msg);
+                }
+            }
+            else
+            {
+            }
+        }
+
+        private void m_Logprint(HslMessageDegree leave, string Msg, string A, string Msg2, bool sys_state)//复合数字的翻译
+        {
+            if (leave == HslMessageDegree.INFO)
+            {
+                logNet.SetMessageDegree(HslMessageDegree.INFO);//除DEBUG外，都存储
+                if (SystemLanguage == 0)
+                {
+                    logNet.WriteInfo(Msg + A.ToString() + Msg2);
+                }
+                else
+                {
+                    logNet.WriteInfo(Msg + A.ToString() + Msg2);
+                    logNet.WriteInfo(changelanguage(Msg) + A.ToString() + changelanguage(Msg2));
+                }
+
+                if (sys_state)
+                {
+                    btn_system_state.BeginInvoke(new Action(() => { btn_system_state.Text = (changelanguage(Msg) + A.ToString() + changelanguage(Msg2)); btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Chartreuse; }));
+                    //btn_system_state.Text = changelanguage(Msg);
+                }
+            }
+            else if (leave == HslMessageDegree.WARN)
+            {
+                if (SystemLanguage == 0)
+                {
+                    logNet.WriteWarn(Msg + A.ToString() + Msg2);
+                }
+                else
+                {
+                    logNet.WriteWarn(Msg + A.ToString() + Msg2);
+                    logNet.WriteWarn(changelanguage(Msg) + A.ToString() + changelanguage(Msg2));
+                }
+
+                if (sys_state)
+                {
+                    btn_system_state.BeginInvoke(new Action(() => { btn_system_state.Text = (changelanguage(Msg) + A.ToString() + changelanguage(Msg2)); btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red; }));
+                    //btn_system_state.Text = changelanguage(Msg);
+                }
+
+            }
+            else if (leave == HslMessageDegree.ERROR)
+            {
+                logNet.SetMessageDegree(HslMessageDegree.ERROR);//除DEBUG外，都存储
+                if (SystemLanguage == 0)
+                {
+                    logNet.WriteError(Msg + A.ToString() + Msg2);
+                }
+                else
+                {
+                    logNet.WriteError(Msg + A.ToString() + Msg2);
+                    logNet.WriteError(changelanguage(Msg) + A.ToString() + changelanguage(Msg2));
+                }
+
+                if (sys_state)
+                {
+                    btn_system_state.BeginInvoke(new Action(() => { btn_system_state.Text = (changelanguage(Msg) + A.ToString() + changelanguage(Msg2)); btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red; }));
+                    //btn_system_state.Text = changelanguage(Msg);
+                }
+            }
+            else if (leave == HslMessageDegree.FATAL)
+            {
+                logNet.SetMessageDegree(HslMessageDegree.FATAL);//除DEBUG外，都存储
+                if (SystemLanguage == 0)
+                {
+                    logNet.WriteFatal(Msg + A.ToString() + Msg2);
+                }
+                else
+                {
+                    logNet.WriteFatal(Msg + A.ToString() + Msg2);
+                    logNet.WriteFatal(changelanguage(Msg) + A.ToString() + changelanguage(Msg2));
+                }
+
+                if (sys_state)
+                {
+                    btn_system_state.BeginInvoke(new Action(() => { btn_system_state.Text = (changelanguage(Msg) + A.ToString() + changelanguage(Msg2)); btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red; }));
+                    //btn_system_state.Text = changelanguage(Msg);
+                }
+            }
+            else
+            {
+            }
+        }
         private string changelanguage(string Msg)
         {
             string A = resourceManager.GetString(Msg);
             if (A == null)
             {
                 return Msg;
+            }
+            else
+            {
+                return A;
+            }
+        }
+
+        private string changelanguage(string Msg, int B, string Msg2)
+        {
+            string A = resourceManager.GetString(Msg)+B.ToString()+ resourceManager.GetString(Msg2);
+            if (A == null)
+            {
+                return Msg+B.ToString()+ Msg2;
             }
             else
             {
@@ -1717,9 +1896,12 @@ namespace _6524
                         string Recognition = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Recognition", "0");
                         string type = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Type", "0");
                         bool Use_Result = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Use_Result", "false"));
+                        bool Use_TCPResult = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Use_TCPResult", "false"));
                         // checkBox1.Checked = Use_Result;
                         string Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Result", "0");
+
                         string rotate = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "rotate", "0");
+
                         if (img != null)
                         {
                             HObject rotateimage;
@@ -1797,8 +1979,31 @@ namespace _6524
                                 HOperatorSet.SetColor(HWindowshandle, "green");
                                 HOperatorSet.DispObj(rectangexld, HWindowshandle);
 
-                                if (Use_Result)
+                                if (Use_Result)//TCP给OCR赋值
                                 {
+                                    if (Use_TCPResult)
+                                    {
+                                        TCPIP m_TCP = new TCPIP();
+
+                                        m_TCP.IpAddress = "127.0.0.1";
+                                        m_TCP.Port = 6000;
+                                        if (m_TCP.ClientConnect())
+                                        {
+                                            m_TCP.Send("1234323");//发送请求指令
+                                        }
+                                        // Thread.Sleep(1000);
+                                        if (m_TCP.IsConnected("127.0.0.1"))
+                                        {
+                                            string receivestr;
+                                            if (m_TCP.Recive(out receivestr))
+                                            {
+                                                Result =  receivestr;
+                                            }
+                                        }
+                                        m_TCP.DisConnect();
+                                        
+                                    }
+                              
                                     if (result == Result)
                                     {
                                         disp_message(HWindowshandle, "对比结果:" + "OK", "window", 32, 12, "black", "true");
@@ -2949,6 +3154,11 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             
                 像素匹配 像素匹配2 = new 像素匹配();
             像素匹配2.Show();
+        }
+
+        private void 文件ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -32,6 +32,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -68,10 +69,11 @@
             this.选择模型 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -88,7 +90,6 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.选择模型.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -140,7 +141,7 @@
             // 
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.numericUpDown1);
-            this.panel4.Location = new System.Drawing.Point(8, 559);
+            this.panel4.Location = new System.Drawing.Point(6, 626);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(205, 38);
             this.panel4.TabIndex = 20;
@@ -153,6 +154,25 @@
             this.label6.Size = new System.Drawing.Size(112, 15);
             this.label6.TabIndex = 21;
             this.label6.Text = "图片旋转角度：";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.numericUpDown1.Location = new System.Drawing.Point(122, 5);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(75, 30);
+            this.numericUpDown1.TabIndex = 0;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // checkBox1
             // 
@@ -168,21 +188,22 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.checkBox2);
             this.panel3.Controls.Add(this.textBox6);
             this.panel3.Location = new System.Drawing.Point(7, 506);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(207, 46);
+            this.panel3.Size = new System.Drawing.Size(207, 101);
             this.panel3.TabIndex = 17;
             // 
             // textBox6
             // 
-            this.textBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox6.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBox6.Location = new System.Drawing.Point(0, 0);
             this.textBox6.Margin = new System.Windows.Forms.Padding(4);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(207, 46);
+            this.textBox6.Size = new System.Drawing.Size(207, 72);
             this.textBox6.TabIndex = 0;
             this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
@@ -563,24 +584,16 @@
             this.panel2.Size = new System.Drawing.Size(902, 1005);
             this.panel2.TabIndex = 1;
             // 
-            // numericUpDown1
+            // checkBox2
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.numericUpDown1.Location = new System.Drawing.Point(122, 5);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(75, 30);
-            this.numericUpDown1.TabIndex = 0;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(3, 79);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(143, 19);
+            this.checkBox2.TabIndex = 21;
+            this.checkBox2.Text = "启用TCP接收字符";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // Barcode_recognition
             // 
@@ -599,6 +612,7 @@
             this.groupBox3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -620,7 +634,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.选择模型.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -668,5 +681,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

@@ -117,159 +117,124 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>ver</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableLayoutPanel1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="tableLayoutPanel1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="tableLayoutPanel1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="tabPage1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="tabPage1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="tabPage1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="logNetAnalysisControl1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="logNetAnalysisControl1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="logNetAnalysisControl1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="数据.Size" type="System.Drawing.Size, System.Drawing">
-    <value>972, 573</value>
-  </data>
-  <data name="数据.Text" xml:space="preserve">
-    <value>datos</value>
-  </data>
   <data name="logNetAnalysisControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>966, 567</value>
+    <value>1023, 567</value>
+  </data>
+  <data name="数据.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="数据.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="数据.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="数据.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1029, 573</value>
+  </data>
+  <data name="tabControl1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="tabControl1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="tabControl1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="panel2.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="panel2.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="panel2.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="menuStrip1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="menuStrip1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="menuStrip1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="pLC设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 26</value>
-  </data>
-  <data name="pLC设置ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ajuste de PLC</value>
+    <value>224, 26</value>
   </data>
   <data name="相机设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 26</value>
-  </data>
-  <data name="相机设置ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Configuración de cámara</value>
+    <value>224, 26</value>
   </data>
   <data name="机械手示教ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 26</value>
-  </data>
-  <data name="机械手示教ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Demostración de manipulador</value>
+    <value>224, 26</value>
   </data>
   <data name="机械手控制ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 26</value>
-  </data>
-  <data name="机械手控制ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Control del manipulador</value>
-  </data>
-  <data name="圆孔检测ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 26</value>
-  </data>
-  <data name="圆孔检测ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Detección de agujeros redondos</value>
-  </data>
-  <data name="字符条码二维码识别ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 26</value>
-  </data>
-  <data name="字符条码二维码识别ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Reconocimiento QR/OCR</value>
-  </data>
-  <data name="形状匹配ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 26</value>
-  </data>
-  <data name="形状匹配ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Coincidencia de formas</value>
-  </data>
-  <data name="像素匹配ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 26</value>
-  </data>
-  <data name="像素匹配ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Juego de píxeles</value>
+    <value>224, 26</value>
   </data>
   <data name="模型设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 26</value>
-  </data>
-  <data name="模型设置ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Configuración del modelo</value>
+    <value>224, 26</value>
   </data>
   <data name="通讯设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 26</value>
-  </data>
-  <data name="通讯设置ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Guardar la configuración de la imagen</value>
-  </data>
-  <data name="语言设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 26</value>
-  </data>
-  <data name="语言设置ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ajuste del idioma</value>
-  </data>
-  <data name="开发者选项ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 26</value>
-  </data>
-  <data name="开发者选项ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Opciones de desarrollo</value>
-  </data>
-  <data name="设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 24</value>
-  </data>
-  <data name="设置ToolStripMenuItem.Text" xml:space="preserve">
-    <value>La configuración</value>
-  </data>
-  <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 24</value>
-  </data>
-  <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
-    <value>El documento</value>
-  </data>
-  <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 24</value>
-  </data>
-  <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
-    <value>ayuda</value>
-  </data>
-  <data name="登录ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 24</value>
-  </data>
-  <data name="登录ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Iniciar sesión</value>
+    <value>224, 26</value>
   </data>
   <data name="简体中文ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
-  </data>
-  <data name="简体中文ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Chino simplificado</value>
+    <value>224, 26</value>
   </data>
   <data name="英语ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
-  </data>
-  <data name="英语ToolStripMenuItem.Text" xml:space="preserve">
-    <value>inglés</value>
+    <value>224, 26</value>
   </data>
   <data name="西班牙语ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 26</value>
+    <value>224, 26</value>
   </data>
-  <data name="西班牙语ToolStripMenuItem.Text" xml:space="preserve">
-    <value>español</value>
+  <data name="语言设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
   </data>
-  <data name="新建ToolStripMenuItem.Text" xml:space="preserve">
-    <value>La construcción</value>
-  </data>
-  <data name="打开ToolStripMenuItem.Text" xml:space="preserve">
-    <value>abierto</value>
-  </data>
-  <data name="退出ToolStripMenuItem.Text" xml:space="preserve">
-    <value>salida</value>
-  </data>
-  <data name="关于ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 26</value>
-  </data>
-  <data name="关于ToolStripMenuItem.Text" xml:space="preserve">
-    <value>instrucciones</value>
+  <data name="开发者选项ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
   </data>
   <data name="操作员登录ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 26</value>
-  </data>
-  <data name="操作员登录ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Acceso del operador</value>
+    <value>224, 26</value>
   </data>
   <data name="开发者登录ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 26</value>
+    <value>224, 26</value>
   </data>
-  <data name="开发者登录ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Inicio de sesión del desarroll</value>
+  <data name="button12.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="button12.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="button12.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="button12.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -295,6 +260,15 @@
         fC9vprTU1OJqSsOrDy4WuikqFLokztoqu41x7NiculVWY461tjzsjq2yLnCmeneztAucmd7cLm/BaxiG
         ucHipJtXCFeokXIP6SqwP48DYbs99L/MTCX19CtUqFChQoUI9PX9Bbs/Vy+IiBMEAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="btn_system_state.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="btn_system_state.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="btn_system_state.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="panel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2198,6 +2172,33 @@
         MAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzD
         MAzDMAzDMAzDvFRIJP8HL3YUSpLEs5MAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="panel1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="panel1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="panel1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="panel3.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="panel3.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="panel3.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="$this.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="$this.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

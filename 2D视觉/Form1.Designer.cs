@@ -254,6 +254,7 @@
             this.退出ToolStripMenuItem});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
             resources.ApplyResources(this.文件ToolStripMenuItem, "文件ToolStripMenuItem");
+            this.文件ToolStripMenuItem.Click += new System.EventHandler(this.文件ToolStripMenuItem_Click);
             // 
             // 新建ToolStripMenuItem
             // 

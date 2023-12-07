@@ -129,89 +129,74 @@
   <data name="PLC连接完成" xml:space="preserve">
     <value>Se ha completado la conexión del PLC</value>
   </data>
+  <data name="信号" xml:space="preserve">
+    <value>La señal</value>
+  </data>
+  <data name="光源控制器连接失败" xml:space="preserve">
+    <value>Controlador de fuente de luz no conectado</value>
+  </data>
+  <data name="写入PLC信号失败" xml:space="preserve">
+    <value>falló en escribir señales PLC</value>
+  </data>
   <data name="初始化" xml:space="preserve">
     <value>iniciinicializar</value>
+  </data>
+  <data name="发送结果NG" xml:space="preserve">
+    <value>Enviar resultados NG</value>
+  </data>
+  <data name="发送结果OK" xml:space="preserve">
+    <value>Enviar resultados OK</value>
+  </data>
+  <data name="发送结果中" xml:space="preserve">
+    <value>Enviar resultados</value>
+  </data>
+  <data name="发送结果完成" xml:space="preserve">
+    <value>Enviar resultados completos</value>
+  </data>
+  <data name="图像处理中" xml:space="preserve">
+    <value>Imagen en proceso</value>
+  </data>
+  <data name="图像处理完成" xml:space="preserve">
+    <value>Procesamiento de imagen completo</value>
+  </data>
+  <data name="存图中" xml:space="preserve">
+    <value>guardar la imagen</value>
+  </data>
+  <data name="存图失败" xml:space="preserve">
+    <value>no pudo guardar la imagen</value>
+  </data>
+  <data name="存图完成" xml:space="preserve">
+    <value>guardar imagen completada</value>
+  </data>
+  <data name="定期删图完成" xml:space="preserve">
+    <value>Eliminación periódica de gráficos completada</value>
+  </data>
+  <data name="定期删图找不到指定路径" xml:space="preserve">
+    <value>No se puede encontrar la ruta especificada</value>
   </data>
   <data name="定期删除图片中" xml:space="preserve">
     <value>Eliminar imágenes regularmente</value>
   </data>
-  <data name="工位1写入PLC信号失败" xml:space="preserve">
-    <value>La estación 1 falló en escribir señales de PLC</value>
+  <data name="工位" xml:space="preserve">
+    <value>Estación</value>
   </data>
-  <data name="工位1发送结果中" xml:space="preserve">
-    <value>Enviar resultados a la estación 1</value>
+  <data name="拍照中" xml:space="preserve">
+    <value>Foto en proceso</value>
   </data>
-  <data name="工位1发送结果完成" xml:space="preserve">
-    <value>Estación 1 enviando resultados completos</value>
+  <data name="拍照位" xml:space="preserve">
+    <value>Espacio para fotos</value>
   </data>
-  <data name="工位1图像处理中" xml:space="preserve">
-    <value>Procesamiento de imágenes de la estación 1</value>
+  <data name="拍照失败" xml:space="preserve">
+    <value>no pudo tomar la imagen</value>
   </data>
-  <data name="工位1图像处理完成" xml:space="preserve">
-    <value>Procesamiento de imagen completado</value>
+  <data name="拍照完成" xml:space="preserve">
+    <value>Foto terminada</value>
   </data>
-  <data name="工位1存图中" xml:space="preserve">
-    <value>Estación 1 guardar la imagen</value>
+  <data name="机械手连接失败" xml:space="preserve">
+    <value>Error de conexión del manipulador</value>
   </data>
-  <data name="工位1存图失败" xml:space="preserve">
-    <value>La estación 1 no pudo guardar la imagen</value>
-  </data>
-  <data name="工位1存图完成" xml:space="preserve">
-    <value>Estación 1 guardar imagen completada</value>
-  </data>
-  <data name="工位1拍照中" xml:space="preserve">
-    <value>Estación 1 tomando la imagen</value>
-  </data>
-  <data name="工位1拍照失败" xml:space="preserve">
-    <value>Estación 1 no pudo tomar la imagen</value>
-  </data>
-  <data name="工位1拍照完成" xml:space="preserve">
-    <value>Imagen tomada de la estación 1</value>
-  </data>
-  <data name="工位1等待拍照信号" xml:space="preserve">
-    <value>Estación 1 espere la señal de imagen</value>
-  </data>
-  <data name="工位1读取PLC信号失败" xml:space="preserve">
-    <value>La estación 1 no pudo leer la señal del PLC</value>
-  </data>
-  <data name="工位2写入PLC信号失败" xml:space="preserve">
-    <value>La estación 2 falló en escribir señales PLC</value>
-  </data>
-  <data name="工位2发送结果中" xml:space="preserve">
-    <value>Estación 2 enviar resultados</value>
-  </data>
-  <data name="工位2发送结果完成" xml:space="preserve">
-    <value>Estación 2 enviar resultados completos</value>
-  </data>
-  <data name="工位2图像处理中" xml:space="preserve">
-    <value>Procesamiento de imágenes de la estación 2</value>
-  </data>
-  <data name="工位2图像处理完成" xml:space="preserve">
-    <value>Procesamiento de imágenes completado</value>
-  </data>
-  <data name="工位2存图中" xml:space="preserve">
-    <value>Estación 2 guardar la imagen</value>
-  </data>
-  <data name="工位2存图失败" xml:space="preserve">
-    <value>La estación 2 no pudo guardar la imagen</value>
-  </data>
-  <data name="工位2存图完成" xml:space="preserve">
-    <value>Estación 2 guardar imagen completada</value>
-  </data>
-  <data name="工位2拍照中" xml:space="preserve">
-    <value>Estación 2 tomando la imagen</value>
-  </data>
-  <data name="工位2拍照失败" xml:space="preserve">
-    <value>Estación 2 no pudo tomar la imagen</value>
-  </data>
-  <data name="工位2拍照完成" xml:space="preserve">
-    <value>Imagen tomada de la estación 2</value>
-  </data>
-  <data name="工位2等待拍照信号" xml:space="preserve">
-    <value>Estación 2 espere la señal de imagen</value>
-  </data>
-  <data name="工位2读取PLC信号失败" xml:space="preserve">
-    <value>La estación 2 no pudo leer la señal del PLC</value>
+  <data name="相机" xml:space="preserve">
+    <value>Cámara </value>
   </data>
   <data name="相机连接中" xml:space="preserve">
     <value>La cámara se conecta</value>
@@ -222,7 +207,28 @@
   <data name="相机连接完成" xml:space="preserve">
     <value>Conexión a la cámara fotográfica completada</value>
   </data>
+  <data name="等待拍照位" xml:space="preserve">
+    <value>Esperando la sesión de fotos</value>
+  </data>
+  <data name="等待拍照信号" xml:space="preserve">
+    <value>espere la señal de imagen</value>
+  </data>
+  <data name="读取PLC信号失败" xml:space="preserve">
+    <value>no pudo leer la señal del PLC</value>
+  </data>
   <data name="运行状态" xml:space="preserve">
     <value>Estado de ejecución</value>
+  </data>
+  <data name="连接中" xml:space="preserve">
+    <value>Conectado en progreso</value>
+  </data>
+  <data name="连接失败" xml:space="preserve">
+    <value>no se conecta</value>
+  </data>
+  <data name="连接完成" xml:space="preserve">
+    <value>La conexión completa</value>
+  </data>
+  <data name="配方表载入失败" xml:space="preserve">
+    <value>Error al cargar la tabla de recetas</value>
   </data>
 </root>

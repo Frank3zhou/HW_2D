@@ -97,11 +97,137 @@ namespace _6524.Resources {
         }
         
         /// <summary>
+        ///   查找类似 La señal 的本地化字符串。
+        /// </summary>
+        internal static string 信号 {
+            get {
+                return ResourceManager.GetString("信号", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Controlador de fuente de luz no conectado 的本地化字符串。
+        /// </summary>
+        internal static string 光源控制器连接失败 {
+            get {
+                return ResourceManager.GetString("光源控制器连接失败", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 falló en escribir señales PLC 的本地化字符串。
+        /// </summary>
+        internal static string 写入PLC信号失败 {
+            get {
+                return ResourceManager.GetString("写入PLC信号失败", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 iniciinicializar 的本地化字符串。
         /// </summary>
         internal static string 初始化 {
             get {
                 return ResourceManager.GetString("初始化", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Enviar resultados NG 的本地化字符串。
+        /// </summary>
+        internal static string 发送结果NG {
+            get {
+                return ResourceManager.GetString("发送结果NG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Enviar resultados OK 的本地化字符串。
+        /// </summary>
+        internal static string 发送结果OK {
+            get {
+                return ResourceManager.GetString("发送结果OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Enviar resultados 的本地化字符串。
+        /// </summary>
+        internal static string 发送结果中 {
+            get {
+                return ResourceManager.GetString("发送结果中", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Enviar resultados completos 的本地化字符串。
+        /// </summary>
+        internal static string 发送结果完成 {
+            get {
+                return ResourceManager.GetString("发送结果完成", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Imagen en proceso 的本地化字符串。
+        /// </summary>
+        internal static string 图像处理中 {
+            get {
+                return ResourceManager.GetString("图像处理中", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Procesamiento de imagen completo 的本地化字符串。
+        /// </summary>
+        internal static string 图像处理完成 {
+            get {
+                return ResourceManager.GetString("图像处理完成", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 guardar la imagen 的本地化字符串。
+        /// </summary>
+        internal static string 存图中 {
+            get {
+                return ResourceManager.GetString("存图中", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 no pudo guardar la imagen 的本地化字符串。
+        /// </summary>
+        internal static string 存图失败 {
+            get {
+                return ResourceManager.GetString("存图失败", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 guardar imagen completada 的本地化字符串。
+        /// </summary>
+        internal static string 存图完成 {
+            get {
+                return ResourceManager.GetString("存图完成", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Eliminación periódica de gráficos completada 的本地化字符串。
+        /// </summary>
+        internal static string 定期删图完成 {
+            get {
+                return ResourceManager.GetString("定期删图完成", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 No se puede encontrar la ruta especificada 的本地化字符串。
+        /// </summary>
+        internal static string 定期删图找不到指定路径 {
+            get {
+                return ResourceManager.GetString("定期删图找不到指定路径", resourceCulture);
             }
         }
         
@@ -115,236 +241,65 @@ namespace _6524.Resources {
         }
         
         /// <summary>
-        ///   查找类似 La estación 1 falló en escribir señales de PLC 的本地化字符串。
+        ///   查找类似 Estación 的本地化字符串。
         /// </summary>
-        internal static string 工位1写入PLC信号失败 {
+        internal static string 工位 {
             get {
-                return ResourceManager.GetString("工位1写入PLC信号失败", resourceCulture);
+                return ResourceManager.GetString("工位", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 Enviar resultados a la estación 1 的本地化字符串。
+        ///   查找类似 Foto en proceso 的本地化字符串。
         /// </summary>
-        internal static string 工位1发送结果中 {
+        internal static string 拍照中 {
             get {
-                return ResourceManager.GetString("工位1发送结果中", resourceCulture);
+                return ResourceManager.GetString("拍照中", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 Estación 1 enviando resultados completos 的本地化字符串。
+        ///   查找类似 Espacio para fotos 的本地化字符串。
         /// </summary>
-        internal static string 工位1发送结果完成 {
+        internal static string 拍照位 {
             get {
-                return ResourceManager.GetString("工位1发送结果完成", resourceCulture);
+                return ResourceManager.GetString("拍照位", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 Procesamiento de imágenes de la estación 1 的本地化字符串。
+        ///   查找类似 no pudo tomar la imagen 的本地化字符串。
         /// </summary>
-        internal static string 工位1图像处理中 {
+        internal static string 拍照失败 {
             get {
-                return ResourceManager.GetString("工位1图像处理中", resourceCulture);
+                return ResourceManager.GetString("拍照失败", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 Procesamiento de imagen completado 的本地化字符串。
+        ///   查找类似 Foto terminada 的本地化字符串。
         /// </summary>
-        internal static string 工位1图像处理完成 {
+        internal static string 拍照完成 {
             get {
-                return ResourceManager.GetString("工位1图像处理完成", resourceCulture);
+                return ResourceManager.GetString("拍照完成", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 Estación 1 guardar la imagen 的本地化字符串。
+        ///   查找类似 Error de conexión del manipulador 的本地化字符串。
         /// </summary>
-        internal static string 工位1存图中 {
+        internal static string 机械手连接失败 {
             get {
-                return ResourceManager.GetString("工位1存图中", resourceCulture);
+                return ResourceManager.GetString("机械手连接失败", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 La estación 1 no pudo guardar la imagen 的本地化字符串。
+        ///   查找类似 Cámara  的本地化字符串。
         /// </summary>
-        internal static string 工位1存图失败 {
+        internal static string 相机 {
             get {
-                return ResourceManager.GetString("工位1存图失败", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Estación 1 guardar imagen completada 的本地化字符串。
-        /// </summary>
-        internal static string 工位1存图完成 {
-            get {
-                return ResourceManager.GetString("工位1存图完成", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Estación 1 tomando la imagen 的本地化字符串。
-        /// </summary>
-        internal static string 工位1拍照中 {
-            get {
-                return ResourceManager.GetString("工位1拍照中", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Estación 1 no pudo tomar la imagen 的本地化字符串。
-        /// </summary>
-        internal static string 工位1拍照失败 {
-            get {
-                return ResourceManager.GetString("工位1拍照失败", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Imagen tomada de la estación 1 的本地化字符串。
-        /// </summary>
-        internal static string 工位1拍照完成 {
-            get {
-                return ResourceManager.GetString("工位1拍照完成", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Estación 1 espere la señal de imagen 的本地化字符串。
-        /// </summary>
-        internal static string 工位1等待拍照信号 {
-            get {
-                return ResourceManager.GetString("工位1等待拍照信号", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 La estación 1 no pudo leer la señal del PLC 的本地化字符串。
-        /// </summary>
-        internal static string 工位1读取PLC信号失败 {
-            get {
-                return ResourceManager.GetString("工位1读取PLC信号失败", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 La estación 2 falló en escribir señales PLC 的本地化字符串。
-        /// </summary>
-        internal static string 工位2写入PLC信号失败 {
-            get {
-                return ResourceManager.GetString("工位2写入PLC信号失败", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Estación 2 enviar resultados 的本地化字符串。
-        /// </summary>
-        internal static string 工位2发送结果中 {
-            get {
-                return ResourceManager.GetString("工位2发送结果中", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Estación 2 enviar resultados completos 的本地化字符串。
-        /// </summary>
-        internal static string 工位2发送结果完成 {
-            get {
-                return ResourceManager.GetString("工位2发送结果完成", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Procesamiento de imágenes de la estación 2 的本地化字符串。
-        /// </summary>
-        internal static string 工位2图像处理中 {
-            get {
-                return ResourceManager.GetString("工位2图像处理中", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Procesamiento de imágenes completado 的本地化字符串。
-        /// </summary>
-        internal static string 工位2图像处理完成 {
-            get {
-                return ResourceManager.GetString("工位2图像处理完成", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Estación 2 guardar la imagen 的本地化字符串。
-        /// </summary>
-        internal static string 工位2存图中 {
-            get {
-                return ResourceManager.GetString("工位2存图中", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 La estación 2 no pudo guardar la imagen 的本地化字符串。
-        /// </summary>
-        internal static string 工位2存图失败 {
-            get {
-                return ResourceManager.GetString("工位2存图失败", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Estación 2 guardar imagen completada 的本地化字符串。
-        /// </summary>
-        internal static string 工位2存图完成 {
-            get {
-                return ResourceManager.GetString("工位2存图完成", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Estación 2 tomando la imagen 的本地化字符串。
-        /// </summary>
-        internal static string 工位2拍照中 {
-            get {
-                return ResourceManager.GetString("工位2拍照中", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Estación 2 no pudo tomar la imagen 的本地化字符串。
-        /// </summary>
-        internal static string 工位2拍照失败 {
-            get {
-                return ResourceManager.GetString("工位2拍照失败", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Imagen tomada de la estación 2 的本地化字符串。
-        /// </summary>
-        internal static string 工位2拍照完成 {
-            get {
-                return ResourceManager.GetString("工位2拍照完成", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Estación 2 espere la señal de imagen 的本地化字符串。
-        /// </summary>
-        internal static string 工位2等待拍照信号 {
-            get {
-                return ResourceManager.GetString("工位2等待拍照信号", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 La estación 2 no pudo leer la señal del PLC 的本地化字符串。
-        /// </summary>
-        internal static string 工位2读取PLC信号失败 {
-            get {
-                return ResourceManager.GetString("工位2读取PLC信号失败", resourceCulture);
+                return ResourceManager.GetString("相机", resourceCulture);
             }
         }
         
@@ -376,11 +331,74 @@ namespace _6524.Resources {
         }
         
         /// <summary>
+        ///   查找类似 Esperando la sesión de fotos 的本地化字符串。
+        /// </summary>
+        internal static string 等待拍照位 {
+            get {
+                return ResourceManager.GetString("等待拍照位", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 espere la señal de imagen 的本地化字符串。
+        /// </summary>
+        internal static string 等待拍照信号 {
+            get {
+                return ResourceManager.GetString("等待拍照信号", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 no pudo leer la señal del PLC 的本地化字符串。
+        /// </summary>
+        internal static string 读取PLC信号失败 {
+            get {
+                return ResourceManager.GetString("读取PLC信号失败", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Estado de ejecución 的本地化字符串。
         /// </summary>
         internal static string 运行状态 {
             get {
                 return ResourceManager.GetString("运行状态", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Conectado en progreso 的本地化字符串。
+        /// </summary>
+        internal static string 连接中 {
+            get {
+                return ResourceManager.GetString("连接中", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 no se conecta 的本地化字符串。
+        /// </summary>
+        internal static string 连接失败 {
+            get {
+                return ResourceManager.GetString("连接失败", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 La conexión completa 的本地化字符串。
+        /// </summary>
+        internal static string 连接完成 {
+            get {
+                return ResourceManager.GetString("连接完成", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Error al cargar la tabla de recetas 的本地化字符串。
+        /// </summary>
+        internal static string 配方表载入失败 {
+            get {
+                return ResourceManager.GetString("配方表载入失败", resourceCulture);
             }
         }
     }

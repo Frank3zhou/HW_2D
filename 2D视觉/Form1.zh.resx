@@ -2677,4 +2677,73 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA
 </value>
   </data>
+  <data name="btn_system_state.Text" xml:space="preserve">
+    <value>运行状态</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="pLC设置ToolStripMenuItem.Text1" xml:space="preserve">
+    <value>PLC设置</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>视图</value>
+  </data>
+  <data name="像素匹配ToolStripMenuItem.Text" xml:space="preserve">
+    <value>像素匹配</value>
+  </data>
+  <data name="关于ToolStripMenuItem.Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="圆孔检测ToolStripMenuItem.Text" xml:space="preserve">
+    <value>圆孔检测</value>
+  </data>
+  <data name="字符条码二维码识别ToolStripMenuItem.Text" xml:space="preserve">
+    <value>字符条码二维码识别</value>
+  </data>
+  <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="形状匹配ToolStripMenuItem.Text" xml:space="preserve">
+    <value>形状匹配</value>
+  </data>
+  <data name="打开ToolStripMenuItem.Text" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="数据.Text" xml:space="preserve">
+    <value>数据</value>
+  </data>
+  <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="新建ToolStripMenuItem.Text" xml:space="preserve">
+    <value>新建</value>
+  </data>
+  <data name="模型设置ToolStripMenuItem.Text" xml:space="preserve">
+    <value>模型设置</value>
+  </data>
+  <data name="相机设置ToolStripMenuItem.Text" xml:space="preserve">
+    <value>相机设置</value>
+  </data>
+  <data name="简体中文ToolStripMenuItem.Text" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="英语ToolStripMenuItem.Text" xml:space="preserve">
+    <value>英语</value>
+  </data>
+  <data name="西班牙语ToolStripMenuItem.Text" xml:space="preserve">
+    <value>西班牙语</value>
+  </data>
+  <data name="设置ToolStripMenuItem.Text" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="语言设置ToolStripMenuItem.Text" xml:space="preserve">
+    <value>语言设置</value>
+  </data>
+  <data name="退出ToolStripMenuItem.Text" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="通讯设置ToolStripMenuItem.Text1" xml:space="preserve">
+    <value>通讯设置</value>
+  </data>
 </root>

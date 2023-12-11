@@ -1312,6 +1312,10 @@ namespace _6524
             }
         }
 
+        private void runprocess()
+        { 
+        }
+
         private void m_Logprint(HslMessageDegree leave, string Msg, bool sys_state)
         {
             if (leave == HslMessageDegree.INFO)

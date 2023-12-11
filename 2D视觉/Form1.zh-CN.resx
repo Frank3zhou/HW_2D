@@ -127,6 +127,10 @@
   <data name="tableLayoutPanel1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1023, 565</value>
+  </data>
   <data name="tabPage1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -135,6 +139,9 @@
   </data>
   <data name="tabPage1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1029, 571</value>
   </data>
   <data name="logNetAnalysisControl1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -145,7 +152,6 @@
   <data name="logNetAnalysisControl1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="logNetAnalysisControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1023, 567</value>
   </data>
@@ -170,6 +176,9 @@
   <data name="tabControl1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1037, 600</value>
+  </data>
   <data name="panel2.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -178,6 +187,12 @@
   </data>
   <data name="panel2.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 30</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1037, 600</value>
   </data>
   <data name="menuStrip1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -188,44 +203,29 @@
   <data name="menuStrip1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="pLC设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 26</value>
   </data>
-  <data name="相机设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="新建ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 26</value>
   </data>
-  <data name="机械手示教ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="打开ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 26</value>
   </data>
-  <data name="机械手控制ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="退出ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 26</value>
   </data>
-  <data name="模型设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="关于ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 26</value>
   </data>
-  <data name="通讯设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 26</value>
   </data>
-  <data name="简体中文ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="登录ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 26</value>
   </data>
-  <data name="英语ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="西班牙语ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="语言设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="开发者选项ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="操作员登录ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
-  </data>
-  <data name="开发者登录ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1037, 30</value>
   </data>
   <data name="button12.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2190,6 +2190,9 @@
   </data>
   <data name="panel3.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 30</value>
   </data>
   <data name="$this.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />

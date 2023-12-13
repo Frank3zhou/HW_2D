@@ -430,6 +430,7 @@ namespace _6524
                     // Thread.Sleep(500);
                     Camera2_connected = true;
                     UpdateInit(100, changelanguage("相机"  ,  2,"连接完成"));
+                    m_Camera2.close();
                 }
                 else
                 {
@@ -437,7 +438,7 @@ namespace _6524
                     Camera2_connected = false;
                     UpdateInit(90, changelanguage("相机",2,"连接失败"));
                     m_Logprint(HslMessageDegree.ERROR, "相机",2,"连接失败", true);
-                    m_Camera2.close();
+                   // m_Camera2.close();
                 }
 
 
@@ -450,6 +451,7 @@ namespace _6524
                     // Thread.Sleep(500);
                     Camera2_connected = true;
                     UpdateInit(100, changelanguage("相机",3,"连接完成"));
+                    m_Camera3.close();
                 }
                 else
                 {
@@ -457,7 +459,7 @@ namespace _6524
                     Camera2_connected = false;
                     UpdateInit(90, changelanguage("相机",3,"连接失败"));
                     m_Logprint(HslMessageDegree.ERROR, "相机",3,"连接失败", true);
-                    m_Camera3.close();
+
                 }
             }
             if (cameranum >= 4)

@@ -46,3 +46,201 @@
 [错误] 2023-12-14 11:01:08.170 thread:[01] 光源控制器连接失败
 [错误] 2023-12-14 11:01:09.885 thread:[01] 相机1连接失败
 [致命] 2023-12-14 11:01:09.906 thread:[01] 定期删图找不到指定路径
+[Error] 2023-12-14 11:24:37.070 thread:[01] PLC连接失败
+[Error] 2023-12-14 11:24:37.070 thread:[01] PLC connection failed
+[Error] 2023-12-14 11:24:37.070 thread:[01] PLC connection failed
+[Fatal] 2023-12-14 11:24:39.194 thread:[01] 定期删图找不到指定路径
+[Fatal] 2023-12-14 11:24:39.194 thread:[01] specified path can't be found 
+[错误] 2023-12-14 11:24:50.796 thread:[01] PLC连接失败
+[错误] 2023-12-14 11:24:50.796 thread:[01] PLC连接失败
+[致命] 2023-12-14 11:24:52.994 thread:[01] 定期删图找不到指定路径
+[致命] 2023-12-14 11:25:30.314 thread:[01] 定期删图找不到指定路径
+[信息] 2023-12-14 11:34:24.752 thread:[03] 初始化
+[信息] 2023-12-14 11:34:45.122 thread:[03] 拍照位1拍照中
+[信息] 2023-12-14 11:34:45.359 thread:[03] 拍照位1拍照完成
+[信息] 2023-12-14 11:34:46.058 thread:[03] 拍照位1图像处理完成
+[信息] 2023-12-14 11:34:46.059 thread:[03] 拍照位1存图中
+[信息] 2023-12-14 11:34:46.100 thread:[03] 拍照位1存图完成
+[信息] 2023-12-14 11:35:50.638 thread:[03] 拍照位2拍照中
+[信息] 2023-12-14 11:35:50.880 thread:[03] 拍照位2拍照完成
+[信息] 2023-12-14 11:35:51.069 thread:[03] 拍照位2图像处理完成
+[信息] 2023-12-14 11:35:51.172 thread:[03] 工位1发送结果中
+[信息] 2023-12-14 11:35:51.173 thread:[03] 工位1发送结果NG
+[信息] 2023-12-14 11:35:51.173 thread:[03] 工位1发送结果完成
+[信息] 2023-12-14 11:35:51.279 thread:[03] 工位2发送结果中
+[信息] 2023-12-14 11:35:51.279 thread:[03] 工位2发送结果OK
+[信息] 2023-12-14 11:35:51.279 thread:[03] 工位2发送结果完成
+[信息] 2023-12-14 11:35:51.279 thread:[03] 拍照位2存图中
+[信息] 2023-12-14 11:35:51.316 thread:[03] 拍照位2存图完成
+[信息] 2023-12-14 11:35:57.309 thread:[03] 拍照位1拍照中
+[信息] 2023-12-14 11:35:57.562 thread:[03] 拍照位1拍照完成
+[信息] 2023-12-14 11:35:58.231 thread:[03] 拍照位1图像处理完成
+[信息] 2023-12-14 11:35:58.231 thread:[03] 拍照位1存图中
+[信息] 2023-12-14 11:35:58.267 thread:[03] 拍照位1存图完成
+[信息] 2023-12-14 11:36:10.028 thread:[03] 拍照位2拍照中
+[信息] 2023-12-14 11:36:10.273 thread:[03] 拍照位2拍照完成
+[信息] 2023-12-14 11:36:10.449 thread:[03] 拍照位2图像处理完成
+[信息] 2023-12-14 11:36:10.564 thread:[03] 工位1发送结果中
+[信息] 2023-12-14 11:36:10.564 thread:[03] 工位1发送结果OK
+[信息] 2023-12-14 11:36:10.564 thread:[03] 工位1发送结果完成
+[信息] 2023-12-14 11:36:10.672 thread:[03] 工位2发送结果中
+[信息] 2023-12-14 11:36:10.672 thread:[03] 工位2发送结果OK
+[信息] 2023-12-14 11:36:10.672 thread:[03] 工位2发送结果完成
+[信息] 2023-12-14 11:36:10.672 thread:[03] 拍照位2存图中
+[信息] 2023-12-14 11:36:10.709 thread:[03] 拍照位2存图完成
+[Info] 2023-12-14 11:36:34.671 thread:[01] 定期删图完成
+[Info] 2023-12-14 11:36:34.671 thread:[01] Periodically delete the image
+[Info] 2023-12-14 11:36:36.073 thread:[03] 初始化
+[Info] 2023-12-14 11:36:36.073 thread:[03] Initializing
+[Info] 2023-12-14 11:36:44.136 thread:[03] 拍照位1拍照中
+[Info] 2023-12-14 11:36:44.136 thread:[03] Photo slot1Taking the photo
+[Info] 2023-12-14 11:36:44.397 thread:[03] 拍照位1拍照完成
+[Info] 2023-12-14 11:36:44.397 thread:[03] Photo slot1Photo finish
+[Info] 2023-12-14 11:36:45.076 thread:[03] 拍照位1图像处理完成
+[Info] 2023-12-14 11:36:45.076 thread:[03] Photo slot1Image processing complete
+[Info] 2023-12-14 11:36:45.077 thread:[03] 拍照位1存图中
+[Info] 2023-12-14 11:36:45.077 thread:[03] Photo slot1Saving image
+[Info] 2023-12-14 11:36:45.114 thread:[03] 拍照位1存图完成
+[Info] 2023-12-14 11:36:45.114 thread:[03] Photo slot1Save complete
+[Info] 2023-12-14 11:36:55.203 thread:[03] 拍照位2拍照中
+[Info] 2023-12-14 11:36:55.203 thread:[03] Photo slot2Taking the photo
+[Info] 2023-12-14 11:36:55.434 thread:[03] 拍照位2拍照完成
+[Info] 2023-12-14 11:36:55.434 thread:[03] Photo slot2Photo finish
+[Info] 2023-12-14 11:36:55.641 thread:[03] 拍照位2图像处理完成
+[Info] 2023-12-14 11:36:55.641 thread:[03] Photo slot2Image processing complete
+[Info] 2023-12-14 11:36:55.753 thread:[03] 工位1发送结果中
+[Info] 2023-12-14 11:36:55.753 thread:[03] Station1Sending results
+[Info] 2023-12-14 11:36:55.753 thread:[03] 工位1发送结果OK
+[Info] 2023-12-14 11:36:55.753 thread:[03] Station1Send results OK
+[Info] 2023-12-14 11:36:55.753 thread:[03] 工位1发送结果完成
+[Info] 2023-12-14 11:36:55.753 thread:[03] Station1Sending result completed
+[Info] 2023-12-14 11:36:55.862 thread:[03] 工位2发送结果中
+[Info] 2023-12-14 11:36:55.862 thread:[03] Station2Sending results
+[Info] 2023-12-14 11:36:55.862 thread:[03] 工位2发送结果OK
+[Info] 2023-12-14 11:36:55.862 thread:[03] Station2Send results OK
+[Info] 2023-12-14 11:36:55.862 thread:[03] 工位2发送结果完成
+[Info] 2023-12-14 11:36:55.862 thread:[03] Station2Sending result completed
+[Info] 2023-12-14 11:36:55.863 thread:[03] 拍照位2存图中
+[Info] 2023-12-14 11:36:55.863 thread:[03] Photo slot2Saving image
+[Info] 2023-12-14 11:36:55.909 thread:[03] 拍照位2存图完成
+[Info] 2023-12-14 11:36:55.909 thread:[03] Photo slot2Save complete
+[Info] 2023-12-14 11:37:02.990 thread:[03] 拍照位1拍照中
+[Info] 2023-12-14 11:37:02.990 thread:[03] Photo slot1Taking the photo
+[Info] 2023-12-14 11:37:03.232 thread:[03] 拍照位1拍照完成
+[Info] 2023-12-14 11:37:03.232 thread:[03] Photo slot1Photo finish
+[Info] 2023-12-14 11:37:03.914 thread:[03] 拍照位1图像处理完成
+[Info] 2023-12-14 11:37:03.914 thread:[03] Photo slot1Image processing complete
+[Info] 2023-12-14 11:37:03.915 thread:[03] 拍照位1存图中
+[Info] 2023-12-14 11:37:03.915 thread:[03] Photo slot1Saving image
+[Info] 2023-12-14 11:37:03.961 thread:[03] 拍照位1存图完成
+[Info] 2023-12-14 11:37:03.961 thread:[03] Photo slot1Save complete
+[Info] 2023-12-14 11:37:18.028 thread:[03] 拍照位2拍照中
+[Info] 2023-12-14 11:37:18.028 thread:[03] Photo slot2Taking the photo
+[Info] 2023-12-14 11:37:18.281 thread:[03] 拍照位2拍照完成
+[Info] 2023-12-14 11:37:18.281 thread:[03] Photo slot2Photo finish
+[Info] 2023-12-14 11:37:18.442 thread:[03] 拍照位2图像处理完成
+[Info] 2023-12-14 11:37:18.442 thread:[03] Photo slot2Image processing complete
+[Info] 2023-12-14 11:37:18.543 thread:[03] 工位1发送结果中
+[Info] 2023-12-14 11:37:18.543 thread:[03] Station1Sending results
+[Info] 2023-12-14 11:37:18.543 thread:[03] 工位1发送结果OK
+[Info] 2023-12-14 11:37:18.543 thread:[03] Station1Send results OK
+[Info] 2023-12-14 11:37:18.543 thread:[03] 工位1发送结果完成
+[Info] 2023-12-14 11:37:18.543 thread:[03] Station1Sending result completed
+[Info] 2023-12-14 11:37:18.651 thread:[03] 工位2发送结果中
+[Info] 2023-12-14 11:37:18.651 thread:[03] Station2Sending results
+[Info] 2023-12-14 11:37:18.652 thread:[03] 工位2发送结果OK
+[Info] 2023-12-14 11:37:18.652 thread:[03] Station2Send results OK
+[Info] 2023-12-14 11:37:18.652 thread:[03] 工位2发送结果完成
+[Info] 2023-12-14 11:37:18.652 thread:[03] Station2Sending result completed
+[Info] 2023-12-14 11:37:18.652 thread:[03] 拍照位2存图中
+[Info] 2023-12-14 11:37:18.652 thread:[03] Photo slot2Saving image
+[Info] 2023-12-14 11:37:18.689 thread:[03] 拍照位2存图完成
+[Info] 2023-12-14 11:37:18.689 thread:[03] Photo slot2Save complete
+[Info] 2023-12-14 11:37:26.506 thread:[03] 拍照位1拍照中
+[Info] 2023-12-14 11:37:26.506 thread:[03] Photo slot1Taking the photo
+[Info] 2023-12-14 11:37:26.752 thread:[03] 拍照位1拍照完成
+[Info] 2023-12-14 11:37:26.752 thread:[03] Photo slot1Photo finish
+[Info] 2023-12-14 11:37:27.422 thread:[03] 拍照位1图像处理完成
+[Info] 2023-12-14 11:37:27.422 thread:[03] Photo slot1Image processing complete
+[Info] 2023-12-14 11:37:27.423 thread:[03] 拍照位1存图中
+[Info] 2023-12-14 11:37:27.423 thread:[03] Photo slot1Saving image
+[Info] 2023-12-14 11:37:27.460 thread:[03] 拍照位1存图完成
+[Info] 2023-12-14 11:37:27.460 thread:[03] Photo slot1Save complete
+[Info] 2023-12-14 11:39:09.171 thread:[24] 初始化
+[Info] 2023-12-14 11:39:09.171 thread:[24] Initializing
+[Info] 2023-12-14 11:39:24.984 thread:[09] 拍照位1拍照中
+[Info] 2023-12-14 11:39:24.984 thread:[09] Photo slot1Taking the photo
+[Info] 2023-12-14 11:39:24.993 thread:[06] 拍照位2图像处理完成
+[Info] 2023-12-14 11:39:24.993 thread:[06] Photo slot2Image processing complete
+[Info] 2023-12-14 11:39:24.993 thread:[06] 拍照位2存图中
+[Info] 2023-12-14 11:39:24.993 thread:[06] Photo slot2Saving image
+[Info] 2023-12-14 11:39:25.029 thread:[06] 拍照位2存图完成
+[Info] 2023-12-14 11:39:25.029 thread:[06] Photo slot2Save complete
+[Info] 2023-12-14 11:39:25.238 thread:[09] 拍照位1拍照完成
+[Info] 2023-12-14 11:39:25.238 thread:[09] Photo slot1Photo finish
+[Info] 2023-12-14 11:39:25.908 thread:[09] 拍照位1图像处理完成
+[Info] 2023-12-14 11:39:25.908 thread:[09] Photo slot1Image processing complete
+[Info] 2023-12-14 11:39:26.016 thread:[09] 工位1发送结果中
+[Info] 2023-12-14 11:39:26.016 thread:[09] Station1Sending results
+[Info] 2023-12-14 11:39:26.016 thread:[09] 工位1发送结果OK
+[Info] 2023-12-14 11:39:26.016 thread:[09] Station1Send results OK
+[Info] 2023-12-14 11:39:26.016 thread:[09] 工位1发送结果完成
+[Info] 2023-12-14 11:39:26.016 thread:[09] Station1Sending result completed
+[Info] 2023-12-14 11:39:26.123 thread:[09] 工位2发送结果中
+[Info] 2023-12-14 11:39:26.123 thread:[09] Station2Sending results
+[Info] 2023-12-14 11:39:26.124 thread:[09] 工位2发送结果OK
+[Info] 2023-12-14 11:39:26.124 thread:[09] Station2Send results OK
+[Info] 2023-12-14 11:39:26.124 thread:[09] 工位2发送结果完成
+[Info] 2023-12-14 11:39:26.124 thread:[09] Station2Sending result completed
+[Info] 2023-12-14 11:39:26.124 thread:[09] 拍照位1存图中
+[Info] 2023-12-14 11:39:26.124 thread:[09] Photo slot1Saving image
+[Info] 2023-12-14 11:39:26.162 thread:[09] 拍照位1存图完成
+[Info] 2023-12-14 11:39:26.162 thread:[09] Photo slot1Save complete
+[Info] 2023-12-14 11:39:41.195 thread:[25] 拍照位1拍照中
+[Info] 2023-12-14 11:39:41.195 thread:[25] Photo slot1Taking the photo
+[Info] 2023-12-14 11:39:41.427 thread:[25] 拍照位1拍照完成
+[Info] 2023-12-14 11:39:41.427 thread:[25] Photo slot1Photo finish
+[Info] 2023-12-14 11:39:42.107 thread:[25] 拍照位1图像处理完成
+[Info] 2023-12-14 11:39:42.107 thread:[25] Photo slot1Image processing complete
+[Info] 2023-12-14 11:39:42.107 thread:[25] 拍照位1存图中
+[Info] 2023-12-14 11:39:42.107 thread:[25] Photo slot1Saving image
+[Info] 2023-12-14 11:39:42.145 thread:[25] 拍照位1存图完成
+[Info] 2023-12-14 11:39:42.145 thread:[25] Photo slot1Save complete
+[Info] 2023-12-14 11:39:47.401 thread:[09] 拍照位2拍照中
+[Info] 2023-12-14 11:39:47.401 thread:[09] Photo slot2Taking the photo
+[Info] 2023-12-14 11:39:47.646 thread:[09] 拍照位2拍照完成
+[Info] 2023-12-14 11:39:47.646 thread:[09] Photo slot2Photo finish
+[Info] 2023-12-14 11:39:47.807 thread:[09] 拍照位2图像处理完成
+[Info] 2023-12-14 11:39:47.807 thread:[09] Photo slot2Image processing complete
+[Info] 2023-12-14 11:39:47.807 thread:[09] 拍照位2存图中
+[Info] 2023-12-14 11:39:47.807 thread:[09] Photo slot2Saving image
+[Info] 2023-12-14 11:39:47.844 thread:[09] 拍照位2存图完成
+[Info] 2023-12-14 11:39:47.844 thread:[09] Photo slot2Save complete
+[Info] 2023-12-14 11:40:04.582 thread:[28] 拍照位1拍照中
+[Info] 2023-12-14 11:40:04.582 thread:[28] Photo slot1Taking the photo
+[Info] 2023-12-14 11:40:04.590 thread:[29] 拍照位2图像处理完成
+[Info] 2023-12-14 11:40:04.590 thread:[29] Photo slot2Image processing complete
+[Info] 2023-12-14 11:40:04.590 thread:[29] 拍照位2存图中
+[Info] 2023-12-14 11:40:04.590 thread:[29] Photo slot2Saving image
+[Info] 2023-12-14 11:40:04.627 thread:[29] 拍照位2存图完成
+[Info] 2023-12-14 11:40:04.627 thread:[29] Photo slot2Save complete
+[Info] 2023-12-14 11:40:04.813 thread:[28] 拍照位1拍照完成
+[Info] 2023-12-14 11:40:04.813 thread:[28] Photo slot1Photo finish
+[Info] 2023-12-14 11:40:05.515 thread:[28] 拍照位1图像处理完成
+[Info] 2023-12-14 11:40:05.515 thread:[28] Photo slot1Image processing complete
+[Info] 2023-12-14 11:40:05.630 thread:[28] 工位1发送结果中
+[Info] 2023-12-14 11:40:05.630 thread:[28] Station1Sending results
+[Info] 2023-12-14 11:40:05.630 thread:[28] 工位1发送结果OK
+[Info] 2023-12-14 11:40:05.630 thread:[28] Station1Send results OK
+[Info] 2023-12-14 11:40:05.631 thread:[28] 工位1发送结果完成
+[Info] 2023-12-14 11:40:05.631 thread:[28] Station1Sending result completed
+[Info] 2023-12-14 11:40:05.739 thread:[28] 工位2发送结果中
+[Info] 2023-12-14 11:40:05.739 thread:[28] Station2Sending results
+[Info] 2023-12-14 11:40:05.740 thread:[28] 工位2发送结果OK
+[Info] 2023-12-14 11:40:05.740 thread:[28] Station2Send results OK
+[Info] 2023-12-14 11:40:05.740 thread:[28] 工位2发送结果完成
+[Info] 2023-12-14 11:40:05.740 thread:[28] Station2Sending result completed
+[Info] 2023-12-14 11:40:05.740 thread:[28] 拍照位1存图中
+[Info] 2023-12-14 11:40:05.740 thread:[28] Photo slot1Saving image
+[Info] 2023-12-14 11:40:05.776 thread:[28] 拍照位1存图完成
+[Info] 2023-12-14 11:40:05.776 thread:[28] Photo slot1Save complete

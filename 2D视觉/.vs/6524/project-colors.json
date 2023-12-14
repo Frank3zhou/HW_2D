@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e7e85f23-f73d-4e79-9682-881196d44433": {
+      "ProjectGuid": "e7e85f23-f73d-4e79-9682-881196d44433",
+      "DisplayName": "6524",
+      "ColorIndex": 0
+    },
+    "b91a8b71-8c4d-47df-99dd-9ec91c026006": {
+      "ProjectGuid": "b91a8b71-8c4d-47df-99dd-9ec91c026006",
+      "DisplayName": "FANUCTCP",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

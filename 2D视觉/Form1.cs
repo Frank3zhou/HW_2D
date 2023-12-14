@@ -288,6 +288,7 @@ namespace _6524
                     Thread.Sleep(500);
                     Camera2_connected = true;
                     UpdateInit(100, changelanguage("相机"+2+"连接完成"));
+                    m_Camera2.close();
                 }
                 else
                 {
@@ -295,7 +296,7 @@ namespace _6524
                     Camera2_connected = false;
                     UpdateInit(90, changelanguage("相机" , 2 , "连接失败"));
                     m_Logprint(HslMessageDegree.ERROR, "相机" , 2 , "连接失败", true);
-                    m_Camera2.close();
+                 
                 }
 
 
@@ -308,6 +309,7 @@ namespace _6524
                     Thread.Sleep(500);
                     Camera2_connected = true;
                     UpdateInit(100, changelanguage("相机",3,"连接完成"));
+                    m_Camera3.close();
                 }
                 else
                 {
@@ -315,7 +317,7 @@ namespace _6524
                     Camera2_connected = false;
                     UpdateInit(90, changelanguage("相机" , 3 , "连接失败"));
                     m_Logprint(HslMessageDegree.ERROR, "相机" , 3 , "连接失败", true);
-                    m_Camera3.close();
+                  
                 }
             }
             if (cameranum >= 4)
@@ -969,7 +971,32 @@ namespace _6524
             #region 处理图像
             if (Convert.ToInt32(d1.Rows[i][2]) == 1)  //相机1
             {
-                 handleresult = runhandleimage(_mWindow1.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                if (d1.Rows[i][5].ToString().Contains(","))
+                {
+                    string[] parts = d1.Rows[i][5].ToString().Split(',');
+                    List<bool> result = new List<bool>();
+                    result.Clear(); 
+                    for (int P = 0; P < parts.Length; P++)
+                    {
+                        bool partresult = runhandleimage(_mWindow1.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+                        result.Add(partresult);
+                    }
+                    if (result.Contains(false))
+                    {
+                        handleresult = false;
+
+                    }
+                    else
+                    {
+                        handleresult = true;
+                    }
+                   
+                }
+                else
+                {
+                    handleresult = runhandleimage(_mWindow1.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                }
+               
 
                 if (Convert.ToInt32(d1.Rows[i][7]) == 1)
                 {
@@ -991,7 +1018,31 @@ namespace _6524
             }
             else if (Convert.ToInt32(d1.Rows[i][2]) == 2)
             {
-                 handleresult = runhandleimage(_mWindow2.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                if (d1.Rows[i][5].ToString().Contains(","))
+                {
+                    string[] parts = d1.Rows[i][5].ToString().Split(',');
+                    List<bool> result = new List<bool>();
+                    result.Clear();
+                    for (int P = 0; P < parts.Length; P++)
+                    {
+                        bool partresult = runhandleimage(_mWindow2.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+                        result.Add(partresult);
+                    }
+                    if (result.Contains(false))
+                    {
+                        handleresult = false;
+
+                    }
+                    else
+                    {
+                        handleresult = true;
+                    }
+                }
+                else
+                {
+                    handleresult = runhandleimage(_mWindow2.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+
+                }
 
                 if (Convert.ToInt32(d1.Rows[i][7]) == 1)
                 {
@@ -1013,7 +1064,32 @@ namespace _6524
             }
             else if (Convert.ToInt32(d1.Rows[i][2]) == 3)
             {
-                 handleresult = runhandleimage(_mWindow3.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                if (d1.Rows[i][5].ToString().Contains(","))
+                {
+                    string[] parts = d1.Rows[i][5].ToString().Split(',');
+                    List<bool> result = new List<bool>();
+                    result.Clear();
+                    for (int P = 0; P < parts.Length; P++)
+                    {
+                        bool partresult = runhandleimage(_mWindow3.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+                        result.Add(partresult);
+                    }
+                    if (result.Contains(false))
+                    {
+                        handleresult = false;
+
+                    }
+                    else
+                    {
+                        handleresult = true;
+                    }
+                }
+                else
+                {
+                     handleresult = runhandleimage(_mWindow3.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+
+                }
+               
 
                 if (Convert.ToInt32(d1.Rows[i][7]) == 1)
                 {
@@ -1035,8 +1111,31 @@ namespace _6524
             }
             else if (Convert.ToInt32(d1.Rows[i][2]) == 4)
             {
-                 handleresult = runhandleimage(_mWindow4.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                if (d1.Rows[i][5].ToString().Contains(","))
+                {
+                    string[] parts = d1.Rows[i][5].ToString().Split(',');
+                    List<bool> result = new List<bool>();
+                    result.Clear();
+                    for (int P = 0; P < parts.Length; P++)
+                    {
+                        bool partresult = runhandleimage(_mWindow4.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+                        result.Add(partresult);
+                    }
+                    if (result.Contains(false))
+                    {
+                        handleresult = false;
 
+                    }
+                    else
+                    {
+                        handleresult = true;
+                    }
+                }
+                else
+                {
+                    handleresult = runhandleimage(_mWindow4.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+
+                }
                 if (Convert.ToInt32(d1.Rows[i][7]) == 1)
                 {
                     imageresult1.Add(handleresult);

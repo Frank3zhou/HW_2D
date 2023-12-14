@@ -376,6 +376,7 @@ namespace _6524
             
                 try
                 {
+                    DateTime t1 = DateTime.Now;
                     OpenFileDialog OpenFileDialog1 = new OpenFileDialog();
                     OpenFileDialog1.Filter = "Halcon Model|*.ncm";
                     OpenFileDialog1.Title = "Save an Model File";
@@ -387,9 +388,15 @@ namespace _6524
                         // 获取所选文件的完整路径
                         string selectedImagePath = OpenFileDialog1.FileName;
 
-                        // 获取所选文件的名称
+                    // 获取所选文件的名称
 
-                        M_pixel_matching.LoadingModel(selectedImagePath);
+                    if (M_pixel_matching.LoadingModel(selectedImagePath))
+                    {
+                        MessageBox.Show("载入模板成功"+"\r\n"+"用时："+ (DateTime.Now - t1).ToString("ffff")); 
+                    }
+                    else
+                    { 
+                    }
                     //show_model_contour(M_pixel_matching.hv_ModelID);
                 }
 

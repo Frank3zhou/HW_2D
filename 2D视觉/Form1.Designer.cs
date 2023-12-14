@@ -79,24 +79,33 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.tabControl1);
             resources.ApplyResources(this.panel2, "panel2");
+            this.panel2.Controls.Add(this.tabControl1);
+            this.helpProvider1.SetHelpKeyword(this.panel2, resources.GetString("panel2.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this.panel2, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("panel2.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.panel2, resources.GetString("panel2.HelpString"));
             this.panel2.Name = "panel2";
             this.helpProvider1.SetShowHelp(this.panel2, ((bool)(resources.GetObject("panel2.ShowHelp"))));
             // 
             // tabControl1
             // 
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.数据);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.helpProvider1.SetHelpKeyword(this.tabControl1, resources.GetString("tabControl1.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this.tabControl1, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("tabControl1.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.tabControl1, resources.GetString("tabControl1.HelpString"));
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.helpProvider1.SetShowHelp(this.tabControl1, ((bool)(resources.GetObject("tabControl1.ShowHelp"))));
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
             resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
+            this.helpProvider1.SetHelpKeyword(this.tabPage1, resources.GetString("tabPage1.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this.tabPage1, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("tabPage1.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.tabPage1, resources.GetString("tabPage1.HelpString"));
             this.tabPage1.Name = "tabPage1";
             this.helpProvider1.SetShowHelp(this.tabPage1, ((bool)(resources.GetObject("tabPage1.ShowHelp"))));
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -104,13 +113,19 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.helpProvider1.SetHelpKeyword(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this.tableLayoutPanel1, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("tableLayoutPanel1.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.HelpString"));
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.helpProvider1.SetShowHelp(this.tableLayoutPanel1, ((bool)(resources.GetObject("tableLayoutPanel1.ShowHelp"))));
             // 
             // 数据
             // 
-            this.数据.Controls.Add(this.logNetAnalysisControl1);
             resources.ApplyResources(this.数据, "数据");
+            this.数据.Controls.Add(this.logNetAnalysisControl1);
+            this.helpProvider1.SetHelpKeyword(this.数据, resources.GetString("数据.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this.数据, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("数据.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.数据, resources.GetString("数据.HelpString"));
             this.数据.Name = "数据";
             this.helpProvider1.SetShowHelp(this.数据, ((bool)(resources.GetObject("数据.ShowHelp"))));
             this.数据.UseVisualStyleBackColor = true;
@@ -118,24 +133,31 @@
             // logNetAnalysisControl1
             // 
             resources.ApplyResources(this.logNetAnalysisControl1, "logNetAnalysisControl1");
+            this.helpProvider1.SetHelpKeyword(this.logNetAnalysisControl1, resources.GetString("logNetAnalysisControl1.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this.logNetAnalysisControl1, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("logNetAnalysisControl1.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.logNetAnalysisControl1, resources.GetString("logNetAnalysisControl1.HelpString"));
             this.logNetAnalysisControl1.Name = "logNetAnalysisControl1";
             this.helpProvider1.SetShowHelp(this.logNetAnalysisControl1, ((bool)(resources.GetObject("logNetAnalysisControl1.ShowHelp"))));
             this.logNetAnalysisControl1.Load += new System.EventHandler(this.logNetAnalysisControl1_Load);
             // 
             // menuStrip1
             // 
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.helpProvider1.SetHelpKeyword(this.menuStrip1, resources.GetString("menuStrip1.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this.menuStrip1, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("menuStrip1.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.menuStrip1, resources.GetString("menuStrip1.HelpString"));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.设置ToolStripMenuItem,
             this.文件ToolStripMenuItem,
             this.帮助ToolStripMenuItem,
             this.登录ToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             this.helpProvider1.SetShowHelp(this.menuStrip1, ((bool)(resources.GetObject("menuStrip1.ShowHelp"))));
             // 
             // 设置ToolStripMenuItem
             // 
+            resources.ApplyResources(this.设置ToolStripMenuItem, "设置ToolStripMenuItem");
             this.设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pLC设置ToolStripMenuItem,
             this.相机设置ToolStripMenuItem,
@@ -146,161 +168,160 @@
             this.语言设置ToolStripMenuItem,
             this.开发者选项ToolStripMenuItem});
             this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
-            resources.ApplyResources(this.设置ToolStripMenuItem, "设置ToolStripMenuItem");
             // 
             // pLC设置ToolStripMenuItem
             // 
-            this.pLC设置ToolStripMenuItem.Name = "pLC设置ToolStripMenuItem";
             resources.ApplyResources(this.pLC设置ToolStripMenuItem, "pLC设置ToolStripMenuItem");
+            this.pLC设置ToolStripMenuItem.Name = "pLC设置ToolStripMenuItem";
             this.pLC设置ToolStripMenuItem.Click += new System.EventHandler(this.pLC设置ToolStripMenuItem_Click);
             // 
             // 相机设置ToolStripMenuItem
             // 
-            this.相机设置ToolStripMenuItem.Name = "相机设置ToolStripMenuItem";
             resources.ApplyResources(this.相机设置ToolStripMenuItem, "相机设置ToolStripMenuItem");
+            this.相机设置ToolStripMenuItem.Name = "相机设置ToolStripMenuItem";
             this.相机设置ToolStripMenuItem.Click += new System.EventHandler(this.相机设置ToolStripMenuItem_Click);
             // 
             // 机械手示教ToolStripMenuItem
             // 
-            this.机械手示教ToolStripMenuItem.Name = "机械手示教ToolStripMenuItem";
             resources.ApplyResources(this.机械手示教ToolStripMenuItem, "机械手示教ToolStripMenuItem");
+            this.机械手示教ToolStripMenuItem.Name = "机械手示教ToolStripMenuItem";
             this.机械手示教ToolStripMenuItem.Click += new System.EventHandler(this.机械手示教ToolStripMenuItem_Click);
             // 
             // 机械手控制ToolStripMenuItem
             // 
-            this.机械手控制ToolStripMenuItem.Name = "机械手控制ToolStripMenuItem";
             resources.ApplyResources(this.机械手控制ToolStripMenuItem, "机械手控制ToolStripMenuItem");
+            this.机械手控制ToolStripMenuItem.Name = "机械手控制ToolStripMenuItem";
             this.机械手控制ToolStripMenuItem.Click += new System.EventHandler(this.机械手控制ToolStripMenuItem_Click);
             // 
             // 模型设置ToolStripMenuItem
             // 
+            resources.ApplyResources(this.模型设置ToolStripMenuItem, "模型设置ToolStripMenuItem");
             this.模型设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.圆孔检测ToolStripMenuItem,
             this.字符条码二维码识别ToolStripMenuItem,
             this.形状匹配ToolStripMenuItem,
             this.像素匹配ToolStripMenuItem});
             this.模型设置ToolStripMenuItem.Name = "模型设置ToolStripMenuItem";
-            resources.ApplyResources(this.模型设置ToolStripMenuItem, "模型设置ToolStripMenuItem");
             this.模型设置ToolStripMenuItem.Click += new System.EventHandler(this.模型设置ToolStripMenuItem_Click);
             // 
             // 圆孔检测ToolStripMenuItem
             // 
-            this.圆孔检测ToolStripMenuItem.Name = "圆孔检测ToolStripMenuItem";
             resources.ApplyResources(this.圆孔检测ToolStripMenuItem, "圆孔检测ToolStripMenuItem");
+            this.圆孔检测ToolStripMenuItem.Name = "圆孔检测ToolStripMenuItem";
             this.圆孔检测ToolStripMenuItem.Click += new System.EventHandler(this.圆孔检测ToolStripMenuItem_Click);
             // 
             // 字符条码二维码识别ToolStripMenuItem
             // 
-            this.字符条码二维码识别ToolStripMenuItem.Name = "字符条码二维码识别ToolStripMenuItem";
             resources.ApplyResources(this.字符条码二维码识别ToolStripMenuItem, "字符条码二维码识别ToolStripMenuItem");
+            this.字符条码二维码识别ToolStripMenuItem.Name = "字符条码二维码识别ToolStripMenuItem";
             this.字符条码二维码识别ToolStripMenuItem.Click += new System.EventHandler(this.字符条码二维码识别ToolStripMenuItem_Click);
             // 
             // 形状匹配ToolStripMenuItem
             // 
-            this.形状匹配ToolStripMenuItem.Name = "形状匹配ToolStripMenuItem";
             resources.ApplyResources(this.形状匹配ToolStripMenuItem, "形状匹配ToolStripMenuItem");
+            this.形状匹配ToolStripMenuItem.Name = "形状匹配ToolStripMenuItem";
             this.形状匹配ToolStripMenuItem.Click += new System.EventHandler(this.形状匹配ToolStripMenuItem_Click);
             // 
             // 像素匹配ToolStripMenuItem
             // 
-            this.像素匹配ToolStripMenuItem.Name = "像素匹配ToolStripMenuItem";
             resources.ApplyResources(this.像素匹配ToolStripMenuItem, "像素匹配ToolStripMenuItem");
+            this.像素匹配ToolStripMenuItem.Name = "像素匹配ToolStripMenuItem";
             this.像素匹配ToolStripMenuItem.Click += new System.EventHandler(this.像素匹配ToolStripMenuItem_Click);
             // 
             // 通讯设置ToolStripMenuItem
             // 
-            this.通讯设置ToolStripMenuItem.Name = "通讯设置ToolStripMenuItem";
             resources.ApplyResources(this.通讯设置ToolStripMenuItem, "通讯设置ToolStripMenuItem");
+            this.通讯设置ToolStripMenuItem.Name = "通讯设置ToolStripMenuItem";
             this.通讯设置ToolStripMenuItem.Click += new System.EventHandler(this.通讯设置ToolStripMenuItem_Click);
             // 
             // 语言设置ToolStripMenuItem
             // 
+            resources.ApplyResources(this.语言设置ToolStripMenuItem, "语言设置ToolStripMenuItem");
             this.语言设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.简体中文ToolStripMenuItem,
             this.英语ToolStripMenuItem,
             this.西班牙语ToolStripMenuItem});
             this.语言设置ToolStripMenuItem.Name = "语言设置ToolStripMenuItem";
-            resources.ApplyResources(this.语言设置ToolStripMenuItem, "语言设置ToolStripMenuItem");
             // 
             // 简体中文ToolStripMenuItem
             // 
-            this.简体中文ToolStripMenuItem.Name = "简体中文ToolStripMenuItem";
             resources.ApplyResources(this.简体中文ToolStripMenuItem, "简体中文ToolStripMenuItem");
+            this.简体中文ToolStripMenuItem.Name = "简体中文ToolStripMenuItem";
             this.简体中文ToolStripMenuItem.Click += new System.EventHandler(this.简体中文ToolStripMenuItem_Click);
             // 
             // 英语ToolStripMenuItem
             // 
-            this.英语ToolStripMenuItem.Name = "英语ToolStripMenuItem";
             resources.ApplyResources(this.英语ToolStripMenuItem, "英语ToolStripMenuItem");
+            this.英语ToolStripMenuItem.Name = "英语ToolStripMenuItem";
             this.英语ToolStripMenuItem.Click += new System.EventHandler(this.英语ToolStripMenuItem_Click);
             // 
             // 西班牙语ToolStripMenuItem
             // 
-            this.西班牙语ToolStripMenuItem.Name = "西班牙语ToolStripMenuItem";
             resources.ApplyResources(this.西班牙语ToolStripMenuItem, "西班牙语ToolStripMenuItem");
+            this.西班牙语ToolStripMenuItem.Name = "西班牙语ToolStripMenuItem";
             this.西班牙语ToolStripMenuItem.Click += new System.EventHandler(this.西班牙语ToolStripMenuItem_Click);
             // 
             // 开发者选项ToolStripMenuItem
             // 
-            this.开发者选项ToolStripMenuItem.Name = "开发者选项ToolStripMenuItem";
             resources.ApplyResources(this.开发者选项ToolStripMenuItem, "开发者选项ToolStripMenuItem");
+            this.开发者选项ToolStripMenuItem.Name = "开发者选项ToolStripMenuItem";
             this.开发者选项ToolStripMenuItem.Click += new System.EventHandler(this.开发者选项ToolStripMenuItem_Click);
             // 
             // 文件ToolStripMenuItem
             // 
+            resources.ApplyResources(this.文件ToolStripMenuItem, "文件ToolStripMenuItem");
             this.文件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.新建ToolStripMenuItem,
             this.打开ToolStripMenuItem,
             this.退出ToolStripMenuItem});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            resources.ApplyResources(this.文件ToolStripMenuItem, "文件ToolStripMenuItem");
             this.文件ToolStripMenuItem.Click += new System.EventHandler(this.文件ToolStripMenuItem_Click);
             // 
             // 新建ToolStripMenuItem
             // 
-            this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
             resources.ApplyResources(this.新建ToolStripMenuItem, "新建ToolStripMenuItem");
+            this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
             // 
             // 打开ToolStripMenuItem
             // 
-            this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
             resources.ApplyResources(this.打开ToolStripMenuItem, "打开ToolStripMenuItem");
+            this.打开ToolStripMenuItem.Name = "打开ToolStripMenuItem";
             // 
             // 退出ToolStripMenuItem
             // 
-            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
             resources.ApplyResources(this.退出ToolStripMenuItem, "退出ToolStripMenuItem");
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
             // 
             // 帮助ToolStripMenuItem
             // 
+            resources.ApplyResources(this.帮助ToolStripMenuItem, "帮助ToolStripMenuItem");
             this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.关于ToolStripMenuItem});
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            resources.ApplyResources(this.帮助ToolStripMenuItem, "帮助ToolStripMenuItem");
             // 
             // 关于ToolStripMenuItem
             // 
-            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
             resources.ApplyResources(this.关于ToolStripMenuItem, "关于ToolStripMenuItem");
+            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
             // 
             // 登录ToolStripMenuItem
             // 
+            resources.ApplyResources(this.登录ToolStripMenuItem, "登录ToolStripMenuItem");
             this.登录ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.操作员登录ToolStripMenuItem,
             this.开发者登录ToolStripMenuItem});
             this.登录ToolStripMenuItem.Name = "登录ToolStripMenuItem";
-            resources.ApplyResources(this.登录ToolStripMenuItem, "登录ToolStripMenuItem");
             // 
             // 操作员登录ToolStripMenuItem
             // 
-            this.操作员登录ToolStripMenuItem.Name = "操作员登录ToolStripMenuItem";
             resources.ApplyResources(this.操作员登录ToolStripMenuItem, "操作员登录ToolStripMenuItem");
+            this.操作员登录ToolStripMenuItem.Name = "操作员登录ToolStripMenuItem";
             this.操作员登录ToolStripMenuItem.Click += new System.EventHandler(this.操作员登录ToolStripMenuItem_Click);
             // 
             // 开发者登录ToolStripMenuItem
             // 
-            this.开发者登录ToolStripMenuItem.Name = "开发者登录ToolStripMenuItem";
             resources.ApplyResources(this.开发者登录ToolStripMenuItem, "开发者登录ToolStripMenuItem");
+            this.开发者登录ToolStripMenuItem.Name = "开发者登录ToolStripMenuItem";
             this.开发者登录ToolStripMenuItem.Click += new System.EventHandler(this.开发者登录ToolStripMenuItem_Click);
             // 
             // Bg_Main
@@ -309,20 +330,30 @@
             this.Bg_Main.WorkerSupportsCancellation = true;
             this.Bg_Main.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Bg_Main_DoWork);
             // 
+            // helpProvider1
+            // 
+            resources.ApplyResources(this.helpProvider1, "helpProvider1");
+            // 
             // panel3
             // 
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Controls.Add(this.button12);
             this.panel3.Controls.Add(this.btn_system_state);
             this.panel3.Controls.Add(this.panel1);
-            resources.ApplyResources(this.panel3, "panel3");
+            this.helpProvider1.SetHelpKeyword(this.panel3, resources.GetString("panel3.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this.panel3, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("panel3.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.panel3, resources.GetString("panel3.HelpString"));
             this.panel3.Name = "panel3";
             this.helpProvider1.SetShowHelp(this.panel3, ((bool)(resources.GetObject("panel3.ShowHelp"))));
             // 
             // button12
             // 
-            this.button12.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.button12, "button12");
+            this.button12.BackColor = System.Drawing.SystemColors.Control;
             this.button12.FlatAppearance.BorderSize = 0;
+            this.helpProvider1.SetHelpKeyword(this.button12, resources.GetString("button12.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this.button12, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("button12.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.button12, resources.GetString("button12.HelpString"));
             this.button12.Name = "button12";
             this.helpProvider1.SetShowHelp(this.button12, ((bool)(resources.GetObject("button12.ShowHelp"))));
             this.button12.UseVisualStyleBackColor = false;
@@ -335,6 +366,9 @@
             this.btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Chartreuse;
             this.btn_system_state.FlatAppearance.BorderSize = 5;
             this.btn_system_state.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.helpProvider1.SetHelpKeyword(this.btn_system_state, resources.GetString("btn_system_state.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this.btn_system_state, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("btn_system_state.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.btn_system_state, resources.GetString("btn_system_state.HelpString"));
             this.btn_system_state.Name = "btn_system_state";
             this.helpProvider1.SetShowHelp(this.btn_system_state, ((bool)(resources.GetObject("btn_system_state.ShowHelp"))));
             this.btn_system_state.UseVisualStyleBackColor = false;
@@ -342,8 +376,11 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Menu;
             resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.BackColor = System.Drawing.SystemColors.Menu;
+            this.helpProvider1.SetHelpKeyword(this.panel1, resources.GetString("panel1.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this.panel1, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("panel1.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.panel1, resources.GetString("panel1.HelpString"));
             this.panel1.Name = "panel1";
             this.helpProvider1.SetShowHelp(this.panel1, ((bool)(resources.GetObject("panel1.ShowHelp"))));
             // 
@@ -361,13 +398,16 @@
             // 
             // Form1
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.HelpButton = true;
+            this.helpProvider1.SetHelpKeyword(this, resources.GetString("$this.HelpKeyword"));
+            this.helpProvider1.SetHelpNavigator(this, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("$this.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this, resources.GetString("$this.HelpString"));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.helpProvider1.SetShowHelp(this, ((bool)(resources.GetObject("$this.ShowHelp"))));

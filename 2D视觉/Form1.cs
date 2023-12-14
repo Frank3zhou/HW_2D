@@ -35,7 +35,7 @@ namespace _6524
         string Path_calibration_Param = Application.StartupPath + @"\\calibration\Param.ini";
         bool heartbeat_enabled;
         string heartbeat_path;
-        private static string comname = "COM1";
+        private static string comname = "COM2";
         CameraParam cameraParam;
         Camera_Form camera_Form;
         State state = new State();
@@ -2003,7 +2003,7 @@ namespace _6524
                         bool Use_Result = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Use_Result", "false"));
                         bool Use_TCPResult = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Use_TCPResult", "false"));
                         // checkBox1.Checked = Use_Result;
-                        string Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Result", "0");
+                         string  Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Result", "0");
 
                         string rotate = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "rotate", "0");
 
@@ -2091,18 +2091,24 @@ namespace _6524
                                         TCPIP m_TCP = new TCPIP();
 
                                         m_TCP.IpAddress = "127.0.0.1";
-                                        m_TCP.Port = 6000;
+                                        m_TCP.Port = 5000;
                                         if (m_TCP.ClientConnect())
                                         {
-                                            m_TCP.Send("1234323");//发送请求指令
+                                            m_TCP.Send("#GET#");//发送请求指令
                                         }
-                                        // Thread.Sleep(1000);
+                                        Thread.Sleep(100);
                                         if (m_TCP.IsConnected("127.0.0.1"))
                                         {
                                             string receivestr;
                                             if (m_TCP.Recive(out receivestr))
                                             {
-                                                Result =  receivestr;
+                                               string[] a = receivestr.Split('#');
+                                                Result = a[1].ToString();
+                                                disp_message(HWindowshandle, "接受打码信息:" + Result, "window", 52, 12, "black", "true");
+                                            }
+                                            else
+                                            {
+                                                Result = "";
                                             }
                                         }
                                         m_TCP.DisConnect();

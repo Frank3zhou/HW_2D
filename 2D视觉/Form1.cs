@@ -448,17 +448,17 @@ namespace _6524
             if (cameranum >= 3)
 
             {
-                if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机3", "IP", "")))
+                if (m_Camera3.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机3", "IP", "")))
                 {
                     // Thread.Sleep(500);
-                    Camera2_connected = true;
+                    Camera3_connected = true;
                     UpdateInit(100, changelanguage("相机",3,"连接完成"));
                     m_Camera3.close();
                 }
                 else
                 {
                     //  Thread.Sleep(500);
-                    Camera2_connected = false;
+                    Camera3_connected = false;
                     UpdateInit(90, changelanguage("相机",3,"连接失败"));
                     m_Logprint(HslMessageDegree.ERROR, "相机",3,"连接失败", true);
 
@@ -467,7 +467,7 @@ namespace _6524
             if (cameranum >= 4)
 
             {
-                if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机4", "IP", "")))
+                if (m_Camera4.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机4", "IP", "")))
                 {
                     //Thread.Sleep(500);
                     Camera4_connected = true;

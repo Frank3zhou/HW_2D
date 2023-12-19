@@ -14,6 +14,7 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
@@ -2089,8 +2090,9 @@ namespace _6524
                                     if (Use_TCPResult)
                                     {
                                         TCPIP m_TCP = new TCPIP();
-
-                                        m_TCP.IpAddress = "127.0.0.1";
+                                        Task task = Task.Factory.StartNew(() =>
+                                        {
+                                            m_TCP.IpAddress = "127.0.0.1";
                                         m_TCP.Port = 5000;
                                         if (m_TCP.ClientConnect())
                                         {
@@ -2112,7 +2114,10 @@ namespace _6524
                                             }
                                         }
                                         m_TCP.DisConnect();
-                                        
+                                        });
+
+                                        // 等待任务完成
+                                        task.Wait(3000);//任务等待3秒
                                     }
                               
                                     if (result == Result)

@@ -573,11 +573,22 @@ namespace _6524
 
         private void button1_Click(object sender, EventArgs e)
         {
-            img.Dispose();
-            string imagepath = choose_file();
-            HOperatorSet.ReadImage(out img, imagepath);
-            m_ZKHwindows.NowImage = img;
-            sacleimg = img;
+            try
+            {
+                img.Dispose();
+                string imagepath = choose_file();
+                HOperatorSet.ReadImage(out img, imagepath);
+                m_ZKHwindows.NowImage = img;
+                sacleimg = img;
+            }
+            catch (Exception)
+            {
+
+                
+            }
+
+                    
+           
         }
         public string choose_file()
         {

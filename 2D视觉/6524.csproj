@@ -467,7 +467,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\FRANK\AppData\Local\Programs\MVTec\HALCON-21.11-Progress\bin\dotnet35\halcondotnet.dll" />
+    <Analyzer Include="C:\Users\HW\AppData\Local\Programs\MVTec\HALCON-21.11-Progress\bin\dotnet35\halcondotnet.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

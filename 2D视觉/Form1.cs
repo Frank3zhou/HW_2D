@@ -36,7 +36,7 @@ namespace _6524
         string Path_calibration_Param = Application.StartupPath + @"\\calibration\Param.ini";
         bool heartbeat_enabled;
         string heartbeat_path;
-        private static string comname = "COM2";
+      //  private static string comname = "COM2";
         CameraParam cameraParam;
         Camera_Form camera_Form;
         State state = new State();
@@ -82,7 +82,7 @@ namespace _6524
         MVS_SDK m_Camera; //机器人相机
 
         //   public string Comname { get => Comname1; set => Comname1 = value; }
-        public static string Comname1 { get => comname; set => comname = value; }
+      //  public static string Comname1 { get => comname; set => comname = value; }
 
         public Form1()
         {
@@ -233,12 +233,21 @@ namespace _6524
                 m_Logprint(HslMessageDegree.ERROR, "PLC连接失败", true);
             }
 
+            try
+            {
+                rS232.BaudRate = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "BaudRate", ""));
+                rS232.DataBits = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "DataBits", ""));
+                rS232.StopBits = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "StopBits", ""));
+                rS232.COMPort = IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "COMPort", "");
+                rS232.Parity = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "Parity", ""));
+            }
+            catch (Exception)
+            {
 
-            rS232.BaudRate = 19200;
-            rS232.DataBits = 8;
-            rS232.StopBits = 1;
-            rS232.COMPort = Comname1;
-            rS232.Parity = 0;
+                //throw;
+            }
+           
+        
             rS232.Init();
 
             if (!(rS232.Open() == 1))
@@ -570,11 +579,12 @@ namespace _6524
 
                     brightness = 0;
 
-                    rS232.BaudRate = 19200;
-                    rS232.DataBits = 8;
-                    rS232.StopBits = 1;
-                    rS232.COMPort = Comname1;
-                    rS232.Parity = 0;
+                    rS232.BaudRate = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "BaudRate", ""));
+                    rS232.DataBits = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "DataBits", ""));
+                    rS232.StopBits = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "StopBits", ""));
+                    rS232.COMPort = IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "COMPort", "");
+                    rS232.Parity = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "Parity", ""));
+
                     rS232.Init();
 
                     if (!(rS232.Open() == 1))
@@ -2165,18 +2175,18 @@ namespace _6524
                     {
                         Shape_matching M_Shape_matching = new Shape_matching();
                         //模板匹配的参数
-                        M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_min", ""));
-                        M_Shape_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_max", ""));
-                        M_Shape_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_scale_min", ""));
-                        M_Shape_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_scale_max", ""));
-                        M_Shape_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_scale_step", ""));
-                        M_Shape_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_step", ""));
-                        M_Shape_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_num", ""));
-                        M_Shape_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_min_Score", ""));
-                        M_Shape_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_overlap_Max", ""));
-                        M_Shape_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Pyramid_level", ""));
-                        M_Shape_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Greedy_algorithm", ""));
-                        M_Shape_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_min_Contrastratio", ""));
+                        M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_min", "0"));
+                        M_Shape_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_max", "0"));
+                        M_Shape_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_scale_min", "0"));
+                        M_Shape_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_scale_max", "0"));
+                        M_Shape_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_scale_step", "0"));
+                        M_Shape_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_step", "0"));
+                        M_Shape_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_num", "0"));
+                        M_Shape_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_min_Score", "0"));
+                        M_Shape_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_overlap_Max", "0"));
+                        M_Shape_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Pyramid_level", "0"));
+                        M_Shape_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Greedy_algorithm", "0"));
+                        M_Shape_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_min_Contrastratio", "0"));
                         double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Mult", "0"));
                         double add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Add", "0"));
                         bool Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Scalenable", "false"));
@@ -2235,26 +2245,26 @@ namespace _6524
                 else if (A < 399)
                 {
                     pixel_matching  M_pixel_matching = new pixel_matching();
-                    M_pixel_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_min", ""));
-                    M_pixel_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_max", ""));
+                    M_pixel_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_min", "0"));
+                    M_pixel_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_max", "0"));
                     //M_pixel_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_scale_min", ""));
                     //M_pixel_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_scale_max", ""));
                     //M_pixel_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_scale_step", ""));
                     // M_pixel_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_rote_step", ""));
-                    M_pixel_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_num", ""));
-                    M_pixel_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_min_Score", ""));
-                    M_pixel_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_overlap_Max", ""));
-                    M_pixel_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Pyramid_level", ""));
+                    M_pixel_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_num", "0"));
+                    M_pixel_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_min_Score", "0"));
+                    M_pixel_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_overlap_Max", "0"));
+                    M_pixel_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Pyramid_level", "0"));
                     //M_pixel_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_Greedy_algorithm", ""));
                     //M_pixel_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_min_Contrastratio", ""));
-                  double  Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Mult", ""));
-                    double  add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Add", ""));
+                  double  Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Mult", "0"));
+                    double  add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Add", "0"));
                     bool Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Scalenable", "false"));
                     //模板
                  //   M_pixel_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + A.ToString() + ".ncm");
-                    M_pixel_matching.Hv_Matching_Radius = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Radius", ""));
-                    M_pixel_matching.Hv_modelcol = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_modelcol", ""));
-                    M_pixel_matching.Hv_modelrow = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_modelrow", ""));
+                    M_pixel_matching.Hv_Matching_Radius = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Radius", "0"));
+                    M_pixel_matching.Hv_modelcol = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_modelcol", "0"));
+                    M_pixel_matching.Hv_modelrow = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_modelrow", "0"));
                     bool isfirst = true;
           
                     M_pixel_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + A.ToString() + ".ncm");
@@ -2967,18 +2977,18 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
                 Shape_matching M_Shape_matching = new Shape_matching();
                 //模板匹配的参数
-                M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_rote_min", ""));
-                M_Shape_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_rote_max", ""));
-                M_Shape_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_scale_min", ""));
-                M_Shape_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_scale_max", ""));
-                M_Shape_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_scale_step", ""));
-                M_Shape_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_rote_step", ""));
-                M_Shape_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_num", ""));
-                M_Shape_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_min_Score", ""));
-                M_Shape_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_overlap_Max", ""));
-                M_Shape_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_Pyramid_level", ""));
-                M_Shape_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_Greedy_algorithm", ""));
-                M_Shape_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_min_Contrastratio", ""));
+                M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_rote_min", "0"));
+                M_Shape_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_rote_max", "0"));
+                M_Shape_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_scale_min", "0"));
+                M_Shape_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_scale_max", "0"));
+                M_Shape_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_scale_step", "0"));
+                M_Shape_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_rote_step", "0"));
+                M_Shape_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_num", "0"));
+                M_Shape_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_min_Score", "0"));
+                M_Shape_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_overlap_Max", "0"));
+                M_Shape_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_Pyramid_level", "0"));
+                M_Shape_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_Greedy_algorithm", "0"));
+                M_Shape_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "Matching0" + strHost + "Model", "Hv_Matching_min_Contrastratio", "0"));
                 //模板
                 M_Shape_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\calibration\Matching0" + strHost + ".shm");
 

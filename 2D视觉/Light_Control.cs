@@ -139,5 +139,16 @@ namespace _6524
         {
            
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string Path_calibration_Param = Application.StartupPath + @"\\calibration\Param.ini";
+            IniAPI.INIWriteValue(Path_calibration_Param, "COM", "BaudRate", comboBox2.Text);
+            IniAPI.INIWriteValue(Path_calibration_Param, "COM", "DataBits", comboBox3.Text);
+            IniAPI.INIWriteValue(Path_calibration_Param, "COM", "StopBits", comboBox4.Text);
+            IniAPI.INIWriteValue(Path_calibration_Param, "COM", "COMPort", comboBox1.Text);
+            IniAPI.INIWriteValue(Path_calibration_Param, "COM", "Parity", comboBox5.SelectedIndex.ToString());
+            MessageBox.Show("保存成功");
+        }
     }
 }

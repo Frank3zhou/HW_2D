@@ -150,8 +150,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.设置ToolStripMenuItem,
             this.文件ToolStripMenuItem,
-            this.帮助ToolStripMenuItem,
-            this.登录ToolStripMenuItem});
+            this.登录ToolStripMenuItem,
+            this.帮助ToolStripMenuItem});
             this.menuStrip1.Name = "menuStrip1";
             this.helpProvider1.SetShowHelp(this.menuStrip1, ((bool)(resources.GetObject("menuStrip1.ShowHelp"))));
             // 

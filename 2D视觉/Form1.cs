@@ -117,7 +117,7 @@ namespace _6524
             int cameranum = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "System", "CameraNum", "1"));
             robotenabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "System", "RobotEnabled", "false"));
             autochangemodel = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "System", "AutoChangeModel", "false"));
-            Functioncode = IniAPI.INIGetStringValue(Param_Path, "COM", "Functioncode", "S");
+            
             _mWindow1.Dock = DockStyle.Fill;
             _mWindow2.Dock = DockStyle.Fill;
             _mWindow3.Dock = DockStyle.Fill;
@@ -241,11 +241,12 @@ namespace _6524
 
             try
             {
-                rS232.BaudRate = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "BaudRate", ""));
-                rS232.DataBits = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "DataBits", ""));
-                rS232.StopBits = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "StopBits", ""));
-                rS232.COMPort = IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "COMPort", "");
-                rS232.Parity = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "Parity", ""));
+                rS232.BaudRate = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "COM", "BaudRate", ""));
+                rS232.DataBits = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "COM", "DataBits", ""));
+                rS232.StopBits = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "COM", "StopBits", ""));
+                rS232.COMPort = IniAPI.INIGetStringValue(Param_Path, "COM", "COMPort", "");
+                rS232.Parity = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "COM", "Parity", ""));
+                Functioncode = IniAPI.INIGetStringValue(Param_Path, "COM", "Functioncode", "S");
             }
             catch (Exception)
             {

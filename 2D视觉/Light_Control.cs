@@ -14,7 +14,7 @@ namespace _6524
 {
     public partial class Light_Control : Form
     {
-        string Path_calibration_Param = Application.StartupPath + @"\\calibration\Param.ini";
+        string Path_calibration_Param = Application.StartupPath + @"\\Param.ini";
         //  bool connect = false;
         RS232 rS232;
         public Light_Control()

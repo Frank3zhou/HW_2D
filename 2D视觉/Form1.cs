@@ -12,6 +12,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Resources;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -51,7 +52,7 @@ namespace _6524
         MVS_SDK m_Camera2 = new MVS_SDK();
         MVS_SDK m_Camera3 = new MVS_SDK();
         MVS_SDK m_Camera4 = new MVS_SDK();
-        private MelsecMcNet MC_PLC;
+        private basePLC MC_PLC = new basePLC();
         RS232 rS232 = new RS232();
         int brightness = 150;
         DataTable d1 = new DataTable(); // 相机参数表
@@ -188,8 +189,10 @@ namespace _6524
 
             logNet = new LogNetSingle(Application.StartupPath + "\\Logs\\" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt");
             LogNetSingle logNetSingle = logNet as LogNetSingle;
+          //  logNetSingle.
             string logData = logNetSingle.GetAllSavedLog();
             logNetAnalysisControl1.Load += FormLogNetTest_Load;
+            
             panel2.BringToFront();
 
             //获取所有的日志信息
@@ -215,10 +218,11 @@ namespace _6524
             saveImageFormat = IniAPI.INIGetStringValue(Param_Path, "SaveImage", "ImageFormat", "");
             //连接PLC
             UpdateInit(20, changelanguage("PLC连接中"));
-            MC_PLC = new MelsecMcNet(IP, Convert.ToInt32(Port));
-            MC_PLC.ConnectTimeOut = 2000; // 网络连接的超时时间
-            OperateResult connect = MC_PLC.ConnectServer();
-            if (connect.IsSuccess)
+            MC_PLC.pLCMode = (PLCMode)Enum.Parse(typeof(PLCMode), Mode); 
+            MC_PLC.IP = IP;
+            MC_PLC.Port= Convert.ToInt32(Port);
+       
+            if (MC_PLC.init())
             {
                 PLC_connected = true;
                 Thread.Sleep(500);
@@ -393,6 +397,7 @@ namespace _6524
             {
                 string source = Encoding.UTF8.GetString(System.IO.File.ReadAllBytes(Application.StartupPath + "\\Logs\\" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt"));   // 传入路径
                 logNetAnalysisControl1.SetLogNetSource(source);
+             
             }
             catch (Exception)
             {
@@ -630,10 +635,22 @@ namespace _6524
 
 
                         //自动切换机种，机种名必须为1.2.3
-                        int model = MC_PLC.ReadInt32("D100").Content;
-                        m_Logprint(HslMessageDegree.INFO, "读取机种结果：" + model.ToString(), false);
+                      OperateResult<int[]> model = MC_PLC.ReadInt32("D100",1);
+                        if (model.IsSuccess)
+                        {
+                           
+                            m_Logprint(HslMessageDegree.INFO, "读取机种结果：" + model.Content[0].ToString(), false);
+                        }
+                        else
+                        {
+                            MessageBox.Show("机种读取失败");
+                           // m_Logprint(HslMessageDegree.INFO, "读取机种结果：" + "失败", false);
+                            Bg_Main.CancelAsync();
+                            break;
+                        }
+                       
                         // m_modelSet.Modelname = "PLCmodel" + model.ToString();
-                        filenanme = DCpath + "\\" + model.ToString() + ".xlsx";
+                        filenanme = DCpath + "\\" + model.Content[0].ToString() + ".xlsx";
 
                     }
                     else
@@ -679,11 +696,11 @@ namespace _6524
                             while (!waitsignal && !Bg_Main.CancellationPending)
                             {
                                 Thread.Sleep(10);
-                                OperateResult<Boolean> m_Result = MC_PLC.ReadBool(d1.Rows[i][1].ToString());
+                                OperateResult<bool[]> m_Result = MC_PLC.ReadBool(d1.Rows[i][1].ToString(),1);
 
                                 if (m_Result.IsSuccess)
                                 {
-                                    if (m_Result.Content)
+                                    if (m_Result.Content[0])
                                     {
                                         waitsignal = true;
                                         MC_PLC.Write(d1.Rows[i][1].ToString(), new bool[] { false });//复位拍照限信号
@@ -1376,7 +1393,7 @@ namespace _6524
 
         private void button26_Click(object sender, EventArgs e)
         {
-
+           // logNetAnalysisControl1.Refresh();
         }
 
         private void pLC设置ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2958,9 +2975,25 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
 
 
+
                 //自动切换机种，机种名必须为1.2.3
-                int model = MC_PLC.ReadInt32("D100").Content;
-                strHost = model.ToString();
+                OperateResult<int[]> model = MC_PLC.ReadInt32("D100", 1);
+                if (model.IsSuccess)
+                {
+
+                    m_Logprint(HslMessageDegree.INFO, "读取机种结果：" + model.Content[0].ToString(), false);
+                }
+                else
+                {
+                    MessageBox.Show("机种读取失败");
+                    // m_Logprint(HslMessageDegree.INFO, "读取机种结果：" + "失败", false);
+                   // Bg_Main.CancelAsync();
+                   
+                }
+
+                // m_modelSet.Modelname = "PLCmodel" + model.ToString();
+             //   filenanme = DCpath + "\\" + model.Content[0].ToString() + ".xlsx";
+                strHost = model.Content[0].ToString();
 
             }
             else

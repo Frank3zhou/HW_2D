@@ -56,11 +56,11 @@
             this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.操作员登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.开发者登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Bg_Main = new System.ComponentModel.BackgroundWorker();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -292,18 +292,6 @@
             resources.ApplyResources(this.退出ToolStripMenuItem, "退出ToolStripMenuItem");
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
             // 
-            // 帮助ToolStripMenuItem
-            // 
-            resources.ApplyResources(this.帮助ToolStripMenuItem, "帮助ToolStripMenuItem");
-            this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.关于ToolStripMenuItem});
-            this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            // 
-            // 关于ToolStripMenuItem
-            // 
-            resources.ApplyResources(this.关于ToolStripMenuItem, "关于ToolStripMenuItem");
-            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            // 
             // 登录ToolStripMenuItem
             // 
             resources.ApplyResources(this.登录ToolStripMenuItem, "登录ToolStripMenuItem");
@@ -323,6 +311,18 @@
             resources.ApplyResources(this.开发者登录ToolStripMenuItem, "开发者登录ToolStripMenuItem");
             this.开发者登录ToolStripMenuItem.Name = "开发者登录ToolStripMenuItem";
             this.开发者登录ToolStripMenuItem.Click += new System.EventHandler(this.开发者登录ToolStripMenuItem_Click);
+            // 
+            // 帮助ToolStripMenuItem
+            // 
+            resources.ApplyResources(this.帮助ToolStripMenuItem, "帮助ToolStripMenuItem");
+            this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.关于ToolStripMenuItem});
+            this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
+            // 
+            // 关于ToolStripMenuItem
+            // 
+            resources.ApplyResources(this.关于ToolStripMenuItem, "关于ToolStripMenuItem");
+            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
             // 
             // Bg_Main
             // 

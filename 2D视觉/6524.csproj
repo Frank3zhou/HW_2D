@@ -180,6 +180,7 @@
     <Compile Include="Class\find_bar.cs" />
     <Compile Include="Class\Find_OCR_Class.cs" />
     <Compile Include="Class\pixel_matching.cs" />
+    <Compile Include="Class\PLC.cs" />
     <Compile Include="Class\QR_Code _recognition.cs" />
     <Compile Include="Light_Control.cs">
       <SubType>Form</SubType>
@@ -467,7 +468,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\HW\AppData\Local\Programs\MVTec\HALCON-21.11-Progress\bin\dotnet35\halcondotnet.dll" />
+    <Analyzer Include="C:\Users\FRANK\AppData\Local\Programs\MVTec\HALCON-21.11-Progress\bin\dotnet35\halcondotnet.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

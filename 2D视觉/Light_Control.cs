@@ -14,8 +14,8 @@ namespace _6524
 {
     public partial class Light_Control : Form
     {
-
-    //  bool connect = false;
+        string Path_calibration_Param = Application.StartupPath + @"\\calibration\Param.ini";
+        //  bool connect = false;
         RS232 rS232;
         public Light_Control()
         {
@@ -25,7 +25,7 @@ namespace _6524
 
         private void Light_Control_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -80,18 +80,19 @@ namespace _6524
 
         private void run_control(object sender,int B ,string C)
         {
+           string Functioncode = IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "Functioncode", "SA");
             Button A = (Button)sender;
             if (A.Text == "打开")
             {
                 A.Text = "关闭";
                 A.BackColor = Color.LimeGreen;
-                rS232.SerialPort.WriteLine("S" + C + "0" + B.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + C + "0" + B.ToString("D3") + "#" + "\r");//关闭光源 
             }
             else
             {
                 A.BackColor = Color.White;
                 A.Text = "打开";
-                rS232.SerialPort.WriteLine("S"+ C + "0000" + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine( Functioncode + C + "0000" + "#" + "\r");//关闭光源 
             }
         }
 
@@ -142,12 +143,13 @@ namespace _6524
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string Path_calibration_Param = Application.StartupPath + @"\\calibration\Param.ini";
+           
             IniAPI.INIWriteValue(Path_calibration_Param, "COM", "BaudRate", comboBox2.Text);
             IniAPI.INIWriteValue(Path_calibration_Param, "COM", "DataBits", comboBox3.Text);
             IniAPI.INIWriteValue(Path_calibration_Param, "COM", "StopBits", comboBox4.Text);
             IniAPI.INIWriteValue(Path_calibration_Param, "COM", "COMPort", comboBox1.Text);
             IniAPI.INIWriteValue(Path_calibration_Param, "COM", "Parity", comboBox5.SelectedIndex.ToString());
+            IniAPI.INIWriteValue(Path_calibration_Param, "COM", "Functioncode", textBox1.Text);
             MessageBox.Show("保存成功");
         }
     }

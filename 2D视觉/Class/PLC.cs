@@ -74,6 +74,7 @@ namespace _6524.Class
                 {
                     Siemens_PLC = new SiemensS7Net(SiemensPLCS.S1200, IP);
                     Siemens_PLC.ConnectTimeOut = 2000;
+                    Siemens_PLC.Port = Port;
                     OperateResult connect = Siemens_PLC.ConnectServer();
                     if (connect.IsSuccess)
                     {

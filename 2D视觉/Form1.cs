@@ -54,6 +54,7 @@ namespace _6524
         MVS_SDK m_Camera4 = new MVS_SDK();
         private basePLC MC_PLC = new basePLC();
         RS232 rS232 = new RS232();
+        string Functioncode = "";//光源功能码
         int brightness = 150;
         DataTable d1 = new DataTable(); // 相机参数表
         DataTable d2 = new DataTable(); // 相机结果表
@@ -68,7 +69,7 @@ namespace _6524
         bool robot_connected =false  ;
         bool robotcamera_connected = false;
         bool handleresult=false;
-      
+        
 
         //  private bool isPaused = false;  //主线程暂停
 
@@ -116,6 +117,7 @@ namespace _6524
             int cameranum = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "System", "CameraNum", "1"));
             robotenabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "System", "RobotEnabled", "false"));
             autochangemodel = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "System", "AutoChangeModel", "false"));
+            Functioncode = IniAPI.INIGetStringValue(Param_Path, "COM", "Functioncode", "S");
             _mWindow1.Dock = DockStyle.Fill;
             _mWindow2.Dock = DockStyle.Fill;
             _mWindow3.Dock = DockStyle.Fill;
@@ -261,10 +263,10 @@ namespace _6524
             else
             {
                 brightness = 150;
-                rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                rS232.SerialPort.WriteLine("SB0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                rS232.SerialPort.WriteLine("SC0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                rS232.SerialPort.WriteLine("SD0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode+"A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode+"B0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode+"C0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode+"D0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
             }
 
             rS232.Close();
@@ -600,10 +602,10 @@ namespace _6524
                     }
                     else
                     {
-                        rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                        rS232.SerialPort.WriteLine("SB0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                        rS232.SerialPort.WriteLine("SC0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                        rS232.SerialPort.WriteLine("SD0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                        rS232.SerialPort.WriteLine(Functioncode + "A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                        rS232.SerialPort.WriteLine(Functioncode + "B0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                        rS232.SerialPort.WriteLine(Functioncode + "C0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                        rS232.SerialPort.WriteLine(Functioncode + "D0" + brightness.ToString("D3") + "#" + "\r");//关闭光源  
 
                     }
 
@@ -835,7 +837,7 @@ namespace _6524
                 {
                     m_Logprint(HslMessageDegree.INFO, "拍照位" , d1.Rows[i][0].ToString() , "拍照中", true);
                     brightness = Convert.ToInt32(d1.Rows[i][4]);
-                    rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");
+                    rS232.SerialPort.WriteLine(Functioncode+"A0" + brightness.ToString("D3") + "#" + "\r");
                     Thread.Sleep(100);
                     //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
                     if (m_Camera1.Get_Oneframe())
@@ -858,7 +860,7 @@ namespace _6524
 
                     }
                     brightness = 0;
-                    rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");
+                    rS232.SerialPort.WriteLine(Functioncode+"A0" + brightness.ToString("D3") + "#" + "\r");
 
                 }
 
@@ -877,7 +879,7 @@ namespace _6524
                 {
                     m_Logprint(HslMessageDegree.INFO, "拍照位" , d1.Rows[i][0].ToString() , "拍照中", true);
                     brightness = Convert.ToInt32(d1.Rows[i][4]);
-                    rS232.SerialPort.WriteLine("SB0" + brightness.ToString("D3") + "#" + "\r");
+                    rS232.SerialPort.WriteLine(Functioncode+"B0" + brightness.ToString("D3") + "#" + "\r");
                     Thread.Sleep(100);
                     //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
                     if (m_Camera2.Get_Oneframe())
@@ -899,7 +901,7 @@ namespace _6524
 
                     }
                     brightness = 0;
-                    rS232.SerialPort.WriteLine("SB0" + brightness.ToString("D3") + "#" + "\r");
+                    rS232.SerialPort.WriteLine(Functioncode+"B0" + brightness.ToString("D3") + "#" + "\r");
                 }
             }
 
@@ -917,7 +919,7 @@ namespace _6524
                 {
                     m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
                     brightness = Convert.ToInt32(d1.Rows[i][4]);
-                    rS232.SerialPort.WriteLine("SC0" + brightness.ToString("D3") + "#" + "\r");
+                    rS232.SerialPort.WriteLine(Functioncode+"C0" + brightness.ToString("D3") + "#" + "\r");
                     Thread.Sleep(100);
                     //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
                     if (m_Camera3.Get_Oneframe())
@@ -940,7 +942,7 @@ namespace _6524
 
                     }
                     brightness = 0;
-                    rS232.SerialPort.WriteLine("SC0" + brightness.ToString("D3") + "#" + "\r");
+                    rS232.SerialPort.WriteLine(Functioncode+"C0" + brightness.ToString("D3") + "#" + "\r");
                 }
             }
 
@@ -958,7 +960,7 @@ namespace _6524
                 {
                     m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
                     brightness = Convert.ToInt32(d1.Rows[i][4]);
-                    rS232.SerialPort.WriteLine("SD0" + brightness.ToString("D3") + "#" + "\r");
+                    rS232.SerialPort.WriteLine(Functioncode+"D0" + brightness.ToString("D3") + "#" + "\r");
                     Thread.Sleep(100);
                     //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
                     if (m_Camera4.Get_Oneframe())
@@ -981,7 +983,7 @@ namespace _6524
 
                     }
                     brightness = 0;
-                    rS232.SerialPort.WriteLine("SD0" + brightness.ToString("D3") + "#" + "\r");
+                    rS232.SerialPort.WriteLine(Functioncode+"D0" + brightness.ToString("D3") + "#" + "\r");
                 }
             }
             else
@@ -1723,10 +1725,10 @@ namespace _6524
                 m_Camera3.dispose();
                 m_Camera4.dispose();
                 brightness = 0;
-                rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                rS232.SerialPort.WriteLine("SB0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                rS232.SerialPort.WriteLine("SC0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                rS232.SerialPort.WriteLine("SD0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "B0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "C0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "D0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
                 rS232.Close();
             }
             catch (Exception)
@@ -2783,7 +2785,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                         case robotstate.take_image:
                            // 拍照
                             brightness = 150;
-                            rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                            rS232.SerialPort.WriteLine(Functioncode+"A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
                             Thread.Sleep(500);
 
 
@@ -2862,7 +2864,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
 
                             brightness = 0;
-                            rS232.SerialPort.WriteLine("SA0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                            rS232.SerialPort.WriteLine(Functioncode+"A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
 
                             m_state = robotstate.calculate_Compensation;
                             break;

@@ -587,11 +587,11 @@ namespace _6524
 
                     brightness = 0;
 
-                    rS232.BaudRate = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "BaudRate", ""));
-                    rS232.DataBits = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "DataBits", ""));
-                    rS232.StopBits = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "StopBits", ""));
-                    rS232.COMPort = IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "COMPort", "");
-                    rS232.Parity = Convert.ToInt32(IniAPI.INIGetStringValue(Path_calibration_Param, "COM", "Parity", ""));
+                    rS232.BaudRate = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "COM", "BaudRate", ""));
+                    rS232.DataBits = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "COM", "DataBits", ""));
+                    rS232.StopBits = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "COM", "StopBits", ""));
+                    rS232.COMPort = IniAPI.INIGetStringValue(Param_Path, "COM", "COMPort", "");
+                    rS232.Parity = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "COM", "Parity", ""));
 
                     rS232.Init();
 

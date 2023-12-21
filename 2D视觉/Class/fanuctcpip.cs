@@ -19,12 +19,42 @@ namespace _6524.Class
         {
             //通过后台打开发那科服务器
             string path = Application.StartupPath + "\\FANUCTCP\\bin\\Debug\\FANUCTCP.exe";
-            process.StartInfo.FileName = path;
-            // process.StartInfo.Arguments = "/c" + "start "+ path;
-            process.StartInfo.UseShellExecute = false;   //是否使用操作系统shell启动 
-            process.StartInfo.CreateNoWindow = true;   //是否在新窗口中启动该进程的值 (不显示程序窗口)
-            process.Start();
-            Thread.Sleep(100);
+            //process.StartInfo.FileName = path;
+            //// process.StartInfo.Arguments = "/c" + "start "+ path;
+            //process.StartInfo.UseShellExecute = false;   //是否使用操作系统shell启动 
+            //process.StartInfo.CreateNoWindow = true;   //是否在新窗口中启动该进程的值 (不显示程序窗口)
+            //process.Start();
+            //Thread.Sleep(100);
+            //检查是否已经存在同名的进程
+           Process[] processes = Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(path));
+
+            foreach (Process process in processes)
+            {
+                // 关闭已存在的进程
+                process.CloseMainWindow(); // 尝试关闭窗口
+                process.WaitForExit(1000); // 等待最多1秒钟，确保进程已经关闭
+
+                if (!process.HasExited)
+                {
+                    // 如果进程没有在规定时间内关闭，强制终止
+                    process.Kill();
+                }
+            }
+
+            // 启动新的进程
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                FileName = path,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            Process newProcess = new Process
+            {
+                StartInfo = startInfo
+            };
+
+            newProcess.Start();
             conneecservert();//连接后台程序
 
 

@@ -118,11 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="数据.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1029, 576</value>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1023, 565</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1029, 571</value>
   </data>
   <data name="logNetAnalysisControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1023, 570</value>
+    <value>1023, 567</value>
+  </data>
+  <data name="数据.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1029, 573</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1037, 600</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 30</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1037, 600</value>
+  </data>
+  <data name="设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 26</value>
   </data>
   <data name="新建ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 26</value>
@@ -133,8 +151,17 @@
   <data name="退出ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 26</value>
   </data>
+  <data name="登录ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 26</value>
+  </data>
   <data name="关于ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 26</value>
+  </data>
+  <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 26</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1037, 30</value>
   </data>
   <data name="button12.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2063,6 +2090,9 @@
         MAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzDMAzD
         MAzDMAzDMAzDvFRIJP8HL3YUSpLEs5MAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 30</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

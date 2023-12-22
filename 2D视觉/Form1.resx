@@ -128,6 +128,9 @@
     <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="tabPage1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -138,11 +141,11 @@
     <value>AssociateIndex</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btn_system_state.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
-  </data>
-  <data name="&gt;&gt;开发者选项ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;logNetAnalysisControl1.Type" xml:space="preserve">
     <value>HslCommunication.LogNet.LogNetAnalysisControl, HslCommunication, Version=7.0.1.0, Culture=neutral, PublicKeyToken=cdb2261fa039ed67</value>
@@ -150,8 +153,8 @@
   <data name="西班牙语ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 26</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+  <data name="数据.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2059,17 +2062,14 @@
         MAzDMAzDMAzDvFRIJP8HL3YUSpLEs5MAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="&gt;&gt;logNetAnalysisControl1.Name" xml:space="preserve">
-    <value>logNetAnalysisControl1</value>
+  <data name="&gt;&gt;Bg_Main.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="数据.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="btn_system_state.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
-  </data>
-  <data name="&gt;&gt;bg_robot.Name" xml:space="preserve">
-    <value>bg_robot</value>
   </data>
   <data name="btn_system_state.Size" type="System.Drawing.Size, System.Drawing">
     <value>515, 49</value>
@@ -2135,6 +2135,9 @@
   <data name="语言设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>语言设置</value>
   </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
   <data name="数据.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -2153,9 +2156,6 @@
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="数据.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2168,14 +2168,23 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="btn_system_state.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
     <value>文件</value>
   </data>
   <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 28</value>
   </data>
+  <data name="button12.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
     <value>tabPage1</value>
+  </data>
+  <data name="panel1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="&gt;&gt;logNetAnalysisControl1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2186,14 +2195,11 @@
   <data name="button12.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="&gt;&gt;开发者登录ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="数据.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>视图</value>
-  </data>
-  <data name="logNetAnalysisControl1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>797, 0</value>
@@ -2219,9 +2225,6 @@
   <data name="&gt;&gt;开发者登录ToolStripMenuItem.Name" xml:space="preserve">
     <value>开发者登录ToolStripMenuItem</value>
   </data>
-  <data name="btn_system_state.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="形状匹配ToolStripMenuItem.Text" xml:space="preserve">
     <value>形状匹配</value>
   </data>
@@ -2234,12 +2237,6 @@
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>966, 567</value>
   </data>
-  <data name="&gt;&gt;pLC设置ToolStripMenuItem.Name" xml:space="preserve">
-    <value>pLC设置ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;button12.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="logNetAnalysisControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2249,11 +2246,17 @@
   <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="btn_system_state.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 15pt, style=Bold</value>
-  </data>
   <data name="&gt;&gt;退出ToolStripMenuItem.Name" xml:space="preserve">
     <value>退出ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;btn_system_state.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="退出ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
   </data>
   <data name="简体中文ToolStripMenuItem.Text" xml:space="preserve">
     <value>简体中文</value>
@@ -2279,9 +2282,6 @@
   <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;字符条码二维码识别ToolStripMenuItem.Name" xml:space="preserve">
-    <value>字符条码二维码识别ToolStripMenuItem</value>
-  </data>
   <data name="button12.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -2293,9 +2293,6 @@
   </data>
   <data name="&gt;&gt;数据.Name" xml:space="preserve">
     <value>数据</value>
-  </data>
-  <data name="设置ToolStripMenuItem.Text" xml:space="preserve">
-    <value>设置</value>
   </data>
   <data name="tabControl1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>AssociateIndex</value>
@@ -2311,6 +2308,9 @@
   </data>
   <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="模型设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>模型设置</value>
@@ -2333,20 +2333,26 @@
   <data name="&gt;&gt;数据.Parent" xml:space="preserve">
     <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;模型设置ToolStripMenuItem.Name" xml:space="preserve">
-    <value>模型设置ToolStripMenuItem</value>
+  <data name="&gt;&gt;圆孔检测ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>980, 28</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="logNetAnalysisControl1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="西班牙语ToolStripMenuItem.Text" xml:space="preserve">
     <value>西班牙语</value>
   </data>
+  <data name="&gt;&gt;语言设置ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;button12.Parent" xml:space="preserve">
     <value>panel3</value>
+  </data>
+  <data name="tabPage1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="panel1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2356,9 +2362,6 @@
   </data>
   <data name="相机设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 26</value>
-  </data>
-  <data name="menuStrip1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="圆孔检测ToolStripMenuItem.Text" xml:space="preserve">
     <value>圆孔检测</value>
@@ -2372,14 +2375,14 @@
   <data name="&gt;&gt;操作员登录ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="btn_system_state.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>帮助</value>
   </data>
   <data name="语言设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 26</value>
-  </data>
-  <data name="&gt;&gt;相机设置ToolStripMenuItem.Name" xml:space="preserve">
-    <value>相机设置ToolStripMenuItem</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2393,14 +2396,14 @@
   <data name="&gt;&gt;简体中文ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;机械手示教ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;西班牙语ToolStripMenuItem.Name" xml:space="preserve">
     <value>西班牙语ToolStripMenuItem</value>
   </data>
   <data name="数据.Size" type="System.Drawing.Size, System.Drawing">
     <value>972, 573</value>
+  </data>
+  <data name="btn_system_state.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 15pt, style=Bold</value>
   </data>
   <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 24</value>
@@ -2414,8 +2417,14 @@
   <data name="机械手示教ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 26</value>
   </data>
+  <data name="tabControl1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;英语ToolStripMenuItem.Name" xml:space="preserve">
     <value>英语ToolStripMenuItem</value>
+  </data>
+  <data name="数据.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -2431,9 +2440,6 @@
   </data>
   <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="打开ToolStripMenuItem.Text" xml:space="preserve">
-    <value>打开</value>
   </data>
   <data name="$this.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
@@ -2465,8 +2471,11 @@
   <data name="&gt;&gt;新建ToolStripMenuItem.Name" xml:space="preserve">
     <value>新建ToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;logNetAnalysisControl1.Parent" xml:space="preserve">
-    <value>数据</value>
+  <data name="btn_system_state.Location" type="System.Drawing.Point, System.Drawing">
+    <value>229, 9</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="像素匹配ToolStripMenuItem.Text" xml:space="preserve">
     <value>像素匹配</value>
@@ -2477,8 +2486,8 @@
   <data name="tableLayoutPanel1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="btn_system_state.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="logNetAnalysisControl1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="&gt;&gt;机械手控制ToolStripMenuItem.Name" xml:space="preserve">
     <value>机械手控制ToolStripMenuItem</value>
@@ -3005,14 +3014,17 @@
   <data name="&gt;&gt;panel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;数据.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;文件ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 66</value>
   </data>
-  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;logNetAnalysisControl1.Name" xml:space="preserve">
+    <value>logNetAnalysisControl1</value>
   </data>
   <data name="logNetAnalysisControl1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>AssociateIndex</value>
@@ -3020,26 +3032,20 @@
   <data name="&gt;&gt;打开ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
-  </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="退出ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+  <data name="menuStrip1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="&gt;&gt;btn_system_state.Name" xml:space="preserve">
     <value>btn_system_state</value>
   </data>
-  <data name="btn_system_state.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="panel2.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
-  </data>
-  <data name="像素匹配ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 26</value>
   </data>
   <data name="字符条码二维码识别ToolStripMenuItem.Text" xml:space="preserve">
     <value>字符条码二维码识别</value>
@@ -3053,8 +3059,8 @@
   <data name="关于ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 26</value>
   </data>
-  <data name="&gt;&gt;语言设置ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="设置ToolStripMenuItem.Text" xml:space="preserve">
+    <value>设置</value>
   </data>
   <data name="&gt;&gt;像素匹配ToolStripMenuItem.Name" xml:space="preserve">
     <value>像素匹配ToolStripMenuItem</value>
@@ -3083,8 +3089,8 @@
   <data name="字符条码二维码识别ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 26</value>
   </data>
-  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="panel1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
   </data>
   <data name="&gt;&gt;圆孔检测ToolStripMenuItem.Name" xml:space="preserve">
     <value>圆孔检测ToolStripMenuItem</value>
@@ -3095,8 +3101,8 @@
   <data name="&gt;&gt;panel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="数据.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
+  <data name="button12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 66</value>
   </data>
   <data name="&gt;&gt;Bg_PLC_heartbeat.Name" xml:space="preserve">
     <value>Bg_PLC_heartbeat</value>
@@ -3106,6 +3112,9 @@
   </data>
   <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
     <value>tabControl1</value>
+  </data>
+  <data name="通讯设置ToolStripMenuItem.Text" xml:space="preserve">
+    <value>通讯设置</value>
   </data>
   <data name="圆孔检测ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 26</value>
@@ -3119,11 +3128,8 @@
   <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;button12.Name" xml:space="preserve">
-    <value>button12</value>
+  <data name="&gt;&gt;开发者登录ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;通讯设置ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3131,10 +3137,10 @@
   <data name="&gt;&gt;helpProvider1.Name" xml:space="preserve">
     <value>helpProvider1</value>
   </data>
-  <data name="&gt;&gt;btn_system_state.Parent" xml:space="preserve">
-    <value>panel3</value>
+  <data name="&gt;&gt;字符条码二维码识别ToolStripMenuItem.Name" xml:space="preserve">
+    <value>字符条码二维码识别ToolStripMenuItem</value>
   </data>
-  <data name="数据.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="btn_system_state.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
   <data name="&gt;&gt;数据.ZOrder" xml:space="preserve">
@@ -3149,23 +3155,17 @@
   <data name="&gt;&gt;helpProvider1.Type" xml:space="preserve">
     <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button12.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
   <data name="tableLayoutPanel1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;Bg_Main.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>tabPage1</value>
   </data>
   <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 24</value>
   </data>
   <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;关于ToolStripMenuItem.Name" xml:space="preserve">
-    <value>关于ToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;开发者选项ToolStripMenuItem.Name" xml:space="preserve">
     <value>开发者选项ToolStripMenuItem</value>
@@ -3176,17 +3176,20 @@
   <data name="panel3.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>AssociateIndex</value>
   </data>
+  <data name="&gt;&gt;英语ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="tabControl1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="tabPage1.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;bg_robot.Name" xml:space="preserve">
+    <value>bg_robot</value>
   </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>980, 28</value>
+  <data name="&gt;&gt;相机设置ToolStripMenuItem.Name" xml:space="preserve">
+    <value>相机设置ToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;登录ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;button12.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;帮助ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3197,11 +3200,11 @@
   <data name="&gt;&gt;模型设置ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btn_system_state.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="&gt;&gt;模型设置ToolStripMenuItem.Name" xml:space="preserve">
+    <value>模型设置ToolStripMenuItem</value>
   </data>
-  <data name="btn_system_state.Location" type="System.Drawing.Point, System.Drawing">
-    <value>229, 9</value>
+  <data name="像素匹配ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 26</value>
   </data>
   <data name="pLC设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>PLC设置</value>
@@ -3209,11 +3212,11 @@
   <data name="panel3.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="button12.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="&gt;&gt;圆孔检测ToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;机械手示教ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="打开ToolStripMenuItem.Text" xml:space="preserve">
+    <value>打开</value>
   </data>
   <data name="形状匹配ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 26</value>
@@ -3227,14 +3230,11 @@
   <data name="登录ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>14, 24</value>
   </data>
-  <data name="tabControl1.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="button12.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="&gt;&gt;文件ToolStripMenuItem.Name" xml:space="preserve">
     <value>文件ToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;btn_system_state.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3245,20 +3245,20 @@
   <data name="panel2.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>AssociateIndex</value>
   </data>
-  <data name="button12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 66</value>
+  <data name="&gt;&gt;logNetAnalysisControl1.Parent" xml:space="preserve">
+    <value>数据</value>
   </data>
-  <data name="panel1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="&gt;&gt;登录ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="通讯设置ToolStripMenuItem.Text" xml:space="preserve">
-    <value>通讯设置</value>
+  <data name="&gt;&gt;button12.Name" xml:space="preserve">
+    <value>button12</value>
   </data>
   <data name="tabPage1.HelpString" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <data name="panel1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Zoom</value>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>980, 602</value>
@@ -3266,14 +3266,14 @@
   <data name="&gt;&gt;通讯设置ToolStripMenuItem.Name" xml:space="preserve">
     <value>通讯设置ToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;英语ToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="数据.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
+  <data name="&gt;&gt;关于ToolStripMenuItem.Name" xml:space="preserve">
+    <value>关于ToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;设置ToolStripMenuItem.Name" xml:space="preserve">
     <value>设置ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;pLC设置ToolStripMenuItem.Name" xml:space="preserve">
+    <value>pLC设置ToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
     <value>menuStrip1</value>
@@ -3281,8 +3281,8 @@
   <data name="&gt;&gt;字符条码二维码识别ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
   </data>
   <data name="menuStrip1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3305,8 +3305,8 @@
   <data name="button12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="数据.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="btn_system_state.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3317,11 +3317,11 @@
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;数据.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="数据.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;btn_system_state.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;开发者选项ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;新建ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3332,8 +3332,8 @@
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="panel1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
+  <data name="logNetAnalysisControl1.HelpKeyword" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>zh-CN</value>

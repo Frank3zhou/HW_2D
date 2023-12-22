@@ -2657,7 +2657,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                     btn_system_state.BeginInvoke(new Action(() =>
                     {
 
-                        btn_system_state.Text = "机械手相机连接失败";
+                        btn_system_state.Text =changelanguage("机械手相机连接失败") ;
                         btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red;
 
 
@@ -2708,7 +2708,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                             btn_system_state.BeginInvoke(new Action(() =>
                             {
 
-                                btn_system_state.Text = "机械手连接中";
+                                btn_system_state.Text =changelanguage("机械手连接中");
                                 btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
 
 
@@ -2730,7 +2730,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                                 btn_system_state.BeginInvoke(new Action(() =>
                                     {
 
-                                        btn_system_state.Text = "机械手连接失败";
+                                        btn_system_state.Text = changelanguage("机械手连接失败");
                                         btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red;
 
 

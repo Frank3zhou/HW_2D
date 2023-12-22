@@ -192,8 +192,14 @@
   <data name="拍照完成" xml:space="preserve">
     <value>Photo finish</value>
   </data>
+  <data name="机械手相机连接失败" xml:space="preserve">
+    <value>Robot camera connected failed</value>
+  </data>
+  <data name="机械手连接中" xml:space="preserve">
+    <value>Robot connecting</value>
+  </data>
   <data name="机械手连接失败" xml:space="preserve">
-    <value>Manipulator connection failure</value>
+    <value>Robot connection failure</value>
   </data>
   <data name="相机" xml:space="preserve">
     <value>Camera</value>

@@ -286,7 +286,25 @@ namespace _6524.Resources {
         }
         
         /// <summary>
-        ///   查找类似 Manipulator connection failure 的本地化字符串。
+        ///   查找类似 Robot camera connected failed 的本地化字符串。
+        /// </summary>
+        internal static string 机械手相机连接失败 {
+            get {
+                return ResourceManager.GetString("机械手相机连接失败", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Robot connecting 的本地化字符串。
+        /// </summary>
+        internal static string 机械手连接中 {
+            get {
+                return ResourceManager.GetString("机械手连接中", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Robot connection failure 的本地化字符串。
         /// </summary>
         internal static string 机械手连接失败 {
             get {

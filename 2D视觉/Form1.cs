@@ -686,6 +686,8 @@ namespace _6524
 
                     Thread.Sleep(10);
 
+                    Thread[] threads = new Thread[d1.Rows.Count];
+
                     //完整的相机拍照处理流程
                     for (int i = 0; i < d1.Rows.Count; i++)
                     {
@@ -715,9 +717,9 @@ namespace _6524
                                         else
                                         {
                                             // 创建并启动一个后台任务
-                                            Thread thread1 = new Thread(run);
-                                            thread1.IsBackground = true;
-                                            thread1.Start(i);
+                                            threads[i] = new Thread(run);
+                                            threads[i].IsBackground = true;
+                                            threads[i].Start(i);
                                         }
 
 
@@ -794,7 +796,10 @@ namespace _6524
 
                     }
 
-
+                    foreach (Thread thread in threads)
+                    {
+                        thread.Join();
+                    }
                 }
 
 
@@ -807,6 +812,7 @@ namespace _6524
                 }
                 finally
                 {
+                   
                     rS232.Close();
                 }
             }

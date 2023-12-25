@@ -686,8 +686,21 @@ namespace _6524
 
                     Thread.Sleep(10);
 
-                    Thread[] threads = new Thread[d1.Rows.Count];
+                    #region 用几个后台线程创建几个
+                    int falseCount = 0;
+                    foreach (DataRow row in d1.Rows)
+                    {
+                        // 检查"IsFlagged"列的值是否为false
+                        bool isFlagged = Convert.ToBoolean(row[8]);
 
+                        if (isFlagged)
+                        {
+                            falseCount++;
+                        }
+                    }
+                    Thread[] threads = new Thread[falseCount];
+                    int threadsnum = 0;
+                    #endregion
                     //完整的相机拍照处理流程
                     for (int i = 0; i < d1.Rows.Count; i++)
                     {
@@ -717,9 +730,12 @@ namespace _6524
                                         else
                                         {
                                             // 创建并启动一个后台任务
-                                            threads[i] = new Thread(run);
-                                            threads[i].IsBackground = true;
-                                            threads[i].Start(i);
+                                    
+                                            threads[threadsnum] = new Thread(run);
+                                            threads[threadsnum].IsBackground = true;
+                                            threads[threadsnum].Start(i);
+                                            threadsnum++;
+
                                         }
 
 
@@ -795,11 +811,19 @@ namespace _6524
 
 
                     }
-
-                    foreach (Thread thread in threads)
+                    try
                     {
-                        thread.Join();
+                        foreach (Thread thread in threads)
+                        {
+                            thread.Join();
+                        }
                     }
+                    catch (Exception)
+                    {
+
+                       // throw;
+                    }
+                   
                 }
 
 

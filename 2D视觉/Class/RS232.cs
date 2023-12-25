@@ -13,8 +13,8 @@ namespace _6524
         public static bool result_ok;
         string m_port = "COM4";
         int m_baud = 19200, m_stopBits = 1, m_parity = 0, m_dataBits = 8;
+        object lockObject = new object();
 
-           
 
         #region Init
         public void Init()
@@ -42,8 +42,21 @@ namespace _6524
         #region 屬性
         public SerialPort SerialPort
         {
-            get { return m_SP; }
-            set { m_SP = value; }
+
+            get
+            {
+                lock (lockObject)
+                {
+                    return m_SP;
+                }
+            }
+            set
+            {
+                lock (lockObject)
+                {
+                    m_SP = value;
+                }
+            }
         }
 
         public string COMPort
@@ -92,6 +105,7 @@ namespace _6524
         #region 外部調用
         public int Open()
         {
+
             int result = -1;
 
             try

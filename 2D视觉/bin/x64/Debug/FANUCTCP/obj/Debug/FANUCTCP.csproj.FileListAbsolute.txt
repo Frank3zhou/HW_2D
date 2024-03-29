@@ -103,3 +103,13 @@ C:\Users\HW\Desktop\git2d\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCT
 C:\Users\HW\Desktop\git2d\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.CoreCompileInputs.cache
 C:\Users\HW\Desktop\git2d\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.exe
 C:\Users\HW\Desktop\git2d\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.pdb
+C:\Users\FRANK\Desktop\Lucid_Winfrom\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\bin\Debug\FANUCTCP.exe.config
+C:\Users\FRANK\Desktop\Lucid_Winfrom\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\bin\Debug\FANUCTCP.exe
+C:\Users\FRANK\Desktop\Lucid_Winfrom\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\bin\Debug\FANUCTCP.pdb
+C:\Users\FRANK\Desktop\Lucid_Winfrom\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.AssemblyReference.cache
+C:\Users\FRANK\Desktop\Lucid_Winfrom\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\Interop.FRRJIf.dll
+C:\Users\FRANK\Desktop\Lucid_Winfrom\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\Interop.FRRobotIFLib.dll
+C:\Users\FRANK\Desktop\Lucid_Winfrom\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.ResolveComReference.cache
+C:\Users\FRANK\Desktop\Lucid_Winfrom\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.csproj.CoreCompileInputs.cache
+C:\Users\FRANK\Desktop\Lucid_Winfrom\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.exe
+C:\Users\FRANK\Desktop\Lucid_Winfrom\HW_2D\2D视觉\bin\x64\Debug\FANUCTCP\obj\Debug\FANUCTCP.pdb

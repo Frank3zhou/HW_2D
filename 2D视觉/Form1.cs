@@ -626,8 +626,8 @@ namespace _6524
 
 
 
-                
 
+                    PLCINIT:
                     //读取机种信息
                     string DCpath = IniAPI.INIGetStringValue(Param_Path, "ModelExcel", "Path", "C:\\Users\\Administrator\\Desktop\\6524");
                     string filenanme = "";
@@ -713,7 +713,38 @@ namespace _6524
                             bool waitsignal = false;
                             while (!waitsignal && !Bg_Main.CancellationPending)
                             {
-                                Thread.Sleep(10);
+                                bool PLCinit_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_enabled", ""));
+                               string PLCinit_Path = IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_Path", "1000");
+                                if (PLCinit_enabled)
+                                {
+                                    OperateResult<bool[]> PLCinit = MC_PLC.ReadBool(PLCinit_Path, 1);//读初始化信号
+
+                                    if (PLCinit.IsSuccess)
+                                    {
+                                        if (PLCinit.Content[0])
+                                        {
+                                            m_Logprint(HslMessageDegree.INFO, "PLC初始化中", false);
+                                            bool plcinitok = false;
+                                            while (!plcinitok && !Bg_Main.CancellationPending)
+                                            {
+                                                Thread.Sleep(1000);
+                                                PLCinit = MC_PLC.ReadBool(PLCinit_Path, 1);
+                                                if (PLCinit.IsSuccess)
+                                                {
+                                                    if (!PLCinit.Content[0])
+                                                    {
+                                                        goto PLCINIT;
+                                                        //跳转至读取机种
+                                                    }
+                                                }
+
+                                            }
+                                        }
+                                    }
+                                }
+
+                                
+                                        Thread.Sleep(10);
                                 OperateResult<bool[]> m_Result = MC_PLC.ReadBool(d1.Rows[i][1].ToString(),1);
 
                                 if (m_Result.IsSuccess)

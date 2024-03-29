@@ -43,8 +43,11 @@ namespace _6524
             textBox2.Text = IniAPI.INIGetStringValue(Param_Path, "PLC", nameof(Port), "");
             comboBox1.Text= IniAPI.INIGetStringValue(Param_Path, "PLC", nameof(Mode), "");
             checkBox1.Checked= Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "PLC", "heartbeat_enabled", ""));
+            checkBox2.Checked = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_enabled", ""));
+            textBox10.Text = IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_Path", "1000");
             textBox7.Text=IniAPI.INIGetStringValue(Param_Path, "PLC", "heartbeat_path","");
             textBox8.Text= IniAPI.INIGetStringValue(Param_Path, "PLC", "wait_time","1000" );
+        
         }
 
         public string IP
@@ -185,6 +188,8 @@ namespace _6524
             IniAPI.INIWriteValue(Param_Path, "PLC", "heartbeat_enabled", checkBox1.Checked.ToString());
             IniAPI.INIWriteValue(Param_Path, "PLC", "heartbeat_path", textBox7.Text.ToString());
             IniAPI.INIWriteValue(Param_Path, "PLC", "wait_time", textBox8.Text.ToString());
+            IniAPI.INIWriteValue(Param_Path, "PLC", "PLCinit_enabled", checkBox2.Checked.ToString());
+            IniAPI.INIWriteValue(Param_Path, "PLC", "PLCinit_Path", textBox10.Text.ToString());
             MessageBox.Show("保存成功");
         }
 
@@ -857,6 +862,21 @@ namespace _6524
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -550,6 +550,9 @@ public string Hv_Serialize_ModelImage { get => hv_Serialize_ModelImage; set { hv
 
                 for (hv_I = 0; (int)hv_I <= (int)((new HTuple(Hv_Score.TupleLength())) - 1); hv_I = (int)hv_I + 1)
                 {
+
+
+
                     hv_HomMat2D.Dispose();
                     HOperatorSet.HomMat2dIdentity(out hv_HomMat2D);
                     using (HDevDisposeHelper dh = new HDevDisposeHelper())

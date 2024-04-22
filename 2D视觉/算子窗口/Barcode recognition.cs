@@ -137,7 +137,7 @@ namespace _6524
                 textBox2.Text = col.D.ToString("F0");
                 textBox4.Text = Length1.D.ToString("F0");
                 textBox5.Text = Length2.D.ToString("F0");
-                textBox3.Text = PI.D.ToString();
+                textBox3.Text = PI.D.ToString();  
               
             }
             else

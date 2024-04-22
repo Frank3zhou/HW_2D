@@ -715,5 +715,10 @@ namespace _6524
         {
 
         }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            IniAPI.INIWriteValue(Param_Path, "System", "WindowNum", numericUpDown2.Value.ToString());
+        }
     }
 }

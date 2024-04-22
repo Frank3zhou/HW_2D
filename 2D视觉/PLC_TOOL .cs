@@ -42,8 +42,8 @@ namespace _6524
              textBox1.Text= IniAPI.INIGetStringValue(Param_Path, "PLC", nameof(IP), "");
             textBox2.Text = IniAPI.INIGetStringValue(Param_Path, "PLC", nameof(Port), "");
             comboBox1.Text= IniAPI.INIGetStringValue(Param_Path, "PLC", nameof(Mode), "");
-            checkBox1.Checked= Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "PLC", "heartbeat_enabled", ""));
-            checkBox2.Checked = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_enabled", ""));
+            checkBox1.Checked= Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "PLC", "heartbeat_enabled", "false"));
+            checkBox2.Checked = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_enabled", "false"));
             textBox10.Text = IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_Path", "1000");
             textBox7.Text=IniAPI.INIGetStringValue(Param_Path, "PLC", "heartbeat_path","");
             textBox8.Text= IniAPI.INIGetStringValue(Param_Path, "PLC", "wait_time","1000" );

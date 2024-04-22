@@ -22,7 +22,7 @@ namespace _6524
            //  HOperatorSet.ReadImage(out img, @"C:/Users/HW/Desktop/12.bmp");
 
             Application.Run(new Form1());
-           // Application.Run(new 像素匹配());
+           // Application.Run(new DATA());
           //  Application.Run(new 形状匹配(img));
             //  Application.Run(new Teach_point());
         }

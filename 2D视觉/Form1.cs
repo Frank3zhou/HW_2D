@@ -2481,7 +2481,7 @@ namespace _6524
                         }
 
                         HObject rec_xld = new HObject();
-                        bool  Region_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Region_enabled", "0"));
+                        bool  Region_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Region_enabled", "false"));
                         if (Region_enabled)
                         {
                             HTuple rec_row = new HTuple();
@@ -2592,7 +2592,7 @@ namespace _6524
 
 
                     HObject rec_xld = new HObject();
-                    bool Region_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Region_enabled", "0"));
+                    bool Region_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Region_enabled", "false"));
                     if (Region_enabled)
                     {
                         HTuple rec_row = new HTuple();

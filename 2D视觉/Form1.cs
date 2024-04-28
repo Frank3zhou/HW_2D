@@ -54,10 +54,18 @@ namespace _6524
         bool Camera2_connected = false;
         bool Camera3_connected = false;
         bool Camera4_connected = false;
+        bool Camera5_connected = false;
+        bool Camera6_connected = false;
+        bool Camera7_connected = false;
+        bool Camera8_connected = false;
         MVS_SDK m_Camera1 = new MVS_SDK();
         MVS_SDK m_Camera2 = new MVS_SDK();
         MVS_SDK m_Camera3 = new MVS_SDK();
         MVS_SDK m_Camera4 = new MVS_SDK();
+        MVS_SDK m_Camera5 = new MVS_SDK();
+        MVS_SDK m_Camera6 = new MVS_SDK();
+        MVS_SDK m_Camera7= new MVS_SDK();
+        MVS_SDK m_Camera8 = new MVS_SDK();
         private basePLC MC_PLC = new basePLC();
         RS232 rS232 = new RS232();
         string Functioncode = "";//光源功能码
@@ -306,6 +314,10 @@ namespace _6524
                 rS232.SerialPort.WriteLine(Functioncode + "B0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
                 rS232.SerialPort.WriteLine(Functioncode + "C0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
                 rS232.SerialPort.WriteLine(Functioncode + "D0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "E0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "F0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "G0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "H0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
             }
 
             rS232.Close();
@@ -359,17 +371,17 @@ namespace _6524
             if (cameranum >= 3)
 
             {
-                if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机3", "IP", "")))
+                if (m_Camera3.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机3", "IP", "")))
                 {
                     Thread.Sleep(500);
-                    Camera2_connected = true;
+                    Camera3_connected = true;
                     UpdateInit(100, changelanguage("相机", 3, "连接完成"));
                     m_Camera3.close();
                 }
                 else
                 {
                     Thread.Sleep(500);
-                    Camera2_connected = false;
+                    Camera3_connected = false;
                     UpdateInit(90, changelanguage("相机", 3, "连接失败"));
                     m_Logprint(HslMessageDegree.ERROR, "相机", 3, "连接失败", true);
 
@@ -378,7 +390,7 @@ namespace _6524
             if (cameranum >= 4)
 
             {
-                if (m_Camera2.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机4", "IP", "")))
+                if (m_Camera4.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机4", "IP", "")))
                 {
                     Thread.Sleep(500);
                     Camera4_connected = true;
@@ -393,7 +405,81 @@ namespace _6524
                     m_Logprint(HslMessageDegree.ERROR, "相机" + 4 + "连接失败", true);
                 }
             }
+            if (cameranum >= 5)
 
+            {
+                if (m_Camera5.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机5", "IP", "")))
+                {
+                    Thread.Sleep(500);
+                    Camera5_connected = true;
+                    UpdateInit(100, changelanguage("相机", 5, "连接完成"));
+                    m_Camera5.close();
+                }
+                else
+                {
+                    Thread.Sleep(500);
+                    Camera5_connected = false;
+                    UpdateInit(90, changelanguage("相机", 5, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机" + 5 + "连接失败", true);
+                }
+            }
+
+            if (cameranum >= 6)
+
+            {
+                if (m_Camera6.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机6", "IP", "")))
+                {
+                    Thread.Sleep(500);
+                    Camera6_connected = true;
+                    UpdateInit(100, changelanguage("相机", 6, "连接完成"));
+                    m_Camera6.close();
+                }
+                else
+                {
+                    Thread.Sleep(500);
+                    Camera6_connected = false;
+                    UpdateInit(90, changelanguage("相机", 6, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机" + 6 + "连接失败", true);
+                }
+            }
+
+            if (cameranum >= 7)
+
+            {
+                if (m_Camera7.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机7", "IP", "")))
+                {
+                    Thread.Sleep(500);
+                    Camera7_connected = true;
+                    UpdateInit(100, changelanguage("相机", 7, "连接完成"));
+                    m_Camera7.close();
+                }
+                else
+                {
+                    Thread.Sleep(500);
+                    Camera7_connected = false;
+                    UpdateInit(90, changelanguage("相机", 7, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机" + 7 + "连接失败", true);
+                }
+            }
+
+            if (cameranum >= 8)
+
+            {
+                if (m_Camera8.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机8", "IP", "")))
+                {
+                    Thread.Sleep(500);
+                    Camera8_connected = true;
+                    UpdateInit(100, changelanguage("相机", 8, "连接完成"));
+                    m_Camera8.close();
+                }
+                else
+                {
+                    Thread.Sleep(500);
+                    Camera8_connected = false;
+                    UpdateInit(90, changelanguage("相机", 8, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机" + 8 + "连接失败", true);
+                }
+            }
             if (Deleteimage_Enabled)
             {
                 DeleteImage();
@@ -538,7 +624,80 @@ namespace _6524
                     m_Logprint(HslMessageDegree.ERROR, "相机", 4, "连接失败", true);
                 }
             }
+            if (cameranum >= 5)
 
+            {
+                if (m_Camera5.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机5", "IP", "")))
+                {
+                    //Thread.Sleep(500);
+                    Camera5_connected = true;
+                    UpdateInit(100, changelanguage("相机", 5, "连接完成"));
+                    m_Camera5.close();
+                }
+                else
+                {
+                    //Thread.Sleep(500);
+                    Camera5_connected = false;
+                    UpdateInit(90, changelanguage("相机", 5, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 5, "连接失败", true);
+                }
+            }
+            if (cameranum >= 6)
+
+            {
+                if (m_Camera6.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机6", "IP", "")))
+                {
+                    //Thread.Sleep(500);
+                    Camera6_connected = true;
+                    UpdateInit(100, changelanguage("相机", 6, "连接完成"));
+                    m_Camera6.close();
+                }
+                else
+                {
+                    //Thread.Sleep(500);
+                    Camera6_connected = false;
+                    UpdateInit(90, changelanguage("相机", 6, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 6, "连接失败", true);
+                }
+            }
+
+            if (cameranum >= 7)
+
+            {
+                if (m_Camera7.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机7", "IP", "")))
+                {
+                    //Thread.Sleep(500);
+                    Camera7_connected = true;
+                    UpdateInit(100, changelanguage("相机", 7, "连接完成"));
+                    m_Camera7.close();
+                }
+                else
+                {
+                    //Thread.Sleep(500);
+                    Camera7_connected = false;
+                    UpdateInit(90, changelanguage("相机", 7, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 7, "连接失败", true);
+                }
+            }
+
+            if (cameranum >= 8)
+
+            {
+                if (m_Camera8.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机8", "IP", "")))
+                {
+                    //Thread.Sleep(500);
+                    Camera8_connected = true;
+                    UpdateInit(100, changelanguage("相机", 8, "连接完成"));
+                    m_Camera8.close();
+                }
+                else
+                {
+                    //Thread.Sleep(500);
+                    Camera8_connected = false;
+                    UpdateInit(90, changelanguage("相机", 8, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 8, "连接失败", true);
+                }
+            }
 
             if (cameranum >= 1)
             {
@@ -591,10 +750,59 @@ namespace _6524
                 }
 
             }
+            if (cameranum >= 5)
+            {
+                if (!Camera5_connected)
+                {
+                    MessageBox.Show(changelanguage("相机", 5, "连接失败"));
+                    button12.Image = global::_6524.Properties.Resources.开始__1_;
 
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 5, "连接失败", true);
+                    Bg_Main.CancelAsync();
 
+                }
 
+            }
+            if (cameranum >= 6)
+            {
+                if (!Camera6_connected)
+                {
+                    MessageBox.Show(changelanguage("相机", 6, "连接失败"));
+                    button12.Image = global::_6524.Properties.Resources.开始__1_;
 
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 6, "连接失败", true);
+                    Bg_Main.CancelAsync();
+
+                }
+
+            }
+
+            if (cameranum >= 7)
+            {
+                if (!Camera7_connected)
+                {
+                    MessageBox.Show(changelanguage("相机", 7, "连接失败"));
+                    button12.Image = global::_6524.Properties.Resources.开始__1_;
+
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 7, "连接失败", true);
+                    Bg_Main.CancelAsync();
+
+                }
+
+            }
+            if (cameranum >= 8)
+            {
+                if (!Camera8_connected)
+                {
+                    MessageBox.Show(changelanguage("相机", 8, "连接失败"));
+                    button12.Image = global::_6524.Properties.Resources.开始__1_;
+
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 8, "连接失败", true);
+                    Bg_Main.CancelAsync();
+
+                }
+
+            }
             if (!PLC_connected)
             {
 
@@ -645,6 +853,10 @@ namespace _6524
                         rS232.SerialPort.WriteLine(Functioncode + "B0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
                         rS232.SerialPort.WriteLine(Functioncode + "C0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
                         rS232.SerialPort.WriteLine(Functioncode + "D0" + brightness.ToString("D3") + "#" + "\r");//关闭光源  
+                        rS232.SerialPort.WriteLine(Functioncode + "E0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                        rS232.SerialPort.WriteLine(Functioncode + "F0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                        rS232.SerialPort.WriteLine(Functioncode + "G0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                        rS232.SerialPort.WriteLine(Functioncode + "H0" + brightness.ToString("D3") + "#" + "\r");//关闭光源  
 
                     }
 
@@ -1241,6 +1453,322 @@ namespace _6524
                     }
                     brightness = 0;
                     rS232.SerialPort.WriteLine(Functioncode + "D0" + brightness.ToString("D3") + "#" + "\r");
+                }
+            }
+            else if (Convert.ToInt32(d1.Rows[i][2]) == 5)
+            {
+                if (m_Camera5.State == 0)
+                {
+                    m_Camera5.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机5", "IP", ""));
+                }
+                if (m_Camera5.State == 1)
+                {
+                    m_Camera5.OpenCamera();
+                }
+                if (m_Camera5.Start())  //开始采集流
+                {
+                    m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
+                    brightness = Convert.ToInt32(d1.Rows[i][4]);
+                    rS232.SerialPort.WriteLine(Functioncode + "E0" + brightness.ToString("D3") + "#" + "\r");
+                    Thread.Sleep(100);
+                    //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
+                    if (m_Camera5.Get_Oneframe())
+                    {
+
+                        Thread.Sleep(100);
+                        HObject Img2 = new HObject();
+
+                        HOperatorSet.CopyImage(m_Camera5.Himage, out Img2);
+                        if (d1.Rows[i][9].ToString() == "1")
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "2")
+                        {
+                            _mWindow2.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "3")
+                        {
+                            _mWindow3.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "4")
+                        {
+                            _mWindow5.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "5")
+                        {
+                            _mWindow5.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "6")
+                        {
+                            _mWindow6.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "7")
+                        {
+                            _mWindow7.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "8")
+                        {
+                            _mWindow8.NowImage = Img2;
+                        }
+                        else
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                        HOperatorSet.CopyImage(m_Camera5.Himage, out Img);
+
+                        Console.WriteLine("Get_onefrmae is OK ");
+                        OperateResult result3 = MC_PLC.Write(d1.Rows[i][3].ToString(), new bool[] { true });  // 1工位结果写入
+                        if (result3.IsSuccess)
+                        {
+                            m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照完成", true);
+
+                        }
+                        m_Camera5.Stop();
+                        m_Camera5.close();
+
+
+                    }
+                    brightness = 0;
+                    rS232.SerialPort.WriteLine(Functioncode + "E0" + brightness.ToString("D3") + "#" + "\r");
+                }
+            }
+
+            else if (Convert.ToInt32(d1.Rows[i][2]) == 6)
+            {
+                if (m_Camera6.State == 0)
+                {
+                    m_Camera6.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机6", "IP", ""));
+                }
+                if (m_Camera6.State == 1)
+                {
+                    m_Camera6.OpenCamera();
+                }
+                if (m_Camera6.Start())  //开始采集流
+                {
+                    m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
+                    brightness = Convert.ToInt32(d1.Rows[i][4]);
+                    rS232.SerialPort.WriteLine(Functioncode + "F0" + brightness.ToString("D3") + "#" + "\r");
+                    Thread.Sleep(100);
+                    //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
+                    if (m_Camera6.Get_Oneframe())
+                    {
+
+                        Thread.Sleep(100);
+                        HObject Img2 = new HObject();
+
+                        HOperatorSet.CopyImage(m_Camera6.Himage, out Img2);
+                        if (d1.Rows[i][9].ToString() == "1")
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "2")
+                        {
+                            _mWindow2.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "3")
+                        {
+                            _mWindow3.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "4")
+                        {
+                            _mWindow6.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "5")
+                        {
+                            _mWindow5.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "6")
+                        {
+                            _mWindow6.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "7")
+                        {
+                            _mWindow7.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "8")
+                        {
+                            _mWindow8.NowImage = Img2;
+                        }
+                        else
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                        HOperatorSet.CopyImage(m_Camera6.Himage, out Img);
+
+                        Console.WriteLine("Get_onefrmae is OK ");
+                        OperateResult result3 = MC_PLC.Write(d1.Rows[i][3].ToString(), new bool[] { true });  // 1工位结果写入
+                        if (result3.IsSuccess)
+                        {
+                            m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照完成", true);
+
+                        }
+                        m_Camera6.Stop();
+                        m_Camera6.close();
+
+
+                    }
+                    brightness = 0;
+                    rS232.SerialPort.WriteLine(Functioncode + "F0" + brightness.ToString("D3") + "#" + "\r");
+                }
+            }
+
+            else if (Convert.ToInt32(d1.Rows[i][2]) == 7)
+            {
+                if (m_Camera7.State == 0)
+                {
+                    m_Camera7.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机7", "IP", ""));
+                }
+                if (m_Camera7.State == 1)
+                {
+                    m_Camera7.OpenCamera();
+                }
+                if (m_Camera7.Start())  //开始采集流
+                {
+                    m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
+                    brightness = Convert.ToInt32(d1.Rows[i][4]);
+                    rS232.SerialPort.WriteLine(Functioncode + "G0" + brightness.ToString("D3") + "#" + "\r");
+                    Thread.Sleep(100);
+                    //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
+                    if (m_Camera7.Get_Oneframe())
+                    {
+
+                        Thread.Sleep(100);
+                        HObject Img2 = new HObject();
+
+                        HOperatorSet.CopyImage(m_Camera7.Himage, out Img2);
+                        if (d1.Rows[i][9].ToString() == "1")
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "2")
+                        {
+                            _mWindow2.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "3")
+                        {
+                            _mWindow3.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "4")
+                        {
+                            _mWindow7.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "5")
+                        {
+                            _mWindow5.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "6")
+                        {
+                            _mWindow6.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "7")
+                        {
+                            _mWindow7.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "8")
+                        {
+                            _mWindow8.NowImage = Img2;
+                        }
+                        else
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                        HOperatorSet.CopyImage(m_Camera7.Himage, out Img);
+
+                        Console.WriteLine("Get_onefrmae is OK ");
+                        OperateResult result3 = MC_PLC.Write(d1.Rows[i][3].ToString(), new bool[] { true });  // 1工位结果写入
+                        if (result3.IsSuccess)
+                        {
+                            m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照完成", true);
+
+                        }
+                        m_Camera7.Stop();
+                        m_Camera7.close();
+
+
+                    }
+                    brightness = 0;
+                    rS232.SerialPort.WriteLine(Functioncode + "G0" + brightness.ToString("D3") + "#" + "\r");
+                }
+            }
+
+
+            else if (Convert.ToInt32(d1.Rows[i][2]) == 8)
+            {
+                if (m_Camera8.State == 0)
+                {
+                    m_Camera8.Connect_Cam(IniAPI.INIGetStringValue(Param_Path, "相机8", "IP", ""));
+                }
+                if (m_Camera8.State == 1)
+                {
+                    m_Camera8.OpenCamera();
+                }
+                if (m_Camera8.Start())  //开始采集流
+                {
+                    m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
+                    brightness = Convert.ToInt32(d1.Rows[i][4]);
+                    rS232.SerialPort.WriteLine(Functioncode + "G0" + brightness.ToString("D3") + "#" + "\r");
+                    Thread.Sleep(100);
+                    //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
+                    if (m_Camera8.Get_Oneframe())
+                    {
+
+                        Thread.Sleep(100);
+                        HObject Img2 = new HObject();
+
+                        HOperatorSet.CopyImage(m_Camera8.Himage, out Img2);
+                        if (d1.Rows[i][9].ToString() == "1")
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "2")
+                        {
+                            _mWindow2.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "3")
+                        {
+                            _mWindow3.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "4")
+                        {
+                            _mWindow8.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "5")
+                        {
+                            _mWindow5.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "6")
+                        {
+                            _mWindow6.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "7")
+                        {
+                            _mWindow8.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "8")
+                        {
+                            _mWindow8.NowImage = Img2;
+                        }
+                        else
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                        HOperatorSet.CopyImage(m_Camera8.Himage, out Img);
+
+                        Console.WriteLine("Get_onefrmae is OK ");
+                        OperateResult result3 = MC_PLC.Write(d1.Rows[i][3].ToString(), new bool[] { true });  // 1工位结果写入
+                        if (result3.IsSuccess)
+                        {
+                            m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照完成", true);
+
+                        }
+                        m_Camera8.Stop();
+                        m_Camera8.close();
+
+
+                    }
+                    brightness = 0;
+                    rS232.SerialPort.WriteLine(Functioncode + "H0" + brightness.ToString("D3") + "#" + "\r");
                 }
             }
             else
@@ -1979,11 +2507,19 @@ namespace _6524
                 m_Camera2.dispose();
                 m_Camera3.dispose();
                 m_Camera4.dispose();
+                m_Camera5.dispose();
+                m_Camera6.dispose();
+                m_Camera7.dispose();
+                m_Camera8.dispose();
                 brightness = 0;
                 rS232.SerialPort.WriteLine(Functioncode + "A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
                 rS232.SerialPort.WriteLine(Functioncode + "B0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
                 rS232.SerialPort.WriteLine(Functioncode + "C0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
                 rS232.SerialPort.WriteLine(Functioncode + "D0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "E0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "F0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "G0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "H0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
                 rS232.Close();
             }
             catch (Exception)

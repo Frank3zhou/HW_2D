@@ -3,6 +3,8 @@ using HalconDotNet;
 using HslCommunication;
 using HslCommunication.LogNet;
 using HslCommunication.Profinet.Melsec;
+using MathNet.Numerics;
+using NPOI.SS.Formula.UDF;
 using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
@@ -24,20 +26,25 @@ namespace _6524
 {
     public partial class Form1 : Form
     {
+        PLCresult plcres;
         SetModel m_modelSet = new SetModel();
         private ZKHwindows _mWindow1 = new ZKHwindows();
         private ZKHwindows _mWindow2 = new ZKHwindows();
         private ZKHwindows _mWindow3 = new ZKHwindows();
         private ZKHwindows _mWindow4 = new ZKHwindows();
         private ZKHwindows _mWindow5 = new ZKHwindows();
+        private ZKHwindows _mWindow6 = new ZKHwindows();
+        private ZKHwindows _mWindow7 = new ZKHwindows();
+        private ZKHwindows _mWindow8 = new ZKHwindows();
         Form_Init form_Init = new Form_Init();
         private ILogNet logNet; //创建log地址
         SaveCallback Savecameranini;
         private static string Param_Path = Application.StartupPath + "\\Param.ini";//配置表地址
         string Path_calibration_Param = Application.StartupPath + @"\\calibration\Param.ini";
+        string parma_path = Application.StartupPath + @"\\DATA\\Param.ini";
         bool heartbeat_enabled;
         string heartbeat_path;
-      //  private static string comname = "COM2";
+        //  private static string comname = "COM2";
         CameraParam cameraParam;
         Camera_Form camera_Form;
         State state = new State();
@@ -66,10 +73,10 @@ namespace _6524
         string saveImageFormat = "";
         bool robotenabled = false;
         bool autochangemodel = false;
-        bool robot_connected =false  ;
+        bool robot_connected = false;
         bool robotcamera_connected = false;
-        bool handleresult=false;
-        
+        bool handleresult = false;
+
 
         //  private bool isPaused = false;  //主线程暂停
 
@@ -84,7 +91,7 @@ namespace _6524
         MVS_SDK m_Camera; //机器人相机
 
         //   public string Comname { get => Comname1; set => Comname1 = value; }
-      //  public static string Comname1 { get => comname; set => comname = value; }
+        //  public static string Comname1 { get => comname; set => comname = value; }
 
         public Form1()
         {
@@ -115,86 +122,118 @@ namespace _6524
         {
             btn_system_state.Text = changelanguage("运行状态");
             int cameranum = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "System", "CameraNum", "1"));
+            int WindowNum = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "System", "WindowNum", "1"));
             robotenabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "System", "RobotEnabled", "false"));
             autochangemodel = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "System", "AutoChangeModel", "false"));
-            
+
+
+
+
+            #region 创建窗口
+
             _mWindow1.Dock = DockStyle.Fill;
             _mWindow2.Dock = DockStyle.Fill;
             _mWindow3.Dock = DockStyle.Fill;
             _mWindow4.Dock = DockStyle.Fill;
             _mWindow5.Dock = DockStyle.Fill;
+            _mWindow6.Dock = DockStyle.Fill;
+            _mWindow7.Dock = DockStyle.Fill;
+            _mWindow8.Dock = DockStyle.Fill;
 
 
-            if (robotenabled)
+
+            if (WindowNum == 1)
             {
+                tableLayoutPanel1.ColumnCount = 1;
+                tableLayoutPanel1.RowCount = 1;
+                tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
+            }
+            else if (WindowNum == 2)
+            {
+                tableLayoutPanel1.ColumnCount = 2;
+                tableLayoutPanel1.RowCount = 1;
+                tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow2, 1, 0);
+            }
+            else if (WindowNum == 3)
+            {
+                tableLayoutPanel1.ColumnCount = 2;
+                tableLayoutPanel1.RowCount = 2;
+                tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow2, 1, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow3, 0, 1);
+                tableLayoutPanel1.Controls.Add(_mWindow4, 1, 1);
+            }
+            else if (WindowNum == 4)
+            {
+                tableLayoutPanel1.ColumnCount = 2;
+                tableLayoutPanel1.RowCount = 2;
+                tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow2, 1, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow3, 0, 1);
+                tableLayoutPanel1.Controls.Add(_mWindow4, 1, 1);
+            }
+            else if (WindowNum == 5)
+            {
+                tableLayoutPanel1.ColumnCount = 3;
+                tableLayoutPanel1.RowCount = 2;
+                tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow2, 1, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow3, 2, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow4, 0, 1);
+                tableLayoutPanel1.Controls.Add(_mWindow5, 1, 1);
 
-                if (cameranum == 1)
-                {
-                    tableLayoutPanel1.ColumnCount = 2;
-                    tableLayoutPanel1.RowCount = 1;
-                    tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
-                    tableLayoutPanel1.Controls.Add(_mWindow5, 1, 0);
-                }
-                else if (cameranum == 0)
-                {
-                    tableLayoutPanel1.ColumnCount = 1;
-                    tableLayoutPanel1.RowCount = 1;
-                    tableLayoutPanel1.Controls.Add(_mWindow5, 0, 0);
+            }
+            else if (WindowNum == 6)
+            {
+                tableLayoutPanel1.ColumnCount = 3;
+                tableLayoutPanel1.RowCount = 2;
+                tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow2, 1, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow3, 2, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow4, 0, 1);
+                tableLayoutPanel1.Controls.Add(_mWindow5, 1, 1);
+                tableLayoutPanel1.Controls.Add(_mWindow6, 2, 1);
+            }
+            else if (WindowNum == 7)
+            {
+                tableLayoutPanel1.ColumnCount = 4;
+                tableLayoutPanel1.RowCount = 2;
+                tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow2, 1, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow3, 2, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow4, 3, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow5, 0, 1);
+                tableLayoutPanel1.Controls.Add(_mWindow6, 1, 1);
+                tableLayoutPanel1.Controls.Add(_mWindow7, 2, 1);
 
-                }
-                else if (cameranum == 2)
-                {
-                    tableLayoutPanel1.ColumnCount = 2;
-                    tableLayoutPanel1.RowCount = 2;
-                    tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
-                    tableLayoutPanel1.Controls.Add(_mWindow2, 1, 0);
-                    tableLayoutPanel1.Controls.Add(_mWindow5, 0, 1);
-
-
-                }
-                else if (cameranum == 3)
-                {
-                    tableLayoutPanel1.ColumnCount = 2;
-                    tableLayoutPanel1.RowCount = 2;
-                    tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
-                    tableLayoutPanel1.Controls.Add(_mWindow2, 1, 0);
-                    tableLayoutPanel1.Controls.Add(_mWindow3, 0, 1);
-                    tableLayoutPanel1.Controls.Add(_mWindow5, 1, 1);
-                }
-
+            }
+            else if (WindowNum == 8)
+            {
+                tableLayoutPanel1.ColumnCount = 4;
+                tableLayoutPanel1.RowCount = 2;
+                tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow2, 1, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow3, 2, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow4, 3, 0);
+                tableLayoutPanel1.Controls.Add(_mWindow5, 0, 1);
+                tableLayoutPanel1.Controls.Add(_mWindow6, 1, 1);
+                tableLayoutPanel1.Controls.Add(_mWindow7, 2, 1);
+                tableLayoutPanel1.Controls.Add(_mWindow8, 3, 1);
             }
             else
             {
-                if (cameranum == 1)
-                {
-                    tableLayoutPanel1.ColumnCount = 1;
-                    tableLayoutPanel1.RowCount = 1;
-                    tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
-                }
-                else if (cameranum == 2)
-                {
-                    tableLayoutPanel1.ColumnCount = 2;
-                    tableLayoutPanel1.RowCount = 1;
-                    tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
-                    tableLayoutPanel1.Controls.Add(_mWindow2, 1, 0);
-                }
-                else
-                {
-                    tableLayoutPanel1.ColumnCount = 2;
-                    tableLayoutPanel1.RowCount = 2;
-                    tableLayoutPanel1.Controls.Add(_mWindow1, 0, 0);
-                    tableLayoutPanel1.Controls.Add(_mWindow2, 1, 0);
-                    tableLayoutPanel1.Controls.Add(_mWindow3, 0, 1);
-                    tableLayoutPanel1.Controls.Add(_mWindow4, 1, 1);
-                }
+                MessageBox.Show("窗口数错误，请重新设定");
             }
+
+            #endregion
 
             logNet = new LogNetSingle(Application.StartupPath + "\\Logs\\" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt");
             LogNetSingle logNetSingle = logNet as LogNetSingle;
-          //  logNetSingle.
+            //  logNetSingle.
             string logData = logNetSingle.GetAllSavedLog();
             logNetAnalysisControl1.Load += FormLogNetTest_Load;
-            
+
             panel2.BringToFront();
 
             //获取所有的日志信息
@@ -220,10 +259,10 @@ namespace _6524
             saveImageFormat = IniAPI.INIGetStringValue(Param_Path, "SaveImage", "ImageFormat", "");
             //连接PLC
             UpdateInit(20, changelanguage("PLC连接中"));
-            MC_PLC.pLCMode = (PLCMode)Enum.Parse(typeof(PLCMode), Mode); 
+            MC_PLC.pLCMode = (PLCMode)Enum.Parse(typeof(PLCMode), Mode);
             MC_PLC.IP = IP;
-            MC_PLC.Port= Convert.ToInt32(Port);
-       
+            MC_PLC.Port = Convert.ToInt32(Port);
+
             if (MC_PLC.init())
             {
                 PLC_connected = true;
@@ -253,8 +292,8 @@ namespace _6524
 
                 //throw;
             }
-           
-        
+
+
             rS232.Init();
 
             if (!(rS232.Open() == 1))
@@ -264,10 +303,10 @@ namespace _6524
             else
             {
                 brightness = 150;
-                rS232.SerialPort.WriteLine(Functioncode+"A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                rS232.SerialPort.WriteLine(Functioncode+"B0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                rS232.SerialPort.WriteLine(Functioncode+"C0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
-                rS232.SerialPort.WriteLine(Functioncode+"D0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "B0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "C0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                rS232.SerialPort.WriteLine(Functioncode + "D0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
             }
 
             rS232.Close();
@@ -282,14 +321,14 @@ namespace _6524
                 {
                     Thread.Sleep(500);
                     Camera1_connected = true;
-                    UpdateInit(100, changelanguage("相机",1,"连接完成"));
+                    UpdateInit(100, changelanguage("相机", 1, "连接完成"));
                     m_Camera1.close();
                 }
                 else
                 {
                     Thread.Sleep(500);
                     Camera1_connected = false;
-                    UpdateInit(90, changelanguage("相机",1,"连接失败"));
+                    UpdateInit(90, changelanguage("相机", 1, "连接失败"));
                     m_Logprint(HslMessageDegree.ERROR, "相机", 1, "连接失败", true);
 
 
@@ -304,16 +343,16 @@ namespace _6524
                 {
                     Thread.Sleep(500);
                     Camera2_connected = true;
-                    UpdateInit(100, changelanguage("相机"+2+"连接完成"));
+                    UpdateInit(100, changelanguage("相机" + 2 + "连接完成"));
                     m_Camera2.close();
                 }
                 else
                 {
                     Thread.Sleep(500);
                     Camera2_connected = false;
-                    UpdateInit(90, changelanguage("相机" , 2 , "连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机" , 2 , "连接失败", true);
-                 
+                    UpdateInit(90, changelanguage("相机", 2, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 2, "连接失败", true);
+
                 }
 
 
@@ -325,16 +364,16 @@ namespace _6524
                 {
                     Thread.Sleep(500);
                     Camera2_connected = true;
-                    UpdateInit(100, changelanguage("相机",3,"连接完成"));
+                    UpdateInit(100, changelanguage("相机", 3, "连接完成"));
                     m_Camera3.close();
                 }
                 else
                 {
                     Thread.Sleep(500);
                     Camera2_connected = false;
-                    UpdateInit(90, changelanguage("相机" , 3 , "连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机" , 3 , "连接失败", true);
-                  
+                    UpdateInit(90, changelanguage("相机", 3, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 3, "连接失败", true);
+
                 }
             }
             if (cameranum >= 4)
@@ -344,15 +383,15 @@ namespace _6524
                 {
                     Thread.Sleep(500);
                     Camera4_connected = true;
-                    UpdateInit(100, changelanguage("相机",4,"连接完成"));
+                    UpdateInit(100, changelanguage("相机", 4, "连接完成"));
                     m_Camera4.close();
                 }
                 else
                 {
                     Thread.Sleep(500);
                     Camera4_connected = false;
-                    UpdateInit(90, changelanguage("相机" , 4 , "连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机"+4+"连接失败", true);
+                    UpdateInit(90, changelanguage("相机", 4, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机" + 4 + "连接失败", true);
                 }
             }
 
@@ -400,7 +439,7 @@ namespace _6524
             {
                 string source = Encoding.UTF8.GetString(System.IO.File.ReadAllBytes(Application.StartupPath + "\\Logs\\" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt"));   // 传入路径
                 logNetAnalysisControl1.SetLogNetSource(source);
-             
+
             }
             catch (Exception)
             {
@@ -427,15 +466,15 @@ namespace _6524
                 {
                     // Thread.Sleep(500);
                     Camera1_connected = true;
-                    UpdateInit(100, changelanguage("相机",1 ,"连接完成"));
+                    UpdateInit(100, changelanguage("相机", 1, "连接完成"));
                     m_Camera1.close();
                 }
                 else
                 {
                     //Thread.Sleep(500);
                     Camera1_connected = false;
-                    UpdateInit(90, changelanguage("相机",1 ,"连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机",1 ,"连接失败", true);
+                    UpdateInit(90, changelanguage("相机", 1, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 1, "连接失败", true);
 
 
 
@@ -449,16 +488,16 @@ namespace _6524
                 {
                     // Thread.Sleep(500);
                     Camera2_connected = true;
-                    UpdateInit(100, changelanguage("相机"  ,  2,"连接完成"));
+                    UpdateInit(100, changelanguage("相机", 2, "连接完成"));
                     m_Camera2.close();
                 }
                 else
                 {
                     // Thread.Sleep(500);
                     Camera2_connected = false;
-                    UpdateInit(90, changelanguage("相机",2,"连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机",2,"连接失败", true);
-                   // m_Camera2.close();
+                    UpdateInit(90, changelanguage("相机", 2, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 2, "连接失败", true);
+                    // m_Camera2.close();
                 }
 
 
@@ -470,15 +509,15 @@ namespace _6524
                 {
                     // Thread.Sleep(500);
                     Camera3_connected = true;
-                    UpdateInit(100, changelanguage("相机",3,"连接完成"));
+                    UpdateInit(100, changelanguage("相机", 3, "连接完成"));
                     m_Camera3.close();
                 }
                 else
                 {
                     //  Thread.Sleep(500);
                     Camera3_connected = false;
-                    UpdateInit(90, changelanguage("相机",3,"连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机",3,"连接失败", true);
+                    UpdateInit(90, changelanguage("相机", 3, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 3, "连接失败", true);
 
                 }
             }
@@ -489,15 +528,15 @@ namespace _6524
                 {
                     //Thread.Sleep(500);
                     Camera4_connected = true;
-                    UpdateInit(100, changelanguage("相机",4,"连接完成"));
+                    UpdateInit(100, changelanguage("相机", 4, "连接完成"));
                     m_Camera4.close();
                 }
                 else
                 {
                     //Thread.Sleep(500);
                     Camera4_connected = false;
-                    UpdateInit(90, changelanguage("相机",4,"连接失败"));
-                    m_Logprint(HslMessageDegree.ERROR, "相机",4,"连接失败", true);
+                    UpdateInit(90, changelanguage("相机", 4, "连接失败"));
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 4, "连接失败", true);
                 }
             }
 
@@ -506,24 +545,24 @@ namespace _6524
             {
                 if (!Camera1_connected)
                 {
-                    MessageBox.Show(changelanguage("相机" , 1 , "连接失败"));
+                    MessageBox.Show(changelanguage("相机", 1, "连接失败"));
                     button12.Image = global::_6524.Properties.Resources.开始__1_;
 
-                    m_Logprint(HslMessageDegree.ERROR, "相机" , 1 , "连接失败", true);
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 1, "连接失败", true);
                     Bg_Main.CancelAsync();
-                   
+
                 }
             }
             if (cameranum >= 2)
             {
                 if (!Camera2_connected)
                 {
-                    MessageBox.Show(changelanguage("相机" , 2 , "连接失败"));
+                    MessageBox.Show(changelanguage("相机", 2, "连接失败"));
                     button12.Image = global::_6524.Properties.Resources.开始__1_;
 
-                    m_Logprint(HslMessageDegree.ERROR, "相机" , 2 , "连接失败", true);
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 2, "连接失败", true);
                     Bg_Main.CancelAsync();
-                  
+
                 }
 
             }
@@ -531,12 +570,12 @@ namespace _6524
             {
                 if (!Camera3_connected)
                 {
-                    MessageBox.Show(changelanguage("相机",3,"连接失败"));
+                    MessageBox.Show(changelanguage("相机", 3, "连接失败"));
                     button12.Image = global::_6524.Properties.Resources.开始__1_;
 
-                    m_Logprint(HslMessageDegree.ERROR, "相机",3,"连接失败", true);
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 3, "连接失败", true);
                     Bg_Main.CancelAsync();
-               
+
                 }
 
             }
@@ -544,12 +583,12 @@ namespace _6524
             {
                 if (!Camera4_connected)
                 {
-                    MessageBox.Show(changelanguage("相机" , 4 , "连接失败"));
+                    MessageBox.Show(changelanguage("相机", 4, "连接失败"));
                     button12.Image = global::_6524.Properties.Resources.开始__1_;
 
-                    m_Logprint(HslMessageDegree.ERROR, "相机" , 4 , "连接失败", true);
+                    m_Logprint(HslMessageDegree.ERROR, "相机", 4, "连接失败", true);
                     Bg_Main.CancelAsync();
-                 
+
                 }
 
             }
@@ -567,9 +606,9 @@ namespace _6524
                 m_Logprint(HslMessageDegree.ERROR, "PLC连接失败", true);
                 Bg_Main.CancelAsync();
             }
-           
 
-       
+
+
             #endregion
             while (!Bg_Main.CancellationPending)
             {
@@ -627,7 +666,7 @@ namespace _6524
 
 
 
-                    PLCINIT:
+                PLCINIT:
                     //读取机种信息
                     string DCpath = IniAPI.INIGetStringValue(Param_Path, "ModelExcel", "Path", "C:\\Users\\Administrator\\Desktop\\6524");
                     string filenanme = "";
@@ -638,20 +677,20 @@ namespace _6524
 
 
                         //自动切换机种，机种名必须为1.2.3
-                      OperateResult<int[]> model = MC_PLC.ReadInt32("D100",1);
+                        OperateResult<int[]> model = MC_PLC.ReadInt32("D100", 1);
                         if (model.IsSuccess)
                         {
-                           
+
                             m_Logprint(HslMessageDegree.INFO, "读取机种结果：" + model.Content[0].ToString(), false);
                         }
                         else
                         {
                             MessageBox.Show("机种读取失败");
-                           // m_Logprint(HslMessageDegree.INFO, "读取机种结果：" + "失败", false);
+                            // m_Logprint(HslMessageDegree.INFO, "读取机种结果：" + "失败", false);
                             Bg_Main.CancelAsync();
                             break;
                         }
-                       
+
                         // m_modelSet.Modelname = "PLCmodel" + model.ToString();
                         filenanme = DCpath + "\\" + model.Content[0].ToString() + ".xlsx";
 
@@ -659,9 +698,9 @@ namespace _6524
                     else
                     {
                         //手动指定机种,机种名必须为1.2.3
-                        string  str= IniAPI.INIGetStringValue(Param_Path, "ModelExcel", "UsingExcelPath", "");
+                        string str = IniAPI.INIGetStringValue(Param_Path, "ModelExcel", "UsingExcelPath", "");
                         filenanme = DCpath + "\\" + str;
-                      string t = System.Text.RegularExpressions.Regex.Replace(str, @"[^0-9]+", "");
+                        string t = System.Text.RegularExpressions.Regex.Replace(str, @"[^0-9]+", "");
 
 
 
@@ -713,8 +752,8 @@ namespace _6524
                             bool waitsignal = false;
                             while (!waitsignal && !Bg_Main.CancellationPending)
                             {
-                                bool PLCinit_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_enabled", ""));
-                               string PLCinit_Path = IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_Path", "1000");
+                                bool PLCinit_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_enabled", "false"));
+                                string PLCinit_Path = IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_Path", "1000");
                                 if (PLCinit_enabled)
                                 {
                                     OperateResult<bool[]> PLCinit = MC_PLC.ReadBool(PLCinit_Path, 1);//读初始化信号
@@ -743,9 +782,9 @@ namespace _6524
                                     }
                                 }
 
-                                
-                                        Thread.Sleep(10);
-                                OperateResult<bool[]> m_Result = MC_PLC.ReadBool(d1.Rows[i][1].ToString(),1);
+
+                                Thread.Sleep(10);
+                                OperateResult<bool[]> m_Result = MC_PLC.ReadBool(d1.Rows[i][1].ToString(), 1);
 
                                 if (m_Result.IsSuccess)
                                 {
@@ -761,7 +800,7 @@ namespace _6524
                                         else
                                         {
                                             // 创建并启动一个后台任务
-                                    
+
                                             threads[threadsnum] = new Thread(run);
                                             threads[threadsnum].IsBackground = true;
                                             threads[threadsnum].Start(i);
@@ -785,7 +824,7 @@ namespace _6524
                                                     {
                                                         if (nowstep != null)
                                                         {
-                                                            btn_system_state.Text =changelanguage("等待拍照位" , Convert.ToInt32(nowstep) , "信号");
+                                                            btn_system_state.Text = changelanguage("等待拍照位", Convert.ToInt32(nowstep), "信号");
                                                             btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Chartreuse;
                                                         }
 
@@ -800,7 +839,7 @@ namespace _6524
                                                 {
                                                     if (nowstep != null)
                                                     {
-                                                        btn_system_state.Text = changelanguage("等待拍照位" , Convert.ToInt32(nowstep) , "信号");
+                                                        btn_system_state.Text = changelanguage("等待拍照位", Convert.ToInt32(nowstep), "信号");
                                                         btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Chartreuse;
                                                     }
 
@@ -808,7 +847,7 @@ namespace _6524
                                            )
                                                );
                                             }
-                                           
+
 
                                         }
                                         catch (Exception)
@@ -852,9 +891,9 @@ namespace _6524
                     catch (Exception)
                     {
 
-                       // throw;
+                        // throw;
                     }
-                   
+
                 }
 
 
@@ -867,7 +906,7 @@ namespace _6524
                 }
                 finally
                 {
-                   
+
                     rS232.Close();
                 }
             }
@@ -883,6 +922,11 @@ namespace _6524
         private void run(object threadName)
         {
             int i = (int)threadName; // 转换传递的参数
+
+            brightness = Convert.ToInt32(d1.Rows[i][4]);
+            string Lightname = getLightname(d1.Rows[i][10].ToString());
+            rS232.SerialPort.WriteLine(Functioncode + Lightname + brightness.ToString("D3") + "#" + "\r");
+            Thread.Sleep(100);
             #region 相机拍照
             //判断拍照相机并拍照
             if (Convert.ToInt32(d1.Rows[i][2]) == 1)  //相机1
@@ -897,23 +941,62 @@ namespace _6524
                 }
                 if (m_Camera1.Start())  //开始采集流
                 {
-                    m_Logprint(HslMessageDegree.INFO, "拍照位" , d1.Rows[i][0].ToString() , "拍照中", true);
-                    brightness = Convert.ToInt32(d1.Rows[i][4]);
-                    rS232.SerialPort.WriteLine(Functioncode+"A0" + brightness.ToString("D3") + "#" + "\r");
-                    Thread.Sleep(100);
+                    m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
+                   
                     //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
                     if (m_Camera1.Get_Oneframe())
                     {
 
                         Thread.Sleep(1);
-                        _mWindow1.NowImage = m_Camera1.Himage;
+                        
+                        HObject Img2= new HObject();
+                        
+                        HOperatorSet.CopyImage(m_Camera1.Himage, out Img2);
+                        if (d1.Rows[i][9].ToString() == "1")
+                        {
+                            _mWindow1.NowImage= Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "2")
+                        {
+                            _mWindow2.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "3")
+                        {
+                            _mWindow3.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "4")
+                        {
+                            _mWindow4.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "5")
+                        {
+                            _mWindow5.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "6")
+                        {
+                            _mWindow6.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "7")
+                        {
+                            _mWindow7.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "8")
+                        {
+                            _mWindow8.NowImage = Img2;
+                        }
+                        else
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                      
                         HOperatorSet.CopyImage(m_Camera1.Himage, out Img);
 
+                       
                         Console.WriteLine("Get_onefrmae is OK ");
                         OperateResult result3 = MC_PLC.Write(d1.Rows[i][3].ToString(), new bool[] { true });  // 1工位结果写入
                         if (result3.IsSuccess)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "拍照位" , d1.Rows[i][0].ToString() , "拍照完成", true);
+                            m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照完成", true);
 
                         }
                         m_Camera1.Stop();
@@ -921,8 +1004,8 @@ namespace _6524
 
 
                     }
-                    brightness = 0;
-                    rS232.SerialPort.WriteLine(Functioncode+"A0" + brightness.ToString("D3") + "#" + "\r");
+                    //brightness = 0;
+                    //rS232.SerialPort.WriteLine(Functioncode + "A0" + brightness.ToString("D3") + "#" + "\r");
 
                 }
 
@@ -939,16 +1022,54 @@ namespace _6524
                 }
                 if (m_Camera2.Start())  //开始采集流
                 {
-                    m_Logprint(HslMessageDegree.INFO, "拍照位" , d1.Rows[i][0].ToString() , "拍照中", true);
-                    brightness = Convert.ToInt32(d1.Rows[i][4]);
-                    rS232.SerialPort.WriteLine(Functioncode+"B0" + brightness.ToString("D3") + "#" + "\r");
-                    Thread.Sleep(100);
+                    m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
+                    //brightness = Convert.ToInt32(d1.Rows[i][4]);
+                    //rS232.SerialPort.WriteLine(Functioncode + "B0" + brightness.ToString("D3") + "#" + "\r");
+                    //Thread.Sleep(100);
                     //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
                     if (m_Camera2.Get_Oneframe())
                     {
 
                         Thread.Sleep(100);
-                        _mWindow2.NowImage = m_Camera2.Himage;
+                        HObject Img2 = new HObject();
+
+                        HOperatorSet.CopyImage(m_Camera2.Himage, out Img2);
+                        if (d1.Rows[i][9].ToString() == "1")
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "2")
+                        {
+                            _mWindow2.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "3")
+                        {
+                            _mWindow3.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "4")
+                        {
+                            _mWindow4.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "5")
+                        {
+                            _mWindow5.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "6")
+                        {
+                            _mWindow6.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "7")
+                        {
+                            _mWindow7.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "8")
+                        {
+                            _mWindow8.NowImage = Img2;
+                        }
+                        else
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
                         HOperatorSet.CopyImage(m_Camera2.Himage, out Img);
                         Console.WriteLine("Get_onefrmae is OK ");
                         OperateResult result3 = MC_PLC.Write(d1.Rows[i][3].ToString(), new bool[] { true });  // 1工位结果写入
@@ -962,8 +1083,8 @@ namespace _6524
 
 
                     }
-                    brightness = 0;
-                    rS232.SerialPort.WriteLine(Functioncode+"B0" + brightness.ToString("D3") + "#" + "\r");
+                    //brightness = 0;
+                    //rS232.SerialPort.WriteLine(Functioncode + "B0" + brightness.ToString("D3") + "#" + "\r");
                 }
             }
 
@@ -980,15 +1101,53 @@ namespace _6524
                 if (m_Camera3.Start())  //开始采集流
                 {
                     m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
-                    brightness = Convert.ToInt32(d1.Rows[i][4]);
-                    rS232.SerialPort.WriteLine(Functioncode+"C0" + brightness.ToString("D3") + "#" + "\r");
-                    Thread.Sleep(100);
+                    //brightness = Convert.ToInt32(d1.Rows[i][4]);
+                    //rS232.SerialPort.WriteLine(Functioncode + "C0" + brightness.ToString("D3") + "#" + "\r");
+                    //Thread.Sleep(100);
                     //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
                     if (m_Camera3.Get_Oneframe())
                     {
 
                         Thread.Sleep(100);
-                        _mWindow3.NowImage = m_Camera3.Himage;
+                        HObject Img2 = new HObject();
+
+                        HOperatorSet.CopyImage(m_Camera3.Himage, out Img2);
+                        if (d1.Rows[i][9].ToString() == "1")
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "2")
+                        {
+                            _mWindow2.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "3")
+                        {
+                            _mWindow3.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "4")
+                        {
+                            _mWindow4.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "5")
+                        {
+                            _mWindow5.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "6")
+                        {
+                            _mWindow6.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "7")
+                        {
+                            _mWindow7.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "8")
+                        {
+                            _mWindow8.NowImage = Img2;
+                        }
+                        else
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
                         HOperatorSet.CopyImage(m_Camera3.Himage, out Img);
 
                         Console.WriteLine("Get_onefrmae is OK ");
@@ -1003,8 +1162,8 @@ namespace _6524
 
 
                     }
-                    brightness = 0;
-                    rS232.SerialPort.WriteLine(Functioncode+"C0" + brightness.ToString("D3") + "#" + "\r");
+                    //brightness = 0;
+                    //rS232.SerialPort.WriteLine(Functioncode + "C0" + brightness.ToString("D3") + "#" + "\r");
                 }
             }
 
@@ -1021,15 +1180,53 @@ namespace _6524
                 if (m_Camera4.Start())  //开始采集流
                 {
                     m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "拍照中", true);
-                    brightness = Convert.ToInt32(d1.Rows[i][4]);
-                    rS232.SerialPort.WriteLine(Functioncode+"D0" + brightness.ToString("D3") + "#" + "\r");
-                    Thread.Sleep(100);
+                    //brightness = Convert.ToInt32(d1.Rows[i][4]);
+                    //rS232.SerialPort.WriteLine(Functioncode + "D0" + brightness.ToString("D3") + "#" + "\r");
+                    //Thread.Sleep(100);
                     //  HOperatorSet.DispObj(mvs_SDK.Himage, m_ZKHwindows.HalconWindow);
                     if (m_Camera4.Get_Oneframe())
                     {
 
                         Thread.Sleep(100);
-                        _mWindow4.NowImage = m_Camera4.Himage;
+                        HObject Img2 = new HObject();
+
+                        HOperatorSet.CopyImage(m_Camera4.Himage, out Img2);
+                        if (d1.Rows[i][9].ToString() == "1")
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "2")
+                        {
+                            _mWindow2.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "3")
+                        {
+                            _mWindow3.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "4")
+                        {
+                            _mWindow4.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "5")
+                        {
+                            _mWindow5.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "6")
+                        {
+                            _mWindow6.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "7")
+                        {
+                            _mWindow7.NowImage = Img2;
+                        }
+                        else if (d1.Rows[i][9].ToString() == "8")
+                        {
+                            _mWindow8.NowImage = Img2;
+                        }
+                        else
+                        {
+                            _mWindow1.NowImage = Img2;
+                        }
                         HOperatorSet.CopyImage(m_Camera4.Himage, out Img);
 
                         Console.WriteLine("Get_onefrmae is OK ");
@@ -1044,16 +1241,17 @@ namespace _6524
 
 
                     }
-                    brightness = 0;
-                    rS232.SerialPort.WriteLine(Functioncode+"D0" + brightness.ToString("D3") + "#" + "\r");
+                    
                 }
+               
             }
             else
             {
 
             }
 
-
+            brightness = 0;
+            rS232.SerialPort.WriteLine(Functioncode + Lightname + brightness.ToString("D3") + "#" + "\r");
 
 
 
@@ -1061,191 +1259,175 @@ namespace _6524
 
 
             #region 处理图像
-            if (Convert.ToInt32(d1.Rows[i][2]) == 1)  //相机1
-            {
-                if (d1.Rows[i][5].ToString().Contains(","))
-                {
-                    string[] parts = d1.Rows[i][5].ToString().Split(',');
-                    List<bool> result = new List<bool>();
-                    result.Clear(); 
-                    for (int P = 0; P < parts.Length; P++)
-                    {
-                        bool partresult = runhandleimage(_mWindow1.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
-                        result.Add(partresult);
-                    }
-                    if (result.Contains(false))
-                    {
-                        handleresult = false;
 
+
+            //if (Convert.ToInt32(d1.Rows[i][2]) == 1)  //相机1
+            //{
+            if (d1.Rows[i][5].ToString().Contains(","))
+            {
+                string[] parts = d1.Rows[i][5].ToString().Split(',');
+                List<bool> result = new List<bool>();
+                result.Clear();
+                for (int P = 0; P < parts.Length; P++)
+                {
+
+                    bool partresult=false;
+                    if (d1.Rows[i][9].ToString() == "1")
+                    {
+                        partresult = runhandleimage(_mWindow1.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+                    }
+                    else if (d1.Rows[i][9].ToString() == "2")
+                    {
+                         partresult = runhandleimage(_mWindow2.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+                    }
+                    else if (d1.Rows[i][9].ToString() == "3")
+                    {
+                         partresult = runhandleimage(_mWindow3.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+                    }
+                    else if (d1.Rows[i][9].ToString() == "4")
+                    {
+                         partresult = runhandleimage(_mWindow4.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+                    }
+                    else if (d1.Rows[i][9].ToString() == "5")
+                    {
+                         partresult = runhandleimage(_mWindow5.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+                    }
+                    else if (d1.Rows[i][9].ToString() == "6")
+                    {
+                         partresult = runhandleimage(_mWindow6.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+                    }
+                    else if (d1.Rows[i][9].ToString() == "7")
+                    {
+                         partresult = runhandleimage(_mWindow7.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+                    }
+                    else if (d1.Rows[i][9].ToString() == "8")
+                    {
+                         partresult = runhandleimage(_mWindow8.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
                     }
                     else
                     {
-                        handleresult = true;
+                         partresult = runhandleimage(_mWindow1.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
                     }
-                   
+                    result.Add(partresult);
+                }
+                if (result.Contains(false))
+                {
+                    handleresult = false;
+
+                }
+                else
+                {
+                    handleresult = true;
+                }
+
+            }
+            else
+            {
+               
+                if (d1.Rows[i][9].ToString() == "1")
+                {
+                    handleresult = runhandleimage(_mWindow1.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                }
+                else if (d1.Rows[i][9].ToString() == "2")
+                {
+                    handleresult = runhandleimage(_mWindow2.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                }
+                else if (d1.Rows[i][9].ToString() == "3")
+                {
+                    handleresult = runhandleimage(_mWindow3.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                }
+                else if (d1.Rows[i][9].ToString() == "4")
+                {
+                    handleresult = runhandleimage(_mWindow4.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                }
+                else if (d1.Rows[i][9].ToString() == "5")
+                {
+                    handleresult = runhandleimage(_mWindow5.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                }
+                else if (d1.Rows[i][9].ToString() == "6")
+                {
+                    handleresult = runhandleimage(_mWindow6.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                }
+                else if (d1.Rows[i][9].ToString() == "7")
+                {
+                    handleresult = runhandleimage(_mWindow7.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+                }
+                else if (d1.Rows[i][9].ToString() == "8")
+                {
+                    handleresult = runhandleimage(_mWindow8.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
                 }
                 else
                 {
                     handleresult = runhandleimage(_mWindow1.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
                 }
-               
-
-                if (Convert.ToInt32(d1.Rows[i][7]) == 1)
-                {
-                    imageresult1.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 2)
-                {
-                    imageresult2.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 3)
-                {
-                    imageresult3.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 4)
-                {
-                    imageresult4.Add(handleresult);
-                }
-                m_Logprint(HslMessageDegree.INFO, "拍照位" , d1.Rows[i][0].ToString() , "图像处理完成", true);
             }
-            else if (Convert.ToInt32(d1.Rows[i][2]) == 2)
+
+
+            if (Convert.ToInt32(d1.Rows[i][7]) == 1)
             {
-                if (d1.Rows[i][5].ToString().Contains(","))
-                {
-                    string[] parts = d1.Rows[i][5].ToString().Split(',');
-                    List<bool> result = new List<bool>();
-                    result.Clear();
-                    for (int P = 0; P < parts.Length; P++)
-                    {
-                        bool partresult = runhandleimage(_mWindow2.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
-                        result.Add(partresult);
-                    }
-                    if (result.Contains(false))
-                    {
-                        handleresult = false;
-
-                    }
-                    else
-                    {
-                        handleresult = true;
-                    }
-                }
-                else
-                {
-                    handleresult = runhandleimage(_mWindow2.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
-
-                }
-
-                if (Convert.ToInt32(d1.Rows[i][7]) == 1)
-                {
-                    imageresult1.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 2)
-                {
-                    imageresult2.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 3)
-                {
-                    imageresult3.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 4)
-                {
-                    imageresult4.Add(handleresult);
-                }
-                m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "图像处理完成", true);
+                imageresult1.Add(handleresult);
             }
-            else if (Convert.ToInt32(d1.Rows[i][2]) == 3)
+            else if (Convert.ToInt32(d1.Rows[i][7]) == 2)
             {
-                if (d1.Rows[i][5].ToString().Contains(","))
-                {
-                    string[] parts = d1.Rows[i][5].ToString().Split(',');
-                    List<bool> result = new List<bool>();
-                    result.Clear();
-                    for (int P = 0; P < parts.Length; P++)
-                    {
-                        bool partresult = runhandleimage(_mWindow3.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
-                        result.Add(partresult);
-                    }
-                    if (result.Contains(false))
-                    {
-                        handleresult = false;
-
-                    }
-                    else
-                    {
-                        handleresult = true;
-                    }
-                }
-                else
-                {
-                     handleresult = runhandleimage(_mWindow3.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
-
-                }
-               
-
-                if (Convert.ToInt32(d1.Rows[i][7]) == 1)
-                {
-                    imageresult1.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 2)
-                {
-                    imageresult2.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 3)
-                {
-                    imageresult3.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 4)
-                {
-                    imageresult4.Add(handleresult);
-                }
-                m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "图像处理完成", true);
+                imageresult2.Add(handleresult);
             }
-            else if (Convert.ToInt32(d1.Rows[i][2]) == 4)
+            else if (Convert.ToInt32(d1.Rows[i][7]) == 3)
             {
-                if (d1.Rows[i][5].ToString().Contains(","))
-                {
-                    string[] parts = d1.Rows[i][5].ToString().Split(',');
-                    List<bool> result = new List<bool>();
-                    result.Clear();
-                    for (int P = 0; P < parts.Length; P++)
-                    {
-                        bool partresult = runhandleimage(_mWindow4.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
-                        result.Add(partresult);
-                    }
-                    if (result.Contains(false))
-                    {
-                        handleresult = false;
-
-                    }
-                    else
-                    {
-                        handleresult = true;
-                    }
-                }
-                else
-                {
-                    handleresult = runhandleimage(_mWindow4.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
-
-                }
-                if (Convert.ToInt32(d1.Rows[i][7]) == 1)
-                {
-                    imageresult1.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 2)
-                {
-                    imageresult2.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 3)
-                {
-                    imageresult3.Add(handleresult);
-                }
-                else if (Convert.ToInt32(d1.Rows[i][7]) == 4)
-                {
-                    imageresult4.Add(handleresult);
-                }
-                m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "图像处理完成", true);
+                imageresult3.Add(handleresult);
             }
+            else if (Convert.ToInt32(d1.Rows[i][7]) == 4)
+            {
+                imageresult4.Add(handleresult);
+            }
+            m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "图像处理完成", true);
+            //}
+            //else if (Convert.ToInt32(d1.Rows[i][2]) == 2)
+            //{
+            //    if (d1.Rows[i][5].ToString().Contains(","))
+            //    {
+            //        string[] parts = d1.Rows[i][5].ToString().Split(',');
+            //        List<bool> result = new List<bool>();
+            //        result.Clear();
+            //        for (int P = 0; P < parts.Length; P++)
+            //        {
+            //            bool partresult = runhandleimage(_mWindow2.hWindowControl.HalconWindow, Img, Convert.ToInt32(parts[P].ToString()));
+            //            result.Add(partresult);
+            //        }
+            //        if (result.Contains(false))
+            //        {
+            //            handleresult = false;
+
+            //        }
+            //        else
+            //        {
+            //            handleresult = true;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        handleresult = runhandleimage(_mWindow2.hWindowControl.HalconWindow, Img, Convert.ToInt32((d1.Rows[i][5])));
+
+            //    }
+
+            //    if (Convert.ToInt32(d1.Rows[i][7]) == 1)
+            //    {
+            //        imageresult1.Add(handleresult);
+            //    }
+            //    else if (Convert.ToInt32(d1.Rows[i][7]) == 2)
+            //    {
+            //        imageresult2.Add(handleresult);
+            //    }
+            //    else if (Convert.ToInt32(d1.Rows[i][7]) == 3)
+            //    {
+            //        imageresult3.Add(handleresult);
+            //    }
+            //    else if (Convert.ToInt32(d1.Rows[i][7]) == 4)
+            //    {
+            //        imageresult4.Add(handleresult);
+            //    }
+            //    m_Logprint(HslMessageDegree.INFO, "拍照位", d1.Rows[i][0].ToString(), "图像处理完成", true);
+            //}
+
 
             #endregion
 
@@ -1262,47 +1444,47 @@ namespace _6524
                         Thread.Sleep(100);
                         if (statenum == 1)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "工位",1,"发送结果中", true);
+                            m_Logprint(HslMessageDegree.INFO, "工位", 1, "发送结果中", true);
                             OperateResult Writeresult1;
                             if (!imageresult1.Contains(false))
                             {
                                 Writeresult1 = MC_PLC.Write(d2.Rows[X][1].ToString(), new bool[] { true });  // 1工位写入OK 结果
-                                m_Logprint(HslMessageDegree.INFO, "工位",1,"发送结果OK", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位", 1, "发送结果OK", true);
                             }
                             else
                             {
                                 Writeresult1 = MC_PLC.Write(d2.Rows[X][2].ToString(), new bool[] { true });  // 1工位写入NG结果
-                                m_Logprint(HslMessageDegree.INFO, "工位",1,"发送结果NG", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位", 1, "发送结果NG", true);
                             }
 
                             if (Writeresult1.IsSuccess)
                             {
-                                m_Logprint(HslMessageDegree.INFO, "工位",1,"发送结果完成", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位", 1, "发送结果完成", true);
                             }
                         }
                         if (statenum == 2)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "工位",2,"发送结果中", true);
+                            m_Logprint(HslMessageDegree.INFO, "工位", 2, "发送结果中", true);
                             OperateResult Writeresult2;
                             if (!imageresult2.Contains(false))
                             {
                                 Writeresult2 = MC_PLC.Write(d2.Rows[X][1].ToString(), new bool[] { true });  // 2工位写入OK 结果
-                                m_Logprint(HslMessageDegree.INFO, "工位",2,"发送结果OK", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位", 2, "发送结果OK", true);
                             }
                             else
                             {
                                 Writeresult2 = MC_PLC.Write(d2.Rows[X][2].ToString(), new bool[] { true });  // 2工位写入NG结果
-                                m_Logprint(HslMessageDegree.INFO, "工位",2,"发送结果NG", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位", 2, "发送结果NG", true);
                             }
 
                             if (Writeresult2.IsSuccess)
                             {
-                                m_Logprint(HslMessageDegree.INFO, "工位",2,"发送结果完成", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位", 2, "发送结果完成", true);
                             }
                         }
                         if (statenum == 3)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "工位",3,"发送结果中", true);
+                            m_Logprint(HslMessageDegree.INFO, "工位", 3, "发送结果中", true);
                             OperateResult Writeresult3;
                             if (!imageresult3.Contains(false))
                             {
@@ -1315,12 +1497,12 @@ namespace _6524
 
                             if (Writeresult3.IsSuccess)
                             {
-                                m_Logprint(HslMessageDegree.INFO, "工位",3,"发送结果完成", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位", 3, "发送结果完成", true);
                             }
                         }
                         if (statenum == 4)
                         {
-                            m_Logprint(HslMessageDegree.INFO, "工位",4,"发送结果中", true);
+                            m_Logprint(HslMessageDegree.INFO, "工位", 4, "发送结果中", true);
                             OperateResult Writeresult4;
                             if (!imageresult4.Contains(false))
                             {
@@ -1333,7 +1515,7 @@ namespace _6524
 
                             if (Writeresult4.IsSuccess)
                             {
-                                m_Logprint(HslMessageDegree.INFO, "工位",4,"发送结果完成", true);
+                                m_Logprint(HslMessageDegree.INFO, "工位", 4, "发送结果完成", true);
                             }
                         }
                         statenum++;
@@ -1360,7 +1542,7 @@ namespace _6524
                 {
                     imageDC = imageDC + "\\" + "PictureStation" + d1.Rows[i][0].ToString() + "\\NG";
                 }
-                
+
 
                 CreateFiles(imageDC);
 
@@ -1371,17 +1553,17 @@ namespace _6524
 
 
 
-                m_Logprint(HslMessageDegree.INFO, "拍照位" ,Convert.ToInt32(d1.Rows[i][0].ToString())  , "存图中", true);
+                m_Logprint(HslMessageDegree.INFO, "拍照位", Convert.ToInt32(d1.Rows[i][0].ToString()), "存图中", true);
 
 
 
                 if (Saveimage(Img, imagepath))
                 {
-                    m_Logprint(HslMessageDegree.INFO, "拍照位" , Convert.ToInt32(d1.Rows[i][0].ToString()), "存图完成", true);
+                    m_Logprint(HslMessageDegree.INFO, "拍照位", Convert.ToInt32(d1.Rows[i][0].ToString()), "存图完成", true);
                 }
                 else
                 {
-                    m_Logprint(HslMessageDegree.ERROR, "拍照位" , Convert.ToInt32(d1.Rows[i][0].ToString()), "存图失败", true);
+                    m_Logprint(HslMessageDegree.ERROR, "拍照位", Convert.ToInt32(d1.Rows[i][0].ToString()), "存图失败", true);
                 }
             }
             else
@@ -1390,6 +1572,24 @@ namespace _6524
 
             }
             #endregion
+        }
+        private string getLightname(string name)
+        {
+            if (name == "1")
+                return "A0";
+            if (name == "2")
+                return "B0";
+            if (name == "3")
+                return "C0";
+            if (name == "4")
+            {
+                return "D0";
+            }
+            else
+            {
+                return "0";
+            }
+
         }
 
 
@@ -1457,7 +1657,7 @@ namespace _6524
 
         private void button26_Click(object sender, EventArgs e)
         {
-           // logNetAnalysisControl1.Refresh();
+            // logNetAnalysisControl1.Refresh();
         }
 
         private void pLC设置ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1470,21 +1670,31 @@ namespace _6524
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            bool initiative_get_pressure = Convert.ToBoolean(IniAPI.INIGetStringValue(parma_path, "System", "initiative_get", "false"));
+            bool Passive_get_pressure = Convert.ToBoolean(IniAPI.INIGetStringValue(parma_path, "System", "Passive_get", "false"));
+            bool LOCK = Convert.ToBoolean(IniAPI.INIGetStringValue(parma_path, "System", "LOCK", "false"));
             if (!Bg_Main.IsBusy)
             {
-               
+
                 if (robotenabled && !bg_robot.IsBusy)
                 {
                     bg_robot.RunWorkerAsync();
                 }
-                   
+
                 button12.Image = global::_6524.Properties.Resources.停止;
-                if (heartbeat_enabled&&!Bg_PLC_heartbeat.IsBusy)
+                if (heartbeat_enabled && !Bg_PLC_heartbeat.IsBusy)
                 {
                     Bg_PLC_heartbeat.RunWorkerAsync();
                 }
+
+
                 Bg_Main.RunWorkerAsync();
 
+                if (Passive_get_pressure || initiative_get_pressure || LOCK)
+                {
+                    if(!Bg_Load_pressure.IsBusy)
+                    Bg_Load_pressure.RunWorkerAsync();
+                }
             }
             else
             {
@@ -1501,12 +1711,16 @@ namespace _6524
                 {
                     Bg_PLC_heartbeat.CancelAsync();
                 }
+                if (Passive_get_pressure || initiative_get_pressure || LOCK)
+                {
+                    Bg_Load_pressure.CancelAsync();
+                }
                 button12.Image = global::_6524.Properties.Resources.开始__1_;
             }
         }
 
         private void runprocess()
-        { 
+        {
         }
 
         private void m_Logprint(HslMessageDegree leave, string Msg, bool sys_state)
@@ -1579,21 +1793,21 @@ namespace _6524
             {
             }
         }
-     
 
-        private void m_Logprint(HslMessageDegree leave, string Msg,int A , string Msg2, bool sys_state)//复合数字的翻译
+
+        private void m_Logprint(HslMessageDegree leave, string Msg, int A, string Msg2, bool sys_state)//复合数字的翻译
         {
             if (leave == HslMessageDegree.INFO)
             {
                 logNet.SetMessageDegree(HslMessageDegree.INFO);//除DEBUG外，都存储
                 if (SystemLanguage == 0)
                 {
-                    logNet.WriteInfo(Msg+A.ToString()+ Msg2);
+                    logNet.WriteInfo(Msg + A.ToString() + Msg2);
                 }
                 else
                 {
                     logNet.WriteInfo(Msg + A.ToString() + Msg2);
-                    logNet.WriteInfo(changelanguage(Msg)+A.ToString()+ changelanguage(Msg2));
+                    logNet.WriteInfo(changelanguage(Msg) + A.ToString() + changelanguage(Msg2));
                 }
 
                 if (sys_state)
@@ -1761,10 +1975,10 @@ namespace _6524
 
         private string changelanguage(string Msg, int B, string Msg2)
         {
-            string A = resourceManager.GetString(Msg)+B.ToString()+ resourceManager.GetString(Msg2);
+            string A = resourceManager.GetString(Msg) + B.ToString() + resourceManager.GetString(Msg2);
             if (A == null)
             {
-                return Msg+B.ToString()+ Msg2;
+                return Msg + B.ToString() + Msg2;
             }
             else
             {
@@ -2095,7 +2309,7 @@ namespace _6524
                         bool Use_Result = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Use_Result", "false"));
                         bool Use_TCPResult = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Use_TCPResult", "false"));
                         // checkBox1.Checked = Use_Result;
-                         string  Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Result", "0");
+                        string Result = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Result", "0");
 
                         string rotate = IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "rotate", "0");
 
@@ -2184,33 +2398,33 @@ namespace _6524
                                         Task task = Task.Factory.StartNew(() =>
                                         {
                                             m_TCP.IpAddress = "127.0.0.1";
-                                        m_TCP.Port = 5000;
-                                        if (m_TCP.ClientConnect())
-                                        {
-                                            m_TCP.Send("#GET#");//发送请求指令
-                                        }
-                                        Thread.Sleep(100);
-                                        if (m_TCP.IsConnected("127.0.0.1"))
-                                        {
-                                            string receivestr;
-                                            if (m_TCP.Recive(out receivestr))
+                                            m_TCP.Port = 5000;
+                                            if (m_TCP.ClientConnect())
                                             {
-                                               string[] a = receivestr.Split('#');
-                                                Result = a[1].ToString();
-                                                disp_message(HWindowshandle, "接受打码信息:" + Result, "window", 52, 12, "black", "true");
+                                                m_TCP.Send("#GET#");//发送请求指令
                                             }
-                                            else
+                                            Thread.Sleep(100);
+                                            if (m_TCP.IsConnected("127.0.0.1"))
                                             {
-                                                Result = "";
+                                                string receivestr;
+                                                if (m_TCP.Recive(out receivestr))
+                                                {
+                                                    string[] a = receivestr.Split('#');
+                                                    Result = a[1].ToString();
+                                                    disp_message(HWindowshandle, "接受打码信息:" + Result, "window", 52, 12, "black", "true");
+                                                }
+                                                else
+                                                {
+                                                    Result = "";
+                                                }
                                             }
-                                        }
-                                        m_TCP.DisConnect();
+                                            m_TCP.DisConnect();
                                         });
 
                                         // 等待任务完成
                                         task.Wait(3000);//任务等待3秒
                                     }
-                              
+
                                     if (result == Result)
                                     {
                                         disp_message(HWindowshandle, "对比结果:" + "OK", "window", 32, 12, "black", "true");
@@ -2287,6 +2501,26 @@ namespace _6524
                             M_Shape_matching.img = img;
                         }
 
+                        HObject rec_xld = new HObject();
+                        bool Region_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Region_enabled", "false"));
+                        if (Region_enabled)
+                        {
+                            HTuple rec_row = new HTuple();
+                            HTuple rec_col = new HTuple();
+                            HTuple rec_pi = new HTuple();
+                            HTuple rec_length1 = new HTuple();
+                            HTuple rec_length2 = new HTuple();
+                            HTuple res_xld = new HTuple();
+                            rec_row = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "RegionX", "0"));
+                            rec_col = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "RegionY", "0"));
+                            rec_pi = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "RegionPI", "0"));
+                            rec_length1 = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Regionlength1", "0"));
+                            rec_length2 = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Regionlength1", "0"));
+                            HOperatorSet.GenRectangle2(out rec_xld, rec_row, rec_col, rec_pi, rec_length1, rec_length2);
+                            HOperatorSet.ReduceDomain(img, rec_xld, out M_Shape_matching.img);
+                        }
+
+
 
 
 
@@ -2295,6 +2529,7 @@ namespace _6524
                         {
                             HOperatorSet.SetColor(HWindowshandle, "green");
                             HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, HWindowshandle);
+
                             disp_message(HWindowshandle, "匹配成功", "window", 12, 12, "black", "true");
                             //Getmodelinfo();
                             // Up_Data();
@@ -2305,16 +2540,78 @@ namespace _6524
                             return false;
                         }
 
+
+
+
+
+
+
+
                         if (M_Shape_matching.Row.TupleLength() == M_Shape_matching.Hv_Matching_num)
                         {
+                            HOperatorSet.SetColor(HWindowshandle, "green");
                             disp_message(HWindowshandle, "匹配数量正确", "window", 32, 12, "black", "true");
-                            return true;
+                            if (Region_enabled)
+                            {
+                                HOperatorSet.DispObj(rec_xld, HWindowshandle);
+                            }
+                           
                         }
                         else
                         {
                             disp_message(HWindowshandle, "匹配数量错误", "window", 32, 12, "black", "true");
+                            HOperatorSet.SetColor(HWindowshandle, "green");
+                            if (Region_enabled)
+                            {
+                                HOperatorSet.DispObj(rec_xld, HWindowshandle);
+                            }
                             return false;
                         }
+
+
+                        bool Position_enable_X = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Position_enable_X", "false"));
+                        bool Position_enable_Y = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Position_enable_Y", "false"));
+
+
+                        if (Position_enable_X)
+                        {
+
+                            int Position_enable_X_Down = Convert.ToInt16(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Position_enable_X_Down", "0"));
+
+                            int Position_enable_X_Up = Convert.ToInt16(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Position_enable_X_Up", "10000"));
+                            if (M_Shape_matching.Row[0].D >= Position_enable_X_Down && M_Shape_matching.Row[0].D <= Position_enable_X_Up)
+                            {
+
+                            }
+                            else
+                            {
+                                disp_message(HWindowshandle, "坐标X超出范围", "window", 12, 12, "black", "true");
+                                return false;
+                            }
+                        }
+
+
+
+                        if (Position_enable_Y)
+                        {
+                            int Position_enable_Y_Down = Convert.ToInt16(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Position_enable_Y_Down", "0"));
+
+                            int Position_enable_Y_Up = Convert.ToInt16(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Position_enable_Y_Up", "10000"));
+                            if (M_Shape_matching.Column[0].D >= Position_enable_Y_Down && M_Shape_matching.Column[0].D <= Position_enable_Y_Up)
+                            {
+
+                            }
+                            else
+                            {
+                                disp_message(HWindowshandle, "坐标Y超出范围", "window", 12, 12, "black", "true");
+                                return false;
+                            }
+
+
+                        }
+
+                        return true;
+
                         // show_model_contour(M_Shape_matching.hv_ModelID);
                     }
                     catch (Exception)
@@ -2325,7 +2622,7 @@ namespace _6524
                 }
                 else if (A < 399)
                 {
-                    pixel_matching  M_pixel_matching = new pixel_matching();
+                    pixel_matching M_pixel_matching = new pixel_matching();
                     M_pixel_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_min", "0"));
                     M_pixel_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_rote_max", "0"));
                     //M_pixel_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_scale_min", ""));
@@ -2338,16 +2635,16 @@ namespace _6524
                     M_pixel_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Pyramid_level", "0"));
                     //M_pixel_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_Greedy_algorithm", ""));
                     //M_pixel_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + A.ToString(), "Hv_Matching_min_Contrastratio", ""));
-                  double  Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Mult", "0"));
-                    double  add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Add", "0"));
+                    double Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Mult", "0"));
+                    double add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Add", "0"));
                     bool Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Scalenable", "false"));
                     //模板
-                 //   M_pixel_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + A.ToString() + ".ncm");
+                    //   M_pixel_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + A.ToString() + ".ncm");
                     M_pixel_matching.Hv_Matching_Radius = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_Matching_Radius", "0"));
                     M_pixel_matching.Hv_modelcol = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_modelcol", "0"));
                     M_pixel_matching.Hv_modelrow = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Hv_modelrow", "0"));
                     bool isfirst = true;
-          
+
                     M_pixel_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + A.ToString() + ".ncm");
 
 
@@ -2367,6 +2664,24 @@ namespace _6524
                     }
 
 
+                    HObject rec_xld = new HObject();
+                    bool Region_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Region_enabled", "false"));
+                    if (Region_enabled)
+                    {
+                        HTuple rec_row = new HTuple();
+                        HTuple rec_col = new HTuple();
+                        HTuple rec_pi = new HTuple();
+                        HTuple rec_length1 = new HTuple();
+                        HTuple rec_length2 = new HTuple();
+                        HTuple res_xld = new HTuple();
+                        rec_row = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "RegionX", "0"));
+                        rec_col = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "RegionY", "0"));
+                        rec_pi = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "RegionPI", "0"));
+                        rec_length1 = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Regionlength1", "0"));
+                        rec_length2 = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + A.ToString(), "Regionlength1", "0"));
+                        HOperatorSet.GenRectangle2(out rec_xld, rec_row, rec_col, rec_pi, rec_length1, rec_length2);
+                        HOperatorSet.ReduceDomain(img, rec_xld, out M_pixel_matching.img);
+                    }
 
 
 
@@ -2374,6 +2689,10 @@ namespace _6524
                     {
                         HOperatorSet.SetColor(HWindowshandle, "green");
                         HOperatorSet.DispObj(M_pixel_matching.ho_Transregion_final, HWindowshandle);
+                        if (Region_enabled)
+                        {
+                            HOperatorSet.DispObj(rec_xld, HWindowshandle);
+                        }
                         disp_message(HWindowshandle, "匹配成功", "window", 12, 12, "black", "true");
                         //Getmodelinfo();
                         // Up_Data();
@@ -2386,12 +2705,22 @@ namespace _6524
 
                     if (M_pixel_matching.Hv_Angle.TupleLength() == M_pixel_matching.Hv_Matching_num)
                     {
+                        HOperatorSet.SetColor(HWindowshandle, "green");
                         disp_message(HWindowshandle, "匹配数量正确", "window", 32, 12, "black", "true");
+                        if (Region_enabled)
+                        {
+                            HOperatorSet.DispObj(rec_xld, HWindowshandle);
+                        }
                         return true;
                     }
                     else
                     {
+                        HOperatorSet.SetColor(HWindowshandle, "red");
                         disp_message(HWindowshandle, "匹配数量错误", "window", 32, 12, "black", "true");
+                        if (Region_enabled)
+                        {
+                            HOperatorSet.DispObj(rec_xld, HWindowshandle);
+                        }
                         return false;
                     }
                 }
@@ -2687,7 +3016,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             robotstate m_state = new robotstate();
             m_state = robotstate.init;
             m_Robot = new fanuctcpip();
-           
+
             string robotip = IniAPI.INIGetStringValue(Path_calibration_Param, "Robot", "IP", "0");
             string cameraip = IniAPI.INIGetStringValue(Path_calibration_Param, "robotCamera", "IP", "0");
             string PR1 = null;//补偿值
@@ -2697,7 +3026,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             double center_rotationY = Convert.ToDouble(IniAPI.INIGetStringValue(Path_calibration_Param, "center_rotation", "Y", "0"));
             bool Use_Detection_Camera = Convert.ToBoolean(IniAPI.INIGetStringValue(Path_calibration_Param, "robotCamera", "Use_Detection_Camera", "false"));
             string Use_Detection_Camera_name = IniAPI.INIGetStringValue(Path_calibration_Param, "robotCamera", "Use_Detection_Camera_name", "相机1");
-         
+
             if (!Use_Detection_Camera)
             {
                 m_Camera = new MVS_SDK();
@@ -2718,7 +3047,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                     btn_system_state.BeginInvoke(new Action(() =>
                     {
 
-                        btn_system_state.Text =changelanguage("机械手相机连接失败") ;
+                        btn_system_state.Text = changelanguage("机械手相机连接失败");
                         btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Red;
 
 
@@ -2726,18 +3055,18 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             )
                 );
 
-                   // break;
+                    // break;
                 }
             }
             else
-            { 
-                if(Use_Detection_Camera_name== "相机1")
+            {
+                if (Use_Detection_Camera_name == "相机1")
                 {
                     m_Camera = m_Camera1;
                     robotcamera_connected = true;
 
                 }
-                else if(Use_Detection_Camera_name == "相机2")
+                else if (Use_Detection_Camera_name == "相机2")
                 {
                     m_Camera = m_Camera2;
                     robotcamera_connected = true;
@@ -2765,11 +3094,11 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                         case robotstate.init:
 
 
-                          //  isPaused = true;
+                            //  isPaused = true;
                             btn_system_state.BeginInvoke(new Action(() =>
                             {
 
-                                btn_system_state.Text =changelanguage("机械手连接中");
+                                btn_system_state.Text = changelanguage("机械手连接中");
                                 btn_system_state.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
 
 
@@ -2809,10 +3138,10 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                                 m_state = robotstate.arrive;
                             }
 
-                          //  isPaused = true;
+                            //  isPaused = true;
 
-                      
-                     
+
+
 
 
                             #region  载入定位参数
@@ -2845,9 +3174,9 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
 
                         case robotstate.take_image:
-                           // 拍照
+                            // 拍照
                             brightness = 150;
-                            rS232.SerialPort.WriteLine(Functioncode+"A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                            rS232.SerialPort.WriteLine(Functioncode + "A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
                             Thread.Sleep(500);
 
 
@@ -2920,13 +3249,13 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
                                 }
                             }
-                               
+
 
                             #endregion
 
 
                             brightness = 0;
-                            rS232.SerialPort.WriteLine(Functioncode+"A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
+                            rS232.SerialPort.WriteLine(Functioncode + "A0" + brightness.ToString("D3") + "#" + "\r");//关闭光源 
 
                             m_state = robotstate.calculate_Compensation;
                             break;
@@ -3013,7 +3342,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
                     m_Robot.close();
                 }
-               //finally {  } 
+                //finally {  } 
 
             }
 
@@ -3051,12 +3380,12 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                 {
                     MessageBox.Show("机种读取失败");
                     // m_Logprint(HslMessageDegree.INFO, "读取机种结果：" + "失败", false);
-                   // Bg_Main.CancelAsync();
-                   
+                    // Bg_Main.CancelAsync();
+
                 }
 
                 // m_modelSet.Modelname = "PLCmodel" + model.ToString();
-             //   filenanme = DCpath + "\\" + model.Content[0].ToString() + ".xlsx";
+                //   filenanme = DCpath + "\\" + model.Content[0].ToString() + ".xlsx";
                 strHost = model.Content[0].ToString();
 
             }
@@ -3130,8 +3459,8 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                 {
                     M_Calibration.Affine_XY(Path_calibration1, PX0, PY0, out RX0, out RY0);
                 }
-              
-#if(false)
+
+#if (false)
               
                 M_Shape_matching.img = IMG;
                 if (M_Shape_matching.action(0, 0))
@@ -3156,7 +3485,7 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                 r.Dispose();
                 find_circle(IMG, out row, out col, out r);
                 HOperatorSet.GenCircle(out cir, row, col, r);
-              
+
                 HOperatorSet.GenCircle(out cir, row, col, r);
                 ResObj = cir;
                 if (strHost == "1")
@@ -3168,89 +3497,89 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
                     M_Calibration.Affine_XY(Path_calibration1, row, col, out RX1, out RY1);
                 }
 
-                
+
                 //HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "X：" + row.D.ToString("F2"), "window", 12, 12, "black", new HTuple(), new HTuple());
                 //HOperatorSet.DispText(m_window.hWindowControl.HalconWindow, "Y：" + col.D.ToString("F2"), "window", 32, 12, "black", new HTuple(), new HTuple());
 
 
-              //  HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);     
+                //  HOperatorSet.DispObj(cir, m_window.hWindowControl.HalconWindow);     
 #endif
 
 
                 //旋转中心半径
                 double R = (Math.Sqrt(((RX0.D - dis_X.D) * (RX0.D - dis_X.D)) + ((RY0.D - dis_Y.D) * (RY0.D - dis_Y.D))));
-                    //前后偏差角度
-                    double dis_Angle;
-                    if (!off_Angle_enabled)
-                    {
-                        if (off_enabled)
-                        {
-                            dis_Angle = ((M_Shape_matching.Angle / Math.PI) * 180) - ((PR0 / Math.PI) * 180);
-                            dis_Angle = dis_Angle + offR;
-                        }
-                        else
-                        {
-                            dis_Angle = ((M_Shape_matching.Angle / Math.PI) * 180) - ((PR0 / Math.PI) * 180);
-                        }
-
-                    }
-                    else
-                    {
-                        dis_Angle = 0;
-                    }
-
-                    //固定差距值
-                    double disX1 = (Picture_RobotX - RX1.D);
-                    double disY1 = (Picture_RobotY - RY1.D);
-                    double lengrh_C = Math.Sqrt((disX1* disX1)+(disY1 * disY1));
-                    double theta = Math.Atan(disX1 / disY1); // 计算 arctan(a / b) 的角度
-
-                    // 将弧度转换为度
-                    double degrees = theta * (180.0 / Math.PI);
-
-                    // 最终角度差
-                    double final_offR = degrees + Robot_R_off;
-
-
-
-
-                    //旋转后角度偏差补偿
-                    double dis_RX = (R * Math.Sin(dis_Angle * (Math.PI / 180)));
-                    double dis_RY = 2 * (R * (Math.Sin((dis_Angle * (Math.PI / 180)) / 2)) * (Math.Sin((dis_Angle * (Math.PI / 180)) / 2)));
-
-                    //输出最后的补偿
-                    double final_disX;
-                    double final_disY;
+                //前后偏差角度
+                double dis_Angle;
+                if (!off_Angle_enabled)
+                {
                     if (off_enabled)
                     {
-                        final_disX = disX1 + dis_RX + offX;
-                        final_disY = disY1 + dis_RY + offY;
+                        dis_Angle = ((M_Shape_matching.Angle / Math.PI) * 180) - ((PR0 / Math.PI) * 180);
+                        dis_Angle = dis_Angle + offR;
                     }
                     else
                     {
-                        final_disX = disX1 + dis_RX;
-                        final_disY = disY1 + dis_RY;
+                        dis_Angle = ((M_Shape_matching.Angle / Math.PI) * 180) - ((PR0 / Math.PI) * 180);
                     }
 
+                }
+                else
+                {
+                    dis_Angle = 0;
+                }
+
+                //固定差距值
+                double disX1 = (Picture_RobotX - RX1.D);
+                double disY1 = (Picture_RobotY - RY1.D);
+                double lengrh_C = Math.Sqrt((disX1 * disX1) + (disY1 * disY1));
+                double theta = Math.Atan(disX1 / disY1); // 计算 arctan(a / b) 的角度
+
+                // 将弧度转换为度
+                double degrees = theta * (180.0 / Math.PI);
+
+                // 最终角度差
+                double final_offR = degrees + Robot_R_off;
+
+
+
+
+                //旋转后角度偏差补偿
+                double dis_RX = (R * Math.Sin(dis_Angle * (Math.PI / 180)));
+                double dis_RY = 2 * (R * (Math.Sin((dis_Angle * (Math.PI / 180)) / 2)) * (Math.Sin((dis_Angle * (Math.PI / 180)) / 2)));
+
+                //输出最后的补偿
+                double final_disX;
+                double final_disY;
+                if (off_enabled)
+                {
+                    final_disX = disX1 + dis_RX + offX;
+                    final_disY = disY1 + dis_RY + offY;
+                }
+                else
+                {
+                    final_disX = disX1 + dis_RX;
+                    final_disY = disY1 + dis_RY;
+                }
 
 
 
 
 
-                    double final_disR = dis_Angle;
-                    if (final_disR > 180)
-                    {
-                        final_disR = final_disR - 360;
-                    }
 
-                    //offx = lengrh_C * Math.Sin(final_offR);
-                    //offy = lengrh_C * Math.Cos(final_offR); 
-                    offx= disX1;
-                    offy= disY1;
-                    offr = final_disR;
-                    return true;
-                
-             
+                double final_disR = dis_Angle;
+                if (final_disR > 180)
+                {
+                    final_disR = final_disR - 360;
+                }
+
+                //offx = lengrh_C * Math.Sin(final_offR);
+                //offy = lengrh_C * Math.Cos(final_offR); 
+                offx = disX1;
+                offy = disY1;
+                offr = final_disR;
+                return true;
+
+
 
             }
             catch (Exception)
@@ -3316,6 +3645,30 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
             return;
         }
 
+        public string PLCgetvalue(string Path)
+        {
+            try
+            {
+
+                OperateResult<short[]> Result = MC_PLC.ReadInt16(Path, 1);
+                if (Result.IsSuccess)
+                {
+                    return Result.Content[0].ToString();
+                }
+                else
+                {
+                    return "";
+                }
+
+
+            }
+
+            catch (Exception)
+            {
+
+                return "";
+            }
+        }
         private void Bg_PLC_heartbeat_DoWork(object sender, DoWorkEventArgs e)
         {
 
@@ -3374,14 +3727,169 @@ HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
 
         private void 像素匹配ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-                像素匹配 像素匹配2 = new 像素匹配();
+
+            像素匹配 像素匹配2 = new 像素匹配();
             像素匹配2.Show();
         }
 
         private void 文件ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Bg_Load_pressure_DoWork(object sender, DoWorkEventArgs e)
+        {
+            bool initiative_get_pressure = Convert.ToBoolean(IniAPI.INIGetStringValue(parma_path, "System", "initiative_get", "false"));
+            bool Passive_get_pressure = Convert.ToBoolean(IniAPI.INIGetStringValue(parma_path, "System", "Passive_get", "false"));
+            bool LOCK = Convert.ToBoolean(IniAPI.INIGetStringValue(parma_path, "System", "LOCK", "false"));
+            int PressureNUM = 1;
+            DATA data3534 = new DATA();
+            while (!Bg_Load_pressure.CancellationPending)
+            {
+
+                Thread.Sleep(10);
+                try
+                {
+                    #region 触发并保存
+                    OperateResult<bool[]> PLCgeton = MC_PLC.ReadBool(IniAPI.INIGetStringValue(parma_path, "System", "Turn_on_path", ""), 1);//读触发信号
+                    if (PLCgeton.IsSuccess)
+                    {
+                        if (PLCgeton.Content[0])
+                        {
+                            MC_PLC.Write(IniAPI.INIGetStringValue(parma_path, "System", "Turn_on_path", ""),false);
+                            string Liucode = DateTime.Now.ToString("yyyy/MM/dd/hh/mm/ss/fff");
+                            bool Passive_get_code_enable = Convert.ToBoolean(IniAPI.INIGetStringValue(parma_path, "System", "USE_CODE", "false"));
+                            if (Passive_get_code_enable)
+                            {
+                                Liucode = data3534.Getcode();
+                            }
+
+
+                            if (initiative_get_pressure)//主动获取
+                            {
+                                if (LOCK)
+                                {
+                                    data3534.getdatatoexcel4(PressureNUM,Liucode);//导出数据
+                                }
+                                else
+                                {
+                                    data3534.getdatatoexcel1(PressureNUM, Liucode);
+                                }
+                              
+                                PressureNUM++;
+                                if (PressureNUM >= 11)
+                                {
+                                    PressureNUM = 1;
+                                }
+                            }
+                            if (Passive_get_pressure)//中转获取
+                            {
+                                plcres = PLCgetvalue;
+                                data3534.pLCresult = plcres;
+
+                                data3534.getdatatoexcel2(Liucode);
+                            }
+
+                           
+
+                        }
+
+                    }
+
+
+                    #endregion
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                if (initiative_get_pressure)//主动获取时的NG转接信号
+                {
+                    #region  转PLC信号给铆压机
+                    string parma_path = Application.StartupPath + @"\\DATA\\Param.ini";
+                    string path111 = IniAPI.INIGetStringValue(parma_path, "Pressure_Machine_1", "PLC_To_NG", "");
+                    OperateResult<bool[]> PLC111 = MC_PLC.ReadBool(path111, 1);//读初始化信号
+
+                    if (PLC111.IsSuccess)
+                    {
+                        if (PLC111.Content[0])
+                        {
+                            data3534.pressuremachine1NG();
+                        }
+                    }
+
+                    string path222 = IniAPI.INIGetStringValue(parma_path, "Pressure_Machine_2", "PLC_To_NG", "");
+                    OperateResult<bool[]> plc222 = MC_PLC.ReadBool(path222, 1);//读初始化信号
+
+                    if (plc222.IsSuccess)
+                    {
+                        if (plc222.Content[0])
+                        {
+                            data3534.pressuremachine2NG();
+                        }
+                    }
+
+
+                    string path333 = IniAPI.INIGetStringValue(parma_path, "Pressure_Machine_3", "PLC_To_NG", "");
+                    OperateResult<bool[]> PLC333 = MC_PLC.ReadBool(path333, 1);//读初始化信号
+
+                    if (PLC333.IsSuccess)
+                    {
+                        if (PLC333.Content[0])
+                        {
+                            data3534.pressuremachine3NG();
+                        }
+                    }
+
+                    string path444 = IniAPI.INIGetStringValue(parma_path, "Pressure_Machine_4", "PLC_To_NG", "");
+                    OperateResult<bool[]> PLC444 = MC_PLC.ReadBool(path444, 1);//读初始化信号
+
+                    if (PLC444.IsSuccess)
+                    {
+                        if (PLC444.Content[0])
+                        {
+                            data3534.pressuremachine4NG();
+                        }
+                    }
+
+                    OperateResult<bool[]> PLC555 = MC_PLC.ReadBool("M651", 1);//计数跳过信号
+
+                    if (PLC555.IsSuccess)
+                    {
+                        if (PLC555.Content[0])
+                        {
+                            PressureNUM++;
+                        }
+                    }
+
+
+
+                    #endregion
+
+                    #region 初始化计数
+                    string PLCinit_Path = IniAPI.INIGetStringValue(Param_Path, "PLC", "PLCinit_Path", "1000");
+
+                    OperateResult<bool[]> PLCinit = MC_PLC.ReadBool(PLCinit_Path, 1);//读初始化信号
+                    if (PLCinit.Content[0])
+                    {
+
+                        data3534.PressurePLCinit();
+                    }
+                    #endregion
+                }
+                 
+
+                
+
+            }
+
+        }
+
+        private void 数据上传ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DATA da = new DATA();
+            da.ShowDialog();
         }
     }
 

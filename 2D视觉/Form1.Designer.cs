@@ -69,6 +69,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.bg_robot = new System.ComponentModel.BackgroundWorker();
             this.Bg_PLC_heartbeat = new System.ComponentModel.BackgroundWorker();
+            this.Bg_Load_pressure = new System.ComponentModel.BackgroundWorker();
+            this.数据上传ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -166,6 +168,7 @@
             this.模型设置ToolStripMenuItem,
             this.通讯设置ToolStripMenuItem,
             this.语言设置ToolStripMenuItem,
+            this.数据上传ToolStripMenuItem,
             this.开发者选项ToolStripMenuItem});
             this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
             // 
@@ -396,6 +399,18 @@
             this.Bg_PLC_heartbeat.WorkerSupportsCancellation = true;
             this.Bg_PLC_heartbeat.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Bg_PLC_heartbeat_DoWork);
             // 
+            // Bg_Load_pressure
+            // 
+            this.Bg_Load_pressure.WorkerReportsProgress = true;
+            this.Bg_Load_pressure.WorkerSupportsCancellation = true;
+            this.Bg_Load_pressure.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Bg_Load_pressure_DoWork);
+            // 
+            // 数据上传ToolStripMenuItem
+            // 
+            resources.ApplyResources(this.数据上传ToolStripMenuItem, "数据上传ToolStripMenuItem");
+            this.数据上传ToolStripMenuItem.Name = "数据上传ToolStripMenuItem";
+            this.数据上传ToolStripMenuItem.Click += new System.EventHandler(this.数据上传ToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -467,6 +482,8 @@
         private System.Windows.Forms.ToolStripMenuItem 字符条码二维码识别ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 形状匹配ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 像素匹配ToolStripMenuItem;
+        public System.ComponentModel.BackgroundWorker Bg_Load_pressure;
+        private System.Windows.Forms.ToolStripMenuItem 数据上传ToolStripMenuItem;
     }
 }
 

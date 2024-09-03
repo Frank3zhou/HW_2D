@@ -12,6 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
 namespace _6524
 {
@@ -20,7 +21,7 @@ namespace _6524
     public partial class 形状匹配2 : Form
     {
         string Param_Path = System.Windows.Forms.Application.StartupPath + "\\Param.ini";
-        HObject img=new HObject();
+        HObject img = new HObject();
         DataTable data_result = new DataTable();
         Shape_matching M_Shape_matching = new Shape_matching();
 
@@ -33,13 +34,15 @@ namespace _6524
         public int NowoperationID { get => nowoperationID; set => nowoperationID = value; }
 
         HObject sacleimg = new HObject();
-        public   double Mult;
-        public  double add;
+        public double Mult;
+        public double add;
         public bool Scale_enabled = false;
+        List<string> listimage;
+        int listimageindex = 0;
         public 形状匹配2()
         {
             InitializeComponent();
-      
+
 
         }
 
@@ -49,10 +52,10 @@ namespace _6524
             {
 
 
-              
+
 
                 // M_Shape_matching.Load_data();
-        
+
                 m_ZKHwindows.NowImage = img;
                 sacleimg = img;
                 data_result.Columns.Add("编号", Type.GetType("System.Int32"));//添加Id列，存储数据类型为Int
@@ -73,7 +76,7 @@ namespace _6524
 
 
 
-                
+
 
 
                 //控件数据与算子绑定
@@ -110,6 +113,23 @@ namespace _6524
 
         private void RUN_Click(object sender, EventArgs e)
         {
+
+            HTuple rec_row = new HTuple();
+            HTuple rec_col = new HTuple();
+            HTuple rec_pi = new HTuple();
+            HTuple rec_length1 = new HTuple();
+            HTuple rec_length2 = new HTuple();
+            HTuple res_xld = new HTuple();
+            if (checkBox6.Checked)
+            {
+                rec_row = Convert.ToDouble(textBox5.Text);
+                rec_col = Convert.ToDouble(textBox6.Text);
+                rec_pi = Convert.ToDouble(textBox9.Text);
+                rec_length1 = Convert.ToDouble(textBox8.Text);
+                rec_length2 = Convert.ToDouble(textBox7.Text);
+            }
+            HObject rec_xld = new HObject();
+     
             if (Scale_enabled)
             {
                 HObject outimg = new HObject();
@@ -125,19 +145,96 @@ namespace _6524
                 M_Shape_matching.img = img;
             }
 
-           
+            if (checkBox6.Checked)
+            {
+
+                HOperatorSet.GenRectangle2(out rec_xld, rec_row, rec_col, rec_pi, rec_length1, rec_length2);
+                HOperatorSet.ReduceDomain(img, rec_xld, out M_Shape_matching.img);
+            }
+
 
 
 
             if (M_Shape_matching.action(nowTaskID, nowoperationID))
             {
-                HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "green");
-                HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_ZKHwindows.hWindowControl.HalconWindow);
-                Getmodelinfo();
-               // Up_Data();
-            }
+
+
+
+                bool Position_enable_X = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_X", "false"));
+                bool Position_enable_Y = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_Y", "false"));
+
+
+                if (M_Shape_matching.Row.TupleLength() == M_Shape_matching.Hv_Matching_num)
+                {
+                    bool res = true;
+
+                    if (Position_enable_X)
+                    {
+
+
+                        int Position_enable_X_Down = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_X_Down", "0"));
+                        int Position_enable_X_Up = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_X_Up", "10000"));
+                        if (M_Shape_matching.Row[0].D >= Position_enable_X_Down && M_Shape_matching.Row[0].D <= Position_enable_X_Up)
+                        {
+
+                        }
+                        else
+                        {
+                            res = false;
+                        }
+
+                    }
+
+
+                    if (Position_enable_Y)
+                    {
+                        int Position_enable_Y_Down = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_Y_Down", "0"));
+                        int Position_enable_Y_Up = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_Y_Up", "10000"));
+
+                        if (M_Shape_matching.Column[0].D >= Position_enable_Y_Down && M_Shape_matching.Column[0].D <= Position_enable_Y_Up)
+                        {
+
+                        }
+                        else
+                        {
+                            res = false;
+                        }
+
+
+                    }
+                    if (!res)
+                    {
+                        HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "red");
+                        HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_ZKHwindows.hWindowControl.HalconWindow);
+                        if (checkBox6.Checked)
+                        {
+                            HOperatorSet.DispObj(rec_xld, m_ZKHwindows.hWindowControl.HalconWindow);
+                        }
+                        Getmodelinfo();
+                    }
+                    else
+                    {
+                        HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "green");
+                        HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_ZKHwindows.hWindowControl.HalconWindow);
+                        if (checkBox6.Checked)
+                        {
+                            HOperatorSet.DispObj(rec_xld, m_ZKHwindows.hWindowControl.HalconWindow);
+                        }
+                        Getmodelinfo();
+                    }
+                }
+
+                    
+
+
+
+
+                // Up_Data();
+            
 
         }
+
+    }
 
         private void Getmodelinfo()
         {
@@ -206,10 +303,10 @@ namespace _6524
                 //HTuple hv_HomMat2D = new HTuple();
                 //HObject ho_TransContours = new HObject();   
                 MessageBox.Show("模型绘制成功");
-               
-                show_model_contour( M_Shape_matching.hv_ModelID);
-             
-              
+
+                show_model_contour(M_Shape_matching.hv_ModelID);
+
+
 
 
             }
@@ -248,26 +345,34 @@ namespace _6524
             try
             {
                 //当前模板的X，Y,rote
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "ModelX", M_Shape_matching.Row.D.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "ModelY", M_Shape_matching.Column.D.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Model_Angle", M_Shape_matching.Angle.D.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "ModelX", M_Shape_matching.Row.D.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "ModelY", M_Shape_matching.Column.D.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Model_Angle", M_Shape_matching.Angle.D.ToString());
                 //模板匹配的参数
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_min", M_Shape_matching.Hv_Matching_rote_min.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_max", M_Shape_matching.Hv_Matching_rote_max.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_min", M_Shape_matching.Hv_Matching_scale_min.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_max", M_Shape_matching.Hv_Matching_scale_max.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_step", M_Shape_matching.Hv_Matching_scale_step.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_step", M_Shape_matching.Hv_Matching_rote_step.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_num", M_Shape_matching.Hv_Matching_num.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Score", M_Shape_matching.Hv_Matching_min_Score.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_overlap_Max", M_Shape_matching.Hv_Matching_overlap_Max.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Pyramid_level", M_Shape_matching.Hv_Matching_Pyramid_level.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Greedy_algorithm", M_Shape_matching.Hv_Matching_Greedy_algorithm.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Contrastratio", M_Shape_matching.Hv_Matching_min_Contrastratio.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_rote_min", M_Shape_matching.Hv_Matching_rote_min.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_rote_max", M_Shape_matching.Hv_Matching_rote_max.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_scale_min", M_Shape_matching.Hv_Matching_scale_min.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_scale_max", M_Shape_matching.Hv_Matching_scale_max.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_scale_step", M_Shape_matching.Hv_Matching_scale_step.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_rote_step", M_Shape_matching.Hv_Matching_rote_step.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_num", M_Shape_matching.Hv_Matching_num.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_min_Score", M_Shape_matching.Hv_Matching_min_Score.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_overlap_Max", M_Shape_matching.Hv_Matching_overlap_Max.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_Pyramid_level", M_Shape_matching.Hv_Matching_Pyramid_level.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_Greedy_algorithm", M_Shape_matching.Hv_Matching_Greedy_algorithm.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_min_Contrastratio", M_Shape_matching.Hv_Matching_min_Contrastratio.ToString());
+
+                //区域限制参数
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Region_enabled", checkBox6.Checked.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "RegionX", textBox5.Text);
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "RegionY", textBox6.Text);
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Regionlength1", textBox8.Text);
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Regionlength2", textBox7.Text);
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "RegionPI", textBox9.Text);
 
 
                 IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Scalenable", checkBox5.Checked.ToString());
-               
+
 
                 //模板
                 M_Shape_matching.SaveModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + comboBox1.Text + ".shm");
@@ -280,7 +385,7 @@ namespace _6524
                 MessageBox.Show("保存失败");
             }
 
-            
+
 
         }
 
@@ -288,7 +393,7 @@ namespace _6524
         {
 
 
-           
+
 
 
         }
@@ -324,46 +429,46 @@ namespace _6524
                     // 在控制台输出所选文件的名称
                     // Console.WriteLine("所选文件的名称是: " + selectedImageName);
                 }
-              
+
             }
             catch (Exception)
             {
 
             }
-            
+
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            
-                try
+
+            try
+            {
+                OpenFileDialog OpenFileDialog1 = new OpenFileDialog();
+                OpenFileDialog1.Filter = "Halcon Model|*.shm";
+                OpenFileDialog1.Title = "Save an Model File";
+                //saveFileDialog1.ShowDialog();
+
+                // 打开文件对话框并检查用户是否选择了文件
+                if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    OpenFileDialog OpenFileDialog1 = new OpenFileDialog();
-                    OpenFileDialog1.Filter = "Halcon Model|*.shm";
-                    OpenFileDialog1.Title = "Save an Model File";
-                    //saveFileDialog1.ShowDialog();
+                    // 获取所选文件的完整路径
+                    string selectedImagePath = OpenFileDialog1.FileName;
 
-                    // 打开文件对话框并检查用户是否选择了文件
-                    if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        // 获取所选文件的完整路径
-                        string selectedImagePath = OpenFileDialog1.FileName;
+                    // 获取所选文件的名称
 
-                        // 获取所选文件的名称
-
-                        M_Shape_matching.LoadingModel(selectedImagePath);
-                    show_model_contour( M_Shape_matching.hv_ModelID);
+                    M_Shape_matching.LoadingModel(selectedImagePath);
+                    show_model_contour(M_Shape_matching.hv_ModelID);
                 }
 
             }
-                catch (Exception)
-                {
+            catch (Exception)
+            {
 
-                }
-            
+            }
+
         }
 
-        public void show_model_contour( HTuple hv_ModelID)
+        public void show_model_contour(HTuple hv_ModelID)
         {
 
 
@@ -430,40 +535,69 @@ namespace _6524
             try
             {
                 //模板匹配的参数
-                M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_min", ""));
-                M_Shape_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_max", ""));
-                M_Shape_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_min", ""));
-                M_Shape_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_max", ""));
-                M_Shape_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_scale_step", ""));
-                M_Shape_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_rote_step", ""));
-                M_Shape_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_num", ""));
-                M_Shape_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Score", ""));
-                M_Shape_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_overlap_Max", ""));
-                M_Shape_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Pyramid_level", ""));
-                M_Shape_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_Greedy_algorithm", ""));
-                M_Shape_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Hv_Matching_min_Contrastratio", ""));
-                Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Mult", Mult.ToString()));
-                add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Add", add.ToString()));
-                Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path,  "Run_number" + comboBox1.Text, "Scalenable", "false"));
+                M_Shape_matching.Hv_Matching_rote_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_rote_min", ""));
+                M_Shape_matching.Hv_Matching_rote_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_rote_max", ""));
+                M_Shape_matching.Hv_Matching_scale_min = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_scale_min", ""));
+                M_Shape_matching.Hv_Matching_scale_max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_scale_max", ""));
+                M_Shape_matching.Hv_Matching_scale_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_scale_step", ""));
+                M_Shape_matching.Hv_Matching_rote_step = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_rote_step", ""));
+                M_Shape_matching.Hv_Matching_num = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_num", ""));
+                M_Shape_matching.Hv_Matching_min_Score = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_min_Score", ""));
+                M_Shape_matching.Hv_Matching_overlap_Max = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_overlap_Max", ""));
+                M_Shape_matching.Hv_Matching_Pyramid_level = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_Pyramid_level", ""));
+                M_Shape_matching.Hv_Matching_Greedy_algorithm = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_Greedy_algorithm", ""));
+                M_Shape_matching.Hv_Matching_min_Contrastratio = Convert.ToInt32(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Hv_Matching_min_Contrastratio", ""));
+                Mult = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Mult", Mult.ToString()));
+                add = Convert.ToDouble(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Add", add.ToString()));
+                Scale_enabled = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Scalenable", "false"));
+                checkBox5.Checked = Scale_enabled;
+
+                checkBox2.Checked = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_X", "false"));
+                checkBox3.Checked = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_Y", "false"));
+
+                numericUpDown11.Value= Convert.ToInt16(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_X_Down", "0"));
+
+
+
+                numericUpDown10.Value  = Convert.ToInt16(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_X_Up", "10000"));
+
+
+
+
+                numericUpDown13.Value = Convert.ToInt16(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_Y_Down", "0"));
+
+
+                numericUpDown12.Value= Convert.ToInt16(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_Y_Up", "10000"));
+
+
+
+
+
                 //模板
                 M_Shape_matching.LoadingModel(System.Windows.Forms.Application.StartupPath + @"\\Halconmodel\\" + comboBox1.Text + ".shm");
                 show_model_contour(M_Shape_matching.hv_ModelID);
+                checkBox6.Checked = Convert.ToBoolean(IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "rec_enable", "false"));
+                textBox6.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RegionY", "false");
+                textBox7.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Regionlength2", "false");
+                textBox8.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "Regionlength1", "false");
+                textBox9.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RegionPI", "false");
+                textBox5.Text = IniAPI.INIGetStringValue(Param_Path, "Run_number" + comboBox1.Text, "RegionX", "false");
             }
             catch (Exception)
             {
 
-              
+
             }
-           
+
         }
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
-          
-           
+
+
             if (m_ZKHwindows.NowImage != null)
             {
-               
+
                 if (trackBar2.Value - 10 <= trackBar1.Value)
                 {
                     trackBar1.Value = trackBar2.Value - 10;
@@ -475,8 +609,8 @@ namespace _6524
                 add = (Mult * trackBar1.Value) * -1;
                 HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
                 m_ZKHwindows.NowImage = outimg;
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text,  "Mult", Mult.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text,  "Add", add.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Mult", Mult.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Add", add.ToString());
 
             }
         }
@@ -485,7 +619,7 @@ namespace _6524
         {
             if (m_ZKHwindows.NowImage != null)
             {
-               
+
                 if (trackBar1.Value + 10 >= trackBar2.Value)
                 {
                     trackBar2.Value = trackBar1.Value + 10;
@@ -497,8 +631,8 @@ namespace _6524
                 add = (Mult * trackBar1.Value) * -1;
                 HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
                 m_ZKHwindows.NowImage = outimg;
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Mult", Mult.ToString());
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Add", add.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Mult", Mult.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Add", add.ToString());
 
             }
         }
@@ -507,13 +641,13 @@ namespace _6524
         {
             if (checkBox5.Checked)
             {
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Scalenable", checkBox5.Checked.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Scalenable", checkBox5.Checked.ToString());
                 trackBar1.Enabled = true;
                 trackBar2.Enabled = true;
             }
             else
             {
-                IniAPI.INIWriteValue(Param_Path,  "Run_number" + comboBox1.Text, "Scalenable", checkBox5.Checked.ToString());
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Scalenable", checkBox5.Checked.ToString());
                 trackBar1.Enabled = false;
                 trackBar2.Enabled = false;
             }
@@ -560,6 +694,580 @@ namespace _6524
                 return null;
             }
 
+
+        }
+
+        public string choose_DC()
+        {
+            try
+            {
+                FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+
+                // 设置对话框的标题
+                folderBrowserDialog1.Description = "选择文件夹";
+
+                // 打开文件夹对话框并检查用户是否选择了文件夹
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    // 获取所选文件夹的路径
+                    return folderBrowserDialog1.SelectedPath;
+
+                    // 在控制台输出所选文件夹的路径
+                    //Console.WriteLine("所选文件夹的路径是: " + selectedFolderPath);
+                }
+                else { return null; }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+        }
+
+        public void ListFiles(FileSystemInfo info, List<string> listPics)
+        {
+
+            DirectoryInfo dir = info as DirectoryInfo;
+
+            FileSystemInfo[] files = dir.GetFileSystemInfos();
+            for (int i = 0; i < files.Length; i++)
+            {
+                FileInfo file = files[i] as FileInfo;
+                //是文件
+                if (file != null)
+                {
+                    string extension = Path.GetExtension(file.Name);
+                    if (extension.ToUpper() == ".BMP")
+                        listPics.Add(file.FullName);
+                }
+
+            }
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+
+                string path = choose_DC();
+                DirectoryInfo folder = new DirectoryInfo(path);
+                FileSystemInfo fileinfo1 = folder as FileSystemInfo;
+                listimage = new List<string>();
+                ListFiles(fileinfo1, listimage);
+
+                HOperatorSet.ReadImage(out img, listimage[0]);
+                m_ZKHwindows.NowImage = img;
+                listimageindex = 0;
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (listimage.Count > 0)
+            {
+                try
+                {
+                    HTuple rec_row = new HTuple();
+                    HTuple rec_col = new HTuple();
+                    HTuple rec_pi = new HTuple();
+                    HTuple rec_length1 = new HTuple();
+                    HTuple rec_length2 = new HTuple();
+                    HTuple res_xld = new HTuple();
+                    if (checkBox6.Checked)
+                    {
+                        rec_row = Convert.ToDouble(textBox5.Text);
+                        rec_col = Convert.ToDouble(textBox6.Text);
+                        rec_pi = Convert.ToDouble(textBox9.Text);
+                        rec_length1 = Convert.ToDouble(textBox8.Text);
+                        rec_length2 = Convert.ToDouble(textBox7.Text);
+                    }
+                    HObject rec_xld = new HObject();
+                    listimageindex--;
+                    HOperatorSet.ReadImage(out img, listimage[listimageindex]);
+                    m_ZKHwindows.NowImage = img;
+                    sacleimg = img;
+                    if (Scale_enabled)
+                    {
+                        HObject outimg = new HObject();
+
+
+                        //Mult = Math.Round(255.0 / (trackBar2.Value - trackBar1.Value), 3);
+                        //add = (Mult * trackBar1.Value) * -1;
+
+
+                        HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
+                        M_Shape_matching.img = outimg;
+                    }
+                    else
+                    {
+                        M_Shape_matching.img = img;
+                    }
+
+                    if (checkBox6.Checked)
+                    {
+
+                        HOperatorSet.GenRectangle2(out rec_xld, rec_row, rec_col, rec_pi, rec_length1, rec_length2);
+                        HOperatorSet.ReduceDomain(img, rec_xld, out M_Shape_matching.img);
+                    }
+
+
+
+
+                    if (M_Shape_matching.action(nowTaskID, nowoperationID))
+                    {
+                        HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "green");
+                        HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_ZKHwindows.hWindowControl.HalconWindow);
+                        if (checkBox6.Checked)
+                        {
+                            HOperatorSet.DispObj(rec_xld, m_ZKHwindows.hWindowControl.HalconWindow);
+                        }
+                        Getmodelinfo();
+                        // Up_Data();
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("图片不存在或已经是第一张");
+                }
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (listimage.Count > 0)
+            {
+                try
+                {
+                    HTuple rec_row = new HTuple();
+                    HTuple rec_col = new HTuple();
+                    HTuple rec_pi = new HTuple();
+                    HTuple rec_length1 = new HTuple();
+                    HTuple rec_length2 = new HTuple();
+                    HTuple res_xld = new HTuple();
+                    if (checkBox6.Checked)
+                    {
+                        rec_row = Convert.ToDouble(textBox5.Text);
+                        rec_col = Convert.ToDouble(textBox6.Text);
+                        rec_pi = Convert.ToDouble(textBox9.Text);
+                        rec_length1 = Convert.ToDouble(textBox8.Text);
+                        rec_length2 = Convert.ToDouble(textBox7.Text);
+                    }
+                    HObject rec_xld = new HObject();
+                    listimageindex++;
+                    HOperatorSet.ReadImage(out img, listimage[listimageindex]);
+                    m_ZKHwindows.NowImage = img;
+                    sacleimg = img;
+                    if (Scale_enabled)
+                    {
+                        HObject outimg = new HObject();
+
+
+                        //Mult = Math.Round(255.0 / (trackBar2.Value - trackBar1.Value), 3);
+                        //add = (Mult * trackBar1.Value) * -1;
+
+
+                        HOperatorSet.ScaleImage(sacleimg, out outimg, Mult, add);
+                        M_Shape_matching.img = outimg;
+                    }
+                    else
+                    {
+                        M_Shape_matching.img = img;
+                    }
+
+
+                    if (checkBox6.Checked)
+                    {
+
+                        HOperatorSet.GenRectangle2(out rec_xld, rec_row, rec_col, rec_pi, rec_length1, rec_length2);
+                        HOperatorSet.ReduceDomain(img, rec_xld, out M_Shape_matching.img);
+                    }
+
+
+
+                    if (M_Shape_matching.action(nowTaskID, nowoperationID))
+                    {
+                        HOperatorSet.SetColor(m_ZKHwindows.hWindowControl.HalconWindow, "green");
+                        HOperatorSet.DispObj(M_Shape_matching.ho_Transregion_final, m_ZKHwindows.hWindowControl.HalconWindow);
+                        if (checkBox6.Checked)
+                        {
+                            HOperatorSet.DispObj(rec_xld, m_ZKHwindows.hWindowControl.HalconWindow);
+                        }
+                        Getmodelinfo();
+                        // Up_Data();
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("图片不存在或已经是最后一张");
+                }
+            }
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        public void disp_message(HTuple hv_WindowHandle, HTuple hv_String, HTuple hv_CoordSystem,
+HTuple hv_Row, HTuple hv_Column, HTuple hv_Color, HTuple hv_Box)
+        {
+
+
+
+            // Local iconic variables 
+
+            // Local control variables 
+
+            HTuple hv_GenParamName = new HTuple(), hv_GenParamValue = new HTuple();
+            HTuple hv_Color_COPY_INP_TMP = new HTuple(hv_Color);
+            HTuple hv_Column_COPY_INP_TMP = new HTuple(hv_Column);
+            HTuple hv_CoordSystem_COPY_INP_TMP = new HTuple(hv_CoordSystem);
+            HTuple hv_Row_COPY_INP_TMP = new HTuple(hv_Row);
+
+            // Initialize local and output iconic variables 
+            try
+            {
+                //This procedure displays text in a graphics window.
+                //
+                //Input parameters:
+                //WindowHandle: The WindowHandle of the graphics window, where
+                //   the message should be displayed.
+                //String: A tuple of strings containing the text messages to be displayed.
+                //CoordSystem: If set to 'window', the text position is given
+                //   with respect to the window coordinate system.
+                //   If set to 'image', image coordinates are used.
+                //   (This may be useful in zoomed images.)
+                //Row: The row coordinate of the desired text position.
+                //   You can pass a single value or a tuple of values.
+                //   See the explanation below.
+                //   Default: 12.
+                //Column: The column coordinate of the desired text position.
+                //   You can pass a single value or a tuple of values.
+                //   See the explanation below.
+                //   Default: 12.
+                //Color: defines the color of the text as string.
+                //   If set to [] or '' the currently set color is used.
+                //   If a tuple of strings is passed, the colors are used cyclically
+                //   for every text position defined by Row and Column,
+                //   or every new text line in case of |Row| == |Column| == 1.
+                //Box: A tuple controlling a possible box surrounding the text.
+                //   Its entries:
+                //   - Box[0]: Controls the box and its color. Possible values:
+                //     -- 'true' (Default): An orange box is displayed.
+                //     -- 'false': No box is displayed.
+                //     -- color string: A box is displayed in the given color, e.g., 'white', '#FF00CC'.
+                //   - Box[1] (Optional): Controls the shadow of the box. Possible values:
+                //     -- 'true' (Default): A shadow is displayed in
+                //               darker orange if Box[0] is not a color and in 'white' otherwise.
+                //     -- 'false': No shadow is displayed.
+                //     -- color string: A shadow is displayed in the given color, e.g., 'white', '#FF00CC'.
+                //
+                //It is possible to display multiple text strings in a single call.
+                //In this case, some restrictions apply on the
+                //parameters String, Row, and Column:
+                //They can only have either 1 entry or n entries.
+                //Behavior in the different cases:
+                //   - Multiple text positions are specified, i.e.,
+                //       - |Row| == n, |Column| == n
+                //       - |Row| == n, |Column| == 1
+                //       - |Row| == 1, |Column| == n
+                //     In this case we distinguish:
+                //       - |String| == n: Each element of String is displayed
+                //                        at the corresponding position.
+                //       - |String| == 1: String is displayed n times
+                //                        at the corresponding positions.
+                //   - Exactly one text position is specified,
+                //      i.e., |Row| == |Column| == 1:
+                //      Each element of String is display in a new textline.
+                //
+                //
+                //Convert the parameters for disp_text.
+                if ((int)((new HTuple(hv_Row_COPY_INP_TMP.TupleEqual(new HTuple()))).TupleOr(
+                    new HTuple(hv_Column_COPY_INP_TMP.TupleEqual(new HTuple())))) != 0)
+                {
+
+                    hv_Color_COPY_INP_TMP.Dispose();
+                    hv_Column_COPY_INP_TMP.Dispose();
+                    hv_CoordSystem_COPY_INP_TMP.Dispose();
+                    hv_Row_COPY_INP_TMP.Dispose();
+                    hv_GenParamName.Dispose();
+                    hv_GenParamValue.Dispose();
+
+                    return;
+                }
+                if ((int)(new HTuple(hv_Row_COPY_INP_TMP.TupleEqual(-1))) != 0)
+                {
+                    hv_Row_COPY_INP_TMP.Dispose();
+                    hv_Row_COPY_INP_TMP = 12;
+                }
+                if ((int)(new HTuple(hv_Column_COPY_INP_TMP.TupleEqual(-1))) != 0)
+                {
+                    hv_Column_COPY_INP_TMP.Dispose();
+                    hv_Column_COPY_INP_TMP = 12;
+                }
+                //
+                //Convert the parameter Box to generic parameters.
+                hv_GenParamName.Dispose();
+                hv_GenParamName = new HTuple();
+                hv_GenParamValue.Dispose();
+                hv_GenParamValue = new HTuple();
+                if ((int)(new HTuple((new HTuple(hv_Box.TupleLength())).TupleGreater(0))) != 0)
+                {
+                    if ((int)(new HTuple(((hv_Box.TupleSelect(0))).TupleEqual("false"))) != 0)
+                    {
+                        //Display no box
+                        using (HDevDisposeHelper dh = new HDevDisposeHelper())
+                        {
+                            {
+                                HTuple
+                                  ExpTmpLocalVar_GenParamName = hv_GenParamName.TupleConcat(
+                                    "box");
+                                hv_GenParamName.Dispose();
+                                hv_GenParamName = ExpTmpLocalVar_GenParamName;
+                            }
+                        }
+                        using (HDevDisposeHelper dh = new HDevDisposeHelper())
+                        {
+                            {
+                                HTuple
+                                  ExpTmpLocalVar_GenParamValue = hv_GenParamValue.TupleConcat(
+                                    "false");
+                                hv_GenParamValue.Dispose();
+                                hv_GenParamValue = ExpTmpLocalVar_GenParamValue;
+                            }
+                        }
+                    }
+                    else if ((int)(new HTuple(((hv_Box.TupleSelect(0))).TupleNotEqual(
+                        "true"))) != 0)
+                    {
+                        //Set a color other than the default.
+                        using (HDevDisposeHelper dh = new HDevDisposeHelper())
+                        {
+                            {
+                                HTuple
+                                  ExpTmpLocalVar_GenParamName = hv_GenParamName.TupleConcat(
+                                    "box_color");
+                                hv_GenParamName.Dispose();
+                                hv_GenParamName = ExpTmpLocalVar_GenParamName;
+                            }
+                        }
+                        using (HDevDisposeHelper dh = new HDevDisposeHelper())
+                        {
+                            {
+                                HTuple
+                                  ExpTmpLocalVar_GenParamValue = hv_GenParamValue.TupleConcat(
+                                    hv_Box.TupleSelect(0));
+                                hv_GenParamValue.Dispose();
+                                hv_GenParamValue = ExpTmpLocalVar_GenParamValue;
+                            }
+                        }
+                    }
+                }
+                if ((int)(new HTuple((new HTuple(hv_Box.TupleLength())).TupleGreater(1))) != 0)
+                {
+                    if ((int)(new HTuple(((hv_Box.TupleSelect(1))).TupleEqual("false"))) != 0)
+                    {
+                        //Display no shadow.
+                        using (HDevDisposeHelper dh = new HDevDisposeHelper())
+                        {
+                            {
+                                HTuple
+                                  ExpTmpLocalVar_GenParamName = hv_GenParamName.TupleConcat(
+                                    "shadow");
+                                hv_GenParamName.Dispose();
+                                hv_GenParamName = ExpTmpLocalVar_GenParamName;
+                            }
+                        }
+                        using (HDevDisposeHelper dh = new HDevDisposeHelper())
+                        {
+                            {
+                                HTuple
+                                  ExpTmpLocalVar_GenParamValue = hv_GenParamValue.TupleConcat(
+                                    "false");
+                                hv_GenParamValue.Dispose();
+                                hv_GenParamValue = ExpTmpLocalVar_GenParamValue;
+                            }
+                        }
+                    }
+                    else if ((int)(new HTuple(((hv_Box.TupleSelect(1))).TupleNotEqual(
+                        "true"))) != 0)
+                    {
+                        //Set a shadow color other than the default.
+                        using (HDevDisposeHelper dh = new HDevDisposeHelper())
+                        {
+                            {
+                                HTuple
+                                  ExpTmpLocalVar_GenParamName = hv_GenParamName.TupleConcat(
+                                    "shadow_color");
+                                hv_GenParamName.Dispose();
+                                hv_GenParamName = ExpTmpLocalVar_GenParamName;
+                            }
+                        }
+                        using (HDevDisposeHelper dh = new HDevDisposeHelper())
+                        {
+                            {
+                                HTuple
+                                  ExpTmpLocalVar_GenParamValue = hv_GenParamValue.TupleConcat(
+                                    hv_Box.TupleSelect(1));
+                                hv_GenParamValue.Dispose();
+                                hv_GenParamValue = ExpTmpLocalVar_GenParamValue;
+                            }
+                        }
+                    }
+                }
+                //Restore default CoordSystem behavior.
+                if ((int)(new HTuple(hv_CoordSystem_COPY_INP_TMP.TupleNotEqual("window"))) != 0)
+                {
+                    hv_CoordSystem_COPY_INP_TMP.Dispose();
+                    hv_CoordSystem_COPY_INP_TMP = "image";
+                }
+                //
+                if ((int)(new HTuple(hv_Color_COPY_INP_TMP.TupleEqual(""))) != 0)
+                {
+                    //disp_text does not accept an empty string for Color.
+                    hv_Color_COPY_INP_TMP.Dispose();
+                    hv_Color_COPY_INP_TMP = new HTuple();
+                }
+                //
+                HOperatorSet.DispText(hv_WindowHandle, hv_String, hv_CoordSystem_COPY_INP_TMP,
+                    hv_Row_COPY_INP_TMP, hv_Column_COPY_INP_TMP, hv_Color_COPY_INP_TMP, hv_GenParamName,
+                    hv_GenParamValue);
+
+                hv_Color_COPY_INP_TMP.Dispose();
+                hv_Column_COPY_INP_TMP.Dispose();
+                hv_CoordSystem_COPY_INP_TMP.Dispose();
+                hv_Row_COPY_INP_TMP.Dispose();
+                hv_GenParamName.Dispose();
+                hv_GenParamValue.Dispose();
+
+                return;
+            }
+            catch (HalconException HDevExpDefaultException)
+            {
+
+                hv_Color_COPY_INP_TMP.Dispose();
+                hv_Column_COPY_INP_TMP.Dispose();
+                hv_CoordSystem_COPY_INP_TMP.Dispose();
+                hv_Row_COPY_INP_TMP.Dispose();
+                hv_GenParamName.Dispose();
+                hv_GenParamValue.Dispose();
+
+                throw HDevExpDefaultException;
+            }
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click_2(object sender, EventArgs e)
+        {
+            if (m_ZKHwindows.NowImage != null)
+            {
+                HObject rectange = new HObject();
+                HTuple row = new HTuple();
+                HTuple col = new HTuple();
+                HTuple Length1 = new HTuple();
+                HTuple Length2 = new HTuple();
+                HTuple PI = new HTuple();
+
+                MessageBox.Show("请在图片上区域");
+                m_ZKHwindows.Drawing = true;
+                HOperatorSet.SetDraw(m_ZKHwindows.hWindowControl.HalconWindow, "margin");
+                HOperatorSet.DrawRectangle2(m_ZKHwindows.hWindowControl.HalconWindow, out row, out col, out PI, out Length1, out Length2);
+
+                m_ZKHwindows.Drawing = false;
+                disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "起始X:" + row.D.ToString(), "window", 12, 12, "black",
+                  "true");
+                disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "起始Y:" + col.D.ToString(), "window", 32, 12, "black",
+                    "true");
+                disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "Length1：" + Length1.D.ToString(), "window",
+                    52, 12, "black", "true");
+                disp_message(m_ZKHwindows.hWindowControl.HalconWindow, "Length2：" + Length2.D.ToString(), "window",
+              72, 12, "black", "true");
+
+                HOperatorSet.GenRectangle2(out rectange, row, col, PI, Length1, Length2);
+
+                HOperatorSet.DispObj(rectange, m_ZKHwindows.hWindowControl.HalconWindow);
+
+                textBox5.Text = row.D.ToString("F0");
+                textBox6.Text = col.D.ToString("F0");
+                textBox8.Text = Length1.D.ToString("F0");
+                textBox7.Text = Length2.D.ToString("F0");
+                textBox9.Text = PI.D.ToString("F0");
+
+            }
+            else
+            {
+                MessageBox.Show("请先载入图片！");
+            }
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+        
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "rec_enable", checkBox6.Checked.ToString());
+       
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_X", checkBox2.Checked.ToString());
+
+            }
+            else
+            {
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_X", checkBox2.Checked.ToString());
+
+            }
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked)
+            {
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_Y", checkBox3.Checked.ToString());
+
+            }
+            else
+            {
+                IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_Y", checkBox3.Checked.ToString());
+
+            }
+        }
+
+        private void numericUpDown11_ValueChanged(object sender, EventArgs e)
+        {
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_X_Down", numericUpDown11.Value.ToString());
+        }
+
+        private void numericUpDown10_ValueChanged(object sender, EventArgs e)
+        {
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_X_Up", numericUpDown10.Value.ToString());
+        }
+
+        private void numericUpDown13_ValueChanged(object sender, EventArgs e)
+        {
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_Y_Down", numericUpDown13.Value.ToString());
+        }
+
+        private void numericUpDown12_ValueChanged(object sender, EventArgs e)
+        {
+            IniAPI.INIWriteValue(Param_Path, "Run_number" + comboBox1.Text, "Position_enable_Y_Up", numericUpDown12.Value.ToString());
 
         }
 

@@ -188,6 +188,12 @@
     <Compile Include="Light_Control.Designer.cs">
       <DependentUpon>Light_Control.cs</DependentUpon>
     </Compile>
+    <Compile Include="数据上传\DATA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="数据上传\DATA.Designer.cs">
+      <DependentUpon>DATA.cs</DependentUpon>
+    </Compile>
     <Compile Include="算子窗口\Barcode recognition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -338,6 +344,9 @@
     <EmbeddedResource Include="Light_Control.resx">
       <DependentUpon>Light_Control.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="数据上传\DATA.resx">
+      <DependentUpon>DATA.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="算子窗口\Barcode recognition.resx">
       <DependentUpon>Barcode recognition.cs</DependentUpon>
     </EmbeddedResource>
@@ -468,7 +477,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\FRANK\AppData\Local\Programs\MVTec\HALCON-21.11-Progress\bin\dotnet35\halcondotnet.dll" />
+    <Analyzer Include="C:\Users\HW\AppData\Local\Programs\MVTec\HALCON-21.11-Progress\bin\dotnet35\halcondotnet.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

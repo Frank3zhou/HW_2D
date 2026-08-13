@@ -1,0 +1,17 @@
+[PLCParam]
+Type=Mitsubishi
+ConnectType=LogicStation
+LogicStation=1
+ActType=1
+IP=192.168.0.20
+IPport=502
+
+Port=COM8
+BaudRate=9600
+DataBits=7
+StopBits=1
+Parity=2
+
+
+
+PassWord=

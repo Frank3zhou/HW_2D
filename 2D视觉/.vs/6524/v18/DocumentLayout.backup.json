@@ -1,0 +1,410 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|c:\\users\\frank\\downloads\\hw_2d-main\\2d\u89C6\u89C9\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\modelset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:modelset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\form_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:form_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\inputform1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:inputform1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\light_control.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:light_control.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\fanuc12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:fanuc12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\camera_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:camera_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\camera_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:camera_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u50CF\u7D20\u5339\u914D.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:\u7B97\u5B50\u7A97\u53E3\\\u50CF\u7D20\u5339\u914D.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\saveimageform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:saveimageform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\plc_tool .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:plc_tool .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\setmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:setmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u6570\u636E\u4E0A\u4F20\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:\u6570\u636E\u4E0A\u4F20\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u6570\u636E\u4E0A\u4F20\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:\u6570\u636E\u4E0A\u4F20\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\teach_point.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:teach_point.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7E85F23-F73D-4E79-9682-881196D44433}|6524.csproj|solutionrelative:\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 298,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Form1.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "Form1.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.496Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAK4CAAAAAAAAAAApwLkCAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "modelSet.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\modelSet.cs",
+              "RelativeDocumentMoniker": "modelSet.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\modelSet.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\modelSet.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form_Init.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Form_Init.cs",
+              "RelativeDocumentMoniker": "Form_Init.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\Form_Init.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\Form_Init.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InputForm1.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\InputForm1.cs",
+              "RelativeDocumentMoniker": "InputForm1.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\InputForm1.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\InputForm1.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T02:36:16.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Light_Control.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Light_Control.cs",
+              "RelativeDocumentMoniker": "Light_Control.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\Light_Control.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\Light_Control.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.493Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Login.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Login.cs",
+              "RelativeDocumentMoniker": "Login.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\Login.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\Login.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.495Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Camera_Form.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Camera_Form.cs",
+              "RelativeDocumentMoniker": "Camera_Form.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\Camera_Form.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\Camera_Form.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Form1.Designer.cs",
+              "RelativeToolTip": "Form1.Designer.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAawHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:14:40.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-07-03T01:13:42.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FANUC12.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\FANUC12.cs",
+              "RelativeDocumentMoniker": "FANUC12.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\FANUC12.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\FANUC12.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:13:44.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Camera_Form.cs",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Camera_Form.cs",
+              "RelativeDocumentMoniker": "Camera_Form.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Camera_Form.cs",
+              "RelativeToolTip": "Camera_Form.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAgwAoAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:36.775Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "SaveimageForm.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\SaveimageForm.cs",
+              "RelativeDocumentMoniker": "SaveimageForm.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\SaveimageForm.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\SaveimageForm.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "\u50CF\u7D20\u5339\u914D.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u50CF\u7D20\u5339\u914D.cs",
+              "RelativeDocumentMoniker": "\u7B97\u5B50\u7A97\u53E3\\\u50CF\u7D20\u5339\u914D.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u50CF\u7D20\u5339\u914D.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u50CF\u7D20\u5339\u914D.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.486Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PLC_TOOL .cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\PLC_TOOL .cs",
+              "RelativeDocumentMoniker": "PLC_TOOL .cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\PLC_TOOL .cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\PLC_TOOL .cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.493Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SetModel.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\SetModel.cs",
+              "RelativeDocumentMoniker": "SetModel.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\SetModel.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\SetModel.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.494Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "\u5F62\u72B6\u5339\u914D2.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs",
+              "RelativeDocumentMoniker": "\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.494Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Teach_point.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\Teach_point.cs",
+              "RelativeDocumentMoniker": "Teach_point.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\Teach_point.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\Teach_point.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.495Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DATA.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u6570\u636E\u4E0A\u4F20\\DATA.cs",
+              "RelativeDocumentMoniker": "\u6570\u636E\u4E0A\u4F20\\DATA.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\\u6570\u636E\u4E0A\u4F20\\DATA.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\\u6570\u636E\u4E0A\u4F20\\DATA.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DATA.cs",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u6570\u636E\u4E0A\u4F20\\DATA.cs",
+              "RelativeDocumentMoniker": "\u6570\u636E\u4E0A\u4F20\\DATA.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u6570\u636E\u4E0A\u4F20\\DATA.cs",
+              "RelativeToolTip": "\u6570\u636E\u4E0A\u4F20\\DATA.cs",
+              "ViewState": "AgIAAI8DAAAAzczMzMwvwJoDAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "\u5F62\u72B6\u5339\u914D2.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.Designer.cs",
+              "RelativeDocumentMoniker": "\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.Designer.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.Designer.cs",
+              "RelativeToolTip": "\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.498Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "\u5F62\u72B6\u5339\u914D.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs",
+              "RelativeDocumentMoniker": "\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "..\\..\\..\\Desktop\\2D\\HW_2D\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.498Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "\u5F62\u72B6\u5339\u914D.cs",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs",
+              "RelativeDocumentMoniker": "\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs",
+              "RelativeToolTip": "\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D.cs",
+              "ViewState": "AgIAAOIBAAAAAAAAAAAjwPgBAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "\u5F62\u72B6\u5339\u914D2.cs",
+              "DocumentMoniker": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs",
+              "RelativeDocumentMoniker": "\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs",
+              "ToolTip": "C:\\Users\\FRANK\\Downloads\\HW_2D-main\\2D\u89C6\u89C9\\\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs",
+              "RelativeToolTip": "\u7B97\u5B50\u7A97\u53E3\\\u5F62\u72B6\u5339\u914D2.cs",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAIwKAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T01:12:37.5Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 769,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 70,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
